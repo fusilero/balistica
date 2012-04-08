@@ -19,7 +19,7 @@
 using GLib;
 
 public class Balistica.Greenhill : GLib.Object {
-        public int C { get; set; };
+        public int C { get; set; }
         public double diameter { get; set; }
         public double length { get; set; }
         public double specific_gravity { get; set; }
