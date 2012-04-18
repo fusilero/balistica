@@ -24,13 +24,14 @@ public class Balistica.CmdHandler : GLib.Object {
                 + " [help] <command> [<args>]";
 
         const string common_cmds = "     Commonly used commands:"
-                + "\n     miller\t\tCalculate a variable using the Miller twist rule" 
-                + "\n     green\t\tCalculate a variable using the Greenhill formula";
+                + "\n     miller-twist\t\tCalculate twist using the Miller twist rule" 
+                + "\n     miller-stability\t\tCalculate stability using the Miller twist rule" 
+                + "\n     green\t\tCalculate twist using the Greenhill formula";
 
         // Specific help
         const string specific_cmd = "See balistica help <command> for more information on a specific formula";
 
-        const string miller_help = "\nThe Miller Twist Rule can be used to calculate the twist rate or "
+        const string miller_twist_help = "\nThe Miller Twist Rule can be used to calculate the twist rate or "
                 + "\nthe stability factor of a specific round."
                 + "\n\n The variables used to calculate twist rate: "
                 + "\n   --diameter   - the diameter of the bullet"
@@ -61,7 +62,7 @@ public class Balistica.CmdHandler : GLib.Object {
         // Handle arguments
         public static int handle_args(string[] args) {
                 if (args.length == 1 || args[1] == "help") {
-                        if (args[2] == "miller") {
+                        if (args[2] == "miller-twist" || args[2] == "miller-stability") {
                                 stdout.printf("%s\n", miller_help);
                                 return 0;
                         } else if (args[2] == "greenhill") {
@@ -74,10 +75,15 @@ public class Balistica.CmdHandler : GLib.Object {
                 }
 
                 for (int i = 1; i < args.length; i++) {
-                        if (args[i] == "miller") {
-
+                        if (args[i] == "miller-twist") {
+                                calculate_miller_twist(args);
+                                break;
+                        } else if (args[i] == "miller-stability") {
+                                calculate_miller_stability(args);
+                                break; 
                         } else if (args[i] == "greenhill") {
-
+                                calculate_greenhill(args);
+                                break;
                         } else {
                                 stdout.printf("%s\n", "You have entered an unknown option!");
                                 break;
@@ -91,5 +97,44 @@ public class Balistica.CmdHandler : GLib.Object {
                 stdout.printf("%s\n\n", usage);
                 stdout.printf("%s\n\n", common_cmds);
                 stdout.printf("%s\n", specific_cmd);
+        }
+
+        private static void calculate_miller_twist(string[] args) {
+                Miller m = new Miller();
+
+                for (int i = 2; i < args.length; i++) {
+                        if (args[i] == "--diameter") {
+                                m.diameter = double.parse(args[i+1]);
+                        } else if (args[i] == "--length") {
+                                m.length = double.parse(args[i+1]);
+                        } else if (args[i] == "--mass"){
+                                m.mass = double.parse(args[i+1]);
+                        } else if (args[i] == "--safe-value") {
+                                m.safe_value = int.parse(args[i+1]);
+                        }                       
+                }
+
+                stdout.printf("%g\n", m.calc_twist());
+        }
+
+        private static void calculate_miller_stability(string[] args) {
+                Miller m = new Miller();
+
+                for (int i = 2; i < args.length; i++) {
+                        if (args[i] == "--diameter") {
+                                m.diameter = double.parse(args[i+1]);
+                        } else if (args[i] == "--length") {
+                                m.length = double.parse(args[i+1]);
+                        } else if (args[i] == "--mass"){
+                                m.mass = double.parse(args[i+1]);
+                        } else if (args[i] == "--twist") {
+                                m.twist = double.parse(args[i+1]);
+                        }                       
+                }
+
+                stdout.printf("%g\n", m.calc_stability());
+        }
+
+        private static void calculate_greenhill(string[] args) {
         }
 }
