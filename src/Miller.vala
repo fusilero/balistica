@@ -22,7 +22,7 @@ public class Balistica.Miller : GLib.Object {
         public double diameter { get; set; }
         public double length { get; set; }
         public double mass { get; set; }
-        public double safe_value { get; set; }
+        public int safe_value { get; set; }
         public double twist { get; set; }
 
         public static Miller() {
