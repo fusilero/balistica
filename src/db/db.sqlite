@@ -19,22 +19,24 @@ CREATE TABLE rifles (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        caliber TEXT NOT NULL
+        caliber_id INTEGER,
+        FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
 CREATE TABLE shotguns (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        gauge TEXT NOT NULL,
-        action TEXT NOT NULL
+        gauge_id INTEGER,
+        action TEXT NOT NULL,
+        FOREIGN KEY(gauge_id) REFERENCES guages (id)
 );
 
 CREATE TABLE pistols (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        caliber TEXT NOT NULL
+        caliber INTEGER
 );
 
 CREATE TABLE calibers (
