@@ -12,7 +12,8 @@ src = [
 'Balistica.vala',
 'CmdHandler.vala',
 'Miller.vala',
-'Greenhill.vala'
+'Greenhill.vala',
+'DB.vala'
 ]
 
 app = bld.program(
@@ -20,7 +21,7 @@ app = bld.program(
         vapi_dirs = '../vapi',
         threading = True,
         uselib = 'GLIB',
-        packages = 'glib-2.0 config',
+        packages = 'glib-2.0 libxml-2.0 libgda-4.0 config',
         source = src
 )
 
