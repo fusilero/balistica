@@ -29,7 +29,7 @@ CREATE TABLE shotguns (
         model TEXT NOT NULL,
         gauge_id INTEGER,
         action TEXT NOT NULL,
-        FOREIGN KEY(gauge_id) REFERENCES guages (id)
+        FOREIGN KEY(gauge_id) REFERENCES gauges (id)
 );
 
 CREATE TABLE pistols (
@@ -47,6 +47,36 @@ CREATE TABLE calibers (
 CREATE TABLE gauges (
         id INTEGER PRIMARY KEY,
         gauge TEXT NOT NULL
+);
+
+CREATE TABLE bullets (
+        id INTEGER PRIMARY KEY,
+        brand TEXT NOT NULL,
+        weight REAL NOT NULL
+);
+
+CREATE TABLE propellants (
+       id INTEGER PRIMARY KEY,
+       brand TEXT NOT NULL
+);
+
+CREATE TABLE primers (
+       id INTEGER PRIMARY KEY,
+       brand TEXT NOT NULL
+);
+
+CREATE TABLE cases (
+       id INTEGER PRIMARY KEY,
+       brand TEXT NOT NULL
+);
+
+CREATE TABLE custom_load (
+       id INTEGER PRIMARY KEY,
+       description TEXT,
+       bullet_id INTEGER,
+       propellant_id INTEGER,
+       primer_id INTEGER,
+       case_id INTEGER     
 );
 
 
