@@ -21,10 +21,11 @@ def options(opts):
 	opts.load('compiler_c')
 	opts.load('vala')
 	opts.load('glib2')
+        opts.load('libxml2')
 
 def configure(conf):	
 	conf.check_vala((0, 14, 2))
-	
+
 	conf.check_cfg(
 		package = 'glib-2.0',
 		uselib_store = 'GLIB',
@@ -32,8 +33,20 @@ def configure(conf):
 		mandatory = True,
 		args = '--cflags --libs')
 	
-        conf.load('compiler_c')
-        conf.load('vala')
+        conf.check_cfg(
+                package = 'libxml-2.0',
+                uselib_store = 'LIBXML',
+                atleast_version = '2.0',
+                mandatory = True,
+                args = '--cflags --libs')
+        
+        conf.check_cfg(package = 'libgda-4.0',
+                uselib_store = 'GDA',
+                mandatory = True,
+                args = '--cflags --libs')
+
+        conf.load('compiler_c')        
+        conf.load('vala')        
         conf.load('glib2')
 
 def build(bld):
