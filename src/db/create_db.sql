@@ -76,7 +76,11 @@ CREATE TABLE custom_load (
        bullet_id INTEGER,
        propellant_id INTEGER,
        primer_id INTEGER,
-       case_id INTEGER     
+       case_id INTEGER,
+       FOREIGN KEY(bullet_id) REFERENCES bullets (id),
+       FOREIGN KEY(propellant_id) REFERENCES propellants (id),
+       FOREIGN KEY(primer_id) REFERENCES primers (id),
+       FOREIGN KEY(case_id) REFERENCES cases (id)
 );
 
 
