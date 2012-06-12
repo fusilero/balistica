@@ -50,9 +50,7 @@ def configure(conf):
                 mandatory = True,
                 args = '--cflags --libs')
 
-        conf.load('compiler_c')        
-        conf.load('vala')        
-        conf.load('glib2')
+        conf.load('compiler_c vala glib2')
 
 def build(bld):
 	bld.add_post_fun(post_build)
