@@ -18,9 +18,7 @@ VERSION = '0.0.1'
 APPNAME = 'balistica'
 
 def options(opts):
-	opts.load('compiler_c')
-	opts.load('vala')
-	opts.load('glib2')
+	opts.load('compiler_c vala glib2')
         opts.load('libxml2')
 
 def configure(conf):	
