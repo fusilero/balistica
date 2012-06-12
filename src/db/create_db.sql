@@ -42,6 +42,7 @@ CREATE TABLE pistols (
 
 CREATE TABLE calibers (
         id INTEGER PRIMARY KEY,
+        type TEXT,
         caliber TEXT NOT NULL
 );
 
