@@ -54,8 +54,8 @@ CREATE TABLE bullets (
         id INTEGER PRIMARY KEY,
         brand TEXT NOT NULL,
         caliber_id INTEGER NOT NULL,
-        diameter REAL NOT NULL,
-        weight REAL NOT NULL
+        diameter DOUBLE NOT NULL,
+        weight DOUBLE NOT NULL
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
