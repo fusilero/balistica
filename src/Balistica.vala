@@ -18,6 +18,7 @@
 
 public class Balistica.Main {
         public static int main (string[] args) {
+                // Call the command line handler
                 CmdHandler.handle_args(args);
 
                 return 0;
