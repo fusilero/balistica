@@ -24,12 +24,18 @@ public class Balistica.Greenhill : GLib.Object {
         public double length { get; set; }
         public double specific_gravity { get; set; }
 
+        /**
+         * Default contstructor
+         */
         public static Greenhill() {
                 this.diameter = 0;
                 this.length = 0;
                 this.specific_gravity = 0;
         }
-
+        
+        /**
+         * Calculate the twist of the bullet
+         */
         public double calc_twist() {
                 double temp1 = C * Math.pow(this.diameter, 2) / this.length;
                 double temp2 = Math.sqrt(this.specific_gravity / 10.9);
