@@ -57,12 +57,16 @@ public class Balistica.CmdHandler : GLib.Object {
                 + "\n   --length           - the length of the bullet"
                 + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
-        // Default constructor. Not used.
+        /**
+         * Default constructor
+         */        
         public static CmdHandler () {
 
         }
 
-        // Handle arguments
+        /**
+         * Handle arguments
+         */
         public static int handle_args(string[] args) {
                 if (args.length == 1 || args[1] == "help") {
                         if (args[2] == "miller-twist") {
@@ -99,12 +103,18 @@ public class Balistica.CmdHandler : GLib.Object {
                 return 0;
         }
 
+        /**
+         * Print help message
+         */
         private static void print_help() {
                 stdout.printf("%s\n\n", usage);
                 stdout.printf("%s\n\n", common_cmds);
                 stdout.printf("%s\n", specific_cmd);
         }
 
+        /**
+         * Calculate twist using the Miller formula
+         */
         private static void calculate_miller_twist(string[] args) {
                 Miller m = new Miller();
 
@@ -123,6 +133,9 @@ public class Balistica.CmdHandler : GLib.Object {
                 stdout.printf("%g\n", m.calc_twist());
         }
 
+        /**
+         * Calculate stability using the Miller formula
+         */
         private static void calculate_miller_stability(string[] args) {
                 Miller m = new Miller();
 
@@ -141,6 +154,9 @@ public class Balistica.CmdHandler : GLib.Object {
                 stdout.printf("%g\n", m.calc_stability());
         }
 
+        /**
+         * Calculate twist using the Greenhill formula
+         */
         private static void calculate_greenhill(string[] args) {
                 Greenhill g = new Greenhill();
 
