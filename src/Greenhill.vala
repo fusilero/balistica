@@ -25,12 +25,21 @@ public class Balistica.Greenhill : GLib.Object {
         public double specific_gravity { get; set; }
 
         /**
-         * Default contstructor
+         * Default constructor
          */
         public static Greenhill() {
                 this.diameter = 0;
                 this.length = 0;
                 this.specific_gravity = 0;
+        }
+
+        /**
+         * Full constructor
+         */
+        public static Greenhill(double d, double l, double sg) {
+                this.diameter = d;
+                this.length = l;
+                this.specific_gravity = sg;
         }
         
         /**
