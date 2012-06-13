@@ -37,6 +37,11 @@ public class Balistica.Miller : GLib.Object {
 
         /**
          * Full constructor
+         * 
+         * @param d The bullet's diameter as a double
+         * @param l The bullet's length as a double
+         * @param m The bullet's mass as a double
+         * @param sv The "safe value". Generally 2.
          */
         public static Miller(double d, double l, double m, int sv) {
                 this.diameter = d;
