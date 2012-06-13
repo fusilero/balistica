@@ -25,6 +25,9 @@ public class Balistica.Miller : GLib.Object {
         public int safe_value { get; set; }
         public double twist { get; set; }
 
+        /**
+         * Default constructor
+         */
         public static Miller() {
                 this.diameter = 0.0;
                 this.length = 0.0;
@@ -32,12 +35,18 @@ public class Balistica.Miller : GLib.Object {
                 this.safe_value = 2;
         }
 
+        /**
+         * Calculate bullet twist rate
+         */
         public double calc_twist() {
                 double temp1 = Math.sqrt(30.0 * this.mass);
                 double temp2 = this.safe_value * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
                 return temp1 / temp2;
         }
 
+        /**
+         * Calculate bullet stability
+         */
         public double calc_stability() {
                 double temp1 = 30.0 * this.mass;
                 double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
