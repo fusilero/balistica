@@ -36,6 +36,16 @@ public class Balistica.Miller : GLib.Object {
         }
 
         /**
+         * Full constructor
+         */
+        public static Miller(double d, double l, double m, int sv) {
+                this.diameter = d;
+                this.length = l;
+                this.mass = m;
+                this.safe_value = sv;
+        }
+
+        /**
          * Calculate bullet twist rate
          */
         public double calc_twist() {
