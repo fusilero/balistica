@@ -1,13 +1,10 @@
-                      balistica 
-                        0.0.1
+# balistica
 
-ABOUT
-=====
+## About
 balistica is a simple open source ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
 
-DISCLAIMER
-==========
+## DISCLAIMER
 It is to be used as REFERENCE or curiosity ONLY. Much like
 Wikipedia, information gleaned from this program is not to be 
 used in an illegal fashion and I take no responsibility whatsoever
@@ -15,8 +12,7 @@ for any acts, criminal or otherwise, committed using any calculations
 derived by this program. This is also stated in the GNU GPL, 
 but repeated here just to make sure.
 
-As quoted from the GPL Section 16:
-16. Limitation of Liability.
+As quoted from the GPL Section 16 - Limitation of Liability:
 
 IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
 WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
@@ -28,15 +24,15 @@ PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
 EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
-MINIMUM REQUIREMENTS
-====================
+## Minimum Requirements
 * vala 14.2
 * waf 1.6.10
 * libgda 4.0
 * libxml-2
 
-BUILD INSTRUCTIONS
-==================
+## Build Instructions
+```bash
 cd balistica
 waf configure
 waf build
+```
