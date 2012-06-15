@@ -27,7 +27,7 @@ SUCH DAMAGES.
 ## Minimum Requirements
 * vala 14.2
 * waf 1.6.10
-* libgda 4.0
+* libgda 5.0
 * libxml-2
 
 ## Build Instructions
