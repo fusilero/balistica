@@ -1,7 +1,7 @@
-# balistica
+# balística
 
 ## About
-balistica is a simple open source ballistics calculator. It's 
+balística is a simple open source ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
 
 ## DISCLAIMER
