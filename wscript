@@ -70,6 +70,7 @@ def build(bld):
 	if bld.cmd == 'clean':
 		if os.path.isfile('balistica') :
 			os.remove('balistica')
+	# Install balistica
 	elif bld.cmd == 'install'
 		bld.install_files('${MANDIR}/balistica.1', m, flat=True)
 
