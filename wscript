@@ -1,13 +1,6 @@
 #! /usr/bin/env python
 # encoding: utf-8
 
-# Copyright 2012 Steven Oliver <oliver.steven@gmail.com>
-#
-# Copying and distribution of this file, with or without modification,
-# are permitted in any medium without royalty provided the copyright
-# notice and this notice are preserved.  This file is offered as-is,
-# without any warranty.
-
 import os
 import waflib
 
