@@ -70,6 +70,8 @@ def build(bld):
 	if bld.cmd == 'clean':
 		if os.path.isfile('balistica') :
 			os.remove('balistica')
+	elif bld.cmd == 'install'
+		bld.install_files('${MANDIR}/balistica.1', m, flat=True)
 
 def post_build(bld):
 	# Copy executables to root folder.
