@@ -45,7 +45,7 @@ def configure(conf):
                 mandatory = True,
                 args = '--cflags --libs')
         
-        conf.check_cfg(package = 'libgda-4.0',
+        conf.check_cfg(package = 'libgda-5.0',
                 uselib_store = 'GDA',
                 mandatory = True,
                 args = '--cflags --libs')
