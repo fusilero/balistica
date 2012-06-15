@@ -21,7 +21,7 @@ def options(opts):
 	opts.load('compiler_c vala glib2')
         opts.load('libxml2')
         
-        opt.add_option(
+        opts.add_option(
         	'--debug',
         	help='performs a debug build',
         	action='store_true',
