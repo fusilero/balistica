@@ -38,11 +38,6 @@ def configure(conf):
                 mandatory = True,
                 args = '--cflags --libs')
         
-        conf.check_cfg(package = 'libgda-5.0',
-                uselib_store = 'GDA',
-                mandatory = True,
-                args = '--cflags --libs')
-
         conf.load('compiler_c vala glib2')
 
 def build(bld):
@@ -78,8 +73,8 @@ def dist():
 	(f, filename) = dist(APPNAME, VERSION)
 	f = file(filename, 'rb')    
 	
-	# compute the SHA1 hash 0.5MB at a time
-	s = sha1.sha1()
+	# compute the SHA256 hash 0.5MB at a time
+	s = sha256.sha256()
 	readBytes = 500000
 	while (readBytes):
 		readString = f.read(readBytes)
@@ -87,7 +82,7 @@ def dist():
 		readBytes = len(readString)
 	f.close()
 	
-	# Write the hash to a seperate file
+	# Write the hash to a separate file
 	f = open(dist(APPNAME), 'w')
 	f.write(s.hexdigest())
 	f.close()
