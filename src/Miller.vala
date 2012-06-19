@@ -43,7 +43,7 @@ public class Balistica.Miller : GLib.Object {
          * @param m The bullet's mass as a double
          * @param sv The "safe value". Generally 2.
          */
-        public static void Miller_full(double d, double l, double m, int sv) {
+        public static Miller.full(double d, double l, double m, int sv) {
                 this.diameter = d;
                 this.length = l;
                 this.mass = m;
