@@ -27,7 +27,7 @@ public class Balistica.Greenhill : GLib.Object {
         /**
          * Default constructor
          */
-        public static Greenhill() {
+        public static Greenhill_default() {
                 this.diameter = 0;
                 this.length = 0;
                 this.specific_gravity = 0;
@@ -40,7 +40,7 @@ public class Balistica.Greenhill : GLib.Object {
          * @param l The bullet's length as a double
          * @param sg The bullet's specific gravity as a double
          */
-        public static Greenhill(double d, double l, double sg) {
+        public static Greenhill_full(double d, double l, double sg) {
                 this.diameter = d;
                 this.length = l;
                 this.specific_gravity = sg;
