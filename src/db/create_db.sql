@@ -23,6 +23,10 @@ CREATE TABLE rifles (
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
+CREATE INDEX rifles_id_idx ON rifles (id);
+CREATE INDEX rifles_make_idx ON rifles (make);
+CREATE INDEX rifles_model_idx ON rifles (model);
+
 CREATE TABLE shotguns (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
@@ -32,6 +36,11 @@ CREATE TABLE shotguns (
         FOREIGN KEY(gauge_id) REFERENCES gauges (id)
 );
 
+CREATE INDEX shotguns_id_idx ON shotguns (id);
+CREATE INDEX shotguns_make_idx ON shotguns (make);
+CREATE INDEX shotguns_model_idx ON shotguns (model);
+CREATE INDEX shotguns_gauge_id_idx ON shotguns (gauge_id);
+
 CREATE TABLE pistols (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
@@ -40,25 +49,35 @@ CREATE TABLE pistols (
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
+CREATE INDEX pistols_id_idx ON pistols (id);
+CREATE INDEX pistols_make_idx ON pistols (make);
+CREATE INDEX pistols_model_idx ON pistols (model);
+C
 CREATE TABLE calibers (
         id INTEGER PRIMARY KEY,
         type TEXT,
         caliber TEXT NOT NULL
 );
 
+CREATE INDEX calibers_id_idx ON calibers (id);
+
 CREATE TABLE gauges (
         id INTEGER PRIMARY KEY,
         gauge TEXT NOT NULL
 );
+
+CREATE INDEX gauges_id_idx ON gauges (id);
 
 CREATE TABLE bullets (
         id INTEGER PRIMARY KEY,
         brand TEXT NOT NULL,
         caliber_id INTEGER NOT NULL,
         diameter DOUBLE NOT NULL,
-        weight DOUBLE NOT NULL
+        weight DOUBLE NOT NULL,
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
+
+CREATE INDEX bullets_id_idx ON bullets (id);
 
 CREATE TABLE propellants (
        id INTEGER PRIMARY KEY,
@@ -66,11 +85,15 @@ CREATE TABLE propellants (
        propellant TEXT NOT NULL
 );
 
+CREATE INDEX propellants_id_idx ON propellants (id);
+
 CREATE TABLE primers (
        id INTEGER PRIMARY KEY,
        brand TEXT NOT NULL,
        primer TEXT NOT NULL
 );
+
+CREATE INDEX primers_id_idx ON primers (id);
 
 CREATE TABLE cases (
        id INTEGER PRIMARY KEY,
@@ -78,6 +101,8 @@ CREATE TABLE cases (
        caliber_id INTEGER NOT NULL,
        FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
+
+CREATE INDEX cases_id_idx ON cases (id);
 
 CREATE TABLE custom_load (
        id INTEGER PRIMARY KEY,
@@ -92,4 +117,5 @@ CREATE TABLE custom_load (
        FOREIGN KEY(case_id) REFERENCES cases (id)
 );
 
+CREATE INDEX custom_load_id_idx ON custom_load (id);
 
