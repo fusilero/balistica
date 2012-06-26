@@ -35,4 +35,5 @@ SUCH DAMAGES.
 cd balistica
 waf configure
 waf build
+waf install
 ```
