@@ -14,53 +14,14 @@ balistica \- A simple open source ballistics calculator
 
 .SH "DESCRIPTION"
 The \fBctags\fP and \fBetags\fP programs (hereinafter collectively referred to
-as \fBctags\fP, except where distinguished) generate an index (or "tag") file
-for a variety of language objects found in \fIfile(s)\fP.
-This tag file allows these items to be quickly and easily located by a text
-editor or other utility. A "tag" signifies a language object for which an
-index entry is available (or, alternatively, the index entry created for that
-object).
-
-.RS 4
-\fBVi\fP(1) and its derivatives (e.g. Elvis, Vim, Vile, Lemmy),
-\fBCRiSP\fP,
-\fBEmacs\fP,
-\fBFTE\fP (Folding Text Editor),
-\fBJED\fP,
-\fBjEdit\fP,
-\fBMined\fP,
-\fBNEdit\fP (Nirvana Edit),
-\fBTSE\fP (The SemWare Editor),
-\fBUltraEdit\fP,
-\fBWorkSpace\fP,
-\fBX2\fP,
-\fBZeus\fP
-.RE
 
 .SH "OPTIONS"
 
 Despite the wealth of available options, defaults are set so that \fBctags\fP
-is most commonly executed without any options (e.g. "ctags *", or "ctags \-R"),
-which will create a tag file in the current directory for all recognized
-source files. The options described below are provided merely to allow custom
-tailoring to meet special needs.
 
 .TP 5
 .B \-a
 Equivalent to \fB\-\-append\fP.
-
-.TP 5
-.B \-B
-Use backward searching patterns (e.g. ?pattern?). [Ignored in etags mode]
-
-.SH "CAVEATS"
-Because \fBctags\fP is neither a preprocessor nor a compiler, use of
-preprocessor macros can fool \fBctags\fP into either missing tags or
-improperly generating inappropriate tags. Although \fBctags\fP has been
-designed to handle certain common cases, this is the single biggest cause of
-reported problems. In particular, the use of preprocessor constructs which
-alter the textual syntax of C can fool \fBctags\fP. You can work around many
-such problems by using the \fB\-I\fP option.
 
 .SH "AUTHOR"
 Steven Oliver <oliver.steven@gmail.com>
