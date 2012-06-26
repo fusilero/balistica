@@ -65,28 +65,3 @@ def build(bld):
 def post_build(bld):
 	# Copy executables to root folder.
         waflib.Logs.info("Finished.")
-        
-def dist():
-	# bzip2 (default) the executable
-	import sha1
-	from Scripting import dist
-	(f, filename) = dist(APPNAME, VERSION)
-	f = file(filename, 'rb')    
-	
-	# compute the SHA256 hash 0.5MB at a time
-	s = sha256.sha256()
-	readBytes = 500000
-	while (readBytes):
-		readString = f.read(readBytes)
-		s.update(readString)
-		readBytes = len(readString)
-	f.close()
-	
-	# Write the hash to a separate file
-	f = open(dist(APPNAME), 'w')
-	f.write(s.hexdigest())
-	f.close()
-	
-	# Quit
-	sys.exit(0)
-    
