@@ -12,7 +12,6 @@ APPNAME = 'balistica'
 
 def options(opts):
 	opts.load('compiler_c vala glib2')
-        opts.load('libxml2')
         
         opts.add_option(
         	'--debug',
@@ -21,7 +20,7 @@ def options(opts):
         	default=False)
 
 def configure(conf):	
-	conf.check_vala((0, 14, 2))
+	conf.check_vala((0, 16, 0))
 	conf.env.DEBUG = conf.options.debug
 
 	conf.check_cfg(
@@ -31,13 +30,6 @@ def configure(conf):
 		mandatory = True,
 		args = '--cflags --libs')
 	
-        conf.check_cfg(
-                package = 'libxml-2.0',
-                uselib_store = 'LIBXML',
-                atleast_version = '2.0',
-                mandatory = True,
-                args = '--cflags --libs')
-        
         conf.load('compiler_c vala glib2')
 
 def build(bld):
