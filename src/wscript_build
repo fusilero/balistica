@@ -13,7 +13,7 @@ app = bld.program(
         vapi_dirs = '../vapi',
         threading = True,
         uselib = 'GLIB',
-        packages = 'glib-2.0 libxml-2.0 config',
+        packages = 'glib-2.0 config',
         source = src
 )
 
