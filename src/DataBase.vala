@@ -16,3 +16,8 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using GLib;
+
+public class Balistica.Database : GLib.Object {
+
+}
