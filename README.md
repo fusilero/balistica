@@ -25,10 +25,8 @@ EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
 ## Minimum Requirements
-* vala 14.2
-* waf 1.6.10
-* libgda 5.0
-* libxml-2
+* vala 16.0
+* waf 1.6.11
 
 ## Build Instructions
 ```bash
