@@ -42,7 +42,7 @@ def build(bld):
 	else:
 		bld.env.append_value('CFLAGS', ['-O2', '-g', '-D_PREFIX="' + bld.env.PREFIX + '"'])
 		bld.env.append_value('LINKFLAGS', ['-O2', '-g', '-lm'])
-		bld.env.append_value('VALAFLAGS', ['-g', '--enable-checking', '--fatal-warnings'])
+		bld.env.append_value('VALAFLAGS', ['-g', '--enable-checking', '--fatal-warnings', '--debug'])
 	
 	bld.recurse('src')
 	
