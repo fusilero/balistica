@@ -30,22 +30,26 @@ public class Balistica.Atmosphere : GLib.Object {
         // Standard Atmospheric Pressure in mercury
         const double StandardPressure = 29.53;
 
+        // Refraction
         public double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
                 double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature,2) + 0.0234 * Temperature - 0.2517;
                 double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
                 return FRH;
         }
 
+        // Pressure
         public double calcFP (double Pressure) {
                 return (Pressure - StandardPressure) / StandardPressure;
         }
 
+        // Temperature
         public double calcFT (double Temperature, double Altitude) {
                 double Tstd = -0.0036 * Altitude + 59;
                 double FT = (Temperature-Tstd) / (459.6 + Tstd);
                 return FT;
         }
 
+        // Altitude
         public double calcFA (double Altitude) {
                 double fa = -4e-15 * Math.pow(Altitude, 3) + 4e-10 * Math.pow(Altitude, 2) -3e-5 * Altitude + 1;
                 return (1 / fa);
