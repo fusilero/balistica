@@ -32,7 +32,7 @@ public class Balistica.Atmosphere : GLib.Object {
 
         public double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
                 double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature,2) + 0.0234 * Temperature - 0.2517;
-                double FRH = 0.995 * (Pressure/(Pressure-(0.3783) * (RelativeHumidity) * VPw));
+                double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
                 return FRH;
         }
 
@@ -48,18 +48,17 @@ public class Balistica.Atmosphere : GLib.Object {
 
         public double calcFA (double Altitude) {
                 double fa = -4e-15 * Math.pow(Altitude, 3) + 4e-10 * Math.pow(Altitude, 2) -3e-5 * Altitude + 1;
-                return (1/fa);
+                return (1 / fa);
         }
 
         public double AtmCorrect (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
-
                 double FA = calcFA(Altitude);
                 double FT = calcFT(Temperature, Altitude);
                 double FR = calcFR(Temperature, Barometer, RelativeHumidity);
                 double FP = calcFP(Barometer);
 
                 // Calculate the atmospheric correction factor
-                double CD = (FA*(1+FT-FP)*FR);
-                return DragCoefficient*CD;
+                double CD = (FA * (1 + FT - FP) * FR);
+                return DragCoefficient * CD;
         }
 }
