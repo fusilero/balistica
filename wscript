@@ -20,7 +20,7 @@ def options(opts):
         	default=False)
 
 def configure(conf):	
-	conf.check_vala((0, 16, 0))
+	conf.check_vala((0, 16, 1))
 	conf.env.DEBUG = conf.options.debug
 
 	conf.check_cfg(
