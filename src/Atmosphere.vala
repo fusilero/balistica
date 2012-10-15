@@ -27,12 +27,12 @@ using GLib;
 
 public class Balistica.Atmosphere : GLib.Object {
         
-        // Standard Atmospheric Pressure in mercury
+        // Standard Atmospheric Pressure in inches-mercury
         const double StandardPressure = 29.53;
 
         // Refraction
         public double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
-                double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature,2) + 0.0234 * Temperature - 0.2517;
+                double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature, 2) + 0.0234 * Temperature - 0.2517;
                 double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
                 return FRH;
         }
