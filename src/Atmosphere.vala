@@ -27,8 +27,9 @@ using GLib;
 
 public class Balistica.Atmosphere : GLib.Object {
         
-        // Standard Atmospheric Pressure in inches-mercury
-        const double StandardPressure = 29.53;
+        // Standard Atmospheric Pressure in inches mercury or
+	// about 1000 millibars
+        const double StandardPressure = 29.5333727;
 
         // Refraction
         public double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
