@@ -2,11 +2,15 @@
 # encoding: utf-8
 
 src = [
-'AngleConversion.vala',
 'Balistica.vala',
 'CmdHandler.vala',
 'Miller.vala',
 'Greenhill.vala',
+]
+
+conversion = [
+'conversion/Angle.vala',
+'conversion/Temperature.vala',
 ]
 
 app = bld.program(
@@ -15,6 +19,6 @@ app = bld.program(
         threading = True,
         uselib = 'GLIB',
         packages = 'glib-2.0 config',
-        source = src
+        source = src + conversion
 )
 
