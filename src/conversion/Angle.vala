@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.AngleConversion : GLib.Object {
+public class Balistica.Angle : GLib.Object {
         
         // Stating with degrees
         public static double DegreeToMOA (double deg) {
