@@ -20,29 +20,56 @@ using GLib;
 
 public class Balistica.Angle : GLib.Object {
         
-        // Stating with degrees
+        /**
+        * DegreeToMOA
+        *
+        * @param deg Angle in degrees
+        */
         public static double DegreeToMOA (double deg) {
                 return deg * 60;
         }
 
+        /**
+        * DegreeToRadian
+        *
+        * @param deg Angle in degrees
+        */
         public static double DegreeToRadian (double deg) {
                 return deg * Math.PI/180;
         }
 
-        // Starting with radians
+        /**
+        * RadianToDegree
+        *
+        * @param rad Angle in radians
+        */
         public static double RadianToDegree (double rad) {
                 return rad * 180/Math.PI;
         }
 
+        /**
+        * RadianToMOA
+        *
+        * @param rad Angle in radians
+        */
         public static double RadianToMOA (double rad) {
                 return rad * 60 * 180/Math.PI;
         }
 
-        // Starting with MOAs
+        /**
+        * MOAToDegree
+        *
+        * @param moa Angle in minutes of angle
+        */
         public static double MOAToDegree (double moa) {
                 return moa/60;
         }
 
+        /**
+        * MOAToRadian
+        *
+        * @param moa Angle in minutes of angle
+        */
         public static double MOAToRadian (double moa) {
                 return moa/60 * Math.PI/180;
         }

@@ -52,7 +52,7 @@ CREATE TABLE pistols (
 CREATE INDEX pistols_id_idx ON pistols (id);
 CREATE INDEX pistols_make_idx ON pistols (make);
 CREATE INDEX pistols_model_idx ON pistols (model);
-C
+
 CREATE TABLE calibers (
         id INTEGER PRIMARY KEY,
         type TEXT,
