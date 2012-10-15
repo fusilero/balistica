@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 src = [
+'Atmosphere.vala',
 'Balistica.vala',
 'CmdHandler.vala',
 'Miller.vala',
