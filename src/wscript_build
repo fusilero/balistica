@@ -15,7 +15,9 @@ conversion = [
 
 lib_balistica = [
 'lib-balistica/Atmosphere.vala',
+'lib-balistica/Windage.vala',
 ]
+
 
 db = [
 'db/Database.vala',
