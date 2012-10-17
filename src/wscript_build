@@ -17,6 +17,10 @@ lib_balistica = [
 'lib-balistica/Atmosphere.vala',
 ]
 
+db = [
+'db/Database.vala',
+]
+
 app = bld.program(
         target = 'balistica',
         vapi_dirs = '../vapi',
