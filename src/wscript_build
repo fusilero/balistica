@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 src = [
-'Atmosphere.vala',
 'Balistica.vala',
 'CmdHandler.vala',
 'Miller.vala',
@@ -14,12 +13,16 @@ conversion = [
 'conversion/Temperature.vala',
 ]
 
+lib_balistica = [
+'lib-balistica/Atmosphere.vala',
+]
+
 app = bld.program(
         target = 'balistica',
         vapi_dirs = '../vapi',
         threading = True,
         uselib = 'GLIB',
         packages = 'glib-2.0 config',
-        source = src + conversion
+        source = src + conversion + lib_balistica
 )
 
