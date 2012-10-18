@@ -35,3 +35,9 @@ waf configure
 waf build
 waf install
 ```
+## Contributing
+At this point it's still very early in the process. I have my own coding style
+and I'd prefer to try to mimic it as much as possible. I have a small to do list
+setup in the [https://github.com/steveno/balistica/wiki/To-Do](wiki); please take any of the tasks you want, but please also file a 
+ticket so I know you're working on it.
+
