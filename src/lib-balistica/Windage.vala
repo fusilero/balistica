@@ -30,13 +30,13 @@ public class Balistica.Windage : GLib.Object {
 
         /** A function to compute the windage deflection for a given crosswind speed,
          * given flight time in a vacuum, and given flight time in real life.
-         * Returns the windage correction needed in inches.
+         *
          * @param WindSpeed The wind velocity in mi/hr.
          * @param Vi The initial velocity of the projectile (muzzle velocity).
          * @param x The range at which you wish to determine windage, in feet.
          * @param t The time it has taken the projectile to traverse the range x, in seconds.
          *
-         * @return amount of windage correction, in inches, required to achieve zero on a target at the given range.	
+         * @return The amount of windage correction, in inches, required to achieve zero on a target at the given range.	
          */
         public double Windage(double WindSpeed, double Vi, double xx, double t){
                 double Vw = WindSpeed * 17.60; // Convert to inches per second.
