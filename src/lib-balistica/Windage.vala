@@ -35,17 +35,22 @@ public class Balistica.Windage : GLib.Object {
         }
 
 
-        // Headwind is positive at WindAngle=0
+        /**
+         * Headwind is positive at WindAngle=0
+         */
         public double HeadWind(double WindSpeed, double WindAngle){
                 double Wangle = Angle.DegreeToRadian(WindAngle);
 
                 return (Math.cos(Wangle) * WindSpeed);
         }
 
-        // Positive is from Shooter's Right to Left (Wind from 90 degree)
+        /**
+         * Positive is from Shooter's Right to Left (Wind from 90 degree)
+         */
         public double CrossWind(double WindSpeed, double WindAngle){
                 double Wangle = Angle.DegreeToRadian(WindAngle);
 
                 return (Math.sin(Wangle) * WindSpeed);
         }
 }
+
