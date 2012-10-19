@@ -36,7 +36,8 @@ public class Balistica.Retard : GLib.Object {
                 G6,
                 G7,
                 G8;
-/*
+/* We comment this out because at this point I'm not using it and
+   my compilation settings will cry foul if it find unused functions
                 public string to_string() {
                         switch (this) {
                                 case G1: return "G1";
