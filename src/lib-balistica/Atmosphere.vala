@@ -24,6 +24,7 @@
  */
 
 using GLib;
+using Balistica;
 
 public class Balistica.Atmosphere : GLib.Object {
         
@@ -56,7 +57,7 @@ public class Balistica.Atmosphere : GLib.Object {
 		// Funny math where you divide by "standard temp" above
 		// converted Rankine
 		// http://en.wikipedia.org/wiki/Lapse_rate		
-                double FT = (Temperature - Tstd) / (459.6 + Tstd);
+                double FT = (Temperature - Tstd) / Temperature.FahrenheitToRankine(Tstd);
                 return FT;
         }
 
