@@ -45,10 +45,18 @@ public class Balistica.Atmosphere : GLib.Object {
                 return (Pressure - StandardPressure) / StandardPressure;
         }
 
-        // Temperature
+        /**
+	 * Temperature
+	 */
         private double calcFT (double Temperature, double Altitude) {
+		// We're calculating the standard temperature at your
+		// altitude using the lapse rate
                 double Tstd = -0.0036 * Altitude + StandardTemp;
-                double FT = (Temperature-Tstd) / (459.6 + Tstd);
+		
+		// Funny math where you divide by "standard temp" above
+		// converted Rankine
+		// http://en.wikipedia.org/wiki/Lapse_rate		
+                double FT = (Temperature - Tstd) / (459.6 + Tstd);
                 return FT;
         }
 
@@ -58,7 +66,8 @@ public class Balistica.Atmosphere : GLib.Object {
                 return (1 / fa);
         }
 
-        /* A function to correct a "standard" Drag Coefficient for differing atmospheric conditions. 
+        /**
+	 * A function to correct a "standard" Drag Coefficient for differing atmospheric conditions. 
          * Returns the corrected drag coefficient for supplied drag coefficient and atmospheric conditions.
          *
          * @param DragCoefficient The coefficient of drag for a given projectile.
