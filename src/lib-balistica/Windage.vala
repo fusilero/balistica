@@ -28,7 +28,8 @@ using Balistica;
 
 public class Balistica.Windage : GLib.Object {
 
-        /** A function to compute the windage deflection for a given crosswind speed,
+        /** 
+         * A function to compute the windage deflection for a given crosswind speed,
          * given flight time in a vacuum, and given flight time in real life.
          *
          * @param WindSpeed The wind velocity in mi/hr.
