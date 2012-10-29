@@ -24,7 +24,7 @@
  */
 
 using GLib;
-using Balistica;
+using Conversion;
 
 public class Balistica.Windage : GLib.Object {
 
