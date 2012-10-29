@@ -58,12 +58,12 @@ public class Balistica.Atmosphere : GLib.Object {
 
         /**
 	 * Temperature
-	 * @param Temperature
+	 * @param Temp
 	 * @param Altitude
 	 *
 	 * @return Standardized temperature
 	 */
-        private double calcFT (double Temperature, double Altitude) {
+        private double calcFT (double Temp, double Altitude) {
 		// We're calculating the standard temperature at your
 		// altitude using the lapse rate
 		// http://en.wikipedia.org/wiki/Lapse_rate
@@ -71,7 +71,7 @@ public class Balistica.Atmosphere : GLib.Object {
 		
 		// Funny math where you divide by "standard temp" above
 		// converted to Rankine		
-                double FT = (Temperature - Tstd) / Temperature.FahrenheitToRankine(Tstd);
+                double FT = (Temp - Tstd) / Temperature.FahrenheitToRankine(Tstd);
                 return FT;
         }
 
