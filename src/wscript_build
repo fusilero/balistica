@@ -4,8 +4,6 @@
 src = [
 'Balistica.vala',
 'CmdHandler.vala',
-'Miller.vala',
-'Greenhill.vala',
 ]
 
 conversion = [
@@ -15,8 +13,10 @@ conversion = [
 
 lib_balistica = [
 'lib-balistica/Atmosphere.vala',
-'lib-balistica/Windage.vala',
+'lib-balistica/Miller.vala',
+'lib-balistica/Greenhill.vala',
 'lib-balistica/Retard.vala',
+'lib-balistica/Windage.vala',
 ]
 
 db = [

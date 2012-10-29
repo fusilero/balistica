@@ -17,6 +17,7 @@
  */
 
 using GLib;
+using Balistica;
 
 public class Balistica.CmdHandler : GLib.Object {
         // Global help strings
