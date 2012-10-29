@@ -24,7 +24,7 @@
  */
 
 using GLib;
-using Balistica;
+using Conversion;
 
 public class Balistica.Atmosphere : GLib.Object {
         
@@ -56,7 +56,7 @@ public class Balistica.Atmosphere : GLib.Object {
                 double Tstd = -0.0036 * Altitude + StandardTemp;
 		
 		// Funny math where you divide by "standard temp" above
-		// converted Rankine		
+		// converted to Rankine		
                 double FT = (Temperature - Tstd) / Temperature.FahrenheitToRankine(Tstd);
                 return FT;
         }
