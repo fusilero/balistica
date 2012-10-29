@@ -47,6 +47,10 @@ public class Balistica.Windage : GLib.Object {
 
         /**
          * Headwind is positive at WindAngle = 0
+         * @param WindSpeed
+         * @param WindAngle
+         *
+         * @return HeadWind
          */
         public double HeadWind(double WindSpeed, double WindAngle){
                 double Wangle = Angle.DegreeToRadian(WindAngle);
