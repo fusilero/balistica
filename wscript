@@ -9,6 +9,9 @@ out = 'build'
 
 VERSION = '0.0.1'
 APPNAME = 'balistica'
+WEBSITE = 'http://steveno.github.com/balistica/'
+COPYRIGHT = "Copyright \xc2\xa9 2012 Steven N. Oliver"
+VERSION_MAJOR = '.'.join (VERSION.split ('.')[0:1])
 
 def options(opts):
 	opts.load('compiler_c vala glib2')
@@ -17,6 +20,7 @@ def options(opts):
         	'--debug',
         	help='performs a debug build',
         	action='store_true',
+        	dest='debug',
         	default=False)
 
 def configure(conf):	
@@ -30,7 +34,14 @@ def configure(conf):
 		mandatory = True,
 		args = '--cflags --libs')
 	
-        conf.load('compiler_c vala glib2')
+	conf.define ('NAME', APPNAME)	
+	conf.define ('VERSION', VERSION)
+	conf.define ('GETTEXT_PACKAGE', APPNAME)
+	conf.define ('COPYRIGHT', COPYRIGHT)
+	conf.define ('WEBSITE', WEBSITE)	
+	conf.define ('VAPI_VERSION', VERSION_MAJOR)
+	
+	conf.load('compiler_c vala glib2')
 
 def build(bld):
 	bld.add_post_fun(post_build)
@@ -53,6 +64,10 @@ def build(bld):
 	# Install balistica manpage
         elif bld.cmd == 'install':
 		bld.install_files('${MANDIR}/balistica.1', m, flat=True)
+
+def dist ():	
+	import Scripting	
+	Scripting.dist (APPNAME, VERSION)
 
 def post_build(bld):
 	# Copy executables to root folder.
