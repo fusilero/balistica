@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.Temerature : GLib.Object {
+public class Conversion.Temperature : GLib.Object {
         public static double CelsiusToFahrenheit (double cel) {
                 return cel * 9/5 + 32;
         }

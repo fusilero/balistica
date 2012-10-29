@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.Angle : GLib.Object {
+public class Conversion.Angle : GLib.Object {
         
         /**
         * DegreeToMOA
