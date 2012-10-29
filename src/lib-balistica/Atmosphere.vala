@@ -34,20 +34,34 @@ public class Balistica.Atmosphere : GLib.Object {
 	// Standard Tempurature in degrees Fahrenheit
 	const double StandardTemp = 59.0;
 
-        // Refraction
+        /**
+	 * Refraction
+	 * @param Refraction
+	 *
+	 * @return Standardized refraction
+	 */
         private double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
                 double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature, 2) + 0.0234 * Temperature - 0.2517;
                 double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
                 return FRH;
         }
 
-        // Pressure
+        /**
+	 * Pressure
+	 * @param Pressure
+	 *
+	 * @return Standardized pressure
+	 */
         private double calcFP (double Pressure) {
                 return (Pressure - StandardPressure) / StandardPressure;
         }
 
         /**
 	 * Temperature
+	 * @param Temperature
+	 * @param Altitude
+	 *
+	 * @return Standardized temperature
 	 */
         private double calcFT (double Temperature, double Altitude) {
 		// We're calculating the standard temperature at your
@@ -61,7 +75,12 @@ public class Balistica.Atmosphere : GLib.Object {
                 return FT;
         }
 
-        // Altitude
+        /**
+	 * Altitude
+	 * @param Altitude
+	 *
+	 * @return Standardized altitude
+	 */
         private double calcFA (double Altitude) {
                 double fa = -4e-15 * Math.pow(Altitude, 3) + 4e-10 * Math.pow(Altitude, 2) -3e-5 * Altitude + 1;
                 return (1 / fa);
