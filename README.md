@@ -25,7 +25,7 @@ EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGES.
 
 ## Minimum Requirements
-* vala 0.16.1
+* vala 0.18.0
 * waf 1.6.11
 
 ## Build Instructions
