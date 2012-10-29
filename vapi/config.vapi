@@ -18,9 +18,10 @@
 
 [CCode (prefix="", lower_case_cprefix="", cheader_filename="config.h")]
 namespace Config {
-    public const string LOCALEDIR;
-    public const string DATADIR;
-    public const string GETTEXT_PACKAGE;
     public const string NAME;
     public const string VERSION;
+    public const string GETTEXT_PACKAGE;    
+    public const string COPYRIGHT;
+    public const string WEBSITE;
+    public const string VAPI_VERSION;
 }
