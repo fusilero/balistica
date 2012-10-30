@@ -25,6 +25,7 @@
 
 using GLib;
 using Balistica;
+using Conversion;
 
 public class Balistica.Solve : GLib.Object {
 
@@ -54,9 +55,7 @@ public class Balistica.Solve : GLib.Object {
          *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory 
          *         segmentation fault.
          */
-        public int SolveAll(int DragFunction, double DragCoefficient, double Vi, double SightHeight, \
-                        double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle, double** Solution){
-
+        public int SolveAll(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle, double** Solution) {
                 // FIXME This is very un-vala like
                 double* ptr;
                 ptr = (double*)malloc(10 * BComp_MaxRange * sizeof(double) + 2048);
@@ -68,19 +67,19 @@ public class Balistica.Solve : GLib.Object {
                 double dv=0, dvx=0, dvy=0;
                 double x=0, y=0;
 
-                double headwind=HeadWind(WindSpeed, WindAngle);
-                double crosswind=CrossWind(WindSpeed, WindAngle);
+                double headwind = HeadWind(WindSpeed, WindAngle);
+                double crosswind = CrossWind(WindSpeed, WindAngle);
 
-                double Gy=GRAVITY*cos(DegtoRad((ShootingAngle + ZAngle)));
-                double Gx=GRAVITY*sin(DegtoRad((ShootingAngle + ZAngle)));
+                double Gy = Gravity * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
+                double Gx = Gravity * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
 
-                vx = Vi * Math.cos(DegtoRad(ZAngle));
-                vy = Vi * Math.sin(DegtoRad(ZAngle));
+                vx = Vi * Math.cos(Angle.DegreeToRadian(ZAngle));
+                vy = Vi * Math.sin(Angle.DegreeToRadian(ZAngle));
 
                 y = -SightHeight / 12;
 
                 int n = 0;
-                for (t = 0; ;t = t + dt){
+                for (t = 0;;t = t + dt){
                         vx1 = vx, vy1 = vy;	
                         v = Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), 0.5);
                         dt = 0.5 / v;
