@@ -51,10 +51,12 @@ public class Balistica.Zero : GLib.Object {
         public double ZeroAngle(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ZeroRange, double yIntercept){
                 // Numerical Integration variables
                 double t = 0;
-                double dt = 1 / Vi; // The solution accuracy generally doesn't suffer if its within a foot for each second of time.
+                // The solution accuracy generally doesn't suffer if its within a foot for each second of time.
+                double dt = 1 / Vi; 
                 double y = -SightHeight/12;
                 double x = 0;
-                double da; // The change in the bore angle used to iterate in on the correct zero angle.
+                // The change in the bore angle used to iterate in on the correct zero angle.
+                double da; 
 
                 // State variables for each integration loop.
                 double v = 0, vx = 0, vy = 0; // velocity
