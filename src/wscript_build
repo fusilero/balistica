@@ -17,6 +17,7 @@ lib_balistica = [
 'lib-balistica/Greenhill.vala',
 'lib-balistica/Retard.vala',
 'lib-balistica/Windage.vala',
+'lib-balistica/Zero.vala',
 ]
 
 db = [
