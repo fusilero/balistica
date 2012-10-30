@@ -49,7 +49,6 @@ public class Balistica.Zero : GLib.Object {
          * @return The angle of the bore relative to the sighting system, in degrees.
          */
         public double ZeroAngle(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ZeroRange, double yIntercept){
-
                 // Numerical Integration variables
                 double t = 0;
                 double dt = 1 / Vi; // The solution accuracy generally doesn't suffer if its within a foot for each second of time.
@@ -69,7 +68,6 @@ public class Balistica.Zero : GLib.Object {
 
                 // Start with a very coarse angular change, to quickly solve even large launch angle problems.
                 da = Angle.DegreeToRadian(14);
-
 
                 // The general idea here is to start at 0 degrees elevation, and increase the elevation by 14 degrees
                 // until we are above the correct elevation.  Then reduce the angular change by half, and begin reducing
@@ -104,6 +102,7 @@ public class Balistica.Zero : GLib.Object {
                                 if (vy < 0 && y < yIntercept) {
                                         break;
                                 }
+
                                 if (vy > 3 * vx) {
                                         break;
                                 }
@@ -117,12 +116,18 @@ public class Balistica.Zero : GLib.Object {
                                 da = -da / 2;
                         }
 
-                        if (Math.fabs(da) < Angle.MOAToRadian(0.01)) 
-                                quit = 1; // If our accuracy is sufficient, we can stop approximating.
-                        if (angle > Angle.DegreeToRadian(45))
-                                quit = 1; // If we exceed the 45 degree launch angle, then the projectile just won't get there, so we stop trying.
+                        if (Math.fabs(da) < Angle.MOAToRadian(0.01)) {
+                                // If our accuracy is sufficient, we can stop approximating.
+                                quit = 1; 
+                        }
+
+                        if (angle > Angle.DegreeToRadian(45)) {
+                                // If we exceed the 45 degree launch angle, then the projectile just won't get there, so we stop trying.
+                                quit = 1;                
+                        }
                 }
 
-                return Angle.RadianToDegree(angle); // Convert to degrees for return value.
+                // Convert to degrees for return value.
+                return Angle.RadianToDegree(angle);
         }
 }
