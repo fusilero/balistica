@@ -21,10 +21,10 @@ public class Balistica.LibBalistica : GLib.Object {
         public const double Gravity = -32.194;
 
         // Standard Atmospheric Pressure in inches mercury
-        const double StandardPressure = 29.5333727;
+        public const double StandardPressure = 29.5333727;
 
         // Standard Tempurature in degrees Fahrenheit
-        const double StandardTemp = 59.0;
+        public const double StandardTemp = 59.0;
 
         // FIXME A constant to prevent buffer overflows when this
         // C program
@@ -40,7 +40,7 @@ public class Balistica.LibBalistica : GLib.Object {
                    G7,
                    G8;
                 /* We comment this out because at this point I'm not using it and
-                   my compilation settings will cry foul if it find unused functions*/
+                   my compilation settings will cry foul if it finds unused functions*/
                 public string to_string() {
                         switch (this) {
                                 case G1: return "G1";
