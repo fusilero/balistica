@@ -29,7 +29,12 @@ using Balistica;
 // Functions for retrieving data from a solution generated with SolveAll()
 public class Balistica.Retrieve : GLib.Object {
 
-        // Returns range, in yards.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return Range, in yards.
+         */
         public double GetRange(double* sln, int yardage){
                 double size = sln[BCompMaxRange * 10 + 1];
                 if (yardage<size){
@@ -38,7 +43,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns projectile path, in inches, relative to the line of sight.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return Projectile path, in inches, relative to the line of sight.
+         */
         public double GetPath(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -47,8 +57,13 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns an estimated elevation correction for achieving a zero at this range.
-        // this is useful for "click charts" and the like.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return An estimated elevation correction for achieving a zero at this range. 
+         *         This is useful for "click charts" and the like.
+         */
         public double GetMOA(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -57,7 +72,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns the projectile's time of flight to this range.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return The projectile's time of flight to this range.
+         */
         public double GetTime(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -66,7 +86,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns the windage correction in inches required to achieve zero at this range.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return The windage correction in inches required to achieve zero at this range.
+         */
         public double GetWindage(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -75,7 +100,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns an approximate windage correction in MOA to achieve a zero at this range.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return An approximate windage correction in MOA to achieve a zero at this range.
+         */
         public double GetWindageMOA(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -84,7 +114,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns the projectile's total velocity (Vector product of Vx and Vy)
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return The projectile's total velocity (Vector product of Vx and Vy)
+         */
         public double GetVelocity(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -93,10 +128,16 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns the velocity of the projectile in the bore direction.
-        // For very steep shooting angles, Vx can actually become what you would think of as Vy relative to the ground, 
-        // because Vx is referencing the bore's axis.  All computations are carried out relative to the bore's axis, and
-        // have very little to do with the ground's orientation.
+        /**
+         * For very steep shooting angles, Vx can actually become what you would think of as Vy relative
+         * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
+         * relative to the bore's axis, and have very little to do with the ground's orientation.
+         *
+         * @param sln
+         * @param yardage
+         *
+         * @return The velocity of the projectile in the bore direction.
+         */        
         public double GetVx(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -105,7 +146,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
-        // Returns the velocity of the projectile perpendicular to the bore direction.
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return The velocity of the projectile perpendicular to the bore direction.
+         */
         public double GetVy(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
@@ -114,6 +160,12 @@ public class Balistica.Retrieve : GLib.Object {
                 else return 0;
         }
 
+        /**
+         * @param sln
+         * @param yardage
+         *
+         * @return
+         */
         public double GetDrop(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
