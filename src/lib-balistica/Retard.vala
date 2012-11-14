@@ -37,7 +37,7 @@ public class Balistica.Retard : GLib.Object {
          *
          * @return The projectile drag retardation velocity, in ft/s per second.
          */
-        public static double Retard(int DragFunction, double DragCoefficient, double Velocity) {
+        public static double CalcRetard(int DragFunction, double DragCoefficient, double Velocity) {
                 double vp = Velocity;
                 double val = -1;
                 double A = -1;
