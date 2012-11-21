@@ -21,6 +21,8 @@ using Balistica;
 
 public class Balistica.CmdHandler : GLib.Object {
         // Global help strings
+        const string short_license = "This is free software under the GPL.\nSee COPYING for more details";
+
         const string usage = "balistica [version] [-g|--green] [-m|--miller]" 
                 + " [help] <command> [<args>]";
 
