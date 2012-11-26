@@ -27,7 +27,7 @@ public class Balistica.LibBalistica : GLib.Object {
         public const double StandardTemp = 59.0;
 
         // FIXME A constant to prevent buffer overflows when this
-        // C program
+        // was a C program
         public const double BCompMaxRange = 50001;
 
         public enum DragFunctions {
