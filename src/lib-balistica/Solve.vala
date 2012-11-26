@@ -25,6 +25,7 @@
 
 using GLib;
 using Balistica;
+using Balistica;
 using Conversion;
 
 public class Balistica.Solve : GLib.Object {
@@ -79,8 +80,9 @@ public class Balistica.Solve : GLib.Object {
                 y = -SightHeight / 12;
 
                 int n = 0;
-                for (t = 0;;t = t + dt){
-                        vx1 = vx, vy1 = vy;	
+                for (t = 0;; t = t + dt) {
+                        vx1 = vx;
+                        vy1 = vy;	
                         v = Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), 0.5);
                         dt = 0.5 / v;
 
