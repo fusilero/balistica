@@ -24,10 +24,9 @@
  */
 
 using GLib;
-using Balistica;
 using Conversion;
 
-public class Balistica.Zero : GLib.Object {
+public class Balistica.LibBalistica.Zero : GLib.Object {
 
         /**
          * ZeroAngle
