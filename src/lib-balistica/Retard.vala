@@ -26,7 +26,7 @@
 using GLib;
 using Balistica;
 
-public class Balistica.Retard : GLib.Object {
+public class Balistica.LibBalistica.Retard : GLib.Object {
 
         /**
          * A function to calculate ballistic retardation values based on standard drag functions.
