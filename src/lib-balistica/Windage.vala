@@ -26,7 +26,7 @@
 using GLib;
 using Conversion;
 
-public class Balistica.Windage : GLib.Object {
+public class Balistica.LibBalistica.Windage : GLib.Object {
 
         /** 
          * A function to compute the windage deflection for a given crosswind speed,
