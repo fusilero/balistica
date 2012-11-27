@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.Miller : GLib.Object {
+public class Balistica.LibBalistica.Miller : GLib.Object {
         public double diameter { get; set; }
         public double length { get; set; }
         public double mass { get; set; }
