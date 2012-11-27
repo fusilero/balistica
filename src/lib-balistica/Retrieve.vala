@@ -27,7 +27,7 @@ using GLib;
 using Balistica;
 
 // Functions for retrieving data from a solution generated with SolveAll()
-public class Balistica.Retrieve : GLib.Object {
+public class Balistica.LibBalistica.Retrieve : GLib.Object {
 
         /**
          * @param sln
