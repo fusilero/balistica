@@ -24,11 +24,9 @@
  */
 
 using GLib;
-using Balistica;
-using Balistica;
 using Conversion;
 
-public class Balistica.Solve : GLib.Object {
+public class Balistica.LibBalistica.Solve : GLib.Object {
 
         /**
          * A function to generate a ballistic solution table in 1 yard increments, up to __BCOMP_MAXRANGE__.
