@@ -24,10 +24,9 @@
  */
 
 using GLib;
-using Balistica;
 using Conversion;
 
-public class Balistica.Atmosphere : GLib.Object {
+public class Balistica.LibBalistica.Atmosphere : GLib.Object {
         
         /**
 	 * Refraction
