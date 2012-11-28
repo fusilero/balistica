@@ -57,7 +57,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
         public int SolveAll(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle, double** Solution) {
                 // FIXME This is very un-vala like
                 double* ptr;
-                ptr = (double*)malloc(10 * BComp_MaxRange * sizeof(double) + 2048);
+                ptr = (double*)malloc(10 * BCompMaxRange * sizeof(double) + 2048);
 
                 double t=0;
                 double dt=0.5 / Vi;
@@ -66,8 +66,8 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                 double dv=0, dvx=0, dvy=0;
                 double x=0, y=0;
 
-                double headwind = HeadWind(WindSpeed, WindAngle);
-                double crosswind = CrossWind(WindSpeed, WindAngle);
+                double headwind = Windage.HeadWind(WindSpeed, WindAngle);
+                double crosswind = Windage.CrossWind(WindSpeed, WindAngle);
 
                 double Gy = Gravity * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
                 double Gx = Gravity * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
@@ -112,10 +112,10 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                         y = y + dt * (vy + vy1) / 2;
 
                         if (fabs(vy) > fabs(3 * vx)) break;
-                        if (n >= BComp_MaxRange + 1) break;
+                        if (n >= BCompMaxRange + 1) break;
                 }
 
-                ptr[10 * BComp_MaxRange + 1] = (double)n;
+                ptr[10 * BCompMaxRange + 1] = (double)n;
 
                 *Solution = ptr;
 
