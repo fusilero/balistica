@@ -85,7 +85,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                         dt = 0.5 / v;
 
                         // Compute acceleration using the drag function retardation	
-                        dv = Retard(DragFunction, DragCoefficient, v + headwind);		
+                        dv = Retard.CalcRetard(DragFunction, DragCoefficient, v + headwind);		
                         dvx = -(vx / v) * dv;
                         dvy = -(vy / v) * dv;
 
@@ -98,7 +98,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                                 ptr[10 * n + 1] = y * 12;				// Path in inches
                                 ptr[10 * n + 2] = -1 * Angle.RadianToMOA(Math.atan(y/x));	// Correction in MOA
                                 ptr[10 * n + 3] = t + dt;				// Time in s
-                                ptr[10 * n + 4] = Windage(crosswind, Vi, x, t + dt); 	// Windage in inches
+                                ptr[10 * n + 4] = Windage.CalcWindage(crosswind, Vi, x, t + dt); 	// Windage in inches
                                 ptr[10 * n + 5] = Angle.RadianToMOA(Math.atan(ptr[10 * n + 4]));        // Windage in MOA
                                 ptr[10 * n + 6] = v;				        // Velocity (combined)
                                 ptr[10 * n + 7] = vx;	        			// Velocity (x)
@@ -111,7 +111,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                         x = x + dt * (vx + vx1) / 2;
                         y = y + dt * (vy + vy1) / 2;
 
-                        if (fabs(vy) > fabs(3 * vx)) break;
+                        if (Math.fabs(vy) > Math.fabs(3 * vx)) break;
                         if (n >= BCompMaxRange + 1) break;
                 }
 

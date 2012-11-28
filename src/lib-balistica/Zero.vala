@@ -87,7 +87,7 @@ public class Balistica.LibBalistica.Zero : GLib.Object {
                                 v = Math.pow((Math.pow(vx,2) + Math.pow(vy,2)), 0.5);
                                 dt = 1 / v;
 
-                                dv = CalcRetard(DragFunction, DragCoefficient, v);
+                                dv = Retard.CalcRetard(DragFunction, DragCoefficient, v);
                                 dvy = -dv * vy / v*dt;
                                 dvx = -dv * vx / v*dt;
 

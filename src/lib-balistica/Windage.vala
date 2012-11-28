@@ -39,7 +39,7 @@ public class Balistica.LibBalistica.Windage : GLib.Object {
          *
          * @return The amount of windage correction, in inches, required to achieve zero on a target at the given range.	
          */
-        public double CalcWindage(double WindSpeed, double Vi, double xx, double t){
+        public static double CalcWindage(double WindSpeed, double Vi, double xx, double t){
                 double Vw = WindSpeed * 17.60; // Convert to inches per second.
 
                 return (Vw * (t - xx / Vi));
@@ -52,7 +52,7 @@ public class Balistica.LibBalistica.Windage : GLib.Object {
          *
          * @return HeadWind
          */
-        public double HeadWind(double WindSpeed, double WindAngle){
+        public static double HeadWind(double WindSpeed, double WindAngle){
                 double Wangle = Angle.DegreeToRadian(WindAngle);
 
                 return (Math.cos(Wangle) * WindSpeed);
@@ -70,7 +70,7 @@ public class Balistica.LibBalistica.Windage : GLib.Object {
          *
          * @return The headwind or crosswind velocity component, in mi/hr.
          */
-        public double CrossWind(double WindSpeed, double WindAngle){
+        public static double CrossWind(double WindSpeed, double WindAngle){
                 double Wangle = Angle.DegreeToRadian(WindAngle);
 
                 return (Math.sin(Wangle) * WindSpeed);
