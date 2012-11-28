@@ -70,3 +70,10 @@ INSERT INTO calibers VALUES (47, 'P', '.41 Rem. Mag.');
 INSERT INTO calibers VALUES (48, 'P', '.44 S&W Special');
 INSERT INTO calibers VALUES (49, 'P', '.44 Rem. Mag.');
 INSERT INTO calibers VALUES (50, 'P', '.45 ACP');
+-- Shotgun
+INSERT INTO calibers VALUES (51, 'S', '.410');
+INSERT INTO calibers VALUES (52, 'S', '10ga');
+INSERT INTO calibers VALUES (53, 'S', '12ga');
+INSERT INTO calibers VALUES (54, 'S', '16ga');
+INSERT INTO calibers VALUES (55, 'S', '20ga');
+INSERT INTO calibers VALUES (56, 'S', '28ga');
