@@ -1,4 +1,4 @@
-/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balistica.
  *
@@ -26,8 +26,8 @@ namespace Balistica.LibBalistica {
         // Standard Tempurature in degrees Fahrenheit
         public const double StandardTemp = 59.0;
 
-        // FIXME A constant to prevent buffer overflows when this
-        // was a C program
+        // Arbitrary constant used to denote the max range
+        // of calculations
         public const int BCompMaxRange = 50001;
 
         public enum DragFunctions {
@@ -39,8 +39,6 @@ namespace Balistica.LibBalistica {
                    G6,
                    G7,
                    G8;
-                /* We comment this out because at this point I'm not using it and
-                   my compilation settings will cry foul if it finds unused functions*/
                 public string to_string() {
                         switch (this) {
                                 case G1: return "G1";

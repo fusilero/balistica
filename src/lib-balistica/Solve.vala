@@ -28,7 +28,7 @@ using Conversion;
 
 public class Balistica.LibBalistica.Solve : GLib.Object {
         /**
-         * A function to generate a ballistic solution table in 1 yard increments, up to __BCOMP_MAXRANGE__.
+         * A function to generate a ballistic solution table in 1 yard increments, up to BCOMP_MAXRANGE.
          *
          * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
 	 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
@@ -45,10 +45,6 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
          *              90 degrees is from right to left
          *              180 degrees is a straight tailwind
          *              -90 or 270 degrees is from left to right.
-         * @param Solution A pointer provided for accessing the solution after it has been generated.
-         *                 Memory for this pointer is allocated in the function, so the user does not need
-         *                 to worry about it.  This solution can be passed to the retrieval functions to get
-         *                 useful data from the solution.
 	 * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
          *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory
          *         segmentation fault.
