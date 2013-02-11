@@ -30,7 +30,6 @@ db = [
 app = bld.program(
         target = 'balistica',
         vapi_dirs = '../vapi',
-        threading = True,
         uselib = 'GLIB',
         packages = 'glib-2.0 config',
         source = src + conversion + lib_balistica
