@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Balistica
+_GenericName=Balistics software
+_X-GNOME-FullName=Balistica
+_Comment=Compute basic balistics functions
+_Keywords=balistics
+Exec=balistica
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Balistics
+StartupNotify=true
