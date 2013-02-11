@@ -26,7 +26,7 @@ SUCH DAMAGES.
 
 ## Minimum Requirements
 * vala 0.18.0
-* waf 1.7.9
+* waf 1.7.9 (provided)
 
 ## Build Instructions
 ```bash
