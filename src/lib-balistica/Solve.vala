@@ -19,7 +19,7 @@
 /* The code in this file was originally part of the GNU Exterior 
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- * 
+ *
  * I obviously converted it from C to Vala.
  */
 
@@ -27,14 +27,13 @@ using GLib;
 using Conversion;
 
 public class Balistica.LibBalistica.Solve : GLib.Object {
-
         /**
          * A function to generate a ballistic solution table in 1 yard increments, up to __BCOMP_MAXRANGE__.
-         * 
+         *
          * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
 	 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
          * @param Vi The projectile initial velocity.
-         * @param SightHeight The height of the sighting system above the bore centerline.  
+         * @param SightHeight The height of the sighting system above the bore centerline.
          *             Most scopes are in the 1.5-2.0 inch range.
          * @param ShootingAngle The uphill or downhill shooting angle, in degrees.  Usually 0, but can be anything from
          *               90 (directly up), to -90 (directly down).
@@ -51,13 +50,11 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
          *                 to worry about it.  This solution can be passed to the retrieval functions to get
          *                 useful data from the solution.
 	 * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
-         *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory 
+         *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory
          *         segmentation fault.
          */
-        public int SolveAll(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle, double** Solution) {
-                // FIXME This is very un-vala like
-                double* ptr;
-                ptr = (double*)malloc(10 * BCompMaxRange * sizeof(double) + 2048);
+        public int SolveAll(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle) {
+                double[] ptr = {};
 
                 double t=0;
                 double dt=0.5 / Vi;
@@ -80,30 +77,30 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                 int n = 0;
                 for (t = 0;; t = t + dt) {
                         vx1 = vx;
-                        vy1 = vy;	
+                        vy1 = vy;
                         v = Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), 0.5);
                         dt = 0.5 / v;
 
-                        // Compute acceleration using the drag function retardation	
-                        dv = Retard.CalcRetard(DragFunction, DragCoefficient, v + headwind);		
+                        // Compute acceleration using the drag function retardation
+                        dv = Retard.CalcRetard(DragFunction, DragCoefficient, v + headwind);
                         dvx = -(vx / v) * dv;
                         dvy = -(vy / v) * dv;
 
-                        // Compute velocity, including the resolved gravity vectors.	
+                        // Compute velocity, including the resolved gravity vectors.
                         vx = vx + dt * dvx + dt * Gx;
                         vy = vy + dt * dvy + dt * Gy;
 
                         if (x / 3 >= n){
-                                ptr[10 * n + 0] = x / 3;				// Range in yds
-                                ptr[10 * n + 1] = y * 12;				// Path in inches
-                                ptr[10 * n + 2] = -1 * Angle.RadianToMOA(Math.atan(y/x));	// Correction in MOA
-                                ptr[10 * n + 3] = t + dt;				// Time in s
-                                ptr[10 * n + 4] = Windage.CalcWindage(crosswind, Vi, x, t + dt); 	// Windage in inches
+                                ptr[10 * n + 0] = x / 3;		// Range in yds
+                                ptr[10 * n + 1] = y * 12;		// Path in inches
+                                ptr[10 * n + 2] = -1 * Angle.RadianToMOA(Math.atan(y/x));	        // Correction in MOA
+                                ptr[10 * n + 3] = t + dt;		// Time in s
+                                ptr[10 * n + 4] = Windage.CalcWindage(crosswind, Vi, x, t + dt);	// Windage in inches
                                 ptr[10 * n + 5] = Angle.RadianToMOA(Math.atan(ptr[10 * n + 4]));        // Windage in MOA
-                                ptr[10 * n + 6] = v;				        // Velocity (combined)
-                                ptr[10 * n + 7] = vx;	        			// Velocity (x)
-                                ptr[10 * n + 8] = vy;		        		// Velocity (y)
-                                ptr[10 * n + 9] = 0;			        	// Reserved
+                                ptr[10 * n + 6] = v;			// Velocity (combined)
+                                ptr[10 * n + 7] = vx;			// Velocity (x)
+                                ptr[10 * n + 8] = vy;			// Velocity (y)
+                                ptr[10 * n + 9] = 0;			// Reserved
                                 n++;
                         }
 
@@ -116,8 +113,6 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
                 }
 
                 ptr[10 * BCompMaxRange + 1] = (double)n;
-
-                *Solution = ptr;
 
                 return n;
         }
