@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -28,7 +28,7 @@ namespace Balistica.LibBalistica {
 
         // FIXME A constant to prevent buffer overflows when this
         // was a C program
-        public const double BCompMaxRange = 50001;
+        public const int BCompMaxRange = 50001;
 
         public enum DragFunctions {
                 G1 = 1,
