@@ -34,7 +34,7 @@ public class Balistica.LibBalistica.Windage : GLib.Object {
          *
          * @param WindSpeed The wind velocity in mi/hr.
          * @param Vi The initial velocity of the projectile (muzzle velocity).
-         * @param x The range at which you wish to determine windage, in feet.
+         * @param xx The range at which you wish to determine windage, in feet.
          * @param t The time it has taken the projectile to traverse the range x, in seconds.
          *
          * @return The amount of windage correction, in inches, required to achieve zero on a target at the given range.	
