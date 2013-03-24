@@ -30,7 +30,9 @@ public class Balistica.LibBalistica.Atmosphere : GLib.Object {
         
         /**
 	 * Refraction
-	 * @param Refraction
+	 * @param Temperature
+	 * @param Pressure
+	 * @param RelativeHumidity
 	 *
 	 * @return Standardized refraction
 	 */
