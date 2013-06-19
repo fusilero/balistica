@@ -15,7 +15,7 @@ VERSION_MAJOR = '.'.join (VERSION.split ('.')[0:1])
 
 def options(opts):
 	opts.load('compiler_c vala glib2')
-        
+
         opts.add_option(
         	'--debug',
         	help='performs a debug build',
@@ -24,7 +24,7 @@ def options(opts):
         	default=False)
 
 def configure(conf):	
-	conf.check_vala((0, 18, 0))
+	conf.check_vala((0, 20, 0))
 	conf.env.DEBUG = conf.options.debug
 
 	conf.check_cfg(
@@ -33,19 +33,19 @@ def configure(conf):
 		atleast_version = '2.30.0',
 		mandatory = True,
 		args = '--cflags --libs')
-	
+
 	conf.define ('NAME', APPNAME)	
 	conf.define ('VERSION', VERSION)
 	conf.define ('GETTEXT_PACKAGE', APPNAME)
 	conf.define ('COPYRIGHT', COPYRIGHT)
 	conf.define ('WEBSITE', WEBSITE)	
 	conf.define ('VAPI_VERSION', VERSION_MAJOR)
-	
+
 	conf.load('compiler_c vala glib2')
 
 def build(bld):
 	bld.add_post_fun(post_build)
-	
+
 	if bld.env.DEBUG:
 		bld.env.append_value('CFLAGS', ['-O0', '-g', '-D_PREFIX="' + bld.env.PREFIX + '"'])
 		bld.env.append_value('LINKFLAGS', ['-O0', '-g', '-lm'])
@@ -54,9 +54,9 @@ def build(bld):
 		bld.env.append_value('CFLAGS', ['-O2', '-g', '-D_PREFIX="' + bld.env.PREFIX + '"'])
 		bld.env.append_value('LINKFLAGS', ['-O2', '-g', '-lm'])
 		bld.env.append_value('VALAFLAGS', ['-g', '--enable-checking', '--fatal-warnings'])
-	
+
 	bld.recurse('src')
-	
+
 	# Remove executables in root folder.
 	if bld.cmd == 'clean':
 		if os.path.isfile('balistica') :
@@ -66,7 +66,7 @@ def build(bld):
 		bld.install_files('${MANDIR}/balistica.1', m, flat=True)
 
 def dist ():	
-	import Scripting	
+	import Scripting
 	Scripting.dist (APPNAME, VERSION)
 
 def post_build(bld):
