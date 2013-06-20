@@ -10,7 +10,7 @@ out = 'build'
 VERSION = '0.0.1'
 APPNAME = 'balistica'
 WEBSITE = 'http://steveno.github.com/balistica/'
-COPYRIGHT = "Copyright \xc2\xa9 2012 Steven N. Oliver"
+COPYRIGHT = "Copyright \xc2\xa9 2013 Steven N. Oliver"
 VERSION_MAJOR = '.'.join (VERSION.split ('.')[0:1])
 
 def options(opts):
