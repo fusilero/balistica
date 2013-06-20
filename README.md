@@ -13,8 +13,8 @@ derived by this program. This is also stated in the GNU GPL,
 but repeated here just to make sure.
 
 ## Minimum Requirements
-* vala 0.18.0
-* waf 1.7.9
+* vala 0.20.0
+* waf 1.7.11
 
 ## Build Instructions
 ```bash
