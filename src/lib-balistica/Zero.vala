@@ -19,25 +19,25 @@
 /* The code in this file was originally part of the GNU Exterior 
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- * 
+ *
  * I obviously converted it from C to Vala.
  */
 
 using GLib;
 using Conversion;
 
-public class Balistica.LibBalistica.Zero : GLib.Object {
+public class LibBalistica.Zero : GLib.Object {
 
         /**
          * ZeroAngle
          *
          * A function to determine the bore angle needed to achieve a target zero at Range yards
-         * (at standard conditions and on level ground.) 
+         * (at standard conditions and on level ground.)
          *
          * @param DragFunction The drag function to use (G1, G2, G3, G5, G6, G7, G8)
          * @param DragCoefficient The coefficient of drag for the projectile, for the supplied drag function.
          * @param Vi The initial velocity of the projectile, in feet/s
-         * @param SightHeight The height of the sighting system above the bore centerline, in inches. 
+         * @param SightHeight The height of the sighting system above the bore centerline, in inches.
          *              Most scopes fall in the 1.6 to 2.0 inch range.
          * @param ZeroRange The range in yards, at which you wish the projectile to intersect yIntercept.
          * @param yIntercept The height, in inches, you wish for the projectile to be when it crosses ZeroRange yards.
@@ -124,7 +124,7 @@ public class Balistica.LibBalistica.Zero : GLib.Object {
 
                         if (angle > Angle.DegreeToRadian(45)) {
                                 // If we exceed the 45 degree launch angle, then the projectile just won't get there, so we stop trying.
-                                quit = 1;                
+                                quit = 1;
                         }
                 }
 

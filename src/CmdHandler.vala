@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -19,165 +19,119 @@
 using GLib;
 using Balistica;
 
-public class Balistica.CmdHandler : GLib.Object {
-        // Global help strings
-        const string short_copyright = "Copyright (C) 2012 Steven Oliver";
+namespace Args {
 
-        const string short_license = "This is free software; see the source for copying conditions. There is NO"
-                + "\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.";
+        private const OptionEntry[] options = {
+                { "miller-twist", 0, OptionArg.NONE, ref miller_twist, N_("Calculate twist using the Miller twist rule.") },
+                { "miller-stability", 0, OptionArg.NONE, ref miller_stability, N_("Calculate stability using the Miller twist rule") },
+                { "green", 0, OptionArg.NONE, ref green, N_("Calculate twist using the Greenhill formula") },
+                { "help", 'h', OptionArg.NONE, ref help, N_("Show this Help message") },
+                { "version", 'v', OptionArg.NONE, ref version, N_("Show Balisitica verion") },
+                { null }
+        };
 
-        const string usage = "balistica [version] [-g|--green] [-m|--miller]" 
-                + " [help] <command> [<args>]";
+        public bool miller_twist = false;
+        public bool miller_stability = false;
+        public bool green = false;
+        public bool help = false;
+        public bool version = false;
 
-        const string common_cmds = "     Commonly used commands:"
-                + "\n     miller-twist\t\tCalculate twist using the Miller twist rule" 
-                + "\n     miller-stability\t\tCalculate stability using the Miller twist rule" 
-                + "\n     green\t\tCalculate twist using the Greenhill formula";
+        public class CmdHandler : GLib.Object {
+                // Global help strings
+                private const string USAGE = "balistica [version] [-g|--green] [-m|--miller]" 
+                        + " [help] <command> [<args>]";
 
-        // Specific help
-        const string specific_cmd = "See balistica help <command> for more information on a specific formula";
+                private const string COMMON_CMDS = "     Commonly used commands:"
+                        + "\n     miller-twist\t\tCalculate twist using the Miller twist rule" 
+                        + "\n     miller-stability\t\tCalculate stability using the Miller twist rule" 
+                        + "\n     green\t\tCalculate twist using the Greenhill formula";
 
-        const string miller_twist_help = "\nThe Miller Twist Rule can be used to calculate the twist rate"
-                + "\nof a specific round."
-                + "\n\n The variables used to calculate twist rate: "
-                + "\n   --diameter   - the diameter of the bullet"
-                + "\n   --length     - the length of the bullet"
-                + "\n   --mass       - the mass of the bullet in grams"
-                + "\n   --safe-value - Miller generally assumes a 'safe value'"
-                + "\n                  of 2. This parameter is optional.";
+                // Specific help
+                private const string SPECIFIC_CMD = "See balistica help <command> for more information on a specific formula";
 
-        const string miller_stability_help = "\nThe Miller Twist Rule can also be used to calculate the"
-                + "\nstability factor of a specific round."
-                + "\n\n The variables used to calculate the stability factor: "
-                + "\n   --diameter - the diameter of the bullet"
-                + "\n   --length   - the length of the bullet"
-                + "\n   --mass     - the mass of the bullet in grams"
-                + "\n   --twist    - the known twist rate\n";
+                private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
+                        + "\nof a specific round."
+                        + "\n\n The variables used to calculate twist rate: "
+                        + "\n   --diameter   - the diameter of the bullet"
+                        + "\n   --length     - the length of the bullet"
+                        + "\n   --mass       - the mass of the bullet in grams"
+                        + "\n   --safe-value - Miller generally assumes a 'safe value'"
+                        + "\n                  of 2. This parameter is optional.";
 
-        const string greenhill_help = "\nThe Greenhill formula can only be used to calculate the twist"
-                + "\nrate of a round."
-                + "\n\n The variables used to calculate the twist rate:"
-                + "\n   --C                - a constant that should be set 150 for slow rounds "
-                + "\n                        or 180 for faster rounds (above 840 m/s)"
-                + "\n   --diameter         - the diameter of the bullet"
-                + "\n   --length           - the length of the bullet"
-                + "\n   --specific-gravity - the specific gravity of the bullet\n";
+                private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
+                        + "\nstability factor of a specific round."
+                        + "\n\n The variables used to calculate the stability factor: "
+                        + "\n   --diameter - the diameter of the bullet"
+                        + "\n   --length   - the length of the bullet"
+                        + "\n   --mass     - the mass of the bullet in grams"
+                        + "\n   --twist    - the known twist rate\n";
 
-        /**
-         * Default constructor
-         */        
-        public static CmdHandler () {
+                private const string GREENHILL_HELP = "\nThe Greenhill formula can only be used to calculate the twist"
+                        + "\nrate of a round."
+                        + "\n\n The variables used to calculate the twist rate:"
+                        + "\n   --C                - a constant that should be set 150 for slow rounds "
+                        + "\n                        or 180 for faster rounds (above 840 m/s)"
+                        + "\n   --diameter         - the diameter of the bullet"
+                        + "\n   --length           - the length of the bullet"
+                        + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
-        }
+                /**
+                 * Default constructor
+                 */
+                public static CmdHandler () {
 
-        /**
-         * Handle arguments
-         */
-        public static int handle_args(string[] args) {
-                if (args.length == 1 || args[1] == "help") {
-                        if (args[2] == "miller-twist") {
-                                stdout.printf("%s\n", miller_twist_help);
-                                return 0;
-                        } else if (args[2] == "miller-stability") {
-                                stdout.printf("%s\n", miller_stability_help);
-                                return 0;
-                        } else if (args[2] == "greenhill") {
-                                stdout.printf("%s\n", greenhill_help);
-                                return 0;
-                        } else {
-                                print_help();
-                                return 0;
+                }
+
+                /**
+                 * Handle arguments
+                 */
+                public static int handle_args(string[] args) {
+                        if (args.length == 1 || args[1] == "help") {
+                                if (args[2] == "miller-twist") {
+                                        stdout.printf("%s\n", miller_twist_help);
+                                        return 0;
+                                } else if (args[2] == "miller-stability") {
+                                        stdout.printf("%s\n", miller_stability_help);
+                                        return 0;
+                                } else if (args[2] == "greenhill") {
+                                        stdout.printf("%s\n", greenhill_help);
+                                        return 0;
+                                } else {
+                                        print_help();
+                                        return 0;
+                                }
                         }
-                }
 
-                for (int i = 1; i < args.length; i++) {
-                        if (args[i] == "miller-twist") {
-                                calculate_miller_twist(args);
-                                break;
-                        } else if (args[i] == "miller-stability") {
-                                calculate_miller_stability(args);
-                                break; 
-                        } else if (args[i] == "greenhill") {
-                                calculate_greenhill(args);
-                                break;
-                        } else {
-                                stdout.printf("%s\n", "You have entered an unknown option!");
-                                break;
+                        for (int i = 1; i < args.length; i++) {
+                                if (args[i] == "miller-twist") {
+                                        calculate_miller_twist(args);
+                                        break;
+                                } else if (args[i] == "miller-stability") {
+                                        calculate_miller_stability(args);
+                                        break; 
+                                } else if (args[i] == "greenhill") {
+                                        calculate_greenhill(args);
+                                        break;
+                                } else {
+                                        stdout.printf("%s\n", "You have entered an unknown option!");
+                                        break;
+                                }
                         }
+
+                        return 0;
                 }
 
-                return 0;
-        }
-
-        /**
-         * Print help message
-         */
-        private static void print_help() {
-                stdout.printf("%s\n\n", usage);
-                stdout.printf("%s\n\n", common_cmds);
-                stdout.printf("%s\n", specific_cmd);
-        }
-
-        /**
-         * Calculate twist using the Miller formula
-         */
-        private static void calculate_miller_twist(string[] args) {
-                LibBalistica.Miller m = new LibBalistica.Miller();
-
-                for (int i = 2; i < args.length; i++) {
-                        if (args[i] == "--diameter") {
-                                m.diameter = double.parse(args[i+1]);
-                        } else if (args[i] == "--length") {
-                                m.length = double.parse(args[i+1]);
-                        } else if (args[i] == "--mass"){
-                                m.mass = double.parse(args[i+1]);
-                        } else if (args[i] == "--safe-value") {
-                                m.safe_value = int.parse(args[i+1]);
-                        }                       
+                /**
+                 * Print help message
+                 */
+                private static void print_help() {
+                        stdout.printf("%s\n\n", usage);
+                        stdout.printf("%s\n\n", common_cmds);
+                        stdout.printf("%s\n", specific_cmd);
                 }
 
-                stdout.printf("%g\n", m.calc_twist());
+
         }
 
-        /**
-         * Calculate stability using the Miller formula
-         */
-        private static void calculate_miller_stability(string[] args) {
-                LibBalistica.Miller m = new LibBalistica.Miller();
+}       // namespace
 
-                for (int i = 2; i < args.length; i++) {
-                        if (args[i] == "--diameter") {
-                                m.diameter = double.parse(args[i+1]);
-                        } else if (args[i] == "--length") {
-                                m.length = double.parse(args[i+1]);
-                        } else if (args[i] == "--mass"){
-                                m.mass = double.parse(args[i+1]);
-                        } else if (args[i] == "--twist") {
-                                m.twist = double.parse(args[i+1]);
-                        }                       
-                }
-
-                stdout.printf("%g\n", m.calc_stability());
-        }
-
-        /**
-         * Calculate twist using the Greenhill formula
-         */
-        private static void calculate_greenhill(string[] args) {
-                LibBalistica.Greenhill g = new LibBalistica.Greenhill();
-
-                for (int i = 2; i < args.length; i++) {
-                        if (args[i] == "--diameter") {
-                                g.diameter = double.parse(args[i+1]);
-                        } else if (args[i] == "--length") {
-                                g.length = double.parse(args[i+1]);
-                        } else if (args[i] == "--specific-gravity"){
-                                g.specific_gravity = double.parse(args[i+1]);
-                        } else if (args[i] == "--C") {
-                                g.C = int.parse(args[i+1]);
-                        }                       
-                }
-
-                stdout.printf("%g\n", g.calc_twist());
-        }
-}

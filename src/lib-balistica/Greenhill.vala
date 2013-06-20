@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.LibBalistica.Greenhill : GLib.Object {
+public class LibBalistica.Greenhill : GLib.Object {
         public int C { get; set; }
         public double diameter { get; set; }
         public double length { get; set; }
@@ -45,7 +45,7 @@ public class Balistica.LibBalistica.Greenhill : GLib.Object {
                 this.length = l;
                 this.specific_gravity = sg;
         }
-        
+
         /**
          * Calculate the twist of the bullet
          */

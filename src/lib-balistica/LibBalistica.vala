@@ -16,7 +16,7 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
         // Gravity in imperial measurements
         public const double Gravity = -32.194;
 

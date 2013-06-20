@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -19,14 +19,13 @@
 /* The code in this file was originally part of the GNU Exterior 
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- * 
+ *
  * I obviously converted it from C to Vala.
  */
 
 using GLib;
-using Balistica;
 
-public class Balistica.LibBalistica.Retard : GLib.Object {
+public class LibBalistica.Retard : GLib.Object {
 
         /**
          * A function to calculate ballistic retardation values based on standard drag functions.
@@ -132,7 +131,7 @@ public class Balistica.LibBalistica.Retard : GLib.Object {
                                 else if (vp> 1088 ) { A = 2.0538037167098e-16 ; M = 5.80410776994789; }
                                 else if (vp>  976 ) { A = 5.92182174254121e-12; M = 4.29275576134191; }
                                 else if (vp>    0 ) { A = 4.3917343795117e-05 ; M = 1.99978116283334; }
-                                break;                                
+                                break;
                         default: break;
                 }
 

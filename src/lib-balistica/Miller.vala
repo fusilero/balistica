@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -18,7 +18,7 @@
 
 using GLib;
 
-public class Balistica.LibBalistica.Miller : GLib.Object {
+public class LibBalistica.Miller : GLib.Object {
         public double diameter { get; set; }
         public double length { get; set; }
         public double mass { get; set; }
@@ -37,7 +37,7 @@ public class Balistica.LibBalistica.Miller : GLib.Object {
 
         /**
          * Full constructor
-         * 
+         *
          * @param d The bullet's diameter as a double
          * @param l The bullet's length as a double
          * @param m The bullet's mass as a double

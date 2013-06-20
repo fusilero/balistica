@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -19,16 +19,16 @@
 /* The code in this file was originally part of the GNU Exterior 
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- * 
+ *
  * I obviously converted it from C to Vala.
  */
 
 using GLib;
 using Conversion;
 
-public class Balistica.LibBalistica.Windage : GLib.Object {
+public class LibBalistica.Windage : GLib.Object {
 
-        /** 
+        /**
          * A function to compute the windage deflection for a given crosswind speed,
          * given flight time in a vacuum, and given flight time in real life.
          *

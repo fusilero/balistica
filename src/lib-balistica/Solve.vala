@@ -31,7 +31,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
          * A function to generate a ballistic solution table in 1 yard increments, up to BCOMP_MAXRANGE.
          *
          * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
-	 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
+         * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
          * @param Vi The projectile initial velocity.
          * @param SightHeight The height of the sighting system above the bore centerline.
          *             Most scopes are in the 1.5-2.0 inch range.
@@ -45,7 +45,7 @@ public class Balistica.LibBalistica.Solve : GLib.Object {
          *              90 degrees is from right to left
          *              180 degrees is a straight tailwind
          *              -90 or 270 degrees is from left to right.
-	 * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
+         * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
          *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory
          *         segmentation fault.
          */

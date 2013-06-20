@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -16,11 +16,9 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class Balistica.Main {
-        public static int main (string[] args) {
-                // Call the command line handler
-                CmdHandler.handle_args(args);
+public static int main (string[] args) {
+        // Call the command line handler
+        CmdHandler.handle_args(args);
 
-                return 0;
-        }
+        return 0;
 }

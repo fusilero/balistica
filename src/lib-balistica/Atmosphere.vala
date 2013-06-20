@@ -1,4 +1,4 @@
-/* Copyright 2012 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
  *
  * This file is part of balistica.
  *
@@ -26,8 +26,8 @@
 using GLib;
 using Conversion;
 
-public class Balistica.LibBalistica.Atmosphere : GLib.Object {
-        
+public class LibBalistica.Atmosphere : GLib.Object {
+
         /**
 	 * Refraction
 	 * @param Temperature

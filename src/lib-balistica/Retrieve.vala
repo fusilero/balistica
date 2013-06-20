@@ -24,10 +24,9 @@
  */
 
 using GLib;
-using Balistica;
 
 // Functions for retrieving data from a solution generated with SolveAll()
-public class Balistica.LibBalistica.Retrieve : GLib.Object {
+public class LibBalistica.Retrieve : GLib.Object {
 
         /**
          * @param sln
@@ -137,7 +136,7 @@ public class Balistica.LibBalistica.Retrieve : GLib.Object {
          * @param yardage
          *
          * @return The velocity of the projectile in the bore direction.
-         */        
+         */
         public double GetVx(double* sln, int yardage){
                 double size=sln[BCompMaxRange*10+1];
                 if (yardage<size){
