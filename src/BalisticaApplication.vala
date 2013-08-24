@@ -17,7 +17,6 @@
  */
 
 using GLib;
-using Balistica;
 
 // Defined by the build script.
 extern const string _VERSION;

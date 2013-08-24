@@ -9,6 +9,3 @@ bin/*
 .*.sw[a-z]
 *.un~
 
-# waf generated files
-.lock-*
-.waf-*

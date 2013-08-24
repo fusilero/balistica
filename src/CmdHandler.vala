@@ -1,4 +1,4 @@
-/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balistica.
  *
@@ -17,7 +17,6 @@
  */
 
 using GLib;
-using Balistica;
 
 namespace Args {
 
@@ -78,7 +77,7 @@ namespace Args {
                 /**
                  * Default constructor
                  */
-                public static CmdHandler () {
+                public static CmdHandler() {
 
                 }
 

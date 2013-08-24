@@ -1,0 +1,12 @@
+set(MAN_DEST )
+set(DESKTOP_DEST )
+
+set(MAN_FILES
+        balistica.1
+)
+
+set(DESKTOP_FILES
+)
+
+install(FILES ${MAN_FILES} DESTINATION ${MAN_DEST})
+install(FILES ${DESKTOP_FILES} DESTINATION ${DESKTOP_DEST})
