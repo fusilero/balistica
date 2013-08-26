@@ -1,4 +1,4 @@
-set(MAN_DEST )
+set(MAN_DEST ${CMAKE_INSTALL_PREFIX}/man)
 set(DESKTOP_DEST ${CMAKE_INSTALL_PREFIX}/share/applications)
 
 set(MAN_FILES
