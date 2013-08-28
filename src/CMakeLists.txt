@@ -49,15 +49,24 @@ set(CFLAGS
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
     -D_GSETTINGS_DIR=\"${CMAKE_BINARY_DIR}/gsettings\"
-    -g
     -lm
 )
 
-if (NOT DEBUG)
+if (DEBUG)
+    set(CFLAGS
+        ${CFLAGS}
+        -g
+    )
+else ()
     set(CFLAGS
         ${CFLAGS}
         -O2
     )
+endif ()
+
+
+if (NOT DEBUG)
+
 endif ()
 
 set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
