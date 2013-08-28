@@ -24,7 +24,6 @@ set(DATABASE
 db/DataBase.vala
 )
 
-
 # Vala
 find_package(Vala REQUIRED)
 include(ValaVersion)
@@ -64,11 +63,6 @@ else ()
     )
 endif ()
 
-
-if (NOT DEBUG)
-
-endif ()
-
 set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
@@ -89,10 +83,8 @@ vala_precompile(BALISTICA_VALA_C balistica
 PACKAGES
      ${LIB_BALISTICA}
      ${DATABASE}
-CUSTOM_VAPIS
 OPTIONS
     ${VALAC_OPTIONS}
-    --vapidir=${CMAKE_BINARY_DIR}/src
 )
 
 add_executable(balistica ${BALISTICA_VALA_C})
@@ -124,7 +116,7 @@ add_custom_target(
     WORKING_DIRECTORY
         ${CMAKE_SOURCE_DIR}/src
     COMMAND
-    ${VALADOC_EXECUTABLE} --force --no-protected -b ${CMAKE_CURRENT_SOURCE_DIR} -o ${CMAKE_SOURCE_DIR}/valadoc --package-name=balistica --package-version=${VERSION} ${LIB_BALISTICA} ${valadoc_pkg_opts} --vapidir=${CMAKE_SOURCE_DIR}/bindings/vapi
+    ${VALADOC_EXECUTABLE} --force --no-protected -b ${CMAKE_CURRENT_SOURCE_DIR} -o ${CMAKE_SOURCE_DIR}/valadoc --package-name=balistica --package-version=${VERSION} ${LIB_BALISTICA} ${valadoc_pkg_opts}
 )
 
 ## Make clean: remove copied files
@@ -135,4 +127,3 @@ set_property(
     PROPERTY ADDITIONAL_MAKE_CLEAN_FILES
         balistica
 )
-
