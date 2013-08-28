@@ -7,16 +7,16 @@ Main.vala
 
 set(LIB_BALISTICA
 lib_balistica/Atomsphere.vala
-Greenhill.vala
-LibBalistica.vala
-Miller.vala
-Retard.vala
-Retrieve.vala
-Solve.vala
-Windage.vala
-Zero.vala
-conversion/Angle.vala
-conversion/Temperature.vala
+lib_balistica/Greenhill.vala
+lib_balistica/LibBalistica.vala
+lib_balistica/Miller.vala
+lib_balistica/Retard.vala
+lib_balistica/Retrieve.vala
+lib_balistica/Solve.vala
+lib_balistica/Windage.vala
+lib_balistica/Zero.vala
+lib_balistica/conversion/Angle.vala
+lib_balistica/conversion/Temperature.vala
 )
 
 set(DATABASE
