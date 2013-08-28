@@ -13,15 +13,15 @@ derived by this program. This is also stated in the GNU GPL,
 but repeated here just to make sure.
 
 ## Minimum Requirements
-* vala 0.20.0
-* waf 1.7.11
+* vala 0.20.1
+* cmake
 
 ## Build Instructions
 ```bash
 cd balistica
-waf configure
-waf build
-waf install
+cmake .
+make
+make install
 ```
 ## Contributing
 Please see CONTRIBUTING.md
