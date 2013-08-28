@@ -15,6 +15,7 @@ lib_balistica/Retrieve.vala
 lib_balistica/Solve.vala
 lib_balistica/Windage.vala
 lib_balistica/Zero.vala
+
 lib_balistica/conversion/Angle.vala
 lib_balistica/conversion/Temperature.vala
 )
