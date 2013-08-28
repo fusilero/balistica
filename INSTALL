@@ -1,0 +1,11 @@
+Balistica Installation
+------------------
+
+To build and install Balistica, type the following commands:
+
+$ cmake .
+$ make
+$ make install
+
+* You may need to execute "make install" as root (i.e. sudo make install)
+  if installing to system directories.
