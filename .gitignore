@@ -1,14 +1,6 @@
-# Build directories
-build/*
-bin/*
-
 # OS X
 .DS_Store
 
 # Vim
 .*.sw[a-z]
 *.un~
-
-# waf generated files
-.lock-*
-.waf-*
