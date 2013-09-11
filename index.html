@@ -54,6 +54,9 @@
 <h3>Seperate actual ballistics software into library</h3>
 <p>I'd like to have a <strong>libbalistica</strong> so that people could theoretically use the same math in other programs. Or at the very least expand upon this one with little trouble.</p>
 
+<h3>Expansive Help Pages</h3>
+<p>I don't want to rewrite Wikipedia, but I'd really like to have a nice in depth look at whats going on in the software and how to properly use and understand the software in the help pages.</p>
+
 <h2>Helping out</h2>
 <h3>Check out the code</h3>
 <pre><code><span style="color: #C30000;">$</span> git clone git://github.com/steveno/balistica.git
@@ -61,7 +64,8 @@
 
 <h3>Building</h3>
 <pre><code><span style="color: #C30000;">$</span> cd balistica
-<span style="color: #C30000;">$</span> cmake .
+<span style="color: #C30000;">$</span> mkdir build &amp;&amp; cd build
+<span style="color: #C30000;">$</span> cmake ..
 <span style="color: #C30000;">$</span> make
 <span style="color: #C30000;">$</span> make install
 </code></pre>
