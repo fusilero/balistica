@@ -14,6 +14,12 @@
 --
 -- You should have received a copy of the GNU General Public License
 -- along with balistica. If not, see <http://www.gnu.org/licenses/>.
+-----------------------------------------------------------------------
+
+--!!
+--!!  This file is meant to populate a starter set upon creation of a
+--!!  new database. It's not meant to hold every possible entry.
+--!!
 
 --
 --  CALIBERS
