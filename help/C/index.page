@@ -1,5 +1,19 @@
 <page xmlns="http://projectmallard.org/1.0/"
       type="guide"
       id="index">
+      
 <title>balística Help</title>
+
+    <section id="introduction" style="2column">
+        <title>Introduction</title>
+    </section>
+
+    <section id="overview" style="2column">
+        <title>Using balística</title>
+    </section>
+
+    <section id="reference" style="2column">
+        <title>References</title>
+    </section>
+
 </page>
