@@ -19,7 +19,8 @@ but repeated here just to make sure.
 ## Build Instructions
 ```bash
 cd balistica
-cmake .
+mkdir build && cd build
+cmake ..
 make
 make install
 ```
