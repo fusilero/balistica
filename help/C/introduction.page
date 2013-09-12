@@ -1,0 +1,11 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="introduction">
+
+    <info>
+        <link type="guide" xref="index#introduction"/>
+    </info>
+	<title>Overview</title>
+	<p>balística is an open source balistics software package.</p>
+
+</page>
