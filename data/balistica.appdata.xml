@@ -1,3 +1,7 @@
+<!-- 
+Spec Homepage: http://www.w3schools.com/xml/xml_syntax.asp
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
  <id type="desktop">balistica.desktop</id>
