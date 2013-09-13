@@ -6,7 +6,7 @@ Main.vala
 )
 
 set(LIB_BALISTICA
-lib_balistica/Atomsphere.vala
+lib_balistica/Atmosphere.vala
 lib_balistica/Greenhill.vala
 lib_balistica/LibBalistica.vala
 lib_balistica/Miller.vala
@@ -68,7 +68,6 @@ link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
 
 set(VALAC_OPTIONS
-    --vapidir=${CMAKE_SOURCE_DIR}/bindings/vapi
     --target-glib=${TARGET_GLIB}
     --thread
     --enable-checking
@@ -80,9 +79,8 @@ set(VALAC_OPTIONS
 #################################################
 vala_precompile(BALISTICA_VALA_C balistica
     ${MAIN}
-PACKAGES
-     ${LIB_BALISTICA}
-     ${DATABASE}
+    ${LIB_BALISTICA}
+    ${DATABASE}
 OPTIONS
     ${VALAC_OPTIONS}
 )
@@ -103,21 +101,6 @@ add_custom_command(
 # directory
 include(GSettings)
 add_schemas(balistica ${GSETTINGS_DIR} ${CMAKE_INSTALL_PREFIX})
-
-# Valadoc
-#################################################
-foreach(pkg ${LIB_BALISTICA})
-    list(APPEND valadoc_pkg_opts "--pkg=${pkg}")
-endforeach(pkg ${LIB_BALISTICA})
-
-include(FindValadoc)
-add_custom_target(
-    valadoc
-    WORKING_DIRECTORY
-        ${CMAKE_SOURCE_DIR}/src
-    COMMAND
-    ${VALADOC_EXECUTABLE} --force --no-protected -b ${CMAKE_CURRENT_SOURCE_DIR} -o ${CMAKE_SOURCE_DIR}/valadoc --package-name=balistica --package-version=${VERSION} ${LIB_BALISTICA} ${valadoc_pkg_opts}
-)
 
 ## Make clean: remove copied files
 ##################################################
