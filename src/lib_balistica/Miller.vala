@@ -1,4 +1,4 @@
-/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com> 
+/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balistica.
  *
@@ -18,53 +18,57 @@
 
 using GLib;
 
-public class LibBalistica.Miller : GLib.Object {
-        public double diameter { get; set; }
-        public double length { get; set; }
-        public double mass { get; set; }
-        public int safe_value { get; set; }
-        public double twist { get; set; }
+namespace Balistica.LibBalistica {
 
-        /**
-         * Default constructor
-         */
-        public static Miller() {
-                this.diameter = 0.0;
-                this.length = 0.0;
-                this.mass = 0.0;
-                this.safe_value = 2;
+        public class Miller : GLib.Object {
+                public double diameter { get; set; }
+                public double length { get; set; }
+                public double mass { get; set; }
+                public int safe_value { get; set; }
+                public double twist { get; set; }
+
+                /**
+                 * Default constructor
+                 */
+                public static Miller() {
+                        this.diameter = 0.0;
+                        this.length = 0.0;
+                        this.mass = 0.0;
+                        this.safe_value = 2;
+                }
+
+                /**
+                 * Full constructor
+                 *
+                 * @param d The bullet's diameter as a double
+                 * @param l The bullet's length as a double
+                 * @param m The bullet's mass as a double
+                 * @param sv The "safe value". Generally 2.
+                 */
+                public static Miller.full(double d, double l, double m, int sv) {
+                        this.diameter = d;
+                        this.length = l;
+                        this.mass = m;
+                        this.safe_value = sv;
+                }
+
+                /**
+                 * Calculate bullet twist rate
+                 */
+                public double calc_twist() {
+                        double temp1 = Math.sqrt(30.0 * this.mass);
+                        double temp2 = this.safe_value * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
+                        return temp1 / temp2;
+                }
+
+                /**
+                 * Calculate bullet stability
+                 */
+                public double calc_stability() {
+                        double temp1 = 30.0 * this.mass;
+                        double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
+                        return temp1 / temp2;
+                }
         }
 
-        /**
-         * Full constructor
-         *
-         * @param d The bullet's diameter as a double
-         * @param l The bullet's length as a double
-         * @param m The bullet's mass as a double
-         * @param sv The "safe value". Generally 2.
-         */
-        public static Miller.full(double d, double l, double m, int sv) {
-                this.diameter = d;
-                this.length = l;
-                this.mass = m;
-                this.safe_value = sv;
-        }
-
-        /**
-         * Calculate bullet twist rate
-         */
-        public double calc_twist() {
-                double temp1 = Math.sqrt(30.0 * this.mass);
-                double temp2 = this.safe_value * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
-                return temp1 / temp2;
-        }
-
-        /**
-         * Calculate bullet stability
-         */
-        public double calc_stability() {
-                double temp1 = 30.0 * this.mass;
-                double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
-                return temp1 / temp2;
-        }
 }

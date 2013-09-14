@@ -16,160 +16,163 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* The code in this file was originally part of the GNU Exterior 
+/* The code in this file was originally part of the GNU Exterior
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
  *
- * I obviously converted it from C to Vala.
+ * I converted it from C to Vala.
  */
 
 using GLib;
 
-// Functions for retrieving data from a solution generated with SolveAll()
-public class LibBalistica.Retrieve : GLib.Object {
+namespace Balistica.LibBalistica {
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return Range, in yards.
-         */
-        public double GetRange(double* sln, int yardage){
-                double size = sln[BCompMaxRange * 10 + 1];
-                if (yardage<size){
-                        return sln[10*yardage];
-                }
-                else return 0;
-        }
+        // Functions for retrieving data from a solution generated with SolveAll()
+        public class Retrieve : GLib.Object {
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return Projectile path, in inches, relative to the line of sight.
-         */
-        public double GetPath(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+1];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return Range, in yards.
+                 */
+                public double GetRange(double* sln, int yardage){
+                        double size = sln[BCOMP_MAX_RANGE * 10 + 1];
+                        if (yardage<size){
+                                return sln[10*yardage];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return An estimated elevation correction for achieving a zero at this range. 
-         *         This is useful for "click charts" and the like.
-         */
-        public double GetMOA(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+2];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return Projectile path, in inches, relative to the line of sight.
+                 */
+                public double GetPath(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+1];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return The projectile's time of flight to this range.
-         */
-        public double GetTime(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+3];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return An estimated elevation correction for achieving a zero at this range. 
+                 *         This is useful for "click charts" and the like.
+                 */
+                public double GetMOA(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+2];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return The windage correction in inches required to achieve zero at this range.
-         */
-        public double GetWindage(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+4];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return The projectile's time of flight to this range.
+                 */
+                public double GetTime(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+3];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return An approximate windage correction in MOA to achieve a zero at this range.
-         */
-        public double GetWindageMOA(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+5];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return The windage correction in inches required to achieve zero at this range.
+                 */
+                public double GetWindage(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+4];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return The projectile's total velocity (Vector product of Vx and Vy)
-         */
-        public double GetVelocity(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+6];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return An approximate windage correction in MOA to achieve a zero at this range.
+                 */
+                public double GetWindageMOA(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+5];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * For very steep shooting angles, Vx can actually become what you would think of as Vy relative
-         * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
-         * relative to the bore's axis, and have very little to do with the ground's orientation.
-         *
-         * @param sln
-         * @param yardage
-         *
-         * @return The velocity of the projectile in the bore direction.
-         */
-        public double GetVx(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+7];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return The projectile's total velocity (Vector product of Vx and Vy)
+                 */
+                public double GetVelocity(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+6];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return The velocity of the projectile perpendicular to the bore direction.
-         */
-        public double GetVy(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+8];
+                /**
+                 * For very steep shooting angles, Vx can actually become what you would think of as Vy relative
+                 * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
+                 * relative to the bore's axis, and have very little to do with the ground's orientation.
+                 *
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return The velocity of the projectile in the bore direction.
+                 */
+                public double GetVx(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+7];
+                        }
+                        else return 0;
                 }
-                else return 0;
-        }
 
-        /**
-         * @param sln
-         * @param yardage
-         *
-         * @return
-         */
-        public double GetDrop(double* sln, int yardage){
-                double size=sln[BCompMaxRange*10+1];
-                if (yardage<size){
-                        return sln[10*yardage+9];
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return The velocity of the projectile perpendicular to the bore direction.
+                 */
+                public double GetVy(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+8];
+                        }
+                        else return 0;
                 }
-                else return 0;
+
+                /**
+                 * @param sln
+                 * @param yardage
+                 *
+                 * @return
+                 */
+                public double GetDrop(double* sln, int yardage){
+                        double size=sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage<size){
+                                return sln[10*yardage+9];
+                        }
+                        else return 0;
+                }
         }
-}
+} //namespace

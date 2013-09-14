@@ -18,7 +18,7 @@
 
 using GLib;
 
-namespace Args {
+namespace Balistica {
 
         private const OptionEntry[] options = {
                 { "miller-twist", 0, OptionArg.NONE, ref miller_twist, N_("Calculate twist using the Miller twist rule.") },
@@ -37,12 +37,12 @@ namespace Args {
 
         public class CmdHandler : GLib.Object {
                 // Global help strings
-                private const string USAGE = "balistica [version] [-g|--green] [-m|--miller]" 
+                private const string USAGE = "balistica [version] [-g|--green] [-m|--miller]"
                         + " [help] <command> [<args>]";
 
                 private const string COMMON_CMDS = "     Commonly used commands:"
-                        + "\n     miller-twist\t\tCalculate twist using the Miller twist rule" 
-                        + "\n     miller-stability\t\tCalculate stability using the Miller twist rule" 
+                        + "\n     miller-twist\t\tCalculate twist using the Miller twist rule"
+                        + "\n     miller-stability\t\tCalculate stability using the Miller twist rule"
                         + "\n     green\t\tCalculate twist using the Greenhill formula";
 
                 // Specific help
@@ -75,25 +75,18 @@ namespace Args {
                         + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
                 /**
-                 * Default constructor
-                 */
-                public static CmdHandler() {
-
-                }
-
-                /**
                  * Handle arguments
                  */
                 public static int handle_args(string[] args) {
                         if (args.length == 1 || args[1] == "help") {
                                 if (args[2] == "miller-twist") {
-                                        stdout.printf("%s\n", miller_twist_help);
+                                        stdout.printf("%s\n", MILLER_TWIST_HELP);
                                         return 0;
                                 } else if (args[2] == "miller-stability") {
-                                        stdout.printf("%s\n", miller_stability_help);
+                                        stdout.printf("%s\n", MILLER_STABILITY_HELP);
                                         return 0;
                                 } else if (args[2] == "greenhill") {
-                                        stdout.printf("%s\n", greenhill_help);
+                                        stdout.printf("%s\n", GREENHILL_HELP);
                                         return 0;
                                 } else {
                                         print_help();
@@ -103,13 +96,13 @@ namespace Args {
 
                         for (int i = 1; i < args.length; i++) {
                                 if (args[i] == "miller-twist") {
-                                        calculate_miller_twist(args);
+                                        Calculate.calculate_miller_twist(args);
                                         break;
                                 } else if (args[i] == "miller-stability") {
-                                        calculate_miller_stability(args);
-                                        break; 
+                                        Calculate.calculate_miller_stability(args);
+                                        break;
                                 } else if (args[i] == "greenhill") {
-                                        calculate_greenhill(args);
+                                        Calculate.calculate_greenhill(args);
                                         break;
                                 } else {
                                         stdout.printf("%s\n", "You have entered an unknown option!");
@@ -124,13 +117,10 @@ namespace Args {
                  * Print help message
                  */
                 private static void print_help() {
-                        stdout.printf("%s\n\n", usage);
-                        stdout.printf("%s\n\n", common_cmds);
-                        stdout.printf("%s\n", specific_cmd);
+                        stdout.printf("%s\n\n", USAGE);
+                        stdout.printf("%s\n\n", COMMON_CMDS);
+                        stdout.printf("%s\n", SPECIFIC_CMD);
                 }
-
-
         }
-
 }       // namespace
 

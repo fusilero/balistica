@@ -16,29 +16,30 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace LibBalistica {
+namespace Balistica.LibBalistica {
         // Gravity in imperial measurements
-        public const double Gravity = -32.194;
+        public const double GRAVITY = -32.194;
 
         // Standard Atmospheric Pressure in inches mercury
-        public const double StandardPressure = 29.5333727;
+        public const double STANDARD_PRESSURE = 29.5333727;
 
         // Standard Tempurature in degrees Fahrenheit
-        public const double StandardTemp = 59.0;
+        public const double STANDARD_TEMP = 59.0;
 
         // Arbitrary constant used to denote the max range
         // of calculations
-        public const int BCompMaxRange = 50001;
+        public const int BCOMP_MAX_RANGE = 50001;
 
-        public enum DragFunctions {
+        public enum DragFunction {
                 G1 = 1,
-                   G2,
-                   G3,
-                   G4,
-                   G5,
-                   G6,
-                   G7,
-                   G8;
+                G2,
+                G3,
+                G4,
+                G5,
+                G6,
+                G7,
+                G8;
+
                 public string to_string() {
                         switch (this) {
                                 case G1: return "G1";
@@ -54,4 +55,4 @@ namespace LibBalistica {
                 }
 
         }
-}
+} //namespace
