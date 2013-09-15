@@ -87,7 +87,7 @@ OPTIONS
 )
 
 add_executable(balistica ${BALISTICA_VALA_C})
-target_link_libraries(balistica ${DEPS_LIBRARIES} gthread-2.0 balistica-static)
+target_link_libraries(balistica ${DEPS_LIBRARIES} gthread-2.0)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 add_custom_command(
     TARGET

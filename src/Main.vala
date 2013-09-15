@@ -18,7 +18,7 @@
 
 public static int main (string[] args) {
         // Call the command line handler
-        Balistica.CmdHandler.handle_args(args);
+        Balistica.CmdHandler.parse_args(args);
 
         return 0;
 }

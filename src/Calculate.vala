@@ -22,7 +22,7 @@ public class Balistica.Calculate {
         /**
          * Calculate twist using the Miller formula
          */
-        public static void calculate_miller_twist(string[] args) {
+        public static void miller_twist(string[] args) {
                 LibBalistica.Miller m = new LibBalistica.Miller();
 
                 for (int i = 2; i < args.length; i++) {
@@ -43,7 +43,7 @@ public class Balistica.Calculate {
         /**
          * Calculate stability using the Miller formula
          */
-        public static void calculate_miller_stability(string[] args) {
+        public static void miller_stability(string[] args) {
                 LibBalistica.Miller m = new LibBalistica.Miller();
 
                 for (int i = 2; i < args.length; i++) {
@@ -64,7 +64,7 @@ public class Balistica.Calculate {
         /**
          * Calculate twist using the Greenhill formula
          */
-        public static void calculate_greenhill(string[] args) {
+        public static void greenhill(string[] args) {
                 LibBalistica.Greenhill g = new LibBalistica.Greenhill();
 
                 for (int i = 2; i < args.length; i++) {

@@ -21,29 +21,29 @@ using GLib;
 namespace Balistica {
 
         private const OptionEntry[] options = {
-                { "miller-twist", 0, OptionArg.NONE, ref miller_twist, N_("Calculate twist using the Miller twist rule.") },
-                { "miller-stability", 0, OptionArg.NONE, ref miller_stability, N_("Calculate stability using the Miller twist rule") },
-                { "green", 0, OptionArg.NONE, ref green, N_("Calculate twist using the Greenhill formula") },
-                { "help", 'h', OptionArg.NONE, ref help, N_("Show this Help message") },
-                { "version", 'v', OptionArg.NONE, ref version, N_("Show Balisitica verion") },
+                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, N_("Calculate twist using the Miller twist rule.") },
+                { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, N_("Calculate stability using the Miller twist rule") },
+                { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, N_("Calculate twist using the Greenhill formula") },
+                { "help", 'h', 0, OptionArg.NONE, ref help, N_("Show this Help message") },
+                { "version", 'v', 0, OptionArg.NONE, ref version, N_("Show Balisitica verion") },
                 { null }
         };
 
         public bool miller_twist = false;
         public bool miller_stability = false;
-        public bool green = false;
+        public bool greenhill = false;
         public bool help = false;
         public bool version = false;
 
         public class CmdHandler : GLib.Object {
                 // Global help strings
-                private const string USAGE = "balistica [version] [-g|--green] [-m|--miller]"
+                private const string USAGE = "balistica [version] [-g|--greenhill] [-m|--miller]"
                         + " [help] <command> [<args>]";
 
                 private const string COMMON_CMDS = "     Commonly used commands:"
                         + "\n     miller-twist\t\tCalculate twist using the Miller twist rule"
                         + "\n     miller-stability\t\tCalculate stability using the Miller twist rule"
-                        + "\n     green\t\tCalculate twist using the Greenhill formula";
+                        + "\n     greenhill\t\tCalculate twist using the Greenhill formula";
 
                 // Specific help
                 private const string SPECIFIC_CMD = "See balistica help <command> for more information on a specific formula";
@@ -75,52 +75,61 @@ namespace Balistica {
                         + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
                 /**
-                 * Handle arguments
+                 * Parse arguments
                  */
-                public static int handle_args(string[] args) {
-                        if (args.length == 1 || args[1] == "help") {
-                                if (args[2] == "miller-twist") {
-                                        stdout.printf("%s\n", MILLER_TWIST_HELP);
-                                        return 0;
-                                } else if (args[2] == "miller-stability") {
-                                        stdout.printf("%s\n", MILLER_STABILITY_HELP);
-                                        return 0;
-                                } else if (args[2] == "greenhill") {
-                                        stdout.printf("%s\n", GREENHILL_HELP);
-                                        return 0;
-                                } else {
-                                        print_help();
-                                        return 0;
-                                }
+                public static int parse_args(string[] args) {
+                        var context = new OptionContext("");
+                        context.set_help_enabled(true);
+                        context.add_main_entries(options, null);
+
+                        try {
+                                context.parse(ref args);
+                        } catch (OptionError error) {
+                                stdout.printf(_("Failed to parse command line options \"%s\"\n"), error.message);
+                                return 1;
                         }
 
-                        for (int i = 1; i < args.length; i++) {
-                                if (args[i] == "miller-twist") {
-                                        Calculate.calculate_miller_twist(args);
-                                        break;
-                                } else if (args[i] == "miller-stability") {
-                                        Calculate.calculate_miller_stability(args);
-                                        break;
-                                } else if (args[i] == "greenhill") {
-                                        Calculate.calculate_greenhill(args);
-                                        break;
-                                } else {
-                                        stdout.printf("%s\n", "You have entered an unknown option!");
-                                        break;
+                        if (version) {
+                                stdout.printf("%s %s\n", "Balistica", "0.0.1");
+                                return 1;
+                        }
+
+                        if (help) {
+                                if (args.length == 1 || args[1] == "help") {
+                                        if (args[2] == "miller-twist") {
+                                                stdout.printf("%s\n", MILLER_TWIST_HELP);
+                                                return 0;
+                                        } else if (args[2] == "miller-stability") {
+                                                stdout.printf("%s\n", MILLER_STABILITY_HELP);
+                                                return 0;
+                                        } else if (args[2] == "greenhill") {
+                                                stdout.printf("%s\n", GREENHILL_HELP);
+                                                return 0;
+                                        } else {
+                                                stdout.printf("%s\n\n", USAGE);
+                                                stdout.printf("%s\n\n", COMMON_CMDS);
+                                                stdout.printf("%s\n", SPECIFIC_CMD);
+                                                return 0;
+                                        }
                                 }
+
+                        }
+
+                        if (miller_twist) {
+                                Calculate.miller_twist(args);
+                        }
+
+                        if (miller_stability) {
+                                Calculate.miller_stability(args);
+                        }
+
+                        if (greenhill) {
+                                Calculate.greenhill(args);
                         }
 
                         return 0;
                 }
 
-                /**
-                 * Print help message
-                 */
-                private static void print_help() {
-                        stdout.printf("%s\n\n", USAGE);
-                        stdout.printf("%s\n\n", COMMON_CMDS);
-                        stdout.printf("%s\n", SPECIFIC_CMD);
-                }
         }
-}       // namespace
+} // namespace
 
