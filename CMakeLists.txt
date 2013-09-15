@@ -13,7 +13,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 set(VERSION "0.0.1+trunk")
 set(VERSION_INFO "Release")
 
-# Packaging filenamesnames.
+# Packaging filenamesnames
 set(ARCHIVE_BASE_NAME ${CMAKE_PROJECT_NAME}-${VERSION})
 set(ARCHIVE_FULL_NAME ${ARCHIVE_BASE_NAME}.tar.xz)
 set(ARCHIVE_DEBUILD_FULL_NAME ${CMAKE_PROJECT_NAME}_${VERSION}.orig.tar.xz)

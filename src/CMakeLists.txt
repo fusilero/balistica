@@ -39,6 +39,10 @@ pkg_check_modules(DEPS REQUIRED
     sqlite3>=3.7.4
 )
 
+set(LIB_BALISTICA_PACKAGES
+    glib-2.0 sqlite3
+)
+
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/desktop)
 
 set(CFLAGS 
@@ -49,15 +53,10 @@ set(CFLAGS
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
     -D_GSETTINGS_DIR=\"${CMAKE_BINARY_DIR}/gsettings\"
     -DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"
-    -lm
+    -g
 )
 
-if (DEBUG)
-    set(CFLAGS
-        ${CFLAGS}
-        -g
-    )
-else ()
+if (NOT DEBUG)
     set(CFLAGS
         ${CFLAGS}
         -O2
@@ -73,7 +72,6 @@ set(VALAC_OPTIONS
     --thread
     --enable-checking
     --fatal-warnings
-    ${EXTRA_VALA_OPTIONS}
 )
 
 # Balistica
@@ -82,12 +80,14 @@ vala_precompile(BALISTICA_VALA_C balistica
     ${MAIN}
     ${LIB_BALISTICA}
     ${DATABASE}
+PACKAGES
+    ${LIB_BALISTICA_PACKAGES}
 OPTIONS
     ${VALAC_OPTIONS}
 )
 
 add_executable(balistica ${BALISTICA_VALA_C})
-target_link_libraries(balistica ${DEPS_LIBRARIES} gthread-2.0)
+target_link_libraries(balistica ${DEPS_LIBRARIES} gthread-2.0 m)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 add_custom_command(
     TARGET
@@ -98,7 +98,7 @@ add_custom_command(
 )
 
 # GSettings
-# This needs to be here and not in desktop/CMakeLists.txt in order for Geary to run in the build
+# This needs to be here and not in desktop/CMakeLists.txt in order to run in the build
 # directory
 include(GSettings)
 add_schemas(balistica ${GSETTINGS_DIR} ${CMAKE_INSTALL_PREFIX})
