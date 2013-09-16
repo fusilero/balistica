@@ -1,0 +1,14 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="bugs">
+
+    <info>
+        <link type="guide" xref="index#bugs"/>
+    </info>
+    
+    <title>Bugs</title>
+    <p>If you think you've found a bug please report it to the projects page on Github.</p>
+  
+    <a href="https://github.com/steveno/balistica/issues">balística Issue Tracker</a>
+  
+</page>
