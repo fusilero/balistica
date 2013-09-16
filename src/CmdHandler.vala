@@ -25,7 +25,7 @@ namespace Balistica {
                 { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, N_("Calculate stability using the Miller twist rule") },
                 { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, N_("Calculate twist using the Greenhill formula") },
                 { "help", 'h', 0, OptionArg.NONE, ref help, N_("Show this Help message") },
-                { "version", 'v', 0, OptionArg.NONE, ref version, N_("Show Balisitica verion") },
+                { "version", 'v', 0, OptionArg.NONE, ref version, N_("Show Balística verion") },
                 { null }
         };
 
@@ -37,16 +37,16 @@ namespace Balistica {
 
         public class CmdHandler : GLib.Object {
                 // Global help strings
-                private const string USAGE = "balistica [version] [-g|--greenhill] [-m|--miller]"
+                private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
                         + " [help] <command> [<args>]";
 
-                private const string COMMON_CMDS = "     Commonly used commands:"
-                        + "\n     miller-twist\t\tCalculate twist using the Miller twist rule"
-                        + "\n     miller-stability\t\tCalculate stability using the Miller twist rule"
-                        + "\n     greenhill\t\tCalculate twist using the Greenhill formula";
+                private const string APPLICATION_OPTIONS = "Application Options:"
+                        + "\n  miller-twist\t\tCalculate twist using the Miller twist rule"
+                        + "\n  miller-stability\tCalculate stability using the Miller twist rule"
+                        + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
 
                 // Specific help
-                private const string SPECIFIC_CMD = "See balistica help <command> for more information on a specific formula";
+                private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
 
                 private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
                         + "\nof a specific round."
@@ -79,7 +79,7 @@ namespace Balistica {
                  */
                 public static int parse_args(string[] args) {
                         var context = new OptionContext("");
-                        context.set_help_enabled(true);
+                        context.set_help_enabled(false);
                         context.add_main_entries(options, null);
 
                         try {
@@ -90,29 +90,26 @@ namespace Balistica {
                         }
 
                         if (version) {
-                                stdout.printf("%s %s\n", "Balistica", "0.0.1");
+                                stdout.printf("%s %s\n", "Balística", BalisticaApplication.VERSION);
                                 return 1;
                         }
 
                         if (help) {
-                                if (args.length == 1 || args[1] == "help") {
-                                        if (args[2] == "miller-twist") {
-                                                stdout.printf("%s\n", MILLER_TWIST_HELP);
-                                                return 0;
-                                        } else if (args[2] == "miller-stability") {
-                                                stdout.printf("%s\n", MILLER_STABILITY_HELP);
-                                                return 0;
-                                        } else if (args[2] == "greenhill") {
-                                                stdout.printf("%s\n", GREENHILL_HELP);
-                                                return 0;
-                                        } else {
-                                                stdout.printf("%s\n\n", USAGE);
-                                                stdout.printf("%s\n\n", COMMON_CMDS);
-                                                stdout.printf("%s\n", SPECIFIC_CMD);
-                                                return 0;
-                                        }
+                                if (args[1] == "miller-twist") {
+                                        stdout.printf("%s\n", MILLER_TWIST_HELP);
+                                        return 0;
+                                } else if (args[2] == "miller-stability") {
+                                        stdout.printf("%s\n", MILLER_STABILITY_HELP);
+                                        return 0;
+                                } else if (args[2] == "greenhill") {
+                                        stdout.printf("%s\n", GREENHILL_HELP);
+                                        return 0;
+                                } else {
+                                        stdout.printf("%s\n\n", USAGE);
+                                        stdout.printf("%s\n\n", APPLICATION_OPTIONS);
+                                        stdout.printf("%s\n", SPECIFIC_CMD);
+                                        return 0;
                                 }
-
                         }
 
                         if (miller_twist) {

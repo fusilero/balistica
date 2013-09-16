@@ -18,18 +18,19 @@
 
 using GLib;
 
-// Defined by the build script.
+// Defined by cmake build script.
 extern const string _VERSION;
 extern const string _INSTALL_PREFIX;
 extern const string _GSETTINGS_DIR;
 extern const string _SOURCE_ROOT_DIR;
 
 public class BalisticaApplication : GLib.Object {
-        public const string NAME = "Balistica";
+        public const string NAME = "Balística";
+        public const string PRGNAME = "balística";
         public const string COPYRIGHT = _("Copyright 2012-2013 Steven Oliver");
         public const string WEBSITE = "http://steveno.github.com/balistica/";
 
-        public const string DESKTOP_NAME = _("balisitica");
+        public const string DESKTOP_NAME = _("balística");
         public const string DESKTOP_GENERIC_NAME = _("Ballistics Calculator");
         public const string DESKTOP_KEYWORDS = _("ballistics;calculator;");
 
@@ -54,7 +55,7 @@ public class BalisticaApplication : GLib.Object {
                 but WITHOUT ANY WARRANTY; without even the implied warranty of
                 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
                 GNU General Public License for more details.
-
+                
                 You should have received a copy of the GNU General Public License
                 along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 """;
@@ -63,5 +64,24 @@ public class BalisticaApplication : GLib.Object {
                 "Steven Oliver <oliver.steven@gmail.com>",
                 null
         };
+
+        /**
+         * Create a singleton instance
+         */
+        public static BalisticaApplication instance {
+                get { return _instance; }
+                private set {
+                        // Ensure singleton behavior.
+                        assert (_instance == null);
+                        _instance = value;
+                }
+        }
+
+        private static BalisticaApplication _instance = null;
+
+        public BalisticaApplication() {
+                base(NAME, PRGNAME, "Steven Oliver");
+                _instance = this;
+        }
 }
 
