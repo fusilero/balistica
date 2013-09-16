@@ -1,0 +1,17 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="topic"
+      id="limitations">
+
+    <info>
+        <link type="guide" xref="index#Limitations"/>
+    </info>
+    
+    <title>Limitations</title>
+    <p>Currently this software is in heavy development and it's feature set my not be stable.</p>
+  
+    <p>As a an open source software project there is also, of course, no guarantee of correctness. In most cases 
+    I don't even have any empircal data to compare my results to. While I'd like to believe the software is
+    in fact 100% correct, I can't really verify that.</p>
+  
+</page>
+
