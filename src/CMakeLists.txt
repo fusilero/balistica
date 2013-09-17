@@ -1,27 +1,27 @@
 set(MAIN
-BalisticaApplication.vala
-Calculate.vala
-CmdHandler.vala
-Main.vala
+    BalisticaApplication.vala
+    Calculate.vala
+    CmdHandler.vala
+    Main.vala
 )
 
 set(LIB_BALISTICA
-lib_balistica/Atmosphere.vala
-lib_balistica/Greenhill.vala
-lib_balistica/LibBalistica.vala
-lib_balistica/Miller.vala
-lib_balistica/Retard.vala
-lib_balistica/Retrieve.vala
-lib_balistica/Solve.vala
-lib_balistica/Windage.vala
-lib_balistica/Zero.vala
+    lib_balistica/Atmosphere.vala
+    lib_balistica/Greenhill.vala
+    lib_balistica/LibBalistica.vala
+    lib_balistica/Miller.vala
+    lib_balistica/Retard.vala
+    lib_balistica/Retrieve.vala
+    lib_balistica/Solve.vala
+    lib_balistica/Windage.vala
+    lib_balistica/Zero.vala
 
-lib_balistica/conversion/Angle.vala
-lib_balistica/conversion/Temperature.vala
+    lib_balistica/conversion/Angle.vala
+    lib_balistica/conversion/Temperature.vala
 )
 
 set(DATABASE
-db/DataBase.vala
+    db/DataBase.vala
 )
 
 # Vala
@@ -45,7 +45,7 @@ set(LIB_BALISTICA_PACKAGES
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/desktop)
 
-set(CFLAGS 
+set(CFLAGS
     ${DEPS_CFLAGS}
     ${DEPS_CFLAGS_OTHER}
     -D_VERSION=\"${VERSION}\"
