@@ -2,6 +2,10 @@ set(MAN_DEST ${CMAKE_INSTALL_PREFIX}/man)
 set(DESKTOP_DEST ${CMAKE_INSTALL_PREFIX}/share/applications)
 set(APPDATA_DEST ${CMAKE_INSTALL_PREFIX}/share/appdata)
 
+# org.gnome.balistica.gschmea.xml is installed through the
+# add_schemas command under the GSettings section in 
+# balistica/src/CMakeLists.txt
+
 set(MAN_FILES
         balistica.1
 )
