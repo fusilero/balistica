@@ -17,6 +17,7 @@
  */
 
 using GLib;
+using Gtk;
 
 // Defined by cmake build script.
 extern const string _VERSION;
@@ -24,7 +25,11 @@ extern const string _INSTALL_PREFIX;
 extern const string _GSETTINGS_DIR;
 extern const string _SOURCE_ROOT_DIR;
 
-public class BalisticaApplication : GLib.Object {
+public class BalisticaApplication : Gtk.Application {
+        /**
+         * These are publicly shared variables that will
+         * be available throughout the base of the application
+         */
         public const string NAME = "Balística";
         public const string PRGNAME = "balística";
         public const string COPYRIGHT = _("Copyright 2012-2013 Steven Oliver");
@@ -52,36 +57,35 @@ public class BalisticaApplication : GLib.Object {
                 (at your option) any later version.
 
                 This program is distributed in the hope that it will be useful,
-                but WITHOUT ANY WARRANTY; without even the implied warranty of
-                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                GNU General Public License for more details.
-                
-                You should have received a copy of the GNU General Public License
-                along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                """;
+                     but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             GNU General Public License for more details.
+
+                             You should have received a copy of the GNU General Public License
+                             along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                             """;
 
         public const string[] AUTHORS = {
                 "Steven Oliver <oliver.steven@gmail.com>",
                 null
         };
 
-        /**
-         * Create a singleton instance
+        /*
+         * Startup the program
          */
-        public static BalisticaApplication instance {
-                get { return _instance; }
-                private set {
-                        // Ensure singleton behavior.
-                        assert (_instance == null);
-                        _instance = value;
-                }
-        }
 
-        private static BalisticaApplication _instance = null;
+        private GLib.Settings settings;
 
         public BalisticaApplication() {
-                base(NAME, PRGNAME, "Steven Oliver");
-                _instance = this;
+                GLib.Object(application_id: PRGNAME);
         }
-}
+
+        protected override void startup() {
+                settings = new GLib.Settings(PRGNAME);
+
+                //add_action_entries (action_entries, this);
+
+                base.startup();
+        }
+} //namespace
 

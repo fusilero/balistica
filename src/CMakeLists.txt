@@ -40,7 +40,7 @@ pkg_check_modules(DEPS REQUIRED
 )
 
 set(LIB_BALISTICA_PACKAGES
-    glib-2.0 sqlite3
+    glib-2.0 gtk+-3.0 sqlite3
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/desktop)

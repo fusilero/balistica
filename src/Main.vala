@@ -17,10 +17,5 @@
  */
 
 public static int main (string[] args) {
-        //BalisticaApplication app = new BalisticaApplication();
-
-        // Call the command line handler
-        Balistica.CmdHandler.parse_args(args);
-
-        return 0;
+        return new BalisticaApplication().run(args);
 }
