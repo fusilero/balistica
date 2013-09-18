@@ -43,7 +43,7 @@ set(LIB_BALISTICA_PACKAGES
     glib-2.0 gtk+-3.0 sqlite3
 )
 
-set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/desktop)
+set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
 
 set(CFLAGS
     ${DEPS_CFLAGS}
@@ -98,7 +98,7 @@ add_custom_command(
 )
 
 # GSettings
-# This needs to be here and not in desktop/CMakeLists.txt in order to run in the build
+# This needs to be here and not in data/CMakeLists.txt in order to run in the build
 # directory
 include(GSettings)
 add_schemas(balistica ${GSETTINGS_DIR} ${CMAKE_INSTALL_PREFIX})

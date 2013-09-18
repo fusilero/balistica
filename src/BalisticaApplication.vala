@@ -77,11 +77,11 @@ public class BalisticaApplication : Gtk.Application {
         private GLib.Settings settings;
 
         public BalisticaApplication() {
-                GLib.Object(application_id: PRGNAME);
+                GLib.Object(application_id: "org.gnome.balística");
         }
 
         protected override void startup() {
-                settings = new GLib.Settings(PRGNAME);
+                settings = new GLib.Settings("org.gnome.balística");
 
                 //add_action_entries (action_entries, this);
 
