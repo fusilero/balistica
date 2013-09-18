@@ -15,6 +15,7 @@ but repeated here just to make sure.
 ## Minimum Requirements
 * vala 0.20.1
 * cmake
+* gtk+3.0
 
 ## Build Instructions
 ```bash
