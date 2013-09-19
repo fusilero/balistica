@@ -27,7 +27,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in MOAs
         */
-        public static double DegreeToMOA (double deg) {
+        public inline static double DegreeToMOA (double deg) {
                 return deg * 60;
         }
 
@@ -38,7 +38,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in Radians
         */
-        public static double DegreeToRadian (double deg) {
+        public inline static double DegreeToRadian (double deg) {
                 return deg * Math.PI/180;
         }
 
@@ -49,7 +49,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in Degrees
         */
-        public static double RadianToDegree (double rad) {
+        public inline static double RadianToDegree (double rad) {
                 return rad * 180/Math.PI;
         }
 
@@ -60,7 +60,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in MOAs
         */
-        public static double RadianToMOA (double rad) {
+        public inline static double RadianToMOA (double rad) {
                 return rad * 60 * 180/Math.PI;
         }
 
@@ -71,7 +71,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in Degrees
         */
-        public static double MOAToDegree (double moa) {
+        public inline static double MOAToDegree (double moa) {
                 return moa/60;
         }
 
@@ -82,7 +82,7 @@ public class Conversion.Angle : GLib.Object {
         *
         * @return Angle in Radians
         */
-        public static double MOAToRadian (double moa) {
+        public inline static double MOAToRadian (double moa) {
                 return moa/60 * Math.PI/180;
         }
 }
