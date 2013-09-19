@@ -1,5 +1,7 @@
 # balística
 
+[![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
+
 ## About
 balística is a simple open source ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
