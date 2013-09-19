@@ -26,7 +26,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Fahrenheit
         */
-        public static double CelsiusToFahrenheit (double cel) {
+        public inline static double CelsiusToFahrenheit (double cel) {
                 return cel * 9/5 + 32;
         }
 
@@ -37,7 +37,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Kelvin
         */
-        public static double CelisusToKelvin (double cel) {
+        public inline static double CelisusToKelvin (double cel) {
                 return cel + 273.15;
         }
 
@@ -48,7 +48,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Rankine
         */
-        public static double CelisusToRankine (double cel) {
+        public inline static double CelisusToRankine (double cel) {
                 return (cel + 273.15) * 9/5;
         }
 
@@ -59,7 +59,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Celsius
         */
-        public static double FahrenheitToCelsius (double fahr) {
+        public inline static double FahrenheitToCelsius (double fahr) {
                 return (fahr - 32) * 5/9;
         }
 
@@ -70,7 +70,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Kelvin
         */
-        public static double FahrenheitToKelvin (double fahr) {
+        public inline static double FahrenheitToKelvin (double fahr) {
                 return (fahr + 459.67) * 5/9;
         }
 
@@ -81,7 +81,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Rankine
         */
-        public static double FahrenheitToRankine (double fahr) {
+        public inline static double FahrenheitToRankine (double fahr) {
                 return fahr + 459.67;
         }
 
@@ -92,7 +92,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Celsius
         */
-        public static double KelvinToCelsius (double kel) {
+        public inline static double KelvinToCelsius (double kel) {
                 return kel - 273.15;
         }
 
@@ -103,7 +103,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Fahrenheit
         */
-        public static double KelvinToFahrenheit (double kel) {
+        public inline static double KelvinToFahrenheit (double kel) {
                 return kel * 9/5 - 459.67;
         }
 
@@ -114,7 +114,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Rankine
         */
-        public static double KelvinToRankine (double kel) {
+        public inline static double KelvinToRankine (double kel) {
                 return kel * 9/5;
         }
 
@@ -125,7 +125,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Celsius
         */
-        public static double RankineToCelsius (double ran) {
+        public inline static double RankineToCelsius (double ran) {
                 return (ran - 491.67) * 5/9;
         }
 
@@ -136,7 +136,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Fahrenheit
         */
-        public static double RankineToFahrenheit (double ran) {
+        public inline static double RankineToFahrenheit (double ran) {
                 return ran - 459.67;
         }
 
@@ -147,7 +147,7 @@ public class Conversion.Temperature : GLib.Object {
         *
         * @return Degress in Kelvin
         */
-        public static double RankineToKelvin (double ran) {
+        public inline static double RankineToKelvin (double ran) {
                 return ran * 5/9;
         }
 }
