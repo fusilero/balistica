@@ -35,7 +35,7 @@ set(TARGET_GLIB 2.32)
 
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
-    gtk+-3.0>=3.4.4
+    gtk+-3.0>=3.4.2
     sqlite3>=3.7.4
 )
 
