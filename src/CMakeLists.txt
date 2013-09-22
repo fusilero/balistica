@@ -3,6 +3,7 @@ set(MAIN
     Calculate.vala
     CmdHandler.vala
     Main.vala
+    MainWindow.vala
 )
 
 set(LIB_BALISTICA
@@ -52,7 +53,6 @@ set(CFLAGS
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
     -D_GSETTINGS_DIR=\"${CMAKE_BINARY_DIR}/gsettings\"
-    -DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"
     -g
 )
 
