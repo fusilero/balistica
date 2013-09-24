@@ -16,6 +16,19 @@
  * along with balistica.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using Gtk;
+
 public static int main (string[] args) {
-        return new BalisticaApplication().run(args);
+        try {
+                var gtk_builder = new Builder();
+                gtk_builder.add_from_file("ui/main.glade");
+                var window = gtk_builder.get_object("window") as Window;
+                window.show_all();
+                Gtk.main();
+        } catch (Error e) {
+                stderr.printf("Could not load UI: %s\n", e.message);
+                return 1;
+        }
+
+        return 0;
 }

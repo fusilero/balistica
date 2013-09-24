@@ -17,15 +17,16 @@
  */
 
 using GLib;
+using Gtk;
 
 namespace Balistica {
 
         private const OptionEntry[] options = {
-                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, N_("Calculate twist using the Miller twist rule.") },
-                { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, N_("Calculate stability using the Miller twist rule") },
-                { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, N_("Calculate twist using the Greenhill formula") },
-                { "help", 'h', 0, OptionArg.NONE, ref help, N_("Show this Help message") },
-                { "version", 'v', 0, OptionArg.NONE, ref version, N_("Show Balística verion") },
+                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule." },
+                { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, "Calculate stability using the Miller twist rule" },
+                { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, "Calculate twist using the Greenhill formula" },
+                { "help", 'h', 0, OptionArg.NONE, ref help, "Show this Help message" },
+                { "version", 'v', 0, OptionArg.NONE, ref version, "Show Balística verion" },
                 { null }
         };
 
@@ -35,7 +36,7 @@ namespace Balistica {
         public bool help = false;
         public bool version = false;
 
-        public class CmdHandler : GLib.Object {
+        public class CmdHandler : Gtk.Application {
                 // Global help strings
                 private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
                         + " [help] <command> [<args>]";
@@ -85,7 +86,7 @@ namespace Balistica {
                         try {
                                 context.parse(ref args);
                         } catch (OptionError error) {
-                                stdout.printf(_("Failed to parse command line options \"%s\"\n"), error.message);
+                                stdout.printf("Failed to parse command line options \"%s\"\n", error.message);
                                 return 1;
                         }
 
@@ -127,6 +128,73 @@ namespace Balistica {
                         return 0;
                 }
 
+                /**
+                 * Overridden method of GApplication, to handle the arguments locally.
+                 *
+                 * Copied from cheese: https://git.gnome.org/browse/cheese/
+                 *
+                 * @param arguments the command-line arguments
+                 * @param exit_status the exit status to return to the OS
+                 * @return true if the arguments were successfully processed, false
+                 * otherwise
+                 */
+                protected override bool local_command_line ([CCode (array_null_terminated = true, array_length = false)]
+                                ref unowned string[] argv,
+                                out int exit_status)
+                {
+                        // Try to register.
+                        try
+                        {
+                                register ();
+                        }
+                        catch (Error e)
+                        {
+                                warning ("Unable to register application: %s", e.message);
+                                exit_status = 1;
+                                return true;
+                        }
+
+                        // Workaround until bug 642885 is solved.
+                        unowned string[] arguments = argv;
+                        var n_args = arguments.length;
+
+                        if (n_args <= 1)
+                        {
+                                activate ();
+                                exit_status = 0;
+                        }
+                        else
+                        {
+                                try
+                                {
+                                        var context = new OptionContext ("- Take photos and videos from your webcam");
+                                        context.set_help_enabled (true);
+                                        context.add_main_entries (options, null);
+                                        context.parse (ref arguments);
+                                }
+                                catch (OptionError e)
+                                {
+                                        warning ("%s", e.message);
+                                        stdout.printf ("Run '%s --help' to see a full list of available command line options.",
+                                                        arguments[0]);
+                                        stdout.printf ("\n");
+                                        exit_status = 1;
+                                        return true;
+                                }
+
+                                if (version)
+                                {
+                                        stdout.printf("%s %s\n", "Balística", BalisticaApplication.VERSION);
+                                        exit_status = 1;
+                                        return true;
+                                }
+
+                                activate ();
+                                exit_status = 0;
+                        }
+
+                        return base.local_command_line (ref arguments, out exit_status);
+                }
         }
 } // namespace
 

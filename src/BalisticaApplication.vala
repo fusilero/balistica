@@ -1,6 +1,6 @@
 /* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
  *
- * This file is part of balistica.
+ * This file is part of balística.
  *
  * balistica is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,12 +32,12 @@ public class BalisticaApplication : Gtk.Application {
          */
         public const string NAME = "Balística";
         public const string PRGNAME = "balística";
-        public const string COPYRIGHT = _("Copyright 2012-2013 Steven Oliver");
+        public const string COPYRIGHT = "Copyright 2012-2013 Steven Oliver";
         public const string WEBSITE = "http://steveno.github.com/balistica/";
 
-        public const string DESKTOP_NAME = _("balística");
-        public const string DESKTOP_GENERIC_NAME = _("Ballistics Calculator");
-        public const string DESKTOP_KEYWORDS = _("ballistics;calculator;");
+        public const string DESKTOP_NAME = "balística";
+        public const string DESKTOP_GENERIC_NAME = "Ballistics Calculator";
+        public const string DESKTOP_KEYWORDS = "ballistics;calculator;";
 
         public const string VERSION = _VERSION;
         public const string INSTALL_PREFIX = _INSTALL_PREFIX;
@@ -57,13 +57,13 @@ public class BalisticaApplication : Gtk.Application {
                 (at your option) any later version.
 
                 This program is distributed in the hope that it will be useful,
-                     but WITHOUT ANY WARRANTY; without even the implied warranty of
-                             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                             GNU General Public License for more details.
-
-                             You should have received a copy of the GNU General Public License
-                             along with this program.  If not, see <http://www.gnu.org/licenses/>.
-                             """;
+                but WITHOUT ANY WARRANTY; without even the implied warranty of
+                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                GNU General Public License for more details.
+                
+                You should have received a copy of the GNU General Public License
+                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                """;
 
         public const string[] AUTHORS = {
                 "Steven Oliver <oliver.steven@gmail.com>",
@@ -77,15 +77,14 @@ public class BalisticaApplication : Gtk.Application {
         private GLib.Settings settings;
 
         public BalisticaApplication() {
-                GLib.Object(application_id: "org.gnome.balística");
+                GLib.Object(application_id: "org.gnome.balistica");
         }
 
         protected override void startup() {
-                settings = new GLib.Settings("org.gnome.balística");
-
-                //add_action_entries (action_entries, this);
+                settings = new GLib.Settings("org.gnome.balistica");
 
                 base.startup();
         }
+
 } //namespace
 

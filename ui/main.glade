@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
-  <object class="GtkWindow" id="balística">
+  <object class="GtkWindow" id="balistica">
     <property name="can_focus">False</property>
+    <property name="title" translatable="yes">balística</property>
     <property name="resizable">False</property>
     <property name="modal">True</property>
-    <property name="default_width">440</property>
+    <property name="default_width">435</property>
     <property name="default_height">250</property>
     <property name="has_resize_grip">False</property>
     <child>
@@ -175,10 +176,11 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkEntry" id="entry1">
+              <object class="GtkEntry" id="name">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="invisible_char">●</property>
+                <property name="width_chars">40</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -217,7 +219,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkEntry" id="entry2">
+                  <object class="GtkEntry" id="drag_coefficien">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -230,7 +232,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry3">
+                  <object class="GtkEntry" id="projectile_weigh">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -243,7 +245,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry4">
+                  <object class="GtkEntry" id="intial_velocity">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -256,7 +258,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry5">
+                  <object class="GtkEntry" id="zero_rang">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -269,7 +271,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry6">
+                  <object class="GtkEntry" id="sight_heigh">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -282,7 +284,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry7">
+                  <object class="GtkEntry" id="shooting_angl">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -295,7 +297,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry8">
+                  <object class="GtkEntry" id="wind_velocit">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -308,7 +310,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="entry9">
+                  <object class="GtkEntry" id="wind_angl">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="invisible_char">●</property>
@@ -321,9 +323,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label2">
+                  <object class="GtkLabel" id="drag_coefficient">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Drag Coefficient</property>
                     <property name="single_line_mode">True</property>
                   </object>
@@ -335,10 +338,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label3">
+                  <object class="GtkLabel" id="projectile_weight">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Projectile Weight (grains)</property>
+                    <property name="single_line_mode">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -348,9 +353,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label4">
+                  <object class="GtkLabel" id="initial_velocity">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
                   </object>
                   <packing>
@@ -361,9 +367,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label5">
+                  <object class="GtkLabel" id="zero_range">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Zero Range (yards)</property>
                   </object>
                   <packing>
@@ -374,9 +381,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label6">
+                  <object class="GtkLabel" id="sight_height">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Sight Height Over Bore (in)</property>
                     <property name="width_chars">0</property>
                     <property name="single_line_mode">True</property>
@@ -389,9 +397,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label7">
+                  <object class="GtkLabel" id="shooting_angle">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Shooting Angle (deg)</property>
                   </object>
                   <packing>
@@ -402,9 +411,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label8">
+                  <object class="GtkLabel" id="wind_velocity">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Wind Velocity (mi/hr)</property>
                   </object>
                   <packing>
@@ -415,9 +425,10 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label9">
+                  <object class="GtkLabel" id="wind_angle">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="xalign">0</property>
                     <property name="label" translatable="yes">Wind Angle (0-360 deg)</property>
                   </object>
                   <packing>
@@ -435,9 +446,6 @@
                 <property name="height">1</property>
               </packing>
             </child>
-            <child>
-              <placeholder/>
-            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -445,12 +453,6 @@
             <property name="width">1</property>
             <property name="height">1</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

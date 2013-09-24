@@ -1,6 +1,6 @@
 /* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
  *
- * This file is part of balistica.
+ * This file is part of balística.
  *
  * balistica is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
