@@ -1,23 +1,32 @@
 .TH BALISTICA 1 "Version @VERSION@" "Steven Oliver" "Balística"
 
-
 .SH "NAME"
 balística \- A simple open source external balistics calculator
 
-
 .SH SYNOPSIS
 .TP 6
-\fBbalistica\fP [\fBoptions\fP]
-
+\fBbalística\fP [\fBoptions\fP]
 
 .SH "DESCRIPTION"
 \fBbalística\fP is a very simple external balistics calculator. 
-Currently it can only do one of two things. Compute the twist and
+Currently it can only do three things. Compute the twist and
 stability factors of a round using the Miller Twist Rate or the 
 twist rate using the Greenhill formula.
 
 .SH "OPTIONS"
+.IP --miller-twist
+Calculate twist using the Miller twist rule
+.IP --miller-stability
+Calculate stability using the Miller twist rule
+.IP --greenhill
+Calculate twist using the Greenhill formula" },
+.IP --help
+Show basic usage information
+.IP --version
+Show the currently installed version of balística
+
+.SH "COPYING"
+This program is license under the GNU General Public License version 3. 
 
 .SH "AUTHOR"
 Steven Oliver <oliver.steven@gmail.com>
-
