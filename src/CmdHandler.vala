@@ -22,11 +22,11 @@ using Gtk;
 namespace Balistica {
 
         private const OptionEntry[] options = {
-                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule." },
+                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule" },
                 { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, "Calculate stability using the Miller twist rule" },
                 { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, "Calculate twist using the Greenhill formula" },
                 { "help", 'h', 0, OptionArg.NONE, ref help, "Show this Help message" },
-                { "version", 'v', 0, OptionArg.NONE, ref version, "Show Balística verion" },
+                { "version", 'v', 0, OptionArg.NONE, ref version, "Show balística verion" },
                 { null }
         };
 
