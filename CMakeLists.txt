@@ -70,3 +70,4 @@ add_custom_target(
 add_subdirectory(help)
 add_subdirectory(sql)
 add_subdirectory(src)
+add_subdirectory(ui)

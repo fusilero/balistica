@@ -21,9 +21,7 @@ using Gtk;
 
 // Defined by cmake build script.
 extern const string _VERSION;
-extern const string _INSTALL_PREFIX;
 extern const string _GSETTINGS_DIR;
-extern const string _SOURCE_ROOT_DIR;
 
 public class BalisticaApplication : Gtk.Application {
         /**

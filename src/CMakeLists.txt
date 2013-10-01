@@ -2,6 +2,7 @@ set(MAIN
     BalisticaApplication.vala
     Calculate.vala
     CmdHandler.vala
+    FileUtils.vala
     Main.vala
     MainWindow.vala
 )
