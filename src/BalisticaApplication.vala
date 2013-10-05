@@ -28,8 +28,7 @@ public class BalisticaApplication : Gtk.Application {
          * These are publicly shared variables that will
          * be available throughout the base of the application
          */
-        public const string NAME = "Balística";
-        public const string PRGNAME = "balística";
+        public const string NAME = "balística";
         public const string COPYRIGHT = "Copyright 2012-2013 Steven Oliver";
         public const string WEBSITE = "http://steveno.github.com/balistica/";
 
