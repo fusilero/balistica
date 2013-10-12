@@ -1,5 +1,4 @@
 set(MAIN
-    BalisticaApplication.vala
     Calculate.vala
     CmdHandler.vala
     FileUtils.vala

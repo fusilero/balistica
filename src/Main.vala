@@ -19,16 +19,11 @@
 using Gtk;
 
 public static int main (string[] args) {
-        try {
-                var gtk_builder = new Builder();
-                gtk_builder.add_from_file("ui/main.glade");
-                var window = gtk_builder.get_object("window") as Window;
-                window.show_all();
-                Gtk.main();
-        } catch (Error e) {
-                stderr.printf("Could not load UI: %s\n", e.message);
-                return 1;
-        }
+        Gtk.init (ref args);
+
+        var main = new Balistica.MainWindow();
+
+        main.MainWindow();
 
         return 0;
 }

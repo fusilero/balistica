@@ -21,7 +21,7 @@ using Gtk;
 extern const string _INSTALL_PREFIX;
 extern const string _SOURCE_ROOT_DIR;
 
-namespace balistica {
+namespace Balistica {
 
         public const string INSTALL_PREFIX = _INSTALL_PREFIX;
         public const string SOURCE_ROOT_DIR = _SOURCE_ROOT_DIR;
@@ -81,4 +81,4 @@ namespace balistica {
 
                 return builder;
         }
-}
+} //namespace

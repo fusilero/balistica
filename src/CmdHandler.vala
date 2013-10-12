@@ -91,7 +91,7 @@ namespace Balistica {
                         }
 
                         if (version) {
-                                stdout.printf("%s %s\n", "Balística", BalisticaApplication.VERSION);
+                                //stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
                                 return 1;
                         }
 
@@ -167,7 +167,7 @@ namespace Balistica {
                         {
                                 try
                                 {
-                                        var context = new OptionContext ("- Take photos and videos from your webcam");
+                                        var context = new OptionContext ("- Option 1");
                                         context.set_help_enabled (true);
                                         context.add_main_entries (options, null);
                                         context.parse (ref arguments);
@@ -184,7 +184,7 @@ namespace Balistica {
 
                                 if (version)
                                 {
-                                        stdout.printf("%s %s\n", "Balística", BalisticaApplication.VERSION);
+                                        //stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
                                         exit_status = 1;
                                         return true;
                                 }
