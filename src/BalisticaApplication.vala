@@ -21,111 +21,83 @@ using Gtk;
 
 namespace Balistica {
 
-        private const OptionEntry[] options = {
-                { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule" },
-                { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, "Calculate stability using the Miller twist rule" },
-                { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, "Calculate twist using the Greenhill formula" },
-                { "help", 'h', 0, OptionArg.NONE, ref help, "Show this Help message" },
-                { "version", 'v', 0, OptionArg.NONE, ref version, "Show balística verion" },
-                { null }
-        };
+        // Global help strings
+        private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
+                + " [help] <command> [<args>]";
 
-        public bool miller_twist = false;
-        public bool miller_stability = false;
-        public bool greenhill = false;
-        public bool help = false;
-        public bool version = false;
+        private const string APPLICATION_OPTIONS = "Application Options:"
+                + "\n  miller-twist\t\tCalculate twist using the Miller twist rule"
+                + "\n  miller-stability\tCalculate stability using the Miller twist rule"
+                + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
 
-        public class CmdHandler : Gtk.Application {
-                // Global help strings
-                private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
-                        + " [help] <command> [<args>]";
+        // Specific help
+        private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
 
-                private const string APPLICATION_OPTIONS = "Application Options:"
-                        + "\n  miller-twist\t\tCalculate twist using the Miller twist rule"
-                        + "\n  miller-stability\tCalculate stability using the Miller twist rule"
-                        + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
+        private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
+                + "\nof a specific round."
+                + "\n\n The variables used to calculate twist rate: "
+                + "\n   --diameter   - the diameter of the bullet"
+                + "\n   --length     - the length of the bullet"
+                + "\n   --mass       - the mass of the bullet in grams"
+                + "\n   --safe-value - Miller generally assumes a 'safe value'"
+                + "\n                  of 2. This parameter is optional.";
 
-                // Specific help
-                private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
+        private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
+                + "\nstability factor of a specific round."
+                + "\n\n The variables used to calculate the stability factor: "
+                + "\n   --diameter - the diameter of the bullet"
+                + "\n   --length   - the length of the bullet"
+                + "\n   --mass     - the mass of the bullet in grams"
+                + "\n   --twist    - the known twist rate\n";
 
-                private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
-                        + "\nof a specific round."
-                        + "\n\n The variables used to calculate twist rate: "
-                        + "\n   --diameter   - the diameter of the bullet"
-                        + "\n   --length     - the length of the bullet"
-                        + "\n   --mass       - the mass of the bullet in grams"
-                        + "\n   --safe-value - Miller generally assumes a 'safe value'"
-                        + "\n                  of 2. This parameter is optional.";
+        private const string GREENHILL_HELP = "\nThe Greenhill formula can only be used to calculate the twist"
+                + "\nrate of a round."
+                + "\n\n The variables used to calculate the twist rate:"
+                + "\n   --C                - a constant that should be set 150 for slow rounds "
+                + "\n                        or 180 for faster rounds (above 840 m/s)"
+                + "\n   --diameter         - the diameter of the bullet"
+                + "\n   --length           - the length of the bullet"
+                + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
-                private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
-                        + "\nstability factor of a specific round."
-                        + "\n\n The variables used to calculate the stability factor: "
-                        + "\n   --diameter - the diameter of the bullet"
-                        + "\n   --length   - the length of the bullet"
-                        + "\n   --mass     - the mass of the bullet in grams"
-                        + "\n   --twist    - the known twist rate\n";
+        public class Application : Gtk.Application {
+                private GLib.Settings settings;
 
-                private const string GREENHILL_HELP = "\nThe Greenhill formula can only be used to calculate the twist"
-                        + "\nrate of a round."
-                        + "\n\n The variables used to calculate the twist rate:"
-                        + "\n   --C                - a constant that should be set 150 for slow rounds "
-                        + "\n                        or 180 for faster rounds (above 840 m/s)"
-                        + "\n   --diameter         - the diameter of the bullet"
-                        + "\n   --length           - the length of the bullet"
-                        + "\n   --specific-gravity - the specific gravity of the bullet\n";
+                public static bool miller_twist = false;
+                public static bool miller_stability = false;
+                public static bool greenhill = false;
+                public static bool help = false;
+                public static bool version = false;
+
+                public const OptionEntry[] options = {
+                        { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule" },
+                        { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, "Calculate stability using the Miller twist rule" },
+                        { "greenhill", 0, 0, OptionArg.NONE, ref greenhill, "Calculate twist using the Greenhill formula" },
+                        { "help", 'h', 0, OptionArg.NONE, ref help, "Show this Help message" },
+                        { "version", 'v', 0, OptionArg.NONE, ref version, "Show balística verion" },
+                        { null }
+                };
+
+                public Application() {
+                        GLib.Object (application_id: "org.gnome.balstica");
+                }
+
+                protected override void startup() {
+                        settings = new GLib.Settings("org.gnome.balistica");
+
+                        string[] args = { null };
+                        unowned string[] arguments = args;
+
+                        Gtk.init (ref arguments);
+                        base.startup();
+                }
 
                 /**
-                 * Parse arguments
+                 * Present the existing main window, or create a new one.
                  */
-                public static int parse_args(string[] args) {
-                        var context = new OptionContext("");
-                        context.set_help_enabled(false);
-                        context.add_main_entries(options, null);
-
-                        try {
-                                context.parse(ref args);
-                        } catch (OptionError error) {
-                                stdout.printf("Failed to parse command line options \"%s\"\n", error.message);
-                                return 1;
-                        }
-
-                        if (version) {
-                                //stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
-                                return 1;
-                        }
-
-                        if (help) {
-                                if (args[1] == "miller-twist") {
-                                        stdout.printf("%s\n", MILLER_TWIST_HELP);
-                                        return 0;
-                                } else if (args[2] == "miller-stability") {
-                                        stdout.printf("%s\n", MILLER_STABILITY_HELP);
-                                        return 0;
-                                } else if (args[2] == "greenhill") {
-                                        stdout.printf("%s\n", GREENHILL_HELP);
-                                        return 0;
-                                } else {
-                                        stdout.printf("%s\n\n", USAGE);
-                                        stdout.printf("%s\n\n", APPLICATION_OPTIONS);
-                                        stdout.printf("%s\n", SPECIFIC_CMD);
-                                        return 0;
-                                }
-                        }
-
-                        if (miller_twist) {
-                                Calculate.miller_twist(args);
-                        }
-
-                        if (miller_stability) {
-                                Calculate.miller_stability(args);
-                        }
-
-                        if (greenhill) {
-                                Calculate.greenhill(args);
-                        }
-
-                        return 0;
+                protected override void activate ()
+                {
+                        var main = new Balistica.MainWindow();
+                        main.MainWindow();
                 }
 
                 /**
@@ -143,12 +115,10 @@ namespace Balistica {
                                 out int exit_status)
                 {
                         // Try to register.
-                        try
-                        {
+                        try {
                                 register ();
                         }
-                        catch (Error e)
-                        {
+                        catch (Error e) {
                                 warning ("Unable to register application: %s", e.message);
                                 exit_status = 1;
                                 return true;
@@ -158,43 +128,74 @@ namespace Balistica {
                         unowned string[] arguments = argv;
                         var n_args = arguments.length;
 
-                        if (n_args <= 1)
-                        {
-                                activate ();
+                        if (n_args <= 1) {
+                                activate();
                                 exit_status = 0;
                         }
-                        else
-                        {
+                        else {
+
                                 try
                                 {
-                                        var context = new OptionContext ("- Option 1");
-                                        context.set_help_enabled (true);
+                                        var context = new OptionContext ("- A simple open source balistics calculator");
+                                        context.set_help_enabled (false);
                                         context.add_main_entries (options, null);
                                         context.parse (ref arguments);
                                 }
                                 catch (OptionError e)
                                 {
                                         warning ("%s", e.message);
-                                        stdout.printf ("Run '%s --help' to see a full list of available command line options.",
-                                                        arguments[0]);
+                                        stdout.printf ("Run '%s --help' to see a full list of available command line options.", arguments[0]);
                                         stdout.printf ("\n");
                                         exit_status = 1;
                                         return true;
                                 }
 
-                                if (version)
-                                {
-                                        //stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
+                                if (version) {
+                                        stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
                                         exit_status = 1;
                                         return true;
                                 }
 
-                                activate ();
+                                if (help) {
+                                        if (arguments[1] == "miller-twist") {
+                                                stdout.printf("%s\n", MILLER_TWIST_HELP);
+                                                exit_status = 1;
+                                                return true;
+                                        } else if (arguments[2] == "miller-stability") {
+                                                stdout.printf("%s\n", MILLER_STABILITY_HELP);
+                                                exit_status = 1;
+                                                return true;
+                                        } else if (arguments[2] == "greenhill") {
+                                                stdout.printf("%s\n", GREENHILL_HELP);
+                                                exit_status = 1;
+                                                return true;
+                                        } else {
+                                                stdout.printf("%s\n\n", USAGE);
+                                                stdout.printf("%s\n\n", APPLICATION_OPTIONS);
+                                                stdout.printf("%s\n", SPECIFIC_CMD);
+                                                exit_status = 1;
+                                                return true;
+                                        }
+                                }
+
+                                if (miller_twist) {
+                                        Calculate.miller_twist(arguments);
+                                }
+
+                                if (miller_stability) {
+                                        Calculate.miller_stability(arguments);
+                                }
+
+                                if (greenhill) {
+                                        Calculate.greenhill(arguments);
+                                }
+
+                                activate();
                                 exit_status = 0;
                         }
 
                         return base.local_command_line (ref arguments, out exit_status);
                 }
-        }
+       }
 } // namespace
 

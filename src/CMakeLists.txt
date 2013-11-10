@@ -1,6 +1,6 @@
 set(MAIN
+    BalisticaApplication.vala
     Calculate.vala
-    CmdHandler.vala
     FileUtils.vala
     Main.vala
     MainWindow.vala
@@ -52,7 +52,6 @@ set(CFLAGS
     -D_VERSION=\"${VERSION}\"
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
-    -D_GSETTINGS_DIR=\"${CMAKE_BINARY_DIR}/gsettings\"
     -g
 )
 
