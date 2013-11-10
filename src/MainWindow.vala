@@ -19,10 +19,11 @@
 using GLib;
 using Gtk;
 
+// Defined by cmake build script.
+extern const string _VERSION;
+extern const string _GSETTINGS_DIR;
+
 namespace Balistica {
-        // Defined by cmake build script.
-        extern const string _VERSION;
-        extern const string _GSETTINGS_DIR;
 
         /**
          * These are publicly shared variables that will
@@ -67,7 +68,6 @@ namespace Balistica {
 
         public class MainWindow : Gtk.ApplicationWindow {
                 private Gtk.Builder builder;
-
                 private Gtk.Window window;
 
                 public void MainWindow () {
@@ -79,7 +79,6 @@ namespace Balistica {
                         window.show_all();
                         Gtk.main();
                 }
-
         }
 } //namespace
 

@@ -19,11 +19,5 @@
 using Gtk;
 
 public static int main (string[] args) {
-        Gtk.init (ref args);
-
-        var main = new Balistica.MainWindow();
-
-        main.MainWindow();
-
-        return 0;
+        return new Balistica.Application().run(args);
 }
