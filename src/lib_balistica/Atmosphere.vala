@@ -85,12 +85,12 @@ namespace Balistica.LibBalistica {
                 }
 
                 /**
-                 * A function to correct a "standard" Drag Coefficient for differing atmospheric conditions. 
+                 * A function to correct a "standard" Drag Coefficient for differing atmospheric conditions.
                  * Returns the corrected drag coefficient for supplied drag coefficient and atmospheric conditions.
                  *
                  * @param DragCoefficient The coefficient of drag for a given projectile.
                  * @param Altitude The altitude above sea level in feet.  Standard altitude is 0 feet above sea level.
-                 * @param Barometer The barometric pressure in inches of mercury (in Hg). This is not "absolute" pressure, it is the 
+                 * @param Barometer The barometric pressure in inches of mercury (in Hg). This is not "absolute" pressure, it is the
                  *                  "standardized" pressure reported in the papers and news. Standard pressure is 29.53 in Hg.
                  * @param Temperature The temperature in Fahrenheit.  Standard temperature is 59 degrees.
                  * @param RelativeHumidity The relative humidity fraction.  Ranges from 0.00 to 1.00, with 0.50 being 50% relative humidity.
