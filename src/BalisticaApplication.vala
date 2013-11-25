@@ -159,23 +159,18 @@ namespace Balistica {
                                 if (help) {
                                         if (arguments[1] == "miller-twist") {
                                                 stdout.printf("%s\n", MILLER_TWIST_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else if (arguments[2] == "miller-stability") {
                                                 stdout.printf("%s\n", MILLER_STABILITY_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else if (arguments[2] == "greenhill") {
                                                 stdout.printf("%s\n", GREENHILL_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else {
                                                 stdout.printf("%s\n\n", USAGE);
                                                 stdout.printf("%s\n\n", APPLICATION_OPTIONS);
                                                 stdout.printf("%s\n", SPECIFIC_CMD);
-                                                exit_status = 1;
-                                                return true;
                                         }
+                                        
+                                        exit_status = 1;
+                                        return true;
                                 }
 
                                 if (miller_twist) {
