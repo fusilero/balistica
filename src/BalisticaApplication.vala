@@ -20,47 +20,47 @@ using GLib;
 using Gtk;
 
 namespace Balistica {
-
-        // Global help strings
-        private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
-                + " [help] <command> [<args>]";
-
-        private const string APPLICATION_OPTIONS = "Application Options:"
-                + "\n  miller-twist\t\tCalculate twist using the Miller twist rule"
-                + "\n  miller-stability\tCalculate stability using the Miller twist rule"
-                + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
-
-        // Specific help
-        private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
-
-        private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
-                + "\nof a specific round."
-                + "\n\n The variables used to calculate twist rate: "
-                + "\n   --diameter   - the diameter of the bullet"
-                + "\n   --length     - the length of the bullet"
-                + "\n   --mass       - the mass of the bullet in grams"
-                + "\n   --safe-value - Miller generally assumes a 'safe value'"
-                + "\n                  of 2. This parameter is optional.";
-
-        private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
-                + "\nstability factor of a specific round."
-                + "\n\n The variables used to calculate the stability factor: "
-                + "\n   --diameter - the diameter of the bullet"
-                + "\n   --length   - the length of the bullet"
-                + "\n   --mass     - the mass of the bullet in grams"
-                + "\n   --twist    - the known twist rate\n";
-
-        private const string GREENHILL_HELP = "\nThe Greenhill formula can only be used to calculate the twist"
-                + "\nrate of a round."
-                + "\n\n The variables used to calculate the twist rate:"
-                + "\n   --C                - a constant that should be set 150 for slow rounds "
-                + "\n                        or 180 for faster rounds (above 840 m/s)"
-                + "\n   --diameter         - the diameter of the bullet"
-                + "\n   --length           - the length of the bullet"
-                + "\n   --specific-gravity - the specific gravity of the bullet\n";
-
         public class Application : Gtk.Application {
+                // App level help strings
+                private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
+                        + " [help] <command> [<args>]";
+
+                private const string APPLICATION_OPTIONS = "Application Options:"
+                        + "\n  miller-twist\t\tCalculate twist using the Miller twist rule"
+                        + "\n  miller-stability\tCalculate stability using the Miller twist rule"
+                        + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
+
+                // Specific help
+                private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
+
+                private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
+                        + "\nof a specific round."
+                        + "\n\n The variables used to calculate twist rate: "
+                        + "\n   --diameter   - the diameter of the bullet"
+                        + "\n   --length     - the length of the bullet"
+                        + "\n   --mass       - the mass of the bullet in grams"
+                        + "\n   --safe-value - Miller generally assumes a 'safe value'"
+                        + "\n                  of 2. This parameter is optional.";
+
+                private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
+                        + "\nstability factor of a specific round."
+                        + "\n\n The variables used to calculate the stability factor: "
+                        + "\n   --diameter - the diameter of the bullet"
+                        + "\n   --length   - the length of the bullet"
+                        + "\n   --mass     - the mass of the bullet in grams"
+                        + "\n   --twist    - the known twist rate\n";
+
+                private const string GREENHILL_HELP = "\nThe Greenhill formula can only be used to calculate the twist"
+                        + "\nrate of a round."
+                        + "\n\n The variables used to calculate the twist rate:"
+                        + "\n   --C                - a constant that should be set 150 for slow rounds "
+                        + "\n                        or 180 for faster rounds (above 840 m/s)"
+                        + "\n   --diameter         - the diameter of the bullet"
+                        + "\n   --length           - the length of the bullet"
+                        + "\n   --specific-gravity - the specific gravity of the bullet\n";
+
                 private GLib.Settings settings;
+                static MainWindow main_window;
 
                 public static bool miller_twist = false;
                 public static bool miller_stability = false;
@@ -78,7 +78,7 @@ namespace Balistica {
                 };
 
                 public Application() {
-                        GLib.Object (application_id: "org.gnome.balstica");
+                        GLib.Object (application_id: "org.gnome.balistica");
                 }
 
                 protected override void startup() {
@@ -96,8 +96,9 @@ namespace Balistica {
                  */
                 protected override void activate ()
                 {
-                        var main = new Balistica.MainWindow();
-                        main.MainWindow();
+                        if (this.get_windows() == null) {
+                                main_window = new Balistica.MainWindow(this);
+                        }
                 }
 
                 /**
@@ -151,7 +152,7 @@ namespace Balistica {
                                 }
 
                                 if (version) {
-                                        stdout.printf("%s %s\n", "Balística", Balistica.VERSION);
+                                        stdout.printf("%s %s\n", "balística", Balistica.VERSION);
                                         exit_status = 1;
                                         return true;
                                 }
@@ -159,23 +160,17 @@ namespace Balistica {
                                 if (help) {
                                         if (arguments[1] == "miller-twist") {
                                                 stdout.printf("%s\n", MILLER_TWIST_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else if (arguments[2] == "miller-stability") {
                                                 stdout.printf("%s\n", MILLER_STABILITY_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else if (arguments[2] == "greenhill") {
                                                 stdout.printf("%s\n", GREENHILL_HELP);
-                                                exit_status = 1;
-                                                return true;
                                         } else {
                                                 stdout.printf("%s\n\n", USAGE);
                                                 stdout.printf("%s\n\n", APPLICATION_OPTIONS);
                                                 stdout.printf("%s\n", SPECIFIC_CMD);
-                                                exit_status = 1;
-                                                return true;
                                         }
+                                        exit_status = 1;
+                                        return true;
                                 }
 
                                 if (miller_twist) {
@@ -196,6 +191,6 @@ namespace Balistica {
 
                         return base.local_command_line (ref arguments, out exit_status);
                 }
-       }
+        }
 } // namespace
 

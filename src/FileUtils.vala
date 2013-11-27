@@ -59,10 +59,11 @@ namespace Balistica {
          * From Geary by Yorba http://www.yorba.org/projects/geary/
          */
         public File get_resource_directory() {
-                if (get_install_dir() != null)
+                if (get_install_dir() != null) {
                         return get_install_dir().get_child("share").get_child("passpad");
-                else
+                } else {
                         return File.new_for_path(SOURCE_ROOT_DIR);
+                }
         }
 
         /**

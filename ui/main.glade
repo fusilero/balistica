@@ -9,6 +9,7 @@
     <property name="default_width">435</property>
     <property name="default_height">250</property>
     <property name="has_resize_grip">False</property>
+    <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
       <object class="GtkGrid" id="grid1">
         <property name="visible">True</property>
@@ -751,6 +752,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_btnReset_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -765,6 +767,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_btnSolve_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">3</property>
