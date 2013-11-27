@@ -50,7 +50,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return Standardized pressure
                  */
-                private double calcFP (double Pressure) {
+                private inline double calcFP (double Pressure) {
                         return (Pressure - STANDARD_PRESSURE) / STANDARD_PRESSURE;
                 }
 
