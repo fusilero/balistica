@@ -121,7 +121,7 @@ public class Conversion.Temperature : GLib.Object {
         /**
         * RankineToCelsius
         *
-        * @param kel Degrees in Rankine
+        * @param ran Degrees in Rankine
         *
         * @return Degress in Celsius
         */
@@ -132,7 +132,7 @@ public class Conversion.Temperature : GLib.Object {
         /**
         * RankineToFahrenheit
         *
-        * @param kel Degrees in Rankine
+        * @param ran Degrees in Rankine
         *
         * @return Degress in Fahrenheit
         */
@@ -143,7 +143,7 @@ public class Conversion.Temperature : GLib.Object {
         /**
         * RankineToKelvin
         *
-        * @param kel Degrees in Rankine
+        * @param ran Degrees in Rankine
         *
         * @return Degress in Kelvin
         */
