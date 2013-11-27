@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* The code in this file was originally part of the GNU Exterior 
+/* The code in this file was originally part of the GNU Exterior
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
  *
