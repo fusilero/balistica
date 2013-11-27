@@ -20,6 +20,7 @@ using GLib;
 using Gtk;
 
 namespace Balistica {
+
         public class Application : Gtk.Application {
                 // App level help strings
                 private const string USAGE = "Usage:\n  balistica [version] [-g|--greenhill] [-m|--miller]"
@@ -168,29 +169,28 @@ namespace Balistica {
                                                 stdout.printf("%s\n\n", USAGE);
                                                 stdout.printf("%s\n\n", APPLICATION_OPTIONS);
                                                 stdout.printf("%s\n", SPECIFIC_CMD);
+                                                exit_status = 1;
+                                                return true;
                                         }
-                                        exit_status = 1;
-                                        return true;
+
+                                        if (miller_twist) {
+                                                Calculate.miller_twist(arguments);
+                                        }
+
+                                        if (miller_stability) {
+                                                Calculate.miller_stability(arguments);
+                                        }
+
+                                        if (greenhill) {
+                                                Calculate.greenhill(arguments);
+                                        }
+
+                                        activate();
+                                        exit_status = 0;
                                 }
 
-                                if (miller_twist) {
-                                        Calculate.miller_twist(arguments);
-                                }
-
-                                if (miller_stability) {
-                                        Calculate.miller_stability(arguments);
-                                }
-
-                                if (greenhill) {
-                                        Calculate.greenhill(arguments);
-                                }
-
-                                activate();
-                                exit_status = 0;
+                                return base.local_command_line (ref arguments, out exit_status);
                         }
-
-                        return base.local_command_line (ref arguments, out exit_status);
                 }
-        }
-} // namespace
+        } // namespace
 
