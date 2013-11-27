@@ -38,7 +38,7 @@ namespace Balistica.LibBalistica {
                  */
                 public double GetRange(double* sln, int yardage){
                         double size = sln[BCOMP_MAX_RANGE * 10 + 1];
-                        if (yardage<size){
+                        if (yardage < size){
                                 return sln[10*yardage];
                         }
                         else return 0;
@@ -51,8 +51,8 @@ namespace Balistica.LibBalistica {
                  * @return Projectile path, in inches, relative to the line of sight.
                  */
                 public double GetPath(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+1];
                         }
                         else return 0;
@@ -66,8 +66,8 @@ namespace Balistica.LibBalistica {
                  *         This is useful for "click charts" and the like.
                  */
                 public double GetMOA(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+2];
                         }
                         else return 0;
@@ -80,8 +80,8 @@ namespace Balistica.LibBalistica {
                  * @return The projectile's time of flight to this range.
                  */
                 public double GetTime(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+3];
                         }
                         else return 0;
@@ -94,8 +94,8 @@ namespace Balistica.LibBalistica {
                  * @return The windage correction in inches required to achieve zero at this range.
                  */
                 public double GetWindage(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+4];
                         }
                         else return 0;
@@ -108,8 +108,8 @@ namespace Balistica.LibBalistica {
                  * @return An approximate windage correction in MOA to achieve a zero at this range.
                  */
                 public double GetWindageMOA(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+5];
                         }
                         else return 0;
@@ -122,8 +122,8 @@ namespace Balistica.LibBalistica {
                  * @return The projectile's total velocity (Vector product of Vx and Vy)
                  */
                 public double GetVelocity(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+6];
                         }
                         else return 0;
@@ -140,8 +140,8 @@ namespace Balistica.LibBalistica {
                  * @return The velocity of the projectile in the bore direction.
                  */
                 public double GetVx(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+7];
                         }
                         else return 0;
@@ -154,8 +154,8 @@ namespace Balistica.LibBalistica {
                  * @return The velocity of the projectile perpendicular to the bore direction.
                  */
                 public double GetVy(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+8];
                         }
                         else return 0;
@@ -168,8 +168,8 @@ namespace Balistica.LibBalistica {
                  * @return
                  */
                 public double GetDrop(double* sln, int yardage){
-                        double size=sln[BCOMP_MAX_RANGE*10+1];
-                        if (yardage<size){
+                        double size = sln[BCOMP_MAX_RANGE*10+1];
+                        if (yardage < size){
                                 return sln[10*yardage+9];
                         }
                         else return 0;
