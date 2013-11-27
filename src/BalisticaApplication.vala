@@ -19,7 +19,51 @@
 using GLib;
 using Gtk;
 
+// Defined by cmake build script.
+extern const string _VERSION;
+extern const string _GSETTINGS_DIR;
+
 namespace Balistica {
+        /**
+         * These are publicly shared variables that will
+         * be available throughout the base of the application
+         */
+        public const string NAME = "balística";
+        public const string COPYRIGHT = "Copyright 2012-2013 Steven Oliver";
+        public const string WEBSITE = "http://steveno.github.com/balistica/";
+
+        public const string DESKTOP_NAME = "balística";
+        public const string DESKTOP_GENERIC_NAME = "Ballistics Calculator";
+        public const string DESKTOP_KEYWORDS = "ballistics;calculator;";
+
+        public const string VERSION = _VERSION;
+        public const string GSETTINGS_DIR = _GSETTINGS_DIR;
+
+        // Global help strings
+        public const string SHORT_COPYRIGHT = "Copyright (C) 2012-2013 Steven Oliver";
+
+        public const string SHORT_LICENSE = "This is free software; see the source for copying conditions. There is NO"
+                + "\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.";
+
+        public const string LICENSE = """
+                This program is free software: you can redistribute it and/or modify
+                it under the terms of the GNU General Public License as published by
+                the Free Software Foundation, either version 3 of the License, or
+                (at your option) any later version.
+
+                This program is distributed in the hope that it will be useful,
+                but WITHOUT ANY WARRANTY; without even the implied warranty of
+                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                GNU General Public License for more details.
+                
+                You should have received a copy of the GNU General Public License
+                along with this program.  If not, see <http://www.gnu.org/licenses/>.
+                """;
+
+        public const string[] AUTHORS = {
+                "Steven Oliver <oliver.steven@gmail.com>",
+                null
+        };
 
         public class Application : Gtk.Application {
                 // App level help strings
@@ -32,7 +76,7 @@ namespace Balistica {
                         + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
 
                 // Specific help
-                private const string SPECIFIC_CMD = "See balística help <command> for more information on a specific formula";
+                private const string SPECIFIC_CMD = "See balistica help <command> for more information on a specific formula";
 
                 private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
                         + "\nof a specific round."
@@ -61,7 +105,7 @@ namespace Balistica {
                         + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
                 private GLib.Settings settings;
-                static MainWindow main_window;
+                public static MainWindow main_window;
 
                 public static bool miller_twist = false;
                 public static bool miller_stability = false;
@@ -95,8 +139,7 @@ namespace Balistica {
                 /**
                  * Present the existing main window, or create a new one.
                  */
-                protected override void activate ()
-                {
+                protected override void activate() {
                         if (this.get_windows() == null) {
                                 main_window = new Balistica.MainWindow(this);
                         }
@@ -133,18 +176,13 @@ namespace Balistica {
                         if (n_args <= 1) {
                                 activate();
                                 exit_status = 0;
-                        }
-                        else {
-
-                                try
-                                {
+                        } else {
+                                try {
                                         var context = new OptionContext ("- A simple open source balistics calculator");
                                         context.set_help_enabled (false);
                                         context.add_main_entries (options, null);
                                         context.parse (ref arguments);
-                                }
-                                catch (OptionError e)
-                                {
+                                } catch (OptionError e) {
                                         warning ("%s", e.message);
                                         stdout.printf ("Run '%s --help' to see a full list of available command line options.", arguments[0]);
                                         stdout.printf ("\n");
@@ -188,9 +226,9 @@ namespace Balistica {
                                         activate();
                                         exit_status = 0;
                                 }
-
-                                return base.local_command_line (ref arguments, out exit_status);
                         }
-                }
-        } // namespace
 
+                        return base.local_command_line (ref arguments, out exit_status);
+                }
+        }
+} // namespace
