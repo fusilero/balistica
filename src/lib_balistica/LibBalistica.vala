@@ -54,6 +54,5 @@ namespace Balistica.LibBalistica {
                                 default: assert_not_reached();
                         }
                 }
-
         }
 } //namespace
