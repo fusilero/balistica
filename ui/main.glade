@@ -739,7 +739,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btnSolve">
+                      <object class="GtkButton" id="btnSolveDrag">
                         <property name="label" translatable="yes">Solve</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -753,7 +753,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btnReset">
+                      <object class="GtkButton" id="btnResetDrag">
                         <property name="label" translatable="yes">Reset</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
