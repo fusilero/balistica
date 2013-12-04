@@ -85,13 +85,34 @@ namespace Balistica {
                         + "\n   --specific-gravity - the specific gravity of the bullet\n";
 
                 private GLib.Settings settings;
-                public static MainWindow main_window;
+                private Gtk.Builder builder;
+
+                public static Gtk.Window main_window;
 
                 public static bool miller_twist = false;
                 public static bool miller_stability = false;
                 public static bool greenhill = false;
                 public static bool help = false;
                 public static bool version = false;
+
+                 // Drag calculation entry fields
+                private Gtk.Entry calc_name;
+                private Gtk.Entry drag_coefficient;
+                private Gtk.Entry projectile_weight;
+                private Gtk.Entry initial_velocity;
+                private Gtk.Entry zero_range;
+                private Gtk.Entry sight_height;
+                private Gtk.Entry shooting_angle;
+                private Gtk.Entry wind_velocity;
+                private Gtk.Entry wind_angle;
+                private Gtk.Entry altitude;
+                private Gtk.Entry temp;
+                private Gtk.Entry bar_press;
+                private Gtk.Entry rela_humid;
+
+                // Drag calculation Buttons
+                private Gtk.Button reset_drag;
+                private Gtk.Button solve_drag;
 
                 public const OptionEntry[] options = {
                         { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule" },
@@ -120,8 +141,24 @@ namespace Balistica {
                  * Present the existing main window, or create a new one.
                  */
                 protected override void activate() {
+                        if (this.get_windows() != null) {
+                                main_window.present();
+                        } else {
+                                common_init();
+                        }
+                }
+
+                private void common_init() {
                         if (this.get_windows() == null) {
-                                main_window = new Balistica.MainWindow(this);
+                                main_window = new Gtk.Window();
+                                Environment.set_application_name(NAME);
+
+                                builder = Balistica.create_builder("main.glade");
+                                builder.connect_signals(null);
+                                main_window = (Gtk.Window) builder.get_object("balistica");
+
+                                main_window.show();
+                                this.add_window(main_window);
                         }
                 }
 
@@ -209,6 +246,83 @@ namespace Balistica {
                         }
 
                         return base.local_command_line (ref arguments, out exit_status);
+                }
+
+                /**
+                 * Show about dialog
+                 */
+                public void about_selected() {
+                        Gtk.show_about_dialog (main_window,
+                                "authors", Balistica.AUTHORS,
+                                "comments", "A simple open source external balistics calculator.",
+                                "copyright", Balistica.COPYRIGHT,
+                                "license-type", Gtk.License.GPL_3_0,
+                                "program-name", Balistica.NAME,
+                                "website", Balistica.WEBSITE,
+                                "website-label", "balística Website",
+                                "version", Balistica.VERSION);
+                }
+
+                /**
+                 * Connect the GUI elements to our code so we can play with them
+                 */
+                public void connect_entries() {
+                        // Stored calculation's name
+                        calc_name = builder.get_object("txtName") as Gtk.Entry;
+
+                        // Basic inputs
+                        drag_coefficient = builder.get_object("txtDrag_coefficient") as Gtk.Entry;
+                        projectile_weight = builder.get_object("txtProjectile_weight") as Gtk.Entry;
+                        initial_velocity = builder.get_object("txtIntial_velocity") as Gtk.Entry;
+                        zero_range = builder.get_object("txtZero_range") as Gtk.Entry;
+                        sight_height = builder.get_object("txtSight_height") as Gtk.Entry;
+                        shooting_angle = builder.get_object("txtShooting_angle") as Gtk.Entry;
+                        wind_velocity = builder.get_object("txtWind_velocity") as Gtk.Entry;
+                        wind_angle = builder.get_object("txtWind_angle") as Gtk.Entry;
+
+                        // Atmospheric corrections
+                        altitude = builder.get_object("txtAltitude") as Gtk.Entry;
+                        temp = builder.get_object("txtTemp") as Gtk.Entry;
+                        bar_press = builder.get_object("txtBarPress") as Gtk.Entry;
+                        rela_humid = builder.get_object("txtRelaHumid") as Gtk.Entry;
+
+                        // Buttons
+                        solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;
+                        solve_drag.clicked.connect(()=> {
+                                btnSolveDrag_clicked();
+                        });
+
+                        reset_drag = builder.get_object("btnResetDrag") as Gtk.Button;
+                        reset_drag.clicked.connect(()=> {
+                                btnResetDrag_clicked();
+                        });
+                }
+
+                /**
+                 * Reset the front end to prepare for a new calculation
+                 */
+                public void btnResetDrag_clicked() {
+                        calc_name.set_text("");
+                        drag_coefficient.set_text("");
+                        projectile_weight.set_text("");
+                        initial_velocity.set_text("");
+                        zero_range.set_text("");
+                        sight_height.set_text("");
+                        shooting_angle.set_text("");
+                        wind_velocity.set_text("");
+                        wind_angle.set_text("");
+                        altitude.set_text("");
+                        temp.set_text("");
+                        bar_press.set_text("");
+                        rela_humid.set_text("");
+               }
+
+                public void btnSolveDrag_clicked() {
+                        //TODO
+                }
+
+                public void quit_selected() {
+                        //TODO
                 }
         }
 } // namespace

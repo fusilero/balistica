@@ -3,7 +3,6 @@ set(MAIN
     Calculate.vala
     FileUtils.vala
     Main.vala
-    MainWindow.vala
 )
 
 set(LIB_BALISTICA
