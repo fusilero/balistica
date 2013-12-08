@@ -39,7 +39,6 @@ namespace Balistica {
         public const string VERSION = _VERSION;
         public const string GSETTINGS_DIR = _GSETTINGS_DIR;
 
-        // Global help strings
         public const string[] AUTHORS = {
                 "Steven Oliver <oliver.steven@gmail.com>",
                 null
@@ -114,6 +113,11 @@ namespace Balistica {
                 private Gtk.Button reset_drag;
                 private Gtk.Button solve_drag;
 
+                // Global Menu bar
+                private Gtk.MenuItem on_about;
+                private Gtk.MenuItem on_quit;
+                private Gtk.MenuItem on_help;
+
                 public const OptionEntry[] options = {
                         { "miller-twist", 0, 0, OptionArg.NONE, ref miller_twist, "Calculate twist using the Miller twist rule" },
                         { "miller-stability", 0, 0, OptionArg.NONE, ref miller_stability, "Calculate stability using the Miller twist rule" },
@@ -148,6 +152,9 @@ namespace Balistica {
                         }
                 }
 
+                /**
+                 * Intialization sequence for the GUI
+                 */
                 private void common_init() {
                         if (this.get_windows() == null) {
                                 main_window = new Gtk.Window();
@@ -155,10 +162,14 @@ namespace Balistica {
 
                                 builder = Balistica.create_builder("main.glade");
                                 builder.connect_signals(null);
+                                // I have to cast the builder object as a Gtk.Window
+                                // I think this is a bug in Vala
                                 main_window = (Gtk.Window) builder.get_object("balistica");
 
                                 main_window.show();
                                 this.add_window(main_window);
+
+                                connect_entries();
                         }
                 }
 
@@ -216,10 +227,16 @@ namespace Balistica {
                                 if (help) {
                                         if (arguments[1] == "miller-twist") {
                                                 stdout.printf("%s\n", MILLER_TWIST_HELP);
+                                                exit_status = 1;
+                                                return true;
                                         } else if (arguments[2] == "miller-stability") {
                                                 stdout.printf("%s\n", MILLER_STABILITY_HELP);
+                                                exit_status = 1;
+                                                return true;
                                         } else if (arguments[2] == "greenhill") {
                                                 stdout.printf("%s\n", GREENHILL_HELP);
+                                                exit_status = 1;
+                                                return true;
                                         } else {
                                                 stdout.printf("%s\n\n", USAGE);
                                                 stdout.printf("%s\n\n", APPLICATION_OPTIONS);
@@ -227,40 +244,32 @@ namespace Balistica {
                                                 exit_status = 1;
                                                 return true;
                                         }
-
-                                        if (miller_twist) {
-                                                Calculate.miller_twist(arguments);
-                                        }
-
-                                        if (miller_stability) {
-                                                Calculate.miller_stability(arguments);
-                                        }
-
-                                        if (greenhill) {
-                                                Calculate.greenhill(arguments);
-                                        }
-
-                                        activate();
-                                        exit_status = 0;
                                 }
+
+                                if (miller_twist) {
+                                        Calculate.miller_twist(arguments);
+                                        exit_status = 1;
+                                        return true;
+                                }
+
+                                if (miller_stability) {
+                                        Calculate.miller_stability(arguments);
+                                        exit_status = 1;
+                                        return true;
+
+                                }
+
+                                if (greenhill) {
+                                        Calculate.greenhill(arguments);
+                                        exit_status = 1;
+                                        return true;
+                                }
+
+                                activate();
+                                exit_status = 0;
                         }
 
                         return base.local_command_line (ref arguments, out exit_status);
-                }
-
-                /**
-                 * Show about dialog
-                 */
-                public void about_selected() {
-                        Gtk.show_about_dialog (main_window,
-                                "authors", Balistica.AUTHORS,
-                                "comments", "A simple open source external balistics calculator.",
-                                "copyright", Balistica.COPYRIGHT,
-                                "license-type", Gtk.License.GPL_3_0,
-                                "program-name", Balistica.NAME,
-                                "website", Balistica.WEBSITE,
-                                "website-label", "balística Website",
-                                "version", Balistica.VERSION);
                 }
 
                 /**
@@ -296,6 +305,22 @@ namespace Balistica {
                         reset_drag.clicked.connect(()=> {
                                 btnResetDrag_clicked();
                         });
+
+                        // Menubar
+                        on_about = builder.get_object("on_about") as Gtk.MenuItem;
+                        on_about.activate.connect(() => {
+                                about_selected();
+                        });
+
+                        on_quit = builder.get_object("on_quit") as Gtk.MenuItem;
+                        on_quit.activate.connect(() => {
+                                quit_selected();
+                        });
+
+                        on_help = builder.get_object("on_help") as Gtk.MenuItem;
+                        on_help.activate.connect(() => {
+                                help_selected();
+                        });
                 }
 
                 /**
@@ -322,7 +347,26 @@ namespace Balistica {
                 }
 
                 public void quit_selected() {
+                        main_window.destroy();
+                }
+
+                public void help_selected() {
                         //TODO
+                }
+
+                /**
+                 * Show about dialog
+                 */
+                public void about_selected() {
+                        Gtk.show_about_dialog (main_window,
+                                "authors", Balistica.AUTHORS,
+                                "comments", "A simple open source external balistics calculator.",
+                                "copyright", Balistica.COPYRIGHT,
+                                "license-type", Gtk.License.GPL_3_0,
+                                "program-name", Balistica.NAME,
+                                "website", Balistica.WEBSITE,
+                                "website-label", "balística Website",
+                                "version", Balistica.VERSION);
                 }
         }
 } // namespace
