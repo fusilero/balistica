@@ -7,11 +7,23 @@ project(balistica C)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 
+# We use this so we can append the latest commit hash
+# to the version string
+include(cmake/FindGit.cmake)
+if(GIT_FOUND)
+    GIT_WC_INFO(${PROJECT_SOURCE_DIR} Project)
+endif()
+
 #
-# Base bits
+# Version information
 #
-set(VERSION "0.0.1+trunk")
-set(VERSION_INFO "Release")
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 0)
+set(VERSION_REVISION 1)
+set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
+# Anything other than "Release" will add the latest commit 
+# hash when built to the version string
+set(VERSION_DESC "Development")
 
 # Packaging filenamesnames
 set(ARCHIVE_BASE_NAME ${CMAKE_PROJECT_NAME}-${VERSION})

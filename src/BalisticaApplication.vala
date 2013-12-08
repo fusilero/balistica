@@ -20,7 +20,12 @@ using GLib;
 using Gtk;
 
 // Defined by cmake build script.
-extern const string _VERSION;
+extern const string _VERSION_MAJOR;
+extern const string _VERSION_MINOR;
+extern const string _VERSION_REVISION;
+extern const string _VERSION_COMMIT;
+extern const string _VERSION_DESC;
+
 extern const string _GSETTINGS_DIR;
 
 namespace Balistica {
@@ -36,7 +41,12 @@ namespace Balistica {
         public const string DESKTOP_GENERIC_NAME = "Ballistics Calculator";
         public const string DESKTOP_KEYWORDS = "ballistics;calculator;";
 
-        public const string VERSION = _VERSION;
+        public const string VERSION_MAJOR = _VERSION_MAJOR;
+        public const string VERSION_MINOR = _VERSION_MINOR;
+        public const string VERSION_REVISION = _VERSION_REVISION;
+        public const string VERSION_COMMIT = _VERSION_COMMIT;
+        public const string VERSION_DESC = _VERSION_DESC;
+
         public const string GSETTINGS_DIR = _GSETTINGS_DIR;
 
         public const string[] AUTHORS = {
@@ -219,7 +229,12 @@ namespace Balistica {
                                 }
 
                                 if (version) {
-                                        stdout.printf("%s %s\n", "balística", Balistica.VERSION);
+                                        if (Balistica.VERSION_DESC == "Release") {
+                                                stdout.printf("%s %s\n", Balistica.NAME, Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION);
+                                        } else {
+                                                stdout.printf("%s %s\n", Balistica.NAME, Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "." + Balistica.VERSION_COMMIT);
+                                        }
+
                                         exit_status = 1;
                                         return true;
                                 }
@@ -358,6 +373,13 @@ namespace Balistica {
                  * Show about dialog
                  */
                 public void about_selected() {
+                        string version;
+                        if (Balistica.VERSION_DESC == "Release") {
+                                version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION;
+                        } else {
+                                version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "." + Balistica.VERSION_COMMIT;
+                        }
+
                         Gtk.show_about_dialog (main_window,
                                 "authors", Balistica.AUTHORS,
                                 "comments", "A simple open source external balistics calculator.",
@@ -366,7 +388,7 @@ namespace Balistica {
                                 "program-name", Balistica.NAME,
                                 "website", Balistica.WEBSITE,
                                 "website-label", "balística Website",
-                                "version", Balistica.VERSION);
+                                "version", version);
                 }
         }
 } // namespace
