@@ -194,6 +194,7 @@ namespace Balistica {
                  *
                  * @param arguments the command-line arguments
                  * @param exit_status the exit status to return to the OS
+                 *
                  * @return true if the arguments were successfully processed, false
                  * otherwise
                  */

@@ -18,9 +18,13 @@
 
 using GLib;
 
-public class Balistica.Calculate {
+public class Balistica.Calculate : GLib.Object {
         /**
          * Calculate twist using the Miller formula
+         *
+         * @param args Arguments passed in from the command line
+         *
+         * @return Calculated twist
          */
         public static void miller_twist(string[] args) {
                 LibBalistica.Miller m = new LibBalistica.Miller();
@@ -42,6 +46,10 @@ public class Balistica.Calculate {
 
         /**
          * Calculate stability using the Miller formula
+         *
+         * @param args Arguments passed in from the command line
+         *
+         * @return Calculated stability
          */
         public static void miller_stability(string[] args) {
                 LibBalistica.Miller m = new LibBalistica.Miller();
@@ -63,6 +71,10 @@ public class Balistica.Calculate {
 
         /**
          * Calculate twist using the Greenhill formula
+         *
+         * @param args Arguments passed in from the command line
+         *
+         * @return Calculated twist
          */
         public static void greenhill(string[] args) {
                 LibBalistica.Greenhill g = new LibBalistica.Greenhill();
@@ -80,5 +92,12 @@ public class Balistica.Calculate {
                 }
 
                 stdout.printf("%g\n", g.calc_twist());
+        }
+
+        /**
+         * Calculate the G1-G8 drag functions
+         */
+        public static void drag() {
+                //TODO
         }
 }
