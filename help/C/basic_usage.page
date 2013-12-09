@@ -2,6 +2,10 @@
       type="topic"
       id="basic_usage">
 
+      <info>
+        <link type="guide" xref="index#basic_usage">
+      </info>
+
     <title>Basic Usage</title>
   
 </page>

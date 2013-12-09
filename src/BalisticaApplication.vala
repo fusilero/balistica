@@ -29,6 +29,7 @@ extern const string _VERSION_DESC;
 extern const string _GSETTINGS_DIR;
 
 namespace Balistica {
+
         /**
          * These are publicly shared strings that will be
          * available throughout the base of the application
@@ -118,6 +119,9 @@ namespace Balistica {
                 private Gtk.Entry temp;
                 private Gtk.Entry bar_press;
                 private Gtk.Entry rela_humid;
+
+                // Drag calculation results
+                private Gtk.TextView drag_results;
 
                 // Drag calculation Buttons
                 private Gtk.Button reset_drag;
@@ -310,6 +314,9 @@ namespace Balistica {
                         bar_press = builder.get_object("txtBarPress") as Gtk.Entry;
                         rela_humid = builder.get_object("txtRelaHumid") as Gtk.Entry;
 
+                        // Drag Calculations Results
+                        drag_results = builder.get_object("txtviewDragResults") as Gtk.TextView;
+
                         // Buttons
                         solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;
                         solve_drag.clicked.connect(()=> {
@@ -343,6 +350,7 @@ namespace Balistica {
                  */
                 public void btnResetDrag_clicked() {
                         calc_name.set_text("");
+
                         drag_coefficient.set_text("");
                         projectile_weight.set_text("");
                         initial_velocity.set_text("");
@@ -351,22 +359,37 @@ namespace Balistica {
                         shooting_angle.set_text("");
                         wind_velocity.set_text("");
                         wind_angle.set_text("");
+
                         altitude.set_text("");
                         temp.set_text("");
                         bar_press.set_text("");
                         rela_humid.set_text("");
+
+                        drag_results.buffer.text = "";
                }
 
                 public void btnSolveDrag_clicked() {
                         //TODO
                 }
 
+                /**
+                 * Quit application
+                 */
                 public void quit_selected() {
                         main_window.destroy();
                 }
 
                 public void help_selected() {
-                        //TODO
+                        try {
+                                Gtk.show_uri(main_window.get_screen(), "ghelp:balistica", Gtk.get_current_event_time());
+                        } catch (Error err) {
+                                Gtk.Dialog dialog = new Gtk.Dialog.with_buttons("Error", null,
+                                        Gtk.DialogFlags.DESTROY_WITH_PARENT, "Cancel", Gtk.ResponseType.CLOSE, null);
+                                dialog.response.connect(() => { dialog.destroy(); });
+                                dialog.get_content_area().add(new Gtk.Label("Error showing help: %s".printf(err.message)));
+                                dialog.show_all();
+                                dialog.run();
+                        }
                 }
 
                 /**

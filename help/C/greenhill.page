@@ -2,6 +2,10 @@
       type="topic"
       id="greenhill">
 
+      <info>
+        <link type="guide" xref="index#basic_usage"/>
+      </info>
+
     <title>Greenhill Formula</title>
   
 </page>
