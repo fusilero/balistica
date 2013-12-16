@@ -65,7 +65,7 @@ namespace Balistica {
                         + "\n  miller-stability\tCalculate stability using the Miller twist rule"
                         + "\n  greenhill\t\tCalculate twist using the Greenhill formula";
 
-                // Specific help
+                // Specific help strings
                 private const string SPECIFIC_CMD = "See balistica help <command> for more information on a specific formula";
 
                 private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
@@ -144,10 +144,16 @@ namespace Balistica {
                         { null }
                 };
 
+                /**
+                 *
+                 */
                 public Application() {
                         GLib.Object (application_id: "org.gnome.balistica");
                 }
 
+                /**
+                 *
+                 */
                 protected override void startup() {
                         settings = new GLib.Settings("org.gnome.balistica");
 
@@ -336,6 +342,12 @@ namespace Balistica {
                         bar_press = builder.get_object("txtBarPress") as Gtk.Entry;
                         rela_humid = builder.get_object("txtRelaHumid") as Gtk.Entry;
 
+                        // Set default values
+                        altitude.set_text("0");
+                        temp.set_text("59");
+                        bar_press.set_text("29.53");
+                        rela_humid.set_text("78");
+
                         // Drag Calculations Results
                         drag_results = builder.get_object("txtviewDragResults") as Gtk.TextView;
 
@@ -382,10 +394,10 @@ namespace Balistica {
                         wind_velocity.set_text("");
                         wind_angle.set_text("");
 
-                        altitude.set_text("");
-                        temp.set_text("");
-                        bar_press.set_text("");
-                        rela_humid.set_text("");
+                        altitude.set_text("0");
+                        temp.set_text("59");
+                        bar_press.set_text("29.53");
+                        rela_humid.set_text("78");
                         enable_atmosphere.set_active(false);
 
                         drag_results.buffer.text = "";
@@ -407,7 +419,7 @@ namespace Balistica {
                                 Gtk.show_uri(main_window.get_screen(), "ghelp:balistica", Gtk.get_current_event_time());
                         } catch (Error err) {
                                 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons("Error", null,
-                                        Gtk.DialogFlags.DESTROY_WITH_PARENT, "Cancel", Gtk.ResponseType.CLOSE, null);
+                                        Gtk.DialogFlags.DESTROY_WITH_PARENT, "ERROR: ", Gtk.ResponseType.CLOSE, null);
                                 dialog.response.connect(() => { dialog.destroy(); });
                                 dialog.get_content_area().add(new Gtk.Label("Error showing help: %s".printf(err.message)));
                                 dialog.show_all();
