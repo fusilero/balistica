@@ -120,6 +120,9 @@ namespace Balistica {
                 private Gtk.Entry bar_press;
                 private Gtk.Entry rela_humid;
 
+                // Checkbox for atmospheric corrections
+                private Gtk.CheckButton enable_atmosphere;
+
                 // Drag calculation results
                 private Gtk.TextView drag_results;
 
@@ -309,6 +312,24 @@ namespace Balistica {
                         wind_velocity = builder.get_object("txtWind_velocity") as Gtk.Entry;
                         wind_angle = builder.get_object("txtWind_angle") as Gtk.Entry;
 
+                        // Checkbox to dis/en/able atmospheric corrections
+                        enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
+                        enable_atmosphere.toggled.connect (() => {
+                                if (enable_atmosphere.active) {
+                                        // checked
+                                        altitude.set_sensitive(true);
+                                        temp.set_sensitive(true);
+                                        bar_press.set_sensitive(true);
+                                        rela_humid.set_sensitive(true);
+                                } else {
+                                        // not checked
+                                        altitude.set_sensitive(false);
+                                        temp.set_sensitive(false);
+                                        bar_press.set_sensitive(false);
+                                        rela_humid.set_sensitive(false);
+                                }
+                        });
+
                         // Atmospheric corrections
                         altitude = builder.get_object("txtAltitude") as Gtk.Entry;
                         temp = builder.get_object("txtTemp") as Gtk.Entry;
@@ -365,6 +386,7 @@ namespace Balistica {
                         temp.set_text("");
                         bar_press.set_text("");
                         rela_humid.set_text("");
+                        enable_atmosphere.set_active(false);
 
                         drag_results.buffer.text = "";
                }

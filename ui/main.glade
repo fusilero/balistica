@@ -128,6 +128,7 @@
           <object class="GtkNotebook" id="notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="tab_pos">left</property>
             <child>
               <object class="GtkTable" id="table1">
                 <property name="visible">True</property>
@@ -138,6 +139,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="column_spacing">2</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkEntry" id="txtName">
                         <property name="visible">True</property>
@@ -573,6 +575,9 @@
                       <placeholder/>
                     </child>
                   </object>
+                  <packing>
+                    <property name="x_padding">4</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkGrid" id="grid4">
@@ -580,9 +585,11 @@
                     <property name="can_focus">False</property>
                     <property name="row_spacing">1</property>
                     <property name="column_spacing">2</property>
+                    <property name="column_homogeneous">True</property>
                     <child>
                       <object class="GtkEntry" id="txtAltitude">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
@@ -598,6 +605,7 @@
                     <child>
                       <object class="GtkEntry" id="txtTemp">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
@@ -613,6 +621,7 @@
                     <child>
                       <object class="GtkEntry" id="txtBarPress">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
@@ -628,6 +637,7 @@
                     <child>
                       <object class="GtkEntry" id="txtRelaHumid">
                         <property name="visible">True</property>
+                        <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="invisible_char">●</property>
                         <property name="invisible_char_set">True</property>
@@ -746,6 +756,7 @@
                   <packing>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
+                    <property name="x_padding">4</property>
                   </packing>
                 </child>
                 <child>
