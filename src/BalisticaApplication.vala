@@ -152,7 +152,7 @@ namespace Balistica {
                 }
 
                 /**
-                 *
+                 * Override the default GTK startup procedure
                  */
                 protected override void startup() {
                         settings = new GLib.Settings("org.gnome.balistica");
@@ -185,9 +185,7 @@ namespace Balistica {
 
                                 builder = Balistica.create_builder("main.glade");
                                 builder.connect_signals(null);
-                                // I have to cast the builder object as a Gtk.Window
-                                // I think this is a bug in Vala
-                                main_window = (Gtk.Window) builder.get_object("balistica");
+                                main_window = builder.get_object("balistica") as Gtk.Window;
 
                                 main_window.show();
                                 this.add_window(main_window);
@@ -404,7 +402,9 @@ namespace Balistica {
                }
 
                 public void btnSolveDrag_clicked() {
+                        //
                         //TODO
+                        //
                 }
 
                 /**
@@ -414,6 +414,9 @@ namespace Balistica {
                         main_window.destroy();
                 }
 
+                /**
+                 * Show help browser
+                 */
                 public void help_selected() {
                         try {
                                 Gtk.show_uri(main_window.get_screen(), "ghelp:balistica", Gtk.get_current_event_time());
