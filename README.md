@@ -30,3 +30,4 @@ Please see CONTRIBUTING.md
 
 ## Build Status
 [![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
+[![Coverage Status](https://coveralls.io/repos/steveno/balistica/badge.png)](https://coveralls.io/r/steveno/balistica)
