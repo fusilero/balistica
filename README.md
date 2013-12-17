@@ -27,3 +27,6 @@ make install
 ```
 ## Contributing
 Please see CONTRIBUTING.md
+
+## Build Status
+[![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
