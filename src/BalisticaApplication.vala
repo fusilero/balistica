@@ -130,7 +130,15 @@ namespace Balistica {
                 private Gtk.Button reset_drag;
                 private Gtk.Button solve_drag;
 
-                // Global Menu bar
+                // Radio buttons for drag functions
+                private Gtk.RadioButton rad_g1;
+                private Gtk.RadioButton rad_g2;
+                private Gtk.RadioButton rad_g5;
+                private Gtk.RadioButton rad_g6;
+                private Gtk.RadioButton rad_g7;
+                private Gtk.RadioButton rad_g8;
+
+                // Global menu bar
                 private Gtk.MenuItem on_about;
                 private Gtk.MenuItem on_quit;
                 private Gtk.MenuItem on_help;
@@ -348,6 +356,14 @@ namespace Balistica {
 
                         // Drag Calculations Results
                         drag_results = builder.get_object("txtviewDragResults") as Gtk.TextView;
+
+                        // Radio buttons for drag functions
+                        rad_g1 = builder.get_object("radG1") as Gtk.RadioButton;
+                        rad_g2 = builder.get_object("radG2") as Gtk.RadioButton;
+                        rad_g5 = builder.get_object("radG5") as Gtk.RadioButton;
+                        rad_g6 = builder.get_object("radG6") as Gtk.RadioButton;
+                        rad_g7 = builder.get_object("radG7") as Gtk.RadioButton;
+                        rad_g8 = builder.get_object("radG8") as Gtk.RadioButton;
 
                         // Buttons
                         solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;

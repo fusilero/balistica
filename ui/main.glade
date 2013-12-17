@@ -440,7 +440,7 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG3">
+                                  <object class="GtkRadioButton" id="radG1">
                                     <property name="label" translatable="yes">G1</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -457,7 +457,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG4">
+                                  <object class="GtkRadioButton" id="radG6">
                                     <property name="label" translatable="yes">G6</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -474,7 +474,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG9">
+                                  <object class="GtkRadioButton" id="radG8">
                                     <property name="label" translatable="yes">G8</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -491,7 +491,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG10">
+                                  <object class="GtkRadioButton" id="radG7">
                                     <property name="label" translatable="yes">G7</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -508,7 +508,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG11">
+                                  <object class="GtkRadioButton" id="radG2">
                                     <property name="label" translatable="yes">G2</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
@@ -525,7 +525,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkRadioButton" id="radG12">
+                                  <object class="GtkRadioButton" id="radG5">
                                     <property name="label" translatable="yes">G5</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
