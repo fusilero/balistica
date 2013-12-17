@@ -29,7 +29,9 @@ namespace Balistica {
         private File exec_dir;
 
         /**
-         * Returns the configure installation prefix directory, which does not imply it's installed
+         * Find the install prefix directory
+         *
+         * @return The configure installation prefix directory, which does not imply it's installed
          * or that it's running from this directory.
          *
          * From Geary by Yorba http://www.yorba.org/projects/geary/
@@ -39,7 +41,9 @@ namespace Balistica {
         }
 
         /**
-         * Returns the installation directory, or null if we're running outside of the installation
+         * Find the installation directory
+         *
+         * @return The installation directory, or null if we're running outside of the installation
          * directory.
          *
          * From Geary by Yorba http://www.yorba.org/projects/geary/
@@ -51,7 +55,9 @@ namespace Balistica {
         }
 
         /**
-         * Returns the base directory that the application's various resource files are stored.  If the
+         * Find the resource directory
+         *
+         * @return The base directory that the application's various resource files are stored.  If the
          * application is running from its installed directory, this will point to
          * $(BASEDIR)/share/<program name>.  If it's running from the build directory, this points to
          * that.
