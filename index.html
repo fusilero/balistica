@@ -32,44 +32,63 @@
       <section>
         <h2>Welcome</h2>
 
-<p>Balística is a exterior balisitics calculator with some extra feature tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan word</a> for "ballistics".</p>
-<p>Currently the project is in it's very early stages and is still missing quite a few features I've planned for it. Feel free to jump in and help!</p>
+<p>In the simplist terms, balística is an open source ballistics calculator. More specifically, balística is a exterior balisitics calculator 
+with some extra features tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan 
+word</a> for "ballistics".</p>
+
+<p>Currently the project is in it's early stages and is still missing quite a few features I have planned for it. Feel free to jump in and help!</p>
 
 <h2>Current Features</h2>
-<h3>Miller Twist Rule</h3>
-<p>The <a href="http://en.wikipedia.org/wiki/Miller_twist_rule" target="_blank">Miller Twist Rule</a> is a mathematical formula dervised to help people calculate which bullets will work better in thier rifle based upon various factors. Including bullet length and barrel twist rate.</p>
-
-<h3>Greenhill Forumlua</h3>
-<p>The <a href="http://en.wikipedia.org/wiki/Alfred_George_Greenhill" target="_blank">Greenhill Formula</a>, in the same vien as the Miller Twist Rule is a much older formula for the same purpose that has been used for centuries now. It is the defacto standard for this type of computation.</p>
-
-<h2>Planned Features</h2>
-<h3>A front end (GUI)</h3>
-<p>I really want a GUI front end. I'd like to have a layout that promotes ease of use and can be learned quickly without having to write RTFM everywhere.</p>
-
-<h3>A database to store custom handloads in</h3>
-<p>I want to be able to create and store custom hand loads. I already have a SQL database strucutre worked out for this. I also have some basic data to load in it. But that's all I have. I don't even have Vala to talk to the database with.</p>
 
 <h3>Calculate using the <a href="http://en.wikipedia.org/wiki/External_ballistics#Fixed_drag_curve_models_generated_for_standard-shaped_projectiles" target="_blank">standard drag functions</a> G1-G8</h3>
-<p>The standard drag functions are an essential part of any wana-be ballistics program. It's a have-to-have.</p>
+<p>The standard drag functions are an essential part of any ballistics program. It is simply a have-to-have. Currently balística has the backend
+built out for this, but the GUI front end to is still a work in process.</p>
+
+<h3>Miller Twist Rule</h3>
+<p>The <a href="http://en.wikipedia.org/wiki/Miller_twist_rule" target="_blank">Miller Twist Rule</a> is a mathematical formula dervised to help
+people calculate which bullets will work better in thier rifle based upon various factors. Including bullet length and barrel twist rate.</p>
+
+<h3>Greenhill Forumlua</h3>
+<p>The <a href="http://en.wikipedia.org/wiki/Alfred_George_Greenhill" target="_blank">Greenhill Formula</a>, in the same vien as the Miller Twist
+Rule is a much older formula for the same purpose that has been used for centuries now. It is the defacto standard for this type of computation.</p>
+
+<h2>Features In Process</h2>
+
+<h3>GUI for Standard Drag Functions</h3>
+<p>This is very close to completion and should be done very soon!</p>
 
 <h3>Seperate actual ballistics software into library</h3>
-<p>I'd like to have a <strong>libbalistica</strong> so that people could theoretically use the same math in other programs. Or at the very least expand upon this one with little trouble.</p>
+<p>I'd like to have a <strong>libbalistica</strong> so that people could theoretically use the same math in other programs. Or at the very least
+expand upon this one with little trouble. The code for this backend has already been seperated out in the git repository, but it needs configured
+so that it truely is a seperate peice of software.</p>
+
+<h2>Planned Features</h2>
+
+<h3>A database to store custom handloads in</h3>
+<p>I want to be able to create and store custom hand loads. I already have a SQL database strucutre worked out for this. I also have some basic data
+to load in it. But that's all I have. I don't even have Vala to talk to the database with.</p>
 
 <h3>Expansive Help Pages</h3>
-<p>I don't want to rewrite Wikipedia, but I'd really like to have a nice in depth look at whats going on in the software and how to properly use and understand the software in the help pages.</p>
+<p>I don't want to rewrite Wikipedia, but I'd really like to have a nice in depth look at whats going on in the software and how to properly use and
+understand the software in the help pages. The help pages do exist in a fleshed out form but need a lot of work expanding them out to be useful.</p>
+
+<h3>Other minor features</h3>
+<p>There are a lot of calculations out there! While I don't expect balística to be able to calculate <em>all of them</em> I see no reason to not try and
+do as many as possilbe. I'm sure there are a lot of still very realvent ones out there I haven't even started yet.</p>
 
 <h2>Helping out</h2>
 <h3>Check out the code</h3>
-<pre style="background-color: #3d3d3d;"><code><span style="color: #87ceeb;">~</span> <span style="color: #cd5c5c;">$</span> <span style="color: white">git clone git://github.com/steveno/balistica.git</span>
+<pre style="background-color: #3d3d3d;"><code><span style="color: #87ceeb;">~</span><span style="color: #cd5c5c;">$</span> <span style="color: white">git clone git://github.com/steveno/balistica.git</span>
 </code></pre>
 
 <h3>Building</h3>
-<pre style="background-color: #3d3d3d;"><code><span style="color: #87ceeb;">~</span> <span style="color: #cd5c5c;">$</span> <span style="color: white">cd balistica</span>
-<span style="color: #87ceeb;">~/balistica</span> <span style="color: #cd5c5c;">$</span> <span style="color: white">mkdir build &amp;&amp; cd build</span>
-<span style="color: #87ceeb;">~/balistica/build</span> <span style="color: #cd5c5c;">$</span> <span style="color: white">cmake ..</span>
-<span style="color: #87ceeb;">~/balistica/build</span> <span style="color: #cd5c5c">$</span> <span style="color: white">make</span>
-<span style="color: #87ceeb;">~/balistica/build</span> <span style="color: #cd5c5c;">$</span> <span style="color: white">make install</span>
-</code></pre>
+<pre style="background-color: #3d3d3d;">
+<code><span style="color: #87ceeb;">~</span><span style="color: #cd5c5c;">$</span> <span style="color: white">cd balistica</span>
+<span style="color: #87ceeb;">~/balistica</span><span style="color: #cd5c5c;">$</span> <span style="color: white">mkdir build &amp;&amp; cd build</span>
+<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">cmake ..</span>
+<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c">$</span> <span style="color: white">make</span>
+<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">make install</span></code>
+</pre>
 
 <p>I'd prefer pull requets though Github to keep it simple, but patches through email are always welcome anyway.</p>
 
