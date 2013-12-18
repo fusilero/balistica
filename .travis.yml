@@ -1,5 +1,9 @@
 language: c
 compiler: gcc
+# whitelist
+branches:
+  only:
+    - master
 before_install:
   - lsb_release -a
   - sudo add-apt-repository ppa:vala-team/ppa -y
