@@ -1,0 +1,18 @@
+language: c
+compiler: gcc
+# whitelist
+branches:
+  only:
+    - master
+before_install:
+  - lsb_release -a
+  - sudo add-apt-repository ppa:vala-team/ppa -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq gnome-common libglib2.0-dev libgtk-3-dev 
+         libsqlite3-dev libvala-0.22-dev valac-0.22 gobject-introspection
+  - sudo pip install cpp-coveralls --use-mirrors
+script:
+  - cmake .
+  - make
+after_success:
+  - coveralls --exclude lib --exclude tests
