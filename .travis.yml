@@ -1,6 +1,5 @@
 language: c
 compiler: gcc
-# whitelist
 branches:
   only:
     - master
