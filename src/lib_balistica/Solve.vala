@@ -51,7 +51,7 @@ namespace Balistica.LibBalistica {
                  *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory
                  *         segmentation fault.
                  */
-                public int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle) {
+                public static int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle) {
                         double[] ptr = {};
 
                         double t=0;

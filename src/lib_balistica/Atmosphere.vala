@@ -38,7 +38,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return Standardized refraction
                  */
-                private double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
+                private static double calcFR (double Temperature, double Pressure, double RelativeHumidity) {
                         double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature, 2) + 0.0234 * Temperature - 0.2517;
                         double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
                         return FRH;
@@ -50,7 +50,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return Standardized pressure
                  */
-                private inline double calcFP (double Pressure) {
+                private static inline double calcFP (double Pressure) {
                         return (Pressure - STANDARD_PRESSURE) / STANDARD_PRESSURE;
                 }
 
@@ -61,7 +61,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return Standardized temperature
                  */
-                private double calcFT (double Temp, double Altitude) {
+                private static double calcFT (double Temp, double Altitude) {
                         // We're calculating the standard temperature at your
                         // altitude using the lapse rate
                         // http://en.wikipedia.org/wiki/Lapse_rate
@@ -79,7 +79,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return Standardized altitude
                  */
-                private double calcFA (double Altitude) {
+                private static double calcFA (double Altitude) {
                         double fa = -4e-15 * Math.pow(Altitude, 3) + 4e-10 * Math.pow(Altitude, 2) -3e-5 * Altitude + 1;
                         return (1 / fa);
                 }
@@ -98,7 +98,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return The function returns a ballistic coefficient, corrected for the supplied atmospheric conditions.
                  */
-                public double AtmCorrect (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
+                public static double AtmCorrect (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
                         double FA = calcFA(Altitude);
                         double FT = calcFT(Temperature, Altitude);
                         double FR = calcFR(Temperature, Barometer, RelativeHumidity);
