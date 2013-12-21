@@ -97,7 +97,41 @@ public class Balistica.Calculate : GLib.Object {
         /**
          * Calculate the G1-G8 drag functions
          */
-        public static void drag() {
-                //TODO
+        public static void drag(double bc, double v, double sh, double angle, double zero, double windspeed, double windangle,
+                                double alt, double bar, double tp, double rh, int df) {
+                LibBalistica.DragFunction d;
+                int numRows;
+                double zero_angle = -1; // Bore / sight angle
+
+                bc = LibBalistica.Atmosphere.AtmCorrect(bc, alt, bar, tp, rh);
+
+                switch(df) {
+                        case 1:
+                                d = LibBalistica.DragFunction.G1;
+                                break;
+                        case 2:
+                                d = LibBalistica.DragFunction.G2;
+                                break;
+                        case 5:
+                                d = LibBalistica.DragFunction.G5;
+                                break;
+                        case 6:
+                                d = LibBalistica.DragFunction.G6;
+                                break;
+                        case 7:
+                                d = LibBalistica.DragFunction.G7;
+                                break;
+                        case 8:
+                                d = LibBalistica.DragFunction.G8;
+                                break;
+                        default:
+                                assert_not_reached();
+                }
+
+                // Find the zero angle of the bore relative to the sighting system
+                zero_angle = LibBalistica.Zero.ZeroAngle(d, bc, v, sh, zero, 0);
+
+                // Generate a solution
+                numRows = LibBalistica.Solve.SolveAll(d, bc, v, sh, angle, zero_angle, windspeed, windangle);
         }
 }

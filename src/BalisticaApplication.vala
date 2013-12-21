@@ -105,7 +105,7 @@ namespace Balistica {
                 public static bool help = false;
                 public static bool version = false;
 
-                 // Drag calculation entry fields
+                // Drag calculation entry fields
                 private Gtk.Entry calc_name;
                 private Gtk.Entry drag_coefficient;
                 private Gtk.Entry projectile_weight;
@@ -248,6 +248,7 @@ namespace Balistica {
                                         return true;
                                 }
 
+                                // They've passed the version option, Tell them the version and exit.
                                 if (version) {
                                         if (Balistica.VERSION_DESC == "Release") {
                                                 stdout.printf("%s %s\n", Balistica.NAME, Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION);
@@ -259,7 +260,10 @@ namespace Balistica {
                                         return true;
                                 }
 
+                                // They asked for help, first we have to deciede if they want the 
+                                // generic help or help for a specific command
                                 if (help) {
+                                        // They've picked a specific command
                                         if (arguments[1] == "miller-twist") {
                                                 stdout.printf("%s\n", MILLER_TWIST_HELP);
                                                 exit_status = 1;
@@ -272,6 +276,7 @@ namespace Balistica {
                                                 stdout.printf("%s\n", GREENHILL_HELP);
                                                 exit_status = 1;
                                                 return true;
+                                                // Nope they just want generic help
                                         } else {
                                                 stdout.printf("%s\n\n", USAGE);
                                                 stdout.printf("%s\n\n", APPLICATION_OPTIONS);
@@ -281,12 +286,14 @@ namespace Balistica {
                                         }
                                 }
 
+                                // Calculate the miller twist
                                 if (miller_twist) {
                                         Calculate.miller_twist(arguments);
                                         exit_status = 1;
                                         return true;
                                 }
 
+                                // Calculate the miller stability
                                 if (miller_stability) {
                                         Calculate.miller_stability(arguments);
                                         exit_status = 1;
@@ -294,6 +301,7 @@ namespace Balistica {
 
                                 }
 
+                                // Calculate the twist using Greenhill
                                 if (greenhill) {
                                         Calculate.greenhill(arguments);
                                         exit_status = 1;
@@ -327,20 +335,20 @@ namespace Balistica {
                         // Checkbox to dis/en/able atmospheric corrections
                         enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
                         enable_atmosphere.toggled.connect (() => {
-                                if (enable_atmosphere.active) {
+                                        if (enable_atmosphere.active) {
                                         // checked
                                         altitude.set_sensitive(true);
                                         temp.set_sensitive(true);
                                         bar_press.set_sensitive(true);
                                         rela_humid.set_sensitive(true);
-                                } else {
+                                        } else {
                                         // not checked
                                         altitude.set_sensitive(false);
                                         temp.set_sensitive(false);
                                         bar_press.set_sensitive(false);
                                         rela_humid.set_sensitive(false);
-                                }
-                        });
+                                        }
+                                        });
 
                         // Atmospheric corrections
                         altitude = builder.get_object("txtAltitude") as Gtk.Entry;
@@ -368,29 +376,29 @@ namespace Balistica {
                         // Buttons
                         solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;
                         solve_drag.clicked.connect(()=> {
-                                btnSolveDrag_clicked();
-                        });
+                                        btnSolveDrag_clicked();
+                                        });
 
                         reset_drag = builder.get_object("btnResetDrag") as Gtk.Button;
                         reset_drag.clicked.connect(()=> {
-                                btnResetDrag_clicked();
-                        });
+                                        btnResetDrag_clicked();
+                                        });
 
                         // Menubar
                         on_about = builder.get_object("on_about") as Gtk.MenuItem;
                         on_about.activate.connect(() => {
-                                about_selected();
-                        });
+                                        about_selected();
+                                        });
 
                         on_quit = builder.get_object("on_quit") as Gtk.MenuItem;
                         on_quit.activate.connect(() => {
-                                quit_selected();
-                        });
+                                        quit_selected();
+                                        });
 
                         on_help = builder.get_object("on_help") as Gtk.MenuItem;
                         on_help.activate.connect(() => {
-                                help_selected();
-                        });
+                                        help_selected();
+                                        });
                 }
 
                 /**
@@ -409,18 +417,61 @@ namespace Balistica {
                         wind_angle.set_text("");
 
                         altitude.set_text("0");
-                        temp.set_text("59");
+                        temp.set_text("59.0");
                         bar_press.set_text("29.53");
-                        rela_humid.set_text("78");
+                        rela_humid.set_text("78.0");
                         enable_atmosphere.set_active(false);
 
                         drag_results.buffer.text = "";
-               }
+                }
 
                 public void btnSolveDrag_clicked() {
-                        //
-                        //TODO
-                        //
+                        double bc = -1;         // Ballistic cefficient
+                        double v = -1;          // Initial velocity (ft/s)
+                        double sh = -1;         // Sight height over bore (inches)
+                        double angle = -1;      // Shooting Angle (degrees)
+                        double zero = -1;       // Zero range of the rifle (yards)
+                        double windspeed = -1;  // Wind speed (mph)
+                        double windangle = -1;  // Wind angle (0=headwind, 90=right to left, 180=tailwind, 270/-90=left to right)
+                        // Atmospheric corrections
+                        double alt = 0.0;       // Altitude
+                        double bar = 29.53;     // Barometeric pressure
+                        double tp = 59.0;       // Temperature
+                        double rh = 78.0;       // Relative Humidity
+
+                        int df;                 // Selected Drag Function
+
+                        bc = double.parse(drag_coefficient.get_text());
+                        v = double.parse(initial_velocity.get_text());
+                        sh = double.parse(sight_height.get_text());
+                        angle = double.parse(wind_angle.get_text());
+                        zero = double.parse(zero_range.get_text());
+                        windspeed = double.parse(wind_velocity.get_text());
+                        windangle = double.parse(wind_angle.get_text());
+
+                        if (enable_atmosphere.active) {
+                                alt = double.parse(altitude.get_text());
+                                bar = double.parse(bar_press.get_text());
+                                tp = double.parse(temp.get_text());
+                                rh = double.parse(rela_humid.get_text());
+                        }
+
+                        // Which version of the drag do they want to calculate?
+                        if (rad_g1.get_active()) {
+                                df = 1;
+                        } else if(rad_g2.get_active()) {
+                                df = 2;
+                        } else if(rad_g5.get_active()) {
+                                df = 5;
+                        } else if(rad_g6.get_active()) {
+                                df = 6;
+                        } else if(rad_g7.get_active()) {
+                                df = 7;
+                        } else {
+                                df = 8;
+                        }
+
+                        Calculate.drag(bc, v, sh, angle, zero, windspeed, windangle, alt, bar, tp, rh, df);
                 }
 
                 /**
@@ -438,7 +489,7 @@ namespace Balistica {
                                 Gtk.show_uri(main_window.get_screen(), "ghelp:balistica", Gtk.get_current_event_time());
                         } catch (Error err) {
                                 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons("Error", null,
-                                        Gtk.DialogFlags.DESTROY_WITH_PARENT, "ERROR: ", Gtk.ResponseType.CLOSE, null);
+                                                Gtk.DialogFlags.DESTROY_WITH_PARENT, "ERROR: ", Gtk.ResponseType.CLOSE, null);
                                 dialog.response.connect(() => { dialog.destroy(); });
                                 dialog.get_content_area().add(new Gtk.Label("Error showing help: %s".printf(err.message)));
                                 dialog.show_all();
@@ -458,14 +509,14 @@ namespace Balistica {
                         }
 
                         Gtk.show_about_dialog (main_window,
-                                "authors", Balistica.AUTHORS,
-                                "comments", "A simple open source external balistics calculator.",
-                                "copyright", Balistica.COPYRIGHT,
-                                "license-type", Gtk.License.GPL_3_0,
-                                "program-name", Balistica.NAME,
-                                "website", Balistica.WEBSITE,
-                                "website-label", "balística Website",
-                                "version", version);
+                                        "authors", Balistica.AUTHORS,
+                                        "comments", "A simple open source external balistics calculator.",
+                                        "copyright", Balistica.COPYRIGHT,
+                                        "license-type", Gtk.License.GPL_3_0,
+                                        "program-name", Balistica.NAME,
+                                        "website", Balistica.WEBSITE,
+                                        "website-label", "balística Website",
+                                        "version", version);
                 }
         }
 } // namespace
