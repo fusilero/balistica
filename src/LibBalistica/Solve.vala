@@ -48,18 +48,17 @@ namespace Balistica.LibBalistica {
                  *              180 degrees is a straight tailwind
                  *              -90 or 270 degrees is from left to right.
                  * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
-                 *         number of rows in the solution matrix, and should not be exceeded in order to avoid a memory
-                 *         segmentation fault.
+                 *         number of rows in the solution matrix, and should not be exceeded.
                  */
                 public static int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle) {
                         double[] ptr = {};
 
-                        double t=0;
-                        double dt=0.5 / Vi;
-                        double v=0;
-                        double vx=0, vx1=0, vy=0, vy1=0;
-                        double dv=0, dvx=0, dvy=0;
-                        double x=0, y=0;
+                        double t = 0;
+                        double dt = 0.5 / Vi;
+                        double v = 0;
+                        double vx = 0, vx1 = 0, vy = 0, vy1 = 0;
+                        double dv = 0, dvx = 0, dvy = 0;
+                        double x = 0, y = 0;
 
                         double headwind = Windage.HeadWind(WindSpeed, WindAngle);
                         double crosswind = Windage.CrossWind(WindSpeed, WindAngle);

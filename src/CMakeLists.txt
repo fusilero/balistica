@@ -6,18 +6,18 @@ set(MAIN
 )
 
 set(LIB_BALISTICA
-    lib_balistica/Atmosphere.vala
-    lib_balistica/Greenhill.vala
-    lib_balistica/LibBalistica.vala
-    lib_balistica/Miller.vala
-    lib_balistica/Retard.vala
-    lib_balistica/Retrieve.vala
-    lib_balistica/Solve.vala
-    lib_balistica/Windage.vala
-    lib_balistica/Zero.vala
+    LibBalistica/Atmosphere.vala
+    LibBalistica/Greenhill.vala
+    LibBalistica/LibBalistica.vala
+    LibBalistica/Miller.vala
+    LibBalistica/Retard.vala
+    LibBalistica/Retrieve.vala
+    LibBalistica/Solve.vala
+    LibBalistica/Windage.vala
+    LibBalistica/Zero.vala
 
-    lib_balistica/conversion/Angle.vala
-    lib_balistica/conversion/Temperature.vala
+    LibBalistica/conversion/Angle.vala
+    LibBalistica/conversion/Temperature.vala
 )
 
 set(DATABASE
