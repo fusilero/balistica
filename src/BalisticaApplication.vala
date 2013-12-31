@@ -425,6 +425,9 @@ namespace Balistica {
                         drag_results.buffer.text = "";
                 }
 
+                /**
+                 * Solve the drag function
+                 */
                 public void btnSolveDrag_clicked() {
                         double bc = -1;         // Ballistic cefficient
                         double v = -1;          // Initial velocity (ft/s)
