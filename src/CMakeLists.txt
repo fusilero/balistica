@@ -36,11 +36,12 @@ set(TARGET_GLIB 2.32)
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
     gtk+-3.0>=3.4.2
-    sqlite3>=3.7.4
+    gee-0.8>=0.8.5
+    #sqlite3>=3.7.4
 )
 
 set(LIB_BALISTICA_PACKAGES
-    glib-2.0 gtk+-3.0 sqlite3
+    glib-2.0 gtk+-3.0 gee-0.8 #sqlite3
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -55,13 +56,20 @@ set(CFLAGS
     -D_VERSION_DESC=\"${VERSION_DESC}\"
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
-    -g
 )
 
 if (NOT DEBUG)
     set(CFLAGS
         ${CFLAGS}
         -O2
+    )
+else ()
+    message("Compiling with DEBUG options")
+    set(CFLAGS
+	${CFLAGS}
+	-g
+	#-fprofile-arcs
+	-ftest-coverage
     )
 endif ()
 

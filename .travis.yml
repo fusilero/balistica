@@ -11,7 +11,7 @@ before_install:
          libsqlite3-dev libvala-0.22-dev valac-0.22 gobject-introspection
   - sudo pip install cpp-coveralls --use-mirrors
 script:
-  - cmake .
+  - cmake -D DEBUG=ON .
   - make
 after_success:
   - coveralls --exclude lib --exclude tests
