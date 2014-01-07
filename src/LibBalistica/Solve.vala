@@ -25,94 +25,100 @@
 
 using GLib;
 using Conversion;
+using Gee;
 
 namespace Balistica.LibBalistica {
 
-        public class Solve : GLib.Object {
-                /**
-                 * A function to generate a ballistic solution table in 1 yard increments, up to BCOMP_MAXRANGE.
-                 *
-                 * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
-                 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
-                 * @param Vi The projectile initial velocity.
-                 * @param SightHeight The height of the sighting system above the bore centerline.
-                 *             Most scopes are in the 1.5-2.0 inch range.
-                 * @param ShootingAngle The uphill or downhill shooting angle, in degrees.  Usually 0, but can be anything from
-                 *               90 (directly up), to -90 (directly down).
-                 * @param ZeroAngle The angle of the sighting system relative to the bore, in degrees.  This can be easily computed
-                 *           using the ZeroAngle() function documented above.
-                 * @param WindSpeed The wind velocity, in mi/hr
-                 * @param WindAngle The angle at which the wind is approaching from, in degrees.
-                 *              0 degrees is a straight headwind
-                 *              90 degrees is from right to left
-                 *              180 degrees is a straight tailwind
-                 *              -90 or 270 degrees is from left to right.
-                 * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
-                 *         number of rows in the solution matrix, and should not be exceeded.
-                 */
-                public static int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZAngle, double WindSpeed, double WindAngle) {
-                        double[] ptr = {};
+	public class Solve : GLib.Object {
+		/**
+		 * A function to generate a ballistic solution table in 1 yard increments, up to BCOMP_MAXRANGE.
+		 *
+		 * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
+		 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
+		 * @param Vi The projectile initial velocity.
+		 * @param SightHeight The height of the sighting system above the bore centerline.
+		 *              Most scopes are in the 1.5-2.0 inch range.
+		 * @param ShootingAngle The uphill or downhill shooting angle, in degrees.  Usually 0, but can be anything from
+		 *              90 (directly up), to -90 (directly down).
+		 * @param ZeroAngle The angle of the sighting system relative to the bore, in degrees.  This can be easily computed
+		 *              using the ZeroAngle() function documented above.
+		 * @param WindSpeed The wind velocity, in mi/hr
+		 * @param WindAngle The angle at which the wind is approaching from, in degrees.
+		 *              0 degrees is a straight headwind
+		 *              90 degrees is from right to left
+		 *              180 degrees is a straight tailwind
+		 *              -90 or 270 degrees is from left to right.
+		 * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
+		 *         number of rows in the solution matrix, and should not be exceeded.
+		 */
+		public static int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle, double ZeroAngle, double WindSpeed, double WindAngle) {
+			var solution = new Gee.LinkedList<double?>();
 
-                        double t = 0;
-                        double dt = 0.5 / Vi;
-                        double v = 0;
-                        double vx = 0, vx1 = 0, vy = 0, vy1 = 0;
-                        double dv = 0, dvx = 0, dvy = 0;
-                        double x = 0, y = 0;
+			double t = 0;
+			double dt = 0.5 / Vi;
+			double v = 0;
+			double vx = 0, vx1 = 0, vy = 0, vy1 = 0;
+			double dv = 0, dvx = 0, dvy = 0;
+			double x = 0, y = 0;
 
-                        double headwind = Windage.HeadWind(WindSpeed, WindAngle);
-                        double crosswind = Windage.CrossWind(WindSpeed, WindAngle);
+			double headwind = Windage.HeadWind(WindSpeed, WindAngle);
+			double crosswind = Windage.CrossWind(WindSpeed, WindAngle);
 
-                        double Gy = GRAVITY * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
-                        double Gx = GRAVITY * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
+			double Gy = GRAVITY * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZeroAngle)));
+			double Gx = GRAVITY * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZeroAngle)));
 
-                        vx = Vi * Math.cos(Angle.DegreeToRadian(ZAngle));
-                        vy = Vi * Math.sin(Angle.DegreeToRadian(ZAngle));
+			// Compute the horizontal and vertical components of velocity, respectively
+			vx = Vi * Math.cos(Angle.DegreeToRadian(ZeroAngle));
+			vy = Vi * Math.sin(Angle.DegreeToRadian(ZeroAngle));
 
-                        y = -SightHeight / 12;
+			y = -1 * SightHeight / 12;
 
-                        int n = 0;
-                        for (t = 0;; t = t + dt) {
-                                vx1 = vx;
-                                vy1 = vy;
-                                v = Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), 0.5);
-                                dt = 0.5 / v;
+			int n = 0;
+			for (t = 0;; t = t + dt) {
+				vx1 = vx;
+				vy1 = vy;
+				v = Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), 0.5);
+				dt = 0.5 / v;
 
-                                // Compute acceleration using the drag function retardation
-                                dv = Retard.CalcRetard(drag, DragCoefficient, v + headwind);
-                                dvx = -(vx / v) * dv;
-                                dvy = -(vy / v) * dv;
+				// Compute acceleration using the drag function retardation
+				dv = Retard.CalcRetard(drag, DragCoefficient, v + headwind);
+				dvx = -(vx / v) * dv;
+				dvy = -(vy / v) * dv;
 
-                                // Compute velocity, including the resolved gravity vectors.
-                                vx = vx + dt * dvx + dt * Gx;
-                                vy = vy + dt * dvy + dt * Gy;
+				// Compute velocity, including the resolved gravity vectors.
+				vx = vx + dt * dvx + dt * Gx;
+				vy = vy + dt * dvy + dt * Gy;
 
-                                if (x / 3 >= n){
-                                        ptr[10 * n + 0] = x / 3;		// Range in yds
-                                        ptr[10 * n + 1] = y * 12;		// Path in inches
-                                        ptr[10 * n + 2] = -1 * Angle.RadianToMOA(Math.atan(y/x));	        // Correction in MOA
-                                        ptr[10 * n + 3] = t + dt;		// Time in s
-                                        ptr[10 * n + 4] = Windage.CalcWindage(crosswind, Vi, x, t + dt);	// Windage in inches
-                                        ptr[10 * n + 5] = Angle.RadianToMOA(Math.atan(ptr[10 * n + 4]));        // Windage in MOA
-                                        ptr[10 * n + 6] = v;			// Velocity (combined)
-                                        ptr[10 * n + 7] = vx;			// Velocity (x)
-                                        ptr[10 * n + 8] = vy;			// Velocity (y)
-                                        ptr[10 * n + 9] = 0;			// Reserved
-                                        n++;
-                                }
+				if (x / 3 >= n){
+					solution.insert(10*n + 0, x/3);							// Range in yards
+					solution.insert(10*n + 1, y*12);						// Path in inches
+					solution.insert(10*n + 2, -1 * Angle.RadianToMOA(Math.atan(y/x)));		// Correction in MOA
+					solution.insert(10*n + 3, t + dt);						// Time in s
+					solution.insert(10*n + 4, Windage.CalcWindage(crosswind, Vi, x, t + dt));	// Windage in inches
+					solution.insert(10*n + 5, Angle.RadianToMOA(Math.atan(solution.get(10*n + 4))));// Windage in MOA
+					solution.insert(10*n + 6, v);							// Velocity (combined)
+					solution.insert(10*n + 7, vx);							// Velocity (x)
+					solution.insert(10*n + 8, vy);							// Velocity (y)
+					solution.insert(10*n + 9, 0);							// Reserved
 
-                                // Compute position based on average velocity.
-                                x = x + dt * (vx + vx1) / 2;
-                                y = y + dt * (vy + vy1) / 2;
+					n++;
+				}
 
-                                if (Math.fabs(vy) > Math.fabs(3 * vx)) break;
-                                if (n >= BCOMP_MAX_RANGE + 1) break;
-                        }
+				// Compute position based on average velocity.
+				x = x + dt * (vx + vx1) / 2;
+				y = y + dt * (vy + vy1) / 2;
 
-                        ptr[10 * BCOMP_MAX_RANGE + 1] = (double)n;
+				if (Math.fabs(vy) > Math.fabs(3 * vx))
+					break;
 
-                        return n;
-                }
-        }
+				if (n >= BCOMP_MAX_RANGE + 1)
+					break;
+			}
+
+			solution.set(10*BCOMP_MAX_RANGE + 1, n);
+
+			return n;
+		}
+	}
 
 } //namespace

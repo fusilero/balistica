@@ -101,7 +101,7 @@ public class Balistica.Calculate : GLib.Object {
                                 double alt, double bar, double tp, double rh, int df) {
                 LibBalistica.DragFunction d;
                 int numRows;
-                double zero_angle = -1; // Bore / sight angle
+                double zero_angle; // Bore / sight angle
 
                 bc = LibBalistica.Atmosphere.AtmCorrect(bc, alt, bar, tp, rh);
 
