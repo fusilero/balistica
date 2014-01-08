@@ -1,4 +1,4 @@
-/* Copyright 2012, 2013 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2014 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -102,6 +102,7 @@ public class Balistica.Calculate : GLib.Object {
                 LibBalistica.DragFunction d;
                 int numRows;
                 double zero_angle; // Bore / sight angle
+		var solution = new Gee.LinkedList<double?>();
 
                 bc = LibBalistica.Atmosphere.AtmCorrect(bc, alt, bar, tp, rh);
 
@@ -132,6 +133,6 @@ public class Balistica.Calculate : GLib.Object {
                 zero_angle = LibBalistica.Zero.ZeroAngle(d, bc, v, sh, zero, 0);
 
                 // Generate a solution
-                numRows = LibBalistica.Solve.SolveAll(d, bc, v, sh, angle, zero_angle, windspeed, windangle);
+                numRows = LibBalistica.Solve.SolveAll(d, bc, v, sh, angle, zero_angle, windspeed, windangle, solution);
         }
 }
