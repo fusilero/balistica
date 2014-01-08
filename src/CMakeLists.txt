@@ -68,7 +68,7 @@ else ()
     set(CFLAGS
 	${CFLAGS}
 	-g
-	#-fprofile-arcs
+	-fprofile-arcs
 	-ftest-coverage
     )
 endif ()
