@@ -120,5 +120,4 @@ namespace Balistica.LibBalistica {
 			return n;
 		}
 	}
-
 } //namespace

@@ -100,7 +100,7 @@ namespace Balistica.LibBalistica {
                                         x = x + dt * (vx + vx1) / 2;
                                         y = y + dt * (vy + vy1) / 2;
 
-                                        // Break early to save CPU time if we won't find a solution.
+                                        // Break early to save CPU time if we won't find a solution
                                         if (vy < 0 && y < yIntercept) {
                                                 break;
                                         }
@@ -118,14 +118,14 @@ namespace Balistica.LibBalistica {
                                         da = -da / 2;
                                 }
 
-                                if (Math.fabs(da) < Angle.MOAToRadian(0.01)) {
-                                        // If our accuracy is sufficient, we can stop approximating.
+                               // If our accuracy is sufficient, we can stop approximating
+                               if (Math.fabs(da) < Angle.MOAToRadian(0.01)) {
                                         quit = 1;
                                 }
 
+				// If we exceed the 45 degree launch angle, then the projectile just won't get there, so stop trying
                                 if (angle > Angle.DegreeToRadian(45)) {
-                                        // If we exceed the 45 degree launch angle, then the projectile just won't get there, so we stop trying.
-                                        quit = 1;
+					quit = 1;
                                 }
                         }
 
