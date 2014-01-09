@@ -33,7 +33,7 @@ set(ARCHIVE_DEBUILD_FULL_NAME ${CMAKE_PROJECT_NAME}_${VERSION}.orig.tar.xz)
 option(DEBUG "Build for debugging." OFF)
 
 if (DEBUG)
-	message(STATUS "Debug build")
+	message("Compiling with DEBUG options")
 endif ()
 
 find_package(PkgConfig)
