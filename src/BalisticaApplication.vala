@@ -35,7 +35,7 @@ namespace Balistica {
          * available throughout the base of the application
          */
         public const string NAME = "balística";
-        public const string COPYRIGHT = "Copyright © 2012-2013 Steven Oliver";
+        public const string COPYRIGHT = "Copyright © 2012-2014 Steven Oliver";
         public const string WEBSITE = "http://steveno.github.io/balistica/";
 
         public const string DESKTOP_NAME = "balística";
@@ -513,7 +513,7 @@ namespace Balistica {
 
                         Gtk.show_about_dialog (main_window,
                                         "authors", Balistica.AUTHORS,
-                                        "comments", "A simple open source external balistics calculator.",
+                                        "comments", "An open source external balistics calculator.",
                                         "copyright", Balistica.COPYRIGHT,
                                         "license-type", Gtk.License.GPL_3_0,
                                         "program-name", Balistica.NAME,
