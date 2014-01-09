@@ -66,7 +66,7 @@ namespace Balistica.LibBalistica {
 
                         double angle = 0; // The actual angle of the bore.
 
-                        int quit = 0; // We know it's time to quit our successive approximation loop when this is 1.
+                        bool quit = false;
 
                         // Start with a very coarse angular change, to quickly solve even large launch angle problems.
                         da = Angle.DegreeToRadian(14);
@@ -76,7 +76,7 @@ namespace Balistica.LibBalistica {
                         // and begin reducing the angle.  Once we are again below the correct angle, reduce the angular
                         // change by half again, and go back up.  This allows for a fast successive approximation of the
                         // correct elevation, usually within less than 20 iterations.
-                        for (angle = 0; quit == 0; angle = angle + da){
+                        for (angle = 0; quit == false; angle = angle + da){
                                 vy = Vi * Math.sin(angle);
                                 vx = Vi * Math.cos(angle);
                                 Gx = GRAVITY * Math.sin(angle);
@@ -120,13 +120,13 @@ namespace Balistica.LibBalistica {
 
                                // If our accuracy is sufficient, we can stop approximating
                                if (Math.fabs(da) < Angle.MOAToRadian(0.01)) {
-                                        quit = 1;
+                                        quit = true;
                                 }
 
 				// If we exceed the 45 degree launch angle, then the projectile just
 				// won't get there, so stop trying
                                 if (angle > Angle.DegreeToRadian(45)) {
-					quit = 1;
+					quit = true;
                                 }
                         }
 
