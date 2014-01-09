@@ -71,11 +71,11 @@ namespace Balistica.LibBalistica {
                         // Start with a very coarse angular change, to quickly solve even large launch angle problems.
                         da = Angle.DegreeToRadian(14);
 
-                        // The general idea here is to start at 0 degrees elevation, and increase the elevation by 14 degrees
-                        // until we are above the correct elevation.  Then reduce the angular change by half, and begin reducing
-                        // the angle.  Once we are again below the correct angle, reduce the angular change by half again, and go
-                        // back up.  This allows for a fast successive approximation of the correct elevation, usually within less
-                        // than 20 iterations.
+                        // The general idea here is to start at 0 degrees elevation, and increase the elevation by
+                        // 14 degrees until we are above the correct elevation.  Then reduce the angular change by half,
+                        // and begin reducing the angle.  Once we are again below the correct angle, reduce the angular
+                        // change by half again, and go back up.  This allows for a fast successive approximation of the
+                        // correct elevation, usually within less than 20 iterations.
                         for (angle = 0; quit == 0; angle = angle + da){
                                 vy = Vi * Math.sin(angle);
                                 vx = Vi * Math.cos(angle);
@@ -123,7 +123,8 @@ namespace Balistica.LibBalistica {
                                         quit = 1;
                                 }
 
-				// If we exceed the 45 degree launch angle, then the projectile just won't get there, so stop trying
+				// If we exceed the 45 degree launch angle, then the projectile just
+				// won't get there, so stop trying
                                 if (angle > Angle.DegreeToRadian(45)) {
 					quit = 1;
                                 }
