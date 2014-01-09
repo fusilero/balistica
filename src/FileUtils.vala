@@ -78,6 +78,7 @@ namespace Balistica {
          * @param ui_filename Filename, as string, of the UI file
          *
          * @return The newly created builder object 
+         *
          * From Geary by Yorba http://www.yorba.org/projects/geary/
          */
         public Gtk.Builder create_builder(string ui_filename) {
