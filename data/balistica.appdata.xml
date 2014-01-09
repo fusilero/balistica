@@ -6,11 +6,11 @@ Spec Homepage: http://www.w3schools.com/xml/xml_syntax.asp
 <application>
  <id type="desktop">balistica.desktop</id>
  <licence>CC0</licence>
- <name>Balística</name>
- <summary>Gnome ballistics software</summary>
+ <name>balística</name>
+ <summary>Gnome external ballistics software</summary>
  <description>
   <p>
-  Balística is a basic ballistics calculator for the Gnome Desktop Environment. It
+  balística is a basic ballistics calculator for the Gnome Desktop Environment. It
   provides the ability to calculate the standard drag functions (G1-G8) along with
   other minor ballistics related calculations like the Greenhill Formula and the 
   Miller Twist Rule.
