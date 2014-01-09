@@ -64,7 +64,6 @@ if (NOT DEBUG)
         -O2
     )
 else ()
-    message("Compiling with DEBUG options")
     set(CFLAGS
 	${CFLAGS}
 	-g
