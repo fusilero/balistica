@@ -75,6 +75,9 @@ namespace Balistica {
         /**
          * Creates a GTK builder given the filename of a UI file in the ui directory.
          *
+         * @param ui_filename Filename, as string, of the UI file
+         *
+         * @return The newly created builder object 
          * From Geary by Yorba http://www.yorba.org/projects/geary/
          */
         public Gtk.Builder create_builder(string ui_filename) {
