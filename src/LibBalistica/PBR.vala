@@ -24,18 +24,21 @@
  */
 
 using GLib;
+using Conversion;
 
 namespace Balistica.LibBalistica {
 
 	public class PBR : GLib.Object {
 		/**
-		 * Solves for the maximum Point blank range and associated details.
+		 * Solves for the maximum Point Blank Range (PBR) and associated details
 		 *
 		 * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
 		 *
 		 * @return
 		 */
 		public int pbr(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double VitalSize, int* oresult) {
+			const int PBR_ERROR = 3;
+
 			double t = 0;
 			double dt = 0.5/Vi;
 			double v = 0;
@@ -47,127 +50,133 @@ namespace Balistica.LibBalistica {
 			double Step = 10;
 
 			int result = 0;
-			int quit = 0;
+			bool quit = true;
 
 			double zero = -1;
 			double farzero = 0;
 
-			int vertex_keep = 0;
+			bool vertex_keep = false;
 			double y_vertex = 0;
 			double x_vertex = 0;
 
-			double min_pbr_range =0 ;
-			int min_pbr_keep = 0;
+			double min_pbr_range = 0;
+			bool min_pbr_keep = false;
 
 			double max_pbr_range = 0;
-			int max_pbr_keep = 0;
+			bool max_pbr_keep = false;
 
 			int tin100 = 0;
+			bool keep = false;
+			bool keep2 = false;
+			bool tinkeep = false;
 
-			double Gy = GRAVITY*cos(DegtoRad((ShootingAngle + ZAngle)));
-			double Gx = GRAVITY*sin(DegtoRad((ShootingAngle + ZAngle)));
+			double Gy = GRAVITY * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
+			double Gx = GRAVITY * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
 
-			while (quit == 0) {
-				Gy = GRAVITY*cos(DegtoRad((ShootingAngle + ZAngle)));
-				Gx = GRAVITY*sin(DegtoRad((ShootingAngle + ZAngle)));
+			while (quit) {
+				Gy = GRAVITY * Math.cos(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
+				Gx = GRAVITY * Math.sin(Angle.DegreeToRadian((ShootingAngle + ZAngle)));
 
-				vx = Vi*cos(DegtoRad(ZAngle));
-				vy = Vi*sin(DegtoRad(ZAngle));
+				vx = Vi * Math.cos(Angle.DegreeToRadian(ZAngle));
+				vy = Vi * Math.sin(Angle.DegreeToRadian(ZAngle));
 
 				x = 0;
-				y = -SightHeight/12;
+				y = -SightHeight / 12;
 
-				int keep = 0;
-				int keep2 = 0;
-				int tinkeep = 0;
-				min_pbr_keep = 0;
-				max_pbr_keep = 0;
-				vertex_keep = 0;
+				min_pbr_keep = false;
+				max_pbr_keep = false;
+				vertex_keep = false;
 
 				tin100 = 0;
-				tinkeep = 0;
+				tinkeep = false;
+				keep = false;
+				keep2 = false;
 
 				int n = 0;
 				for (t = 0; ; t = t + dt) {
 					vx1 = vx, vy1 = vy;
-					v = pow(pow(vx,2)+pow(vy,2),0.5);
+					v = Math.pow(Math.pow(vx,2) + Math.pow(vy,2), 0.5);
 					dt = 0.5/v;
 
 					// Compute acceleration using the drag function retardation
-					dv = retard(DragFunction,DragCoefficient,v);
-					dvx = -(vx/v)*dv;
-					dvy = -(vy/v)*dv;
+					dv = Retard.CalcRetard(DragFunction, DragCoefficient, v);
+					dvx = -(vx/v) * dv;
+					dvy = -(vy/v) * dv;
 
 					// Compute velocity, including the resolved gravity vectors
-					vx=vx + dt*dvx + dt*Gx;
-					vy=vy + dt*dvy + dt*Gy;
+					vx = vx + dt * dvx + dt*Gx;
+					vy = vy + dt * dvy + dt*Gy;
 
 					// Compute position based on average velocity
-					x=x+dt*(vx+vx1)/2;
-					y=y+dt*(vy+vy1)/2;
+					x = x + dt * (vx + vx1) / 2;
+					y = y + dt * (vy + vy1) / 2;
 
-					if (y>0 && keep==0 && vy>=0) {
-						zero=x;
-						keep=1;
+					if (y > 0 && keep == false && vy >= 0) {
+						zero = x;
+						keep = true;
 					}
 
-					if (y<0 && keep2==0 && vy<=0){
-						farzero=x;
-						keep2=1;
+					if (y < 0 && keep2 == false && vy <= 0) {
+						farzero = x;
+						keep2 = true;
 					}
 
-					if ((12*y)>-(VitalSize/2) && min_pbr_keep==0){
-						min_pbr_range=x;
-						min_pbr_keep=1;
+					if ((12 * y) > -(VitalSize / 2) && min_pbr_keep == false) {
+						min_pbr_range = x;
+						min_pbr_keep = true;
 					}
 
-					if ((12*y)<-(VitalSize/2) && min_pbr_keep==1 && max_pbr_keep==0){
-						max_pbr_range=x;
-						max_pbr_keep=1;
+					if ((12 * y) < -(VitalSize / 2) && min_pbr_keep == true && max_pbr_keep == false) {
+						max_pbr_range = x;
+						max_pbr_keep = true;
 					}
 
-					if (x>=300 && tinkeep==0){
-						tin100=(int)((float)100*(float)y*(float)12);
-						tinkeep=1;
+					if (x >= 300 && tinkeep == false){
+						tin100 = (int)((float)100*(float)y*(float)12);
+						tinkeep = true;
 					}
 
+					if (fabs(vy) > fabs(3 * vx)) {
+						result = PBR_ERROR;
+						break;
+					}
 
-					if (fabs(vy)>fabs(3*vx)) { result=PBR_ERROR; break; }
-					if (n>=__BCOMP_MAXRANGE__+1) { result=PBR_ERROR; break;}
-
+					if (n >= BCOMP_MAXRANGE + 1) {
+						result = PBR_ERROR;
+						break;
+					}
 
 					// The PBR will be maximum at the point where the vertex is 1/2 vital zone size
-					if (vy<0 && vertex_keep==0){
-						y_vertex=y;
-						x_vertex=x;
-						vertex_keep=1;
+					if (vy < 0 && vertex_keep == false){
+						y_vertex = y;
+						x_vertex = x;
+						vertex_keep = true;
 					}
 
-
-					if (keep==1 && keep2==1 && min_pbr_keep==1 && max_pbr_keep==1 && vertex_keep==1 && tinkeep==1) {
+					if (keep == 1 && keep2 == 1 && min_pbr_keep == true && max_pbr_keep == true && vertex_keep == true && tinkeep == 1) {
 						break;
 					}
 				}
 
-				if ((y_vertex*12)>(VitalSize/2)) {
-					if (Step>0)
-						Step=-Step/2; // Vertex too high.  Go downwards.
-				} else if ((y_vertex*12)<=(VitalSize/2)) { // Vertex too low.  Go upwards.
+				if ((y_vertex * 12) > (VitalSize / 2)) {
+					if (Step > 0)
+						Step = -Step / 2; // Vertex too high.  Go downwards.
+				} else if ((y_vertex * 12) <= (VitalSize / 2)) { // Vertex too low.  Go upwards.
 					if (Step < 0)
-						Step =-Step/2;
+						Step = -Step / 2;
 				}
 
 				ZAngle += Step;
 
-				if (fabs(Step) < (0.01/60))
-					quit=1;
+				if (fabs(Step) < (0.01 / 60))
+					quit = false;
 			}
 
-			oresult[0]=(int)(zero/3); // Near Zero
-			oresult[1]=(int)(farzero/3); // Far zero
-			oresult[2]=(int)(min_pbr_range/3); // Minimum PBR
-			oresult[3]=(int)(max_pbr_range/3); // Maximum PBR
-			oresult[4]=(int)tin100; // Sight-in at 100 yds (in 100ths of an inch)
+			oresult[0] = (int)(zero/3); // Near Zero
+			oresult[1] = (int)(farzero/3); // Far zero
+			oresult[2] = (int)(min_pbr_range/3); // Minimum PBR
+			oresult[3] = (int)(max_pbr_range/3); // Maximum PBR
+			oresult[4] = (int)tin100; // Sight-in at 100 yds (in 100ths of an inch)
 
 			return 0;
 		}
