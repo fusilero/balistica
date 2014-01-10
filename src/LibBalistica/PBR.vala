@@ -132,16 +132,11 @@ namespace Balistica.LibBalistica {
 					}
 
 					if (x >= 300 && tinkeep == false){
-						tin100 = (int)((float)100*(float)y*(float)12);
+						tin100 = (int)(100.0 * y * 12.0);
 						tinkeep = true;
 					}
 
-					if (fabs(vy) > fabs(3 * vx)) {
-						result = PBR_ERROR;
-						break;
-					}
-
-					if (n >= BCOMP_MAXRANGE + 1) {
+					if ((fabs(vy) > fabs(3 * vx)) || (n >= BCOMP_MAXRANGE + 1)) {
 						result = PBR_ERROR;
 						break;
 					}
@@ -153,15 +148,15 @@ namespace Balistica.LibBalistica {
 						vertex_keep = true;
 					}
 
-					if (keep == 1 && keep2 == 1 && min_pbr_keep == true && max_pbr_keep == true && vertex_keep == true && tinkeep == 1) {
+					if (keep == true && keep2 == true && min_pbr_keep == true && max_pbr_keep == true && vertex_keep == true && tinkeep == 1) {
 						break;
 					}
 				}
 
 				if ((y_vertex * 12) > (VitalSize / 2)) {
 					if (Step > 0)
-						Step = -Step / 2; // Vertex too high.  Go downwards.
-				} else if ((y_vertex * 12) <= (VitalSize / 2)) { // Vertex too low.  Go upwards.
+						Step = -Step / 2; // Vertex too high. Go downwards.
+				} else if ((y_vertex * 12) <= (VitalSize / 2)) { // Vertex too low. Go upwards.
 					if (Step < 0)
 						Step = -Step / 2;
 				}
@@ -176,7 +171,7 @@ namespace Balistica.LibBalistica {
 			oresult[1] = (int)(farzero/3); // Far zero
 			oresult[2] = (int)(min_pbr_range/3); // Minimum PBR
 			oresult[3] = (int)(max_pbr_range/3); // Maximum PBR
-			oresult[4] = (int)tin100; // Sight-in at 100 yds (in 100ths of an inch)
+			oresult[4] = tin100; // Sight-in at 100 yds (in 100ths of an inch)
 
 			return 0;
 		}
