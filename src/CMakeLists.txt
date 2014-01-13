@@ -59,20 +59,6 @@ set(CFLAGS
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
 )
 
-if (NOT DEBUG)
-    set(CFLAGS
-        ${CFLAGS}
-        -O2
-    )
-else ()
-    set(CFLAGS
-	${CFLAGS}
-	-g
-	#-fprofile-arcs
-	-ftest-coverage
-    )
-endif ()
-
 set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
@@ -83,6 +69,31 @@ set(VALAC_OPTIONS
     --enable-checking
     --fatal-warnings
 )
+
+if (NOT DEBUG)
+    set(CFLAGS
+        ${CFLAGS}
+        -O2
+    )
+else ()
+    set(CFLAGS
+	${CFLAGS}
+	-g
+	-fprofile-arcs
+	-ftest-coverage
+    )
+    
+    set(VALAC_OPTIONS
+    	${VALAC_OPTIONS}
+    	--debug
+    )
+    
+    set(DEPS_LIBRARIES
+    	${DEPS_LIBRARIES}
+    	gcov
+    )
+)
+endif ()
 
 # Balistica
 #################################################
