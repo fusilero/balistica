@@ -32,9 +32,15 @@ namespace Balistica.LibBalistica {
 		/**
 		 * Solves for the maximum Point Blank Range (PBR) and associated details
 		 *
-		 * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
+		 * @param Drag The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
+		 * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
+		 * @param Vi The projectile initial velocity.
+		 * @param SightHeight The height of the sighting system above the bore centerline.
+		 *              Most scopes are in the 1.5-2.0 inch range.
+		 * @param VitalSize ??
+		 * @param oresult ??
 		 *
-		 * @return
+		 * @return ??
 		 */
 		public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, int* oresult) {
 			const int PBR_ERROR = 3;

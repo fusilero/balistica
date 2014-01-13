@@ -70,7 +70,7 @@ namespace Balistica.LibBalistica {
 			vx = Vi * Math.cos(Angle.DegreeToRadian(ZeroAngle));
 			vy = Vi * Math.sin(Angle.DegreeToRadian(ZeroAngle));
 
-			y = -1 * SightHeight / 12;
+			y = -SightHeight / 12;
 
 			int n = 0;
 			for (t = 0;; t = t + dt) {
@@ -91,7 +91,7 @@ namespace Balistica.LibBalistica {
 				if (x / 3 >= n){
 					Solution.insert(10*n + 0, x/3);							// Range in yards
 					Solution.insert(10*n + 1, y*12);						// Path in inches
-					Solution.insert(10*n + 2, -1 * Angle.RadianToMOA(Math.atan(y/x)));		// Correction in MOA
+					Solution.insert(10*n + 2, -Angle.RadianToMOA(Math.atan(y/x)));			// Correction in MOA
 					Solution.insert(10*n + 3, t + dt);						// Time in s
 					Solution.insert(10*n + 4, Windage.CalcWindage(crosswind, Vi, x, t + dt));	// Windage in inches
 					Solution.insert(10*n + 5, Angle.RadianToMOA(Math.atan(Solution.get(10*n + 4))));// Windage in MOA
@@ -114,7 +114,7 @@ namespace Balistica.LibBalistica {
 					break;
 			}
 
-			Solution.set(10*BCOMP_MAX_RANGE + 1, n);
+			Solution.set(10 * BCOMP_MAX_RANGE + 1, n);
 
 			return n;
 		}
