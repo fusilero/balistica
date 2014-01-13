@@ -47,6 +47,7 @@ set(LIB_BALISTICA_PACKAGES
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
 
+# Compilation options
 set(CFLAGS
     ${DEPS_CFLAGS}
     ${DEPS_CFLAGS_OTHER}
@@ -70,12 +71,16 @@ set(VALAC_OPTIONS
     --fatal-warnings
 )
 
+# Debug vs not-Debug
 if (NOT DEBUG)
     set(CFLAGS
         ${CFLAGS}
         -O2
     )
 else ()
+    # For now if we're debugging we're also
+    # doing code coverage; if needed this can
+    # easily change in the future
     set(CFLAGS
 	${CFLAGS}
 	-g
