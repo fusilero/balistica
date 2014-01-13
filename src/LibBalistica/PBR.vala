@@ -36,7 +36,7 @@ namespace Balistica.LibBalistica {
 		 *
 		 * @return
 		 */
-		public int pbr(int DragFunction, double DragCoefficient, double Vi, double SightHeight, double VitalSize, int* oresult) {
+		public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, int* oresult) {
 			const int PBR_ERROR = 3;
 
 			double t = 0;
@@ -94,12 +94,13 @@ namespace Balistica.LibBalistica {
 
 				int n = 0;
 				for (t = 0; ; t = t + dt) {
-					vx1 = vx, vy1 = vy;
+					vx1 = vx;
+					vy1 = vy;
 					v = Math.pow(Math.pow(vx,2) + Math.pow(vy,2), 0.5);
 					dt = 0.5/v;
 
 					// Compute acceleration using the drag function retardation
-					dv = Retard.CalcRetard(DragFunction, DragCoefficient, v);
+					dv = Retard.CalcRetard(Drag, DragCoefficient, v);
 					dvx = -(vx/v) * dv;
 					dvy = -(vy/v) * dv;
 
@@ -136,7 +137,7 @@ namespace Balistica.LibBalistica {
 						tinkeep = true;
 					}
 
-					if ((fabs(vy) > fabs(3 * vx)) || (n >= BCOMP_MAXRANGE + 1)) {
+					if ((Math.fabs(vy) > Math.fabs(3 * vx)) || (n >= BCOMP_MAX_RANGE + 1)) {
 						result = PBR_ERROR;
 						break;
 					}
@@ -148,7 +149,7 @@ namespace Balistica.LibBalistica {
 						vertex_keep = true;
 					}
 
-					if (keep == true && keep2 == true && min_pbr_keep == true && max_pbr_keep == true && vertex_keep == true && tinkeep == 1) {
+					if (keep == true && keep2 == true && min_pbr_keep == true && max_pbr_keep == true && vertex_keep == true && tinkeep == true) {
 						break;
 					}
 				}
@@ -163,7 +164,7 @@ namespace Balistica.LibBalistica {
 
 				ZAngle += Step;
 
-				if (fabs(Step) < (0.01 / 60))
+				if (Math.fabs(Step) < (0.01 / 60))
 					quit = false;
 			}
 
