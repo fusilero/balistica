@@ -92,7 +92,6 @@ else ()
     	${DEPS_LIBRARIES}
     	gcov
     )
-)
 endif ()
 
 # Balistica
