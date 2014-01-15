@@ -27,154 +27,299 @@ using GLib;
 
 namespace Balistica.LibBalistica {
 
-        /**
-	 * Functions for retrieving data from a solution generated with SolveAll()
+	/**
+	 *
 	 */
-        public class Retrieve : GLib.Object {
+	public class Solution : GLib.Object {
+		int _df;
+		private Gee.LinkedList<double?> _sln;
+		private string _name;
+		private int _weight;
+		private double _bc;
+		private double _sightheight;
+		private int _mv;
+		private int _angle;
+		private int _zerorange;
+		private int _windspeed;
+		private int _windangle;
+		private int _temp;
+		private int _ckweather;
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return Range, in yards.
-                 */
-                public double GetRange(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE * 10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage];
-                        }
-                        else return 0;
-                }
+		private double _pressure;
+		private int _humidity;
+		private int _altitude;
+		private int _rows;
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return Projectile path, in inches, relative to the line of sight.
-                 */
-                public double GetPath(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 1];
-                        }
-                        else return 0;
-                }
+		/**
+		 *
+		 */
+		public Solution (Gee.LinkedList<double?> solution, string name, double bc, double sh,
+				int w, int mv, int angle, int zr, int ws, int wa, int t, int h,
+				double p, int a, int entries, int useweather, int df) {
+			_sln = solution;
+			_name = name;
+			_bc = bc;
+			_sightheight = sh;
+			_weight = w;
+			_mv = mv;
+			_angle = angle;
+			_zerorange = zr;
+			_windspeed = ws;
+			_windangle = wa;
+			_temp = t;
+			_humidity = h;
+			_pressure = p;
+			_altitude = a;
+			_rows = entries;
+			_ckweather = useweather;
+			_df = df;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return An estimated elevation correction for achieving a zero at this range. 
-                 *         This is useful for "click charts" and the like.
-                 */
-                public double GetMOA(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 2];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public string getName() {
+			return this._name;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return The projectile's time of flight to this range.
-                 */
-                public double GetTime(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 3];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public int getWeight() {
+			return this._weight;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return The windage correction in inches required to achieve zero at this range.
-                 */
-                public double GetWindage(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 4];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public double getBc() {
+			return this._bc;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return An approximate windage correction in MOA to achieve a zero at this range.
-                 */
-                public double GetWindageMOA(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 5];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public double getSightheight() {
+			return this._sightheight;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return The projectile's total velocity (Vector product of Vx and Vy)
-                 */
-                public double GetVelocity(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 6];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public int getMv() {
+			return this._mv;
+		}
 
-                /**
-                 * For very steep shooting angles, Vx can actually become what you would think of as Vy relative
-                 * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
-                 * relative to the bore's axis, and have very little to do with the ground's orientation.
-                 *
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return The velocity of the projectile in the bore direction.
-                 */
-                public double GetVx(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 7];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public int getAngle() {
+			return this._angle;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return The velocity of the projectile perpendicular to the bore direction.
-                 */
-                public double GetVy(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 8];
-                        }
-                        else return 0;
-                }
+		/**
+		 * @return
+		 */
+		public int getZerorange() {
+			return this._zerorange;
+		}
 
-                /**
-                 * @param sln
-                 * @param yardage
-                 *
-                 * @return
-                 */
-                public double GetDrop(Gee.LinkedList<double?> sln, int yardage){
-                        double size = sln[BCOMP_MAX_RANGE*10 + 1];
-                        if (yardage < size){
-                                return sln[10*yardage + 9];
-                        }
-                        else return 0;
-                }
-        }
+		/**
+		 * @return
+		 */
+		public int getWindspeed() {
+			return this._windspeed;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getWindangle() {
+			return this._windangle;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getTemp() {
+			return this._temp;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getCkweater() {
+			return this._ckweather;
+		}
+
+		/**
+		 * @return
+		 */
+		public double getPressure() {
+			return this._pressure;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getHumidity() {
+			return this._humidity;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getAltitude() {
+			return this._altitude;
+		}
+
+		/**
+		 * @return
+		 */
+		public int getRows() {
+			return this._rows;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return Range, in yards.
+		 */
+		public double getRange(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE * 10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return Projectile path, in inches, relative to the line of sight.
+		 */
+		public double getPath(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 1];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return An estimated elevation correction for achieving a zero at this range. 
+		 *         This is useful for "click charts" and the like.
+		 */
+		public double getMOA(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 2];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return The projectile's time of flight to this range.
+		 */
+		public double getTime(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 3];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return The windage correction in inches required to achieve zero at this range.
+		 */
+		public double getWindage(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 4];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return An approximate windage correction in MOA to achieve a zero at this range.
+		 */
+		public double getWindageMOA(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 5];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return The projectile's total velocity (Vector product of Vx and Vy)
+		 */
+		public double getVelocity(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 6];
+			}
+			else return 0;
+		}
+
+		/**
+		 * For very steep shooting angles, Vx can actually become what you would think of as Vy relative
+		 * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
+		 * relative to the bore's axis, and have very little to do with the ground's orientation.
+		 *
+		 * @param yardage
+		 *
+		 * @return The velocity of the projectile in the bore direction.
+		 */
+		public double getVx(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 7];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return The velocity of the projectile perpendicular to the bore direction.
+		 */
+		public double getVy(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 8];
+			}
+			else return 0;
+		}
+
+		/**
+		 * @param yardage
+		 *
+		 * @return
+		 */
+		public double getDrop(int yardage){
+			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
+			if (yardage < size){
+				return this._sln[10*yardage + 9];
+			}
+			else return 0;
+		}
+
+		/**
+		 *
+		 */
+		public double getEnergy(int k) {
+			return (double)this._weight * Math.pow(getVelocity(k), 2) / 450436;
+		}
+	}
 } //namespace
