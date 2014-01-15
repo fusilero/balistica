@@ -31,10 +31,15 @@ set(ARCHIVE_FULL_NAME ${ARCHIVE_BASE_NAME}.tar.xz)
 set(ARCHIVE_DEBUILD_FULL_NAME ${CMAKE_PROJECT_NAME}_${VERSION}.orig.tar.xz)
 
 option(DEBUG "Build for debugging." OFF)
+option(ADD_COVERAGE "Add support for gcov code coverage tool." OFF)
 
 if (DEBUG)
-	message("Compiling with DEBUG options")
+    message(STATUS "Compiling with DEBUG options")
 endif ()
+
+if(ADD_COVERAGE)
+    message(STATUS "Adding GCOV support")
+endif()
 
 find_package(PkgConfig)
 

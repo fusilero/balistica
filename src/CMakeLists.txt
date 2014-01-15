@@ -74,30 +74,35 @@ set(VALAC_OPTIONS
 # Debug vs not-Debug
 if (NOT DEBUG)
     set(CFLAGS
-        ${CFLAGS}
-        -O2
-    )
-else ()
-    # For now if we're debugging we're also
-    # doing code coverage; if needed this can
-    # easily change in the future
+	${CFLAGS}
+	-O2
+	)
+endif()
+
+if(DEBUG OR ADD_COVERAGE)
+    set(VALAC_OPTIONS
+	${VALAC_OPTIONS}
+	--debug
+	)
+
     set(CFLAGS
 	${CFLAGS}
 	-g
-	-fprofile-arcs
-	-ftest-coverage
-    )
-    
-    set(VALAC_OPTIONS
-    	${VALAC_OPTIONS}
-    	--debug
-    )
-    
-    set(DEPS_LIBRARIES
-    	${DEPS_LIBRARIES}
-    	gcov
-    )
-endif ()
+	)
+
+    if(ADD_COVERAGE)
+	set(CFLAGS
+	    ${CFLAGS}
+	    -fprofile-arcs
+	    -ftest-coverage
+	    )
+
+	set(COVERAGE_LIBS
+	    ${COVERAGE_LIBS}
+	    gcov
+	    )
+    endif()
+endif()
 
 # Balistica
 #################################################
@@ -112,7 +117,7 @@ OPTIONS
 )
 
 add_executable(balistica ${BALISTICA_VALA_C})
-target_link_libraries(balistica ${DEPS_LIBRARIES} gthread-2.0 m)
+target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 m)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 add_custom_command(
     TARGET
