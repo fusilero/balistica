@@ -12,7 +12,7 @@ set(LIB_BALISTICA
     LibBalistica/Miller.vala
     LibBalistica/PBR.vala
     LibBalistica/Retard.vala
-    LibBalistica/Retrieve.vala
+    LibBalistica/Solution.vala
     LibBalistica/Solve.vala
     LibBalistica/Windage.vala
     LibBalistica/Zero.vala
