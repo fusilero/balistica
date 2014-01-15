@@ -28,7 +28,7 @@ using GLib;
 namespace Balistica.LibBalistica {
 
 	/**
-	 *
+	 * 
 	 */
 	public class Solution : GLib.Object {
 		int _df;
@@ -51,7 +51,23 @@ namespace Balistica.LibBalistica {
 		private int _rows;
 
 		/**
-		 *
+		 * @param solution Calculated solution
+		 * @param name Calculation's name
+		 * @param bc 
+		 * @param sh Sightheight 
+		 * @param w Weight
+		 * @param mv 
+		 * @param angle 
+		 * @param zr Zero range
+		 * @param ws Wind speed
+		 * @param wa Wind angle
+		 * @param t Temperature
+		 * @param h Humidity
+		 * @param p Pressure
+		 * @param a Altitude
+		 * @param entries
+		 * @param useweather
+		 * @param df
 		 */
 		public Solution (Gee.LinkedList<double?> solution, string name, double bc, double sh,
 				int w, int mv, int angle, int zr, int ws, int wa, int t, int h,
@@ -76,105 +92,105 @@ namespace Balistica.LibBalistica {
 		}
 
 		/**
-		 * @return
+		 * @return Instance name
 		 */
 		public string getName() {
 			return this._name;
 		}
 
 		/**
-		 * @return
+		 * @return Instance weight 
 		 */
 		public int getWeight() {
 			return this._weight;
 		}
 
 		/**
-		 * @return
+		 * @return Instance 
 		 */
 		public double getBc() {
 			return this._bc;
 		}
 
 		/**
-		 * @return
+		 * @return Instance sight height
 		 */
 		public double getSightheight() {
 			return this._sightheight;
 		}
 
 		/**
-		 * @return
+		 * @return Instance 
 		 */
 		public int getMv() {
 			return this._mv;
 		}
 
 		/**
-		 * @return
+		 * @return Instance shooting angle
 		 */
 		public int getAngle() {
 			return this._angle;
 		}
 
 		/**
-		 * @return
+		 * @return Instance zero range
 		 */
 		public int getZerorange() {
 			return this._zerorange;
 		}
 
 		/**
-		 * @return
+		 * @return Instance wind speed
 		 */
 		public int getWindspeed() {
 			return this._windspeed;
 		}
 
 		/**
-		 * @return
+		 * @return Instance wind angle
 		 */
 		public int getWindangle() {
 			return this._windangle;
 		}
 
 		/**
-		 * @return
+		 * @return Instance temperature
 		 */
 		public int getTemp() {
 			return this._temp;
 		}
 
 		/**
-		 * @return
+		 * @return Instance 
 		 */
 		public int getCkweater() {
 			return this._ckweather;
 		}
 
 		/**
-		 * @return
+		 * @return Instance pressure
 		 */
 		public double getPressure() {
 			return this._pressure;
 		}
 
 		/**
-		 * @return
+		 * @return Instance humidity
 		 */
 		public int getHumidity() {
 			return this._humidity;
 		}
 
 		/**
-		 * @return
+		 * @return Instance altitude
 		 */
 		public int getAltitude() {
 			return this._altitude;
 		}
 
 		/**
-		 * @return
+		 * @return Instance 
 		 */
 		public int getRows() {
 			return this._rows;
@@ -183,7 +199,7 @@ namespace Balistica.LibBalistica {
 		/**
 		 * @param yardage
 		 *
-		 * @return Range, in yards.
+		 * @return The calculated range, in yards.
 		 */
 		public double getRange(int yardage){
 			double size = this._sln[BCOMP_MAX_RANGE * 10 + 1];
@@ -196,7 +212,7 @@ namespace Balistica.LibBalistica {
 		/**
 		 * @param yardage
 		 *
-		 * @return Projectile path, in inches, relative to the line of sight.
+		 * @return The projectile path, in inches, relative to the line of sight.
 		 */
 		public double getPath(int yardage){
 			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
@@ -305,7 +321,7 @@ namespace Balistica.LibBalistica {
 		/**
 		 * @param yardage
 		 *
-		 * @return
+		 * @return Calculated bullet drop in yards.
 		 */
 		public double getDrop(int yardage){
 			double size = this._sln[BCOMP_MAX_RANGE*10 + 1];
@@ -316,7 +332,9 @@ namespace Balistica.LibBalistica {
 		}
 
 		/**
-		 *
+		 * @param yardage
+		 * 
+		 * @return Calculated energry at specified yard downrange.
 		 */
 		public double getEnergy(int k) {
 			return (double)this._weight * Math.pow(getVelocity(k), 2) / 450436;
