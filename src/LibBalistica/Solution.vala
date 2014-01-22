@@ -19,45 +19,46 @@
 /* The code in this file was originally part of the GNU Exterior
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- *
- * I converted it from C to Vala.
  */
 
 using GLib;
 
 namespace Balistica.LibBalistica {
 
-	/**
-	 * 
-	 */
 	public class Solution : GLib.Object {
 		int _df;
 		private Gee.LinkedList<double?> _sln;
 		private string _name;
-		private int _weight;
+		private double _weight;
 		private double _bc;
 		private double _sightheight;
-		private int _mv;
-		private int _angle;
-		private int _zerorange;
-		private int _windspeed;
-		private int _windangle;
-		private int _temp;
-		private int _ckweather;
+		private double _mv;
+		private double _angle;
+		private double _zerorange;
+		private double _windspeed;
+		private double _windangle;
+		private double _temp;
 
 		private double _pressure;
-		private int _humidity;
-		private int _altitude;
+		private double _humidity;
+		private double _altitude;
 		private int _rows;
+
+		/**
+		 * Empty default constructor. Only used to
+		 * represent a calculation failure.
+		 */
+		public Solution() {
+		}
 
 		/**
 		 * @param solution Calculated solution
 		 * @param name Calculation's name
-		 * @param bc 
-		 * @param sh Sightheight 
+		 * @param bc Ballistic coefficent
+		 * @param sh Sightheight
 		 * @param w Weight
-		 * @param mv 
-		 * @param angle 
+		 * @param mv Velocity
+		 * @param angle Shooting angle
 		 * @param zr Zero range
 		 * @param ws Wind speed
 		 * @param wa Wind angle
@@ -65,13 +66,12 @@ namespace Balistica.LibBalistica {
 		 * @param h Humidity
 		 * @param p Pressure
 		 * @param a Altitude
-		 * @param entries
-		 * @param useweather
+		 * @param entries Number of entries in the solution
 		 * @param df
 		 */
-		public Solution (Gee.LinkedList<double?> solution, string name, double bc, double sh,
-				int w, int mv, int angle, int zr, int ws, int wa, int t, int h,
-				double p, int a, int entries, int useweather, int df) {
+		public Solution.full (Gee.LinkedList<double?> solution, string name, double bc, double sh,
+				 double w, double mv, double angle, double zr, double ws, double wa,
+				 double t, double h, double p, double a, int entries, int df) {
 			_sln = solution;
 			_name = name;
 			_bc = bc;
@@ -87,7 +87,6 @@ namespace Balistica.LibBalistica {
 			_pressure = p;
 			_altitude = a;
 			_rows = entries;
-			_ckweather = useweather;
 			_df = df;
 		}
 
@@ -99,98 +98,91 @@ namespace Balistica.LibBalistica {
 		}
 
 		/**
-		 * @return Instance weight 
+		 * @return Instance value of weight
 		 */
-		public int getWeight() {
+		public double getWeight() {
 			return this._weight;
 		}
 
 		/**
-		 * @return Instance 
+		 * @return Instance value of the ballistic coefficient
 		 */
 		public double getBc() {
 			return this._bc;
 		}
 
 		/**
-		 * @return Instance sight height
+		 * @return Instance value of sight height
 		 */
 		public double getSightheight() {
 			return this._sightheight;
 		}
 
 		/**
-		 * @return Instance 
+		 * @return Instance value of the velocity
 		 */
-		public int getMv() {
+		public double getMv() {
 			return this._mv;
 		}
 
 		/**
-		 * @return Instance shooting angle
+		 * @return Instance value of shooting angle
 		 */
-		public int getAngle() {
+		public double getAngle() {
 			return this._angle;
 		}
 
 		/**
-		 * @return Instance zero range
+		 * @return Instance value of zero range
 		 */
-		public int getZerorange() {
+		public double getZerorange() {
 			return this._zerorange;
 		}
 
 		/**
-		 * @return Instance wind speed
+		 * @return Instance value of wind speed
 		 */
-		public int getWindspeed() {
+		public double getWindspeed() {
 			return this._windspeed;
 		}
 
 		/**
-		 * @return Instance wind angle
+		 * @return Instance value of wind angle
 		 */
-		public int getWindangle() {
+		public double getWindangle() {
 			return this._windangle;
 		}
 
 		/**
-		 * @return Instance temperature
+		 * @return Instance value of temperature
 		 */
-		public int getTemp() {
+		public double getTemp() {
 			return this._temp;
 		}
 
 		/**
-		 * @return Instance 
-		 */
-		public int getCkweater() {
-			return this._ckweather;
-		}
-
-		/**
-		 * @return Instance pressure
+		 * @return Instance value of pressure
 		 */
 		public double getPressure() {
 			return this._pressure;
 		}
 
 		/**
-		 * @return Instance humidity
+		 * @return Instance value of humidity
 		 */
-		public int getHumidity() {
+		public double getHumidity() {
 			return this._humidity;
 		}
 
 		/**
-		 * @return Instance altitude
+		 * @return Instance value of altitude
 		 */
-		public int getAltitude() {
+		public double getAltitude() {
 			return this._altitude;
 		}
 
 		/**
-		 * @return Instance 
+		 * @return Instance value of number of rows in a solution
 		 */
 		public int getRows() {
 			return this._rows;
@@ -333,11 +325,11 @@ namespace Balistica.LibBalistica {
 
 		/**
 		 * @param yardage
-		 * 
+		 *
 		 * @return Calculated energry at specified yard downrange.
 		 */
 		public double getEnergy(int k) {
-			return (double)this._weight * Math.pow(getVelocity(k), 2) / 450436;
+			return this._weight * Math.pow(getVelocity(k), 2) / 450436;
 		}
 	}
 } //namespace

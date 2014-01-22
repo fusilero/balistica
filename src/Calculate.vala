@@ -97,8 +97,9 @@ public class Balistica.Calculate : GLib.Object {
         /**
          * Calculate the G1-G8 drag functions
          */
-        public static void drag(double bc, double v, double sh, double angle, double zero, double windspeed, double windangle,
-                                double alt, double bar, double tp, double rh, int df) {
+        public static LibBalistica.Solution drag(double bc, double v, double sh, double weight, double angle, double zero,
+						 double wspeed, double wangle, double alt, double bar, double tp, double rh,
+						 string name, int df) {
                 LibBalistica.DragFunction d;
                 int numRows;
                 double zero_angle; // Bore / sight angle
@@ -133,6 +134,19 @@ public class Balistica.Calculate : GLib.Object {
                 zero_angle = LibBalistica.Zero.ZeroAngle(d, bc, v, sh, zero, 0);
 
                 // Generate a solution
-                numRows = LibBalistica.Solve.SolveAll(d, bc, v, sh, angle, zero_angle, windspeed, windangle, solution);
+                numRows = LibBalistica.Solve.SolveAll(d, bc, v, sh, angle, zero_angle, wspeed, wangle, solution);
+
+		// If this succedes then we have a valid solution
+		if (numRows > 0 && solution.size > 0) {
+			LibBalistica.Solution lsln = new LibBalistica.Solution.full(solution, "", bc, sh, weight, v, angle, zero,
+									       wspeed, wangle, tp, rh, bar, alt,
+									       solution.size, d);
+
+			return lsln;
+		}
+
+		// If we reach here we've failed to generate a proper solution, so
+		// return an empty one to signify failure
+		return new LibBalistica.Solution();
         }
 }

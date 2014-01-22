@@ -260,7 +260,7 @@ namespace Balistica {
                                         return true;
                                 }
 
-                                // They asked for help, first we have to deciede if they want the 
+                                // They asked for help, first we have to deciede if they want the
                                 // generic help or help for a specific command
                                 if (help) {
                                         // They've picked a specific command
@@ -336,19 +336,19 @@ namespace Balistica {
                         enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
                         enable_atmosphere.toggled.connect (() => {
                                         if (enable_atmosphere.active) {
-                                        // checked
-                                        altitude.set_sensitive(true);
-                                        temp.set_sensitive(true);
-                                        bar_press.set_sensitive(true);
-                                        rela_humid.set_sensitive(true);
+						// checked
+						altitude.set_sensitive(true);
+						temp.set_sensitive(true);
+						bar_press.set_sensitive(true);
+						rela_humid.set_sensitive(true);
                                         } else {
-                                        // not checked
-                                        altitude.set_sensitive(false);
-                                        temp.set_sensitive(false);
-                                        bar_press.set_sensitive(false);
-                                        rela_humid.set_sensitive(false);
+						// not checked
+						altitude.set_sensitive(false);
+						temp.set_sensitive(false);
+						bar_press.set_sensitive(false);
+						rela_humid.set_sensitive(false);
                                         }
-                                        });
+					});
 
                         // Atmospheric corrections
                         altitude = builder.get_object("txtAltitude") as Gtk.Entry;
@@ -429,9 +429,11 @@ namespace Balistica {
                  * Solve the drag function
                  */
                 public void btnSolveDrag_clicked() {
+			string name = "";	// Name used to store the calculation
                         double bc = -1;         // Ballistic cefficient
                         double v = -1;          // Initial velocity (ft/s)
                         double sh = -1;         // Sight height over bore (inches)
+			double w = -1;		// Projectile weight (grains)
                         double angle = -1;      // Shooting Angle (degrees)
                         double zero = -1;       // Zero range of the rifle (yards)
                         double windspeed = -1;  // Wind speed (mph)
@@ -444,9 +446,11 @@ namespace Balistica {
 
                         int df;                 // Selected Drag Function
 
+			name = calc_name.get_text();
                         bc = double.parse(drag_coefficient.get_text());
                         v = double.parse(initial_velocity.get_text());
                         sh = double.parse(sight_height.get_text());
+			w = double.parse(projectile_weight.get_text());
                         angle = double.parse(wind_angle.get_text());
                         zero = double.parse(zero_range.get_text());
                         windspeed = double.parse(wind_velocity.get_text());
@@ -474,7 +478,7 @@ namespace Balistica {
                                 df = 8;
                         }
 
-                        Calculate.drag(bc, v, sh, angle, zero, windspeed, windangle, alt, bar, tp, rh, df);
+                        Calculate.drag(bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df);
                 }
 
                 /**
