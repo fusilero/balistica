@@ -19,8 +19,6 @@
 /* The code in this file was originally part of the GNU Exterior
  * Balisitics Computer. It was licensed under the GNU General Public
  * License Version 2 by Derek Yates.
- *
- * I converted it from C to Vala.
  */
 
 using GLib;
