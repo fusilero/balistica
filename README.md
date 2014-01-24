@@ -34,9 +34,11 @@ derived by this program. This is also stated in the GNU GPL,
 but repeated here just to make sure.
 
 ## Minimum Requirements
-* vala 0.20.1
-* cmake
-* gtk+3.0
+* vala >= 0.20.1 
+* glib-2.0 >= 2.32.0
+* gtk+-3.0 >= 3.4.2
+* gee-0.8 >= 0.8.5
+* cmake 
 
 ## Build Instructions
 ```bash
