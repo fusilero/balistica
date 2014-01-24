@@ -15,6 +15,12 @@ if(GIT_FOUND)
 endif()
 
 #
+# Translation support
+#
+#set(GETTEXT_PACKAGE "balistica")
+set(LANGUAGE_SUPPORT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/locale)
+
+#
 # Version information
 #
 set(VERSION_MAJOR 0)
@@ -88,3 +94,4 @@ add_subdirectory(help)
 add_subdirectory(sql)
 add_subdirectory(src)
 add_subdirectory(ui)
+#add_subdirectory(po)
