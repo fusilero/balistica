@@ -73,13 +73,6 @@ set(VALAC_OPTIONS
 )
 
 # Debug vs not-Debug
-if (NOT DEBUG AND NOT ADD_COVERAGE)
-    set(CFLAGS
-	${CFLAGS}
-	-O2
-	)
-endif()
-
 if(DEBUG OR ADD_COVERAGE)
     set(VALAC_OPTIONS
 	${VALAC_OPTIONS}
@@ -103,6 +96,11 @@ if(DEBUG OR ADD_COVERAGE)
 	    gcov
 	    )
     endif()
+else()
+    set(CFLAGS
+	${CFLAGS}
+	-O2
+	)
 endif()
 
 # Balistica
