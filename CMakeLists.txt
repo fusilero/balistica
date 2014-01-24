@@ -93,6 +93,7 @@ add_custom_target(
 	COMMAND 
 		git archive --prefix=${ARCHIVE_BASE_NAME}/ HEAD
 		| xz -z > ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME}
+	file(SHA512 balistica-${VERSION}-checksum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME})
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
