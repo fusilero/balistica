@@ -37,11 +37,16 @@ else()
 	set(${VERSION} ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}.${VERSION_COMMIT})
 endif()
 
+#
 # Packaging filenamesnames
+#
 set(ARCHIVE_BASE_NAME ${CMAKE_PROJECT_NAME}-${VERSION})
 set(ARCHIVE_FULL_NAME ${ARCHIVE_BASE_NAME}.tar.xz)
 set(ARCHIVE_DEBUILD_FULL_NAME ${CMAKE_PROJECT_NAME}_${VERSION}.orig.tar.xz)
 
+#
+# Build options
+#
 option(DEBUG "Build for debugging." OFF)
 option(ADD_COVERAGE "Add support for gcov code coverage tool." OFF)
 
@@ -86,8 +91,9 @@ add_custom_target(
 	post-uninstall
 )
 
-# Dist
-# This generates the dist tarballs
+#
+# Dist - This generates the dist tarballs
+#
 add_custom_target(
 	dist
 	COMMAND 
