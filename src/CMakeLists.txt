@@ -18,6 +18,7 @@ set(LIB_BALISTICA
     LibBalistica/Zero.vala
 
     LibBalistica/conversion/Angle.vala
+    LibBalistica/conversion/Mass.vala
     LibBalistica/conversion/Temperature.vala
 )
 
