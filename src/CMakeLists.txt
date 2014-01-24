@@ -73,7 +73,7 @@ set(VALAC_OPTIONS
 )
 
 # Debug vs not-Debug
-if (NOT DEBUG)
+if (NOT DEBUG AND NOT ADD_COVERAGE)
     set(CFLAGS
 	${CFLAGS}
 	-O2
