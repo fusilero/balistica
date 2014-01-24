@@ -39,7 +39,7 @@ pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
     gtk+-3.0>=3.4.2
     gee-0.8>=0.8.5
-    #sqlite3>=3.7.4
+    #sqlite3>=3.8.0
 )
 
 set(LIB_BALISTICA_PACKAGES
