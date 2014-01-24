@@ -217,7 +217,7 @@ namespace Balistica {
                                 ref unowned string[] argv,
                                 out int exit_status)
                 {
-                        // Try to register.
+                        // Try to register
                         try {
                                 register ();
                         }
@@ -227,7 +227,7 @@ namespace Balistica {
                                 return true;
                         }
 
-                        // Workaround until bug 642885 is solved.
+                        // Workaround until bug 642885 is solved
                         unowned string[] arguments = argv;
                         var n_args = arguments.length;
 
@@ -248,7 +248,7 @@ namespace Balistica {
                                         return true;
                                 }
 
-                                // They've passed the version option, Tell them the version and exit.
+                                // They've passed the version option, Tell them the version and exit
                                 if (version) {
                                         if (Balistica.VERSION_DESC == "Release") {
                                                 stdout.printf("%s %s\n", Balistica.NAME, Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION);
@@ -478,7 +478,11 @@ namespace Balistica {
                                 df = 8;
                         }
 
-                        Calculate.drag(bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df);
+			// Create a new solution object
+			LibBalistica.Solution lsln = new LibBalistica.Solution();
+
+			// Calculate the solution and populate the object
+			lsln = Calculate.drag(bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df);
                 }
 
                 /**
