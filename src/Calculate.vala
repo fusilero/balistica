@@ -96,6 +96,23 @@ public class Balistica.Calculate : GLib.Object {
 
         /**
          * Calculate the G1-G8 drag functions
+	 *
+	 * @param bc The ballistic coefficient
+	 * @param v The velocity
+	 * @param sh The sight height above the bore
+	 * @param weight The weight of the projectile
+	 * @param angle The shooting angle
+	 * @param zero The zero range
+	 * @param wspeed The wind speed
+	 * @param wangle The wind angle
+	 * @param alt The altitude
+	 * @param bar The pressure in bar
+	 * @param tp The current temparture
+	 * @param rh The relative humidity
+	 * @param name The solution's name
+	 * @param df The selected drag function
+	 *
+	 * @return
          */
         public static LibBalistica.Solution drag(double bc, double v, double sh, double weight, double angle, double zero,
 						 double wspeed, double wangle, double alt, double bar, double tp, double rh,

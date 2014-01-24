@@ -77,15 +77,14 @@ namespace Balistica {
          *
          * @param ui_filename Filename, as string, of the UI file
          *
-         * @return The newly created builder object 
+         * @return The newly created builder object
          *
          * From Geary by Yorba http://www.yorba.org/projects/geary/
          */
         public Gtk.Builder create_builder(string ui_filename) {
                 Gtk.Builder builder = new Gtk.Builder();
                 try {
-                        builder.add_from_file(get_resource_directory().get_child("ui").get_child(
-                                                ui_filename).get_path());
+                        builder.add_from_file(get_resource_directory().get_child("ui").get_child(ui_filename).get_path());
                 } catch(GLib.Error error) {
                         warning("Unable to create Gtk.Builder: %s".printf(error.message));
                 }

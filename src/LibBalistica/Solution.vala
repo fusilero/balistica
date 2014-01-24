@@ -45,8 +45,8 @@ namespace Balistica.LibBalistica {
 		private int _rows;
 
 		/**
-		 * Empty default constructor. Only used to
-		 * represent a calculation failure.
+		 * Empty default constructor. Only used to represent
+		 * a calculation failure.
 		 */
 		public Solution() {
 		}
@@ -67,7 +67,7 @@ namespace Balistica.LibBalistica {
 		 * @param p Pressure
 		 * @param a Altitude
 		 * @param entries Number of entries in the solution
-		 * @param df
+		 * @param df The selected drag function (G1-G8)
 		 */
 		public Solution.full (Gee.LinkedList<double?> solution, string name, double bc, double sh,
 				 double w, double mv, double angle, double zr, double ws, double wa,
@@ -328,13 +328,13 @@ namespace Balistica.LibBalistica {
 		 *
 		 * @return Calculated kinetic energry (ft/lbs) at specified yard downrange.
 		 */
-		public double getKineticEnergy(int k) {
+		public double getKineticEnergy(int yardage) {
 			/* The 450436 is (2 x 7000 x 32.174)
 			 * 2 is from the formula for kinetic energy (1/2 x Mass x Velocity^2)
 			 * 7000 converts grains to pounds
 			 * 32.174 converts pounds to slugs (unit of mass in the English system)
 			 */
-			return this._weight * Math.pow(getVelocity(k), 2) / 450436;
+			return this._weight * Math.pow(getVelocity(yardage), 2) / 450436;
 		}
 	}
 } //namespace
