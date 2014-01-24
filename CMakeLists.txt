@@ -31,7 +31,7 @@ set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 # hash when built to the version string
 set(VERSION_DESC "Development")
 
-if(NOT ${VERSION_DESC} MATCHES "Development").
+if(NOT ${VERSION_DESC} MATCHES "Development")
 	set(${VERSION} ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION})
 else()
 	set(${VERSION} ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}.${VERSION_COMMIT})
