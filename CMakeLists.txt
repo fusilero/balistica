@@ -32,9 +32,9 @@ set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 set(VERSION_DESC "Development")
 
 if(NOT ${VERSION_DESC} MATCHES "Development")
-	set(${VERSION} ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION})
+	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION})
 else()
-	set(${VERSION} ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}.${VERSION_COMMIT})
+	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}.${VERSION_COMMIT})
 endif()
 
 #
@@ -85,8 +85,8 @@ add_custom_target(
 # a depends clause in add_custom_target (which would make it run last).
 add_dependencies(uninstall uninstall-base)
 
-# This gets fired in the root-level Makefile to ensure an post-uninstall cleanup happens after
-# everything has has been removed
+# This gets fired in the root-level Makefile to ensure an post-uninstall cleanup
+# happens after everything has has been removed.
 add_custom_target(
 	post-uninstall
 )
@@ -96,11 +96,10 @@ add_custom_target(
 #
 add_custom_target(
 	dist
-	COMMAND 
-		git archive --prefix=${ARCHIVE_BASE_NAME}/ HEAD
-		| xz -z > ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME}
-	file(SHA512 balistica-${VERSION}-checksum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME})
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	COMMAND git archive --prefix=${ARCHIVE_BASE_NAME}/ HEAD	| xz -z > ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	
+	COMMAND	sha512sum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME} > ${CMAKE_BINARY_DIR}/balistica-${VERSION}-checksum 
 )
 
 add_subdirectory(help)
