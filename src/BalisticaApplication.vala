@@ -207,7 +207,7 @@ namespace Balistica {
                  *
                  * Copied from cheese: https://git.gnome.org/browse/cheese/
                  *
-                 * @param arguments the command-line arguments
+                 * @param argv the command-line arguments
                  * @param exit_status the exit status to return to the OS
                  *
                  * @return true if the arguments were successfully processed, false
@@ -358,9 +358,9 @@ namespace Balistica {
 
                         // Set default values
                         altitude.set_text("0");
-                        temp.set_text("59");
+                        temp.set_text("59.0");
                         bar_press.set_text("29.53");
-                        rela_humid.set_text("78");
+                        rela_humid.set_text("78.0");
 
                         // Drag Calculations Results
                         drag_results = builder.get_object("txtviewDragResults") as Gtk.TextView;
@@ -372,6 +372,9 @@ namespace Balistica {
                         rad_g6 = builder.get_object("radG6") as Gtk.RadioButton;
                         rad_g7 = builder.get_object("radG7") as Gtk.RadioButton;
                         rad_g8 = builder.get_object("radG8") as Gtk.RadioButton;
+
+                        // Set G1 as selected by default
+                        rad_g1.active = true;
 
                         // Buttons
                         solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;
@@ -423,6 +426,8 @@ namespace Balistica {
                         enable_atmosphere.set_active(false);
 
                         drag_results.buffer.text = "";
+
+                        rad_g1.active = true;
                 }
 
                 /**
@@ -438,7 +443,7 @@ namespace Balistica {
                         double zero = -1;       // Zero range of the rifle (yards)
                         double windspeed = -1;  // Wind speed (mph)
                         double windangle = -1;  // Wind angle (0=headwind, 90=right to left, 180=tailwind, 270/-90=left to right)
-                        // Atmospheric corrections
+
                         double alt = 0.0;       // Altitude
                         double bar = 29.53;     // Barometeric pressure
                         double tp = 59.0;       // Temperature
