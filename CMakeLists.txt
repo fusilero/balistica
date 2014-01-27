@@ -1,3 +1,6 @@
+# Based upon Geary's build script
+# Copyright 2011-2013 Yorba Foundation
+#
 # Check http://webdev.elementaryos.org/docs/developer-guide/cmake for documentation
 
 cmake_minimum_required(VERSION 2.8)
