@@ -9,3 +9,5 @@ bin/*
 .*.sw[a-z]
 *.un~
 
+# Glade temp files 
+ui/*~
