@@ -19,7 +19,7 @@ CREATE TABLE rifles (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        caliber_id INTEGER,
+        caliber_id INTEGER NOT NULL,
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE shotguns (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        gauge_id INTEGER,
+        gauge_id INTEGER NOT NULL,
         action TEXT NOT NULL,
         FOREIGN KEY(gauge_id) REFERENCES gauges (id)
 );
@@ -43,7 +43,7 @@ CREATE TABLE pistols (
         id INTEGER PRIMARY KEY,
         make TEXT NOT NULL,
         model TEXT NOT NULL,
-        caliber_id INTEGER,
+        caliber_id INTEGER NOT NULL,
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
@@ -92,10 +92,10 @@ CREATE TABLE cases (
 CREATE TABLE custom_load (
        id INTEGER PRIMARY KEY,
        description TEXT,
-       bullet_id INTEGER,
-       propellant_id INTEGER,
-       primer_id INTEGER,
-       case_id INTEGER,
+       bullet_id INTEGER NOT NULL,
+       propellant_id INTEGER NOT NULL,
+       primer_id INTEGER NOT NULL,
+       case_id INTEGER NOT NULL,
        FOREIGN KEY(bullet_id) REFERENCES bullets (id),
        FOREIGN KEY(propellant_id) REFERENCES propellants (id),
        FOREIGN KEY(primer_id) REFERENCES primers (id),
