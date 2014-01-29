@@ -151,4 +151,48 @@ public class Conversion.Mass : GLib.Object {
 	 public inline static double MiligramToSlug (double miligram) {
 	 	return miligram * 0.014593902999991705;
 	 }
+	 
+	 /**
+	 * PoundToGrain
+	 *
+	 * @param Pound
+	 *
+	 * @return Grains
+	 */
+	 public inline static double PoundToGrain (double pound) {
+	 	return pound * 7000;
+	 }
+	 
+	 /**
+	 * PoundToMiligram
+	 *
+	 * @param Pound
+	 *
+	 * @return Miligrams
+	 */
+	 public inline static double PoundToMiligram (double pound) {
+	 	return pounds * 453592;
+	 }
+	 
+	 /**
+	 * PoundToOunce
+	 *
+	 * @param Pound
+	 *
+	 * @return Ounces
+	 */
+	 public inline static double PoundToOunce (double pound) {
+	 	return pound * 16.0;
+	 }
+	 
+	 /**
+	 * PoundToSlug
+	 *
+	 * @param Pound
+	 *
+	 * @return Slugs
+	 */
+	 public inline static double PoundToSlug (double pound) {
+	 	return pound * 0.0310809502;
+	 }
 }
