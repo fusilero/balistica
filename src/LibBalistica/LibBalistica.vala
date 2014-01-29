@@ -17,21 +17,32 @@
  */
 
 namespace Balistica.LibBalistica {
-        // Gravity in imperial measurements
-        // Value according to Wolfram Alpha
-        public const double GRAVITY = -32.170;
+        /**
+         * Gravity in feet per second squared
+         * Value according to Wolfram Alpha
+         */
+        public const double GRAVITY = -32.1609;
 
-        // Standard Atmospheric Pressure in inches mercury
-        // Value according to Wolfram Alpha
+        /**
+         * Standard Atmospheric Pressure in inches mercury
+         * Value according to Wolfram Alpha
+         */
         public const double STANDARD_PRESSURE = 29.92;
 
-        // Standard Tempurature in degrees Fahrenheit
+        /**
+         * Standard Tempurature in degrees Fahrenheit
+         * This value was determined the US Ordnance Department as an
+         * average value over a wide range of altitudes 
+         */
         public const double STANDARD_TEMP = 59.0;
 
         // Arbitrary constant used to denote the max range
         // of calculations
         public const int BCOMP_MAX_RANGE = 50001;
 
+        /**
+         * The different drag functions you are allowed to pick from
+         */
         public enum DragFunction {
                 G1 = 1,
                 G2,
