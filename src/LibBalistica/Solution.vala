@@ -45,10 +45,29 @@ namespace Balistica.LibBalistica {
 		private int _rows;
 
 		/**
-		 * Empty default constructor. Only used to represent
-		 * a calculation failure.
+		 * Default constructor. This is primarly used to reset the object
+                 * state and prepare for a new calculation but can also be used to
+                 * represent one of the following:
+		 * 1) a calculation failure
+                 * 2) an empty state where no calculation has taken place
 		 */
 		public Solution() {
+                        _sln = new Gee.LinkedList<double?>();
+			_name = "";
+			_bc = -1;
+			_sightheight = -1;
+			_weight = -1;
+			_mv = -1;
+			_angle = -1;
+			_zerorange = -1;
+			_windspeed = -1;
+			_windangle = -1;
+			_temp = -1;
+			_humidity = -1;
+			_pressure = -1;
+			_altitude = -1;
+			_rows = -1;
+			_df = 1;
 		}
 
 		/**
@@ -89,6 +108,13 @@ namespace Balistica.LibBalistica {
 			_rows = entries;
 			_df = df;
 		}
+
+                /**
+                 * @return Solution calculation results
+                 */
+                public Gee.LinkedList<double?> getSolution() {
+                        return this._sln;
+                }
 
 		/**
 		 * @return Instance name
