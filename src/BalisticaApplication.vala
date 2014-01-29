@@ -488,6 +488,12 @@ namespace Balistica {
 
 			// Calculate the solution and populate the object
 			lsln = Calculate.drag(bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df);
+
+                        if (lsln.getRows() == -1) {
+                                drag_results.buffer.text = "ERROR creating solution results!";
+                        } else {
+                                drag_results.buffer.text = "Solution generated!";
+                        }
                 }
 
                 /**
