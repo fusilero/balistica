@@ -18,11 +18,12 @@
 
 namespace Balistica.LibBalistica {
         // Gravity in imperial measurements
-        // value according to Wolfram Alpha
+        // Value according to Wolfram Alpha
         public const double GRAVITY = -32.170;
 
         // Standard Atmospheric Pressure in inches mercury
-        public const double STANDARD_PRESSURE = 29.5333727;
+        // Value according to Wolfram Alpha
+        public const double STANDARD_PRESSURE = 29.92;
 
         // Standard Tempurature in degrees Fahrenheit
         public const double STANDARD_TEMP = 59.0;
