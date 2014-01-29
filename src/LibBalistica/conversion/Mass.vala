@@ -171,7 +171,7 @@ public class Conversion.Mass : GLib.Object {
 	 * @return Miligrams
 	 */
 	 public inline static double PoundToMiligram (double pound) {
-	 	return pounds * 453592;
+	 	return pound * 453592;
 	 }
 	 
 	 /**
