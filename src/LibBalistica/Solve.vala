@@ -112,7 +112,7 @@ namespace Balistica.LibBalistica {
 					break;
 			}
 
-			Solution.set(10 * BCOMP_MAX_RANGE + 1, n);
+			Solution.insert(Solution.size, n);
 
 			return n;
 		}
