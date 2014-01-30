@@ -21,20 +21,20 @@ using GLib;
 namespace Balistica.LibBalistica {
 
         public class Miller : GLib.Object {
-                public double diameter { get; set; }
-                public double length { get; set; }
-                public double mass { get; set; }
-                public int safe_value { get; set; }
-                public double twist { get; set; }
+                public double _diameter { get; set; }
+                public double _length { get; set; }
+                public double _mass { get; set; }
+                public int _safe_value { get; set; }
+                public double _twist { get; set; }
 
                 /**
                  * Default constructor
                  */
                 public Miller() {
-                        this.diameter = 0.0;
-                        this.length = 0.0;
-                        this.mass = 0.0;
-                        this.safe_value = 2;
+                        this._diameter = 0.0;
+                        this._length = 0.0;
+                        this._mass = 0.0;
+                        this._safe_value = 2;
                 }
 
                 /**
@@ -46,18 +46,18 @@ namespace Balistica.LibBalistica {
                  * @param sv The "safe value". Generally 2.
                  */
                 public Miller.full(double d, double l, double m, int sv) {
-                        this.diameter = d;
-                        this.length = l;
-                        this.mass = m;
-                        this.safe_value = sv;
+                        this._diameter = d;
+                        this._length = l;
+                        this._mass = m;
+                        this._safe_value = sv;
                 }
 
                 /**
                  * Calculate bullet twist rate
                  */
                 public double calc_twist() {
-                        double temp1 = Math.sqrt(30.0 * this.mass);
-                        double temp2 = this.safe_value * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
+                        double temp1 = Math.sqrt(30.0 * this._mass);
+                        double temp2 = this._safe_value * Math.pow(this._diameter, 3) * this._length * (1.0 + Math.pow(this._length, 2));
                         return temp1 / temp2;
                 }
 
@@ -65,8 +65,8 @@ namespace Balistica.LibBalistica {
                  * Calculate bullet stability
                  */
                 public double calc_stability() {
-                        double temp1 = 30.0 * this.mass;
-                        double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
+                        double temp1 = 30.0 * this._mass;
+                        double temp2 = Math.pow(this._twist, 2) * Math.pow(this._diameter, 3) * this._length * (1.0 + Math.pow(this._length, 2));
                         return temp1 / temp2;
                 }
         }
