@@ -31,13 +31,13 @@ public class Balistica.Calculate : GLib.Object {
 
                 for (int i = 2; i < args.length; i++) {
                         if (args[i] == "--diameter") {
-                                m.diameter = double.parse(args[i+1]);
+                                m._diameter = double.parse(args[i+1]);
                         } else if (args[i] == "--length") {
-                                m.length = double.parse(args[i+1]);
+                                m._length = double.parse(args[i+1]);
                         } else if (args[i] == "--mass"){
-                                m.mass = double.parse(args[i+1]);
+                                m._mass = double.parse(args[i+1]);
                         } else if (args[i] == "--safe-value") {
-                                m.safe_value = int.parse(args[i+1]);
+                                m._safe_value = int.parse(args[i+1]);
                         }
                 }
 
@@ -56,13 +56,13 @@ public class Balistica.Calculate : GLib.Object {
 
                 for (int i = 2; i < args.length; i++) {
                         if (args[i] == "--diameter") {
-                                m.diameter = double.parse(args[i+1]);
+                                m._diameter = double.parse(args[i+1]);
                         } else if (args[i] == "--length") {
-                                m.length = double.parse(args[i+1]);
+                                m._length = double.parse(args[i+1]);
                         } else if (args[i] == "--mass"){
-                                m.mass = double.parse(args[i+1]);
+                                m._mass = double.parse(args[i+1]);
                         } else if (args[i] == "--twist") {
-                                m.twist = double.parse(args[i+1]);
+                                m._twist = double.parse(args[i+1]);
                         }
                 }
 
@@ -81,13 +81,13 @@ public class Balistica.Calculate : GLib.Object {
 
                 for (int i = 2; i < args.length; i++) {
                         if (args[i] == "--diameter") {
-                                g.diameter = double.parse(args[i+1]);
+                                g._diameter = double.parse(args[i+1]);
                         } else if (args[i] == "--length") {
-                                g.length = double.parse(args[i+1]);
+                                g._length = double.parse(args[i+1]);
                         } else if (args[i] == "--specific-gravity"){
-                                g.specific_gravity = double.parse(args[i+1]);
+                                g._specific_gravity = double.parse(args[i+1]);
                         } else if (args[i] == "--C") {
-                                g.C = int.parse(args[i+1]);
+                                g._C = int.parse(args[i+1]);
                         }
                 }
 
