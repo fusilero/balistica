@@ -30,7 +30,7 @@ namespace Balistica.LibBalistica {
                 /**
                  * Default constructor
                  */
-                public static Miller() {
+                public Miller() {
                         this.diameter = 0.0;
                         this.length = 0.0;
                         this.mass = 0.0;
@@ -45,7 +45,7 @@ namespace Balistica.LibBalistica {
                  * @param m The bullet's mass as a double
                  * @param sv The "safe value". Generally 2.
                  */
-                public static Miller.full(double d, double l, double m, int sv) {
+                public Miller.full(double d, double l, double m, int sv) {
                         this.diameter = d;
                         this.length = l;
                         this.mass = m;
