@@ -332,19 +332,6 @@ namespace Balistica {
                         wind_velocity = builder.get_object("txtWind_velocity") as Gtk.Entry;
                         wind_angle = builder.get_object("txtWind_angle") as Gtk.Entry;
 
-                        /*
-                        // Variables Suitable for debugging
-                        calc_name.set_text("308 Win Match, 168gr Sierra Match King");
-                        drag_coefficient.set_text("0.465");
-                        projectile_weight.set_text("168");
-                        initial_velocity.set_text("2650");
-                        zero_range.set_text("200");
-                        sight_height.set_text("1.6");
-                        shooting_angle.set_text("0");
-                        wind_velocity.set_text("0");
-                        wind_angle.set_text("0");
-                        */
-
                         // Checkbox to dis/en/able atmospheric corrections
                         enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
                         enable_atmosphere.toggled.connect (() => {
@@ -501,12 +488,6 @@ namespace Balistica {
 
 			// Calculate the solution and populate the object
 			lsln = Calculate.drag(bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df);
-
-                        if (lsln.getRows() == -1) {
-                                drag_results.buffer.text = "ERROR creating solution results!";
-                        } else {
-                                drag_results.buffer.text = "Solution generated!";
-                        }
                 }
 
                 /**
