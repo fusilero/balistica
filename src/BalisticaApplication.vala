@@ -129,6 +129,8 @@ namespace Balistica {
                 // Drag calculation Buttons
                 private Gtk.Button reset_drag;
                 private Gtk.Button solve_drag;
+                private Gtk.Button disp_solution;
+                private Gtk.Button disp_pbr;
 
                 // Radio buttons for drag functions
                 private Gtk.RadioButton rad_g1;
@@ -332,7 +334,6 @@ namespace Balistica {
                         wind_velocity = builder.get_object("txtWind_velocity") as Gtk.Entry;
                         wind_angle = builder.get_object("txtWind_angle") as Gtk.Entry;
 
-                        /*
                         // Variables Suitable for debugging
                         calc_name.set_text("308 Win Match, 168gr Sierra Match King");
                         drag_coefficient.set_text("0.465");
@@ -343,7 +344,6 @@ namespace Balistica {
                         shooting_angle.set_text("0");
                         wind_velocity.set_text("0");
                         wind_angle.set_text("0");
-                        */
 
                         // Checkbox to dis/en/able atmospheric corrections
                         enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
@@ -376,7 +376,7 @@ namespace Balistica {
                         rela_humid.set_text("78.0");
 
                         // Drag Calculations Results
-                        drag_results = builder.get_object("txtviewDragResults") as Gtk.TextView;
+                        drag_results = builder.get_object("txtViewDragResults") as Gtk.TextView;
 
                         // Radio buttons for drag functions
                         rad_g1 = builder.get_object("radG1") as Gtk.RadioButton;
@@ -398,6 +398,16 @@ namespace Balistica {
                         reset_drag = builder.get_object("btnResetDrag") as Gtk.Button;
                         reset_drag.clicked.connect(()=> {
                                         btnResetDrag_clicked();
+                                        });
+
+                        disp_solution = builder.get_object("btnSolution") as Gtk.Button;
+                        disp_solution.clicked.connect(()=> {
+                                        btnSolution_clicked();
+                                        });
+
+                        disp_pbr = builder.get_object("btnPBR") as Gtk.Button;
+                        disp_pbr.clicked.connect(()=> {
+                                        btnPBR_clicked();
                                         });
 
                         // Menubar
@@ -474,6 +484,25 @@ namespace Balistica {
                         windspeed = double.parse(wind_velocity.get_text());
                         windangle = double.parse(wind_angle.get_text());
 
+                        if (bc == 0 || v == 0 || sh == 0 || w == 0 || zero == 0) {
+                                var builder = new StringBuilder ();
+                                builder.append("You must fill in all required fields!\n");
+                                builder.append("\n\tDrag Coefficient");
+                                builder.append("\n\tProjectile Weight");
+                                builder.append("\n\tInitial Velocity");
+                                builder.append("\n\tZero Range");
+                                builder.append("\n\tSight Height Over Bore\n");
+
+                                Gtk.Dialog dialog = new Gtk.Dialog.with_buttons("Error", null,
+                                                Gtk.DialogFlags.DESTROY_WITH_PARENT, "OK", Gtk.ResponseType.CLOSE, null);
+                                dialog.response.connect(() => { dialog.destroy(); });
+                                dialog.get_content_area().add(new Gtk.Label(builder.str));
+                                dialog.show_all();
+                                dialog.run();
+
+                                return;
+                        }
+
                         if (enable_atmosphere.active) {
                                 alt = double.parse(altitude.get_text());
                                 bar = double.parse(bar_press.get_text());
@@ -507,6 +536,20 @@ namespace Balistica {
                         } else {
                                 drag_results.buffer.text = "Solution generated!";
                         }
+                }
+
+                /**
+                 * Display the calculated solution
+                 */
+                public void btnSolution_clicked() {
+                        //TODO
+                }
+
+                /**
+                 * Display the calculated PBR
+                 */
+                public void btnPBR_clicked() {
+                        //TODO
                 }
 
                 /**
