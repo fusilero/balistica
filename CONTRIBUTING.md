@@ -11,8 +11,6 @@ and I'd prefer to try to mimic it as much as possible. Here the highlights:
  2. No trailing spaces 
  3. Always use UNIX line endings
 
-A good place to start if that isn't enough for you is to just use the coding style from [FreeBSD](http://www.freebsd.org/cgi/man.cgi?query=style&sektion=9).
-
 SAMPLE **if .. then** statement
 ``` Vala
 if (test == 1) {
@@ -32,3 +30,8 @@ x = i[10];
 
 a = (int) b;
 ```
+
+A good place to start if that isn't enough for you is to just use the coding style from [FreeBSD](http://www.freebsd.org/cgi/man.cgi?query=style&sektion=9).
+
+Finally, yes, I am aware that a lot of the code at this point doesn't meet my own defined
+coding style. I am actively trying to update it as I go.
