@@ -50,6 +50,8 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Calculate the twist of the bullet
+                 *
+                 * @return The calculated twist as a double
                  */
                 public double calc_twist() {
                         double temp1 = C * Math.pow(this.diameter, 2) / this.length;
