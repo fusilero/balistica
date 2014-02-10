@@ -484,9 +484,11 @@ namespace Balistica {
                         windspeed = double.parse(wind_velocity.get_text());
                         windangle = double.parse(wind_angle.get_text());
 
+                        // It doesn't make sense for any of the following variables
+                        // to be zero
                         if (bc == 0 || v == 0 || sh == 0 || w == 0 || zero == 0) {
                                 var builder = new StringBuilder ();
-                                builder.append("You must fill in all required fields!\n");
+                                builder.append("The following fields must be positive values greater than 0!\n");
                                 builder.append("\n\tDrag Coefficient");
                                 builder.append("\n\tProjectile Weight");
                                 builder.append("\n\tInitial Velocity");
