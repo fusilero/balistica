@@ -155,7 +155,7 @@ public class Balistica.Calculate : GLib.Object {
 
 		// If this succedes then we have a valid solution
 		if (numRows > 0 && solution.size > 0) {
-			LibBalistica.Solution lsln = new LibBalistica.Solution.full(solution, "", bc, sh, weight, v, angle, zero,
+			LibBalistica.Solution lsln = new LibBalistica.Solution.full(solution, name, bc, sh, weight, v, angle, zero,
 										    wspeed, wangle, tp, rh, bar, alt,
 										    solution.size, d);
 
