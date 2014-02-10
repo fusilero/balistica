@@ -77,7 +77,7 @@ set(VALAC_OPTIONS
 if(DEBUG OR ADD_COVERAGE)
     set(VALAC_OPTIONS
 	${VALAC_OPTIONS}
-	--debug
+	--debug -C
 	)
 
     set(CFLAGS
