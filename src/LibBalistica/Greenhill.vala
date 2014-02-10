@@ -29,7 +29,7 @@ namespace Balistica.LibBalistica {
                 /**
                  * Default constructor
                  */
-                public static Greenhill() {
+                public Greenhill() {
                         this.diameter = 0;
                         this.length = 0;
                         this.specific_gravity = 0;
@@ -42,7 +42,7 @@ namespace Balistica.LibBalistica {
                  * @param l The bullet's length as a double
                  * @param sg The bullet's specific gravity as a double
                  */
-                public static Greenhill.full(double d, double l, double sg) {
+                public Greenhill.full(double d, double l, double sg) {
                         this.diameter = d;
                         this.length = l;
                         this.specific_gravity = sg;
@@ -50,6 +50,8 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Calculate the twist of the bullet
+                 *
+                 * @return The calculated twist as a double
                  */
                 public double calc_twist() {
                         double temp1 = C * Math.pow(this.diameter, 2) / this.length;

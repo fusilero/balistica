@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/steveno/balistica/badge.png)](https://coveralls.io/r/steveno/balistica)
 
 ## About
-balística is a simple open source ballistics calculator. It's 
+balística is a simple open source external ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
 
 ## Current Status
@@ -15,6 +15,7 @@ exists to compute the following:
 ✓ Miller Stability Rule  
 ✓ Greenhill Twist  
 ✓ Standard Drag Functions G1-G8  
+✓ The PBR function (Point Blank Range)
 
 With the exception of the GUI for the cacluation of the Standard
 Drag Functions (still a WIP), several items are still very much outstanding: 
@@ -24,14 +25,6 @@ Drag Functions (still a WIP), several items are still very much outstanding:
 * GUI for Greenhill Twist
 * A database backend to store hand loads
 * GUI for said DB of hand loads
-
-## DISCLAIMER
-It is to be used as REFERENCE or curiosity ONLY. Much like
-Wikipedia, information gleaned from this program is not to be 
-used in an illegal fashion and I take no responsibility whatsoever
-for any acts, criminal or otherwise, committed using any calculations 
-derived by this program. This is also stated in the GNU GPL, 
-but repeated here just to make sure.
 
 ## Minimum Requirements
 * vala >= 0.20.1 
@@ -50,3 +43,11 @@ make install
 ```
 ## Contributing
 Please see CONTRIBUTING.md
+
+## DISCLAIMER
+It is to be used as REFERENCE or curiosity ONLY. Much like
+Wikipedia, information gleaned from this program is not to be 
+used in an illegal fashion and I take no responsibility whatsoever
+for any acts, criminal or otherwise, committed using any calculations 
+derived by this program. This is also stated in the GNU GPL, 
+but repeated here just to make sure.

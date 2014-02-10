@@ -122,7 +122,7 @@ public class Balistica.Calculate : GLib.Object {
                 double zero_angle; // Bore / sight angle
 		var solution = new Gee.LinkedList<double?>();
 
-                bc = LibBalistica.Atmosphere.AtmCorrect(bc, alt, bar, tp, rh);
+                bc = LibBalistica.Atmosphere.atm_correct(bc, alt, bar, tp, rh);
 
                 switch(df) {
                         case 1:

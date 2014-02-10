@@ -1,7 +1,7 @@
-Balistica Installation
+balística Installation
 ---
 
-To build and install Balistica, type the following commands:
+To build and install balística, type the following commands:
 
 ```bash
 $ mkdir build && cd build
