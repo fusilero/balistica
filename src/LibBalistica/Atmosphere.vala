@@ -39,7 +39,7 @@ namespace Balistica.LibBalistica {
                 private static double calc_fr (double Temperature, double Pressure, double RelativeHumidity) {
                         double VPw = 4e-6 * Math.pow(Temperature, 3) - 0.0004 * Math.pow(Temperature, 2) + 0.0234 * Temperature - 0.2517;
                         double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw));
-                        
+
                         return FRH;
                 }
 
@@ -69,7 +69,7 @@ namespace Balistica.LibBalistica {
                         // Funny math where you divide by "standard temp" above
                         // converted to Ranking
                         double FT = (Temp - Tstd) / Temperature.FahrenheitToRankine(Tstd);
-                        
+
                         return FT;
                 }
 
@@ -81,7 +81,7 @@ namespace Balistica.LibBalistica {
                  */
                 private static double calc_fa (double Altitude) {
                         double fa = -4e-15 * Math.pow(Altitude, 3) + 4e-10 * Math.pow(Altitude, 2) -3e-5 * Altitude + 1;
-                        
+
                         return (1 / fa);
                 }
 
@@ -99,7 +99,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return The function returns a ballistic coefficient, corrected for the supplied atmospheric conditions.
                  */
-                public static double atm_correct (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
+                internal static double atm_correct (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
                         double FA = calc_fa(Altitude);
                         double FT = calc_ft(Temperature, Altitude);
                         double FR = calc_fr(Temperature, Barometer, RelativeHumidity);
@@ -107,7 +107,7 @@ namespace Balistica.LibBalistica {
 
                         // Calculate the atmospheric correction factor
                         double CD = (FA * (1 + FT - FP) * FR);
-                        
+
                         return DragCoefficient * CD;
                 }
         }

@@ -46,7 +46,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return The angle of the bore relative to the sighting system, in degrees.
                  */
-                public static double ZeroAngle(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ZeroRange, double yIntercept){
+                internal static double ZeroAngle(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ZeroRange, double yIntercept){
                         // Numerical Integration variables
                         double t = 0;
                         // The solution accuracy generally doesn't suffer if its within a foot for each second of time.

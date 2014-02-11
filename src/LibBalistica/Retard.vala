@@ -36,7 +36,7 @@ namespace Balistica.LibBalistica {
                  *
                  * @return The projectile drag retardation velocity, in ft/s per second.
                  */
-                public static double CalcRetard(DragFunction drag_func, double DragCoefficient, double Velocity) {
+                internal static double CalcRetard(DragFunction drag_func, double DragCoefficient, double Velocity) {
                         double vp = Velocity;
                         double val = -1;
                         double A = -1;

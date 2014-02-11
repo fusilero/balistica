@@ -60,7 +60,7 @@ namespace Balistica.LibBalistica {
                 public double calc_twist() {
                         double temp1 = Math.sqrt(30.0 * this.mass);
                         double temp2 = this.safe_value * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
-                        
+
                         return temp1 / temp2;
                 }
 
@@ -72,7 +72,7 @@ namespace Balistica.LibBalistica {
                 public double calc_stability() {
                         double temp1 = 30.0 * this.mass;
                         double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
-                        
+
                         return temp1 / temp2;
                 }
         }
