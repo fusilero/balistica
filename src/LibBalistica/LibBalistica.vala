@@ -51,7 +51,9 @@ namespace Balistica.LibBalistica {
                 G5,
                 G6,
                 G7,
-                G8;
+                G8,
+                I,
+                B;
 
                 public string to_string() {
                         switch (this) {
@@ -63,6 +65,8 @@ namespace Balistica.LibBalistica {
                                 case G6: return "G6";
                                 case G7: return "G7";
                                 case G8: return "G8";
+                                case I: return "Ingalls";
+                                case B: return "British";
                                 default: assert_not_reached();
                         }
                 }
