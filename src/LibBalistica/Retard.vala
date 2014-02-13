@@ -132,6 +132,10 @@ namespace Balistica.LibBalistica {
                                         else if (vp>  976 ) { A = 5.92182174254121e-12; M = 4.29275576134191; }
                                         else if (vp>    0 ) { A = 4.3917343795117e-05 ; M = 1.99978116283334; }
                                         break;
+                                case DragFunction.I:
+                                        break;
+                                case DragFunction.B:
+                                        break;
                                 default: break;
                         }
 
