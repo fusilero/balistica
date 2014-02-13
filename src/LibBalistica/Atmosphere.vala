@@ -30,6 +30,7 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Refraction
+                 *
                  * @param Temperature
                  * @param Pressure
                  * @param RelativeHumidity
@@ -45,6 +46,7 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Pressure
+                 *
                  * @param Pressure
                  *
                  * @return Standardized pressure
@@ -55,6 +57,7 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Temperature
+                 *
                  * @param Temp
                  * @param Altitude
                  *
@@ -67,7 +70,7 @@ namespace Balistica.LibBalistica {
                         double Tstd = -0.0036 * Altitude + STANDARD_TEMP;
 
                         // Funny math where you divide by "standard temp" above
-                        // converted to Ranking
+                        // converted to Rankine
                         double FT = (Temp - Tstd) / Temperature.FahrenheitToRankine(Tstd);
 
                         return FT;
@@ -75,6 +78,7 @@ namespace Balistica.LibBalistica {
 
                 /**
                  * Altitude
+                 *
                  * @param Altitude
                  *
                  * @return Standardized altitude
