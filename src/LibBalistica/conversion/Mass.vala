@@ -192,7 +192,7 @@ public class Conversion.Mass : GLib.Object {
 	 *
 	 * @return Slugs
 	 */
-	 public inline static double PoundToSlug (double pound) {
+	 public inline static double OunceToSlug (double pound) {
 	 	return pound * 0.0310809502;
 	 }
 	 
@@ -203,7 +203,7 @@ public class Conversion.Mass : GLib.Object {
 	 *
 	 * @return Grains
 	 */
-	 public inline static double PoundToGrain (double ounce) {
+	 public inline static double OunceToGrain (double ounce) {
 	 	return ounce * 437.5;
 	 }
 	 
@@ -214,7 +214,7 @@ public class Conversion.Mass : GLib.Object {
 	 *
 	 * @return Miligrams
 	 */
-	 public inline static double PoundToMiligram (double ounce) {
+	 public inline static double OunceToMiligram (double ounce) {
 	 	return ounce * 28349.5;
 	 }
 	 
