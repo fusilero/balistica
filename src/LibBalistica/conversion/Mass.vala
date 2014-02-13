@@ -192,7 +192,7 @@ public class Conversion.Mass : GLib.Object {
 	 *
 	 * @return Slugs
 	 */
-	 public inline static double OunceToSlug (double pound) {
+	 public inline static double PoundToSlug (double pound) {
 	 	return pound * 0.0310809502;
 	 }
 	 
