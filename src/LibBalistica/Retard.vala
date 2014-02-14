@@ -133,6 +133,13 @@ namespace Balistica.LibBalistica {
                                         else if (vp>    0 ) { A = 4.3917343795117e-05 ; M = 1.99978116283334; }
                                         break;
                                 case DragFunction.I:
+                                        if (vp> 2600 ) { A = 4.0648825E-03     ; M = 1.55); }
+                                        else if (vp> 1800 ) { A = 1.2479524E-03; M = 1.70); }
+                                        else if (vp> 1370 ) { A = 1.3160125E-04; M = 2.00); }
+                                        else if (vp> 1230 ) { A = 9.5697809E-08; M = 3.00); }
+                                        else if (vp>  970 ) { A = 6.3368148E-14; M = 5.00); }
+                                        else if (vp>  790 ) { A = 5.9353046E-08; M = 3.00); }
+                                        else if (vp>    0 ) { A = 4.6761777E-05; M = 2.00); }
                                         break;
                                 case DragFunction.B:
                                         break;
