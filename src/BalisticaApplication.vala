@@ -585,7 +585,7 @@ namespace Balistica {
                         if (Balistica.VERSION_DESC == "Release") {
                                 version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION;
                         } else {
-                                version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "." + Balistica.VERSION_COMMIT;
+                                version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "-" + Balistica.VERSION_COMMIT;
                         }
 
                         Gtk.show_about_dialog (main_window,
