@@ -132,6 +132,24 @@ namespace Balistica.LibBalistica {
                                         else if (vp>  976 ) { A = 5.92182174254121e-12; M = 4.29275576134191; }
                                         else if (vp>    0 ) { A = 4.3917343795117e-05 ; M = 1.99978116283334; }
                                         break;
+                                case DragFunction.I:
+                                        if (vp> 2600 ) { A = 4.0648825e-03     ; M = 1.55; }
+                                        else if (vp> 1800 ) { A = 1.2479524e-03; M = 1.70; }
+                                        else if (vp> 1370 ) { A = 1.3160125e-04; M = 2.00; }
+                                        else if (vp> 1230 ) { A = 9.5697809e-08; M = 3.00; }
+                                        else if (vp>  970 ) { A = 6.3368148e-14; M = 5.00; }
+                                        else if (vp>  790 ) { A = 5.9353046e-08; M = 3.00; }
+                                        else if (vp>    0 ) { A = 4.6761777e-05; M = 2.00; }
+                                        break;
+                                case DragFunction.B:
+                                        if (vp> 2600 ) { A = 15366e-07     ; M = 1.67; }
+                                        else if (vp> 2000 ) { A = 58495e-07; M = 1.50; }
+                                        else if (vp> 1460 ) { A = 59814e-08; M = 1.80; }
+                                        else if (vp> 1190 ) { A = 95408e-12; M = 3.00; }
+                                        else if (vp> 1040 ) { A = 23385e-22; M = 6.45; }
+                                        else if (vp>  840 ) { A = 59939e-12; M = 3.00; }
+                                        else if (vp>    0 ) { A = 74422e-08; M = 1.60; }
+                                        break;
                                 default: break;
                         }
 

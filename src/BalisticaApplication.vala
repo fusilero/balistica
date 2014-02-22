@@ -70,7 +70,7 @@ namespace Balistica {
 
                 private const string MILLER_TWIST_HELP = "\nThe Miller Twist Rule can be used to calculate the twist rate"
                         + "\nof a specific round."
-                        + "\n\n The variables used to calculate twist rate: "
+                        + "\n\n The variables used to calculate twist rate:"
                         + "\n   --diameter   - the diameter of the bullet"
                         + "\n   --length     - the length of the bullet"
                         + "\n   --mass       - the mass of the bullet in grams"
@@ -79,7 +79,7 @@ namespace Balistica {
 
                 private const string MILLER_STABILITY_HELP = "\nThe Miller Twist Rule can also be used to calculate the"
                         + "\nstability factor of a specific round."
-                        + "\n\n The variables used to calculate the stability factor: "
+                        + "\n\n The variables used to calculate the stability factor:"
                         + "\n   --diameter - the diameter of the bullet"
                         + "\n   --length   - the length of the bullet"
                         + "\n   --mass     - the mass of the bullet in grams"
@@ -238,7 +238,7 @@ namespace Balistica {
                                 exit_status = 0;
                         } else {
                                 try {
-                                        var context = new OptionContext ("- A simple open source balistics calculator");
+                                        var context = new OptionContext ("- A simple open source ballistics calculator");
                                         context.set_help_enabled (false);
                                         context.add_main_entries (options, null);
                                         context.parse (ref arguments);
@@ -590,7 +590,7 @@ namespace Balistica {
 
                         Gtk.show_about_dialog (main_window,
                                         "authors", Balistica.AUTHORS,
-                                        "comments", "An open source external balistics calculator.",
+                                        "comments", "An open source external ballistics calculator.",
                                         "copyright", Balistica.COPYRIGHT,
                                         "license-type", Gtk.License.GPL_3_0,
                                         "program-name", Balistica.NAME,

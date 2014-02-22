@@ -1,0 +1,874 @@
+-- From saballistics 
+-- GNU GPLv2
+-- https://github.com/topgenorth/saballistics
+ 
+ D (in)    Description                  Weight (grs)   B.C. 
+============================================================
+ 0.172     Berger MEF                       18        0.100
+ 0.172     Berger MEF                       20        0.100
+ 0.172     Berger MEF                       22        0.122
+ 0.172     Berger Flat-Base HP              25        0.211
+ 0.172     Berger MEF                       25        0.138
+ 0.172     Hornady HP                       25        0.187
+ 0.172     Berger Flat-Base HP              30        0.183
+ 0.172     Berger VLD                       37        0.343
+ 0.222     Hornady JET                      40        0.104
+ 0.222     Winchester .22 LRN               40        0.150
+ 0.223     Sierra Hornet                    40        0.123
+ 0.223     Speer Spire Point                40        0.145
+ 0.223     Hornady Hornet                   45        0.202
+ 0.223     Sierra Hornet                    45        0.138
+ 0.223     Speer Spitzer SP                 45        0.166
+ 0.224     Hornady V-MAX                    40        0.200
+ 0.224     Nosler Ballistic Tip             40        0.221
+ 0.224     Sierra Hollow Point              40        0.155
+ 0.224     Sierra Hornet                    40        0.122
+ 0.224     Speer Spire Point                40        0.144
+ 0.224     HT                               42        0.234
+ 0.224     Barnes "X" BT                    45        0.203
+ 0.224     Barnes Solid                     45        0.212
+ 0.224     Hornady HP/BEE                   45        0.108
+ 0.224     Hornady Hornet                   45        0.202
+ 0.224     Nosler Hornet B.Tip              45        0.144
+ 0.224     Sierra Hornet                    45        0.137
+ 0.224     Sierra Semi-Pointed              45        0.168
+ 0.224     Sierra Spitzer                   45        0.196
+ 0.224     Speer Spitzer SP                 45        0.167
+ 0.224     Speer Flat SP                    46        0.094
+ 0.224     Barnes Solid                     50        0.235
+ 0.224     Hornady SP                       50        0.214
+ 0.224     Hornady SPSX                     50        0.214
+ 0.224     Hornady V-MAX                    50        0.242
+ 0.224     Norma Semi-spitzer FMJ           50        0.190
+ 0.224     Norma Semi-spitzer SP            50        0.180
+ 0.224     Nosler Ballistic Tip             50        0.238
+ 0.224     Sierra Blitz                     50        0.222
+ 0.224     Sierra Semi-Pointed              50        0.192
+ 0.224     Sierra Spitzer                   50        0.222
+ 0.224     Speer "TNT" HP                   50        0.223
+ 0.224     Speer Spitzer SP                 50        0.231
+ 0.224     Hornady BTHP Match               52        0.229
+ 0.224     Sierra HPBT MatchKing            52        0.218
+ 0.224     Speer HP                         52        0.225
+ 0.224     Speer HP BT Match                52        0.253
+ 0.224     Barnes "X"                       53        0.231
+ 0.224     Hornady HP Match                 53        0.218
+ 0.224     Norma Spire SP                   53        0.230
+ 0.224     Sierra HP MatchKing              53        0.224
+ 0.224     Hornady FMJ-BT w/c               55        0.243
+ 0.224     Hornady SP                       55        0.235
+ 0.224     Hornady SP w/c                   55        0.235
+ 0.224     Hornady SPSX                     55        0.235
+ 0.224     Hornady V-MAX                    55        0.252
+ 0.224     Lapua E372 SP                    55        0.202
+ 0.224     Lapua S350 FMJ                   55        0.251
+ 0.224     Nosler Ballistic Tip             55        0.276
+ 0.224     Sierra Blitz                     55        0.237
+ 0.224     Sierra FMJ Boat Tail             55        0.245
+ 0.224     Sierra HPBT                      55        0.185
+ 0.224     Sierra Semi-pointed              55        0.204
+ 0.224     Sierra Spitzer                   55        0.237
+ 0.224     Sierra Spitzer Boat Tail         55        0.245
+ 0.224     Speer FMJ BT                     55        0.269
+ 0.224     Speer Spitzer SP                 55        0.255
+ 0.224     Hornady HP                       60        0.271
+ 0.224     Hornady SP                       60        0.264
+ 0.224     Hornady V-MAX                    60        0.256
+ 0.224     Sierra Hollow Point              60        0.246
+ 0.224     Norma Soft Point                 62        0.210
+ 0.224     Speer FMJ BT w/cann              62        0.307
+ 0.224     Sierra Semi-Pointed              63        0.235
+ 0.224     Hornady BTHP Match               68        0.355
+ 0.224     Sierra HPBT MatchKing            69        0.305
+ 0.224     Berger LTB                       70        0.317
+ 0.224     Berger VLD                       70        0.400
+ 0.224     Speer Semi-Spitzer SP            70        0.214
+ 0.224     Berger VLD                       75        0.448
+ 0.224     Hornady A-MAX                    75        0.435
+ 0.224     Hornady BTHP Match               75        0.393
+ 0.224     Berger VLD                       80        0.489
+ 0.224     Sierra HPBT MatchKing            80        0.420
+ 0.227     Hornady SP w/c                   70        0.296
+ 0.228     Norma Semi-spitzer FMJ           71        0.260
+ 0.228     Norma Semi-spitzer SP            71        0.260
+ 0.243     Nosler Ballistic Tip             55        0.276
+ 0.243     Hornady V-MAX                    58        0.252
+ 0.243     Sierra Hollow Point              60        0.182
+ 0.243     Hornady V-MAX                    65        0.281
+ 0.243     Berger VLD                       69        0.347
+ 0.243     Hornady SP                       70        0.262
+ 0.243     Hornady SPSX                     70        0.269
+ 0.243     Nosler Ballistic Tip             70        0.310
+ 0.243     Sierra HPBT MatchKing            70        0.259
+ 0.243     Speer "TNT" HP                   70        0.282
+ 0.243     Barnes "X" S                     75        0.307
+ 0.243     Barnes Solid                     75        0.330
+ 0.243     Hornady HP                       75        0.294
+ 0.243     Hornady V-MAX                    75        0.330
+ 0.243     Sierra Hollow Point              75        0.217
+ 0.243     Speer Hollow Point               75        0.234
+ 0.243     HT                               80        0.394
+ 0.243     Hornady FMJ                      80        0.261
+ 0.243     Hornady SS/PB                    80        0.283
+ 0.243     Jensen J26                       80        0.379
+ 0.243     Sierra Blitz                     80        0.319
+ 0.243     Speer Spitzer SP                 80        0.365
+ 0.243     Barnes "X" BT                    85        0.401
+ 0.243     Barnes Solid                     85        0.353
+ 0.243     Nosler Spitzer Partition         85        0.315
+ 0.243     Sierra HPBT                      85        0.282
+ 0.243     Sierra Spitzer                   85        0.315
+ 0.243     Speer Spitzer SP BT              85        0.404
+ 0.243     Hornady BTHP                     87        0.376
+ 0.243     Hornady SP                       87        0.327
+ 0.243     Barnes "X" S                     90        0.382
+ 0.243     Lapua FMJ                        90        0.385
+ 0.243     Sierra FMJ Boat Tail             90        0.387
+ 0.243     Speer Spitzer SP                 90        0.385
+ 0.243     Barnes "X" S                     95        0.398
+ 0.243     Berger VLD                       95        0.524
+ 0.243     Nosler Ballistic Tip             95        0.379
+ 0.243     Nosler Spitzer Partition         95        0.365
+ 0.243     Hornady BTSP                    100        0.405
+ 0.243     Hornady RN                      100        0.230
+ 0.243     Hornady SP                      100        0.381
+ 0.243     Jensen J26                      100        0.465
+ 0.243     Lapua Mega SP                   100        0.287
+ 0.243     Norma Semi-pointed FMJ          100        0.350
+ 0.243     Norma Semi-pointed SP           100        0.350
+ 0.243     Nosler Spitzer Partition        100        0.384
+ 0.243     Sierra HPBT MatchKing           100        0.522
+ 0.243     Sierra Semi-Pointed             100        0.287
+ 0.243     Sierra Spitzer                  100        0.363
+ 0.243     Sierra Spitzer Boat Tail        100        0.419
+ 0.243     Speer Grand Slam SP             100        0.351
+ 0.243     Speer Spitzer SP BT             100        0.430
+ 0.243     Berger VLD                      105        0.565
+ 0.243     Speer Round Nose SP             105        0.207
+ 0.243     Speer Spitzer SP                105        0.443
+ 0.243     Sierra HPBT MatchKing           107        0.522
+ 0.243     Barnes Original RNSP            115        0.322
+ 0.243     Berger VLD                      115        0.597
+ 0.257     Hornady FP                       60        0.101
+ 0.257     Barnes "X" S                     75        0.289
+ 0.257     Barnes Solid                     75        0.297
+ 0.257     Hornady HP                       75        0.257
+ 0.257     Hornady V-MAX                    75        0.290
+ 0.257     Sierra Hollow Point              75        0.189
+ 0.257     Speer Flat-Nose SP               75        0.133
+ 0.257     Barnes "X" S                     85        0.309
+ 0.257     Nosler Ballistic Tip             85        0.331
+ 0.257     Hornady SP                       87        0.322
+ 0.257     Sierra Spitzer                   87        0.293
+ 0.257     Speer "TNT" HP                   87        0.310
+ 0.257     Speer Spitzer SP                 87        0.300
+ 0.257     Barnes "X" BT                    90        0.343
+ 0.257     Barnes Solid                     90        0.324
+ 0.257     HT                               90        0.398
+ 0.257     Sierra HPBT                      90        0.260
+ 0.257     Barnes "X" BT                   100        0.420
+ 0.257     Barnes "X" S                    100        0.401
+ 0.257     HT                              100        0.442
+ 0.257     Hornady SP                      100        0.357
+ 0.257     Jensen J26                      100        0.434
+ 0.257     Nosler Ballistic Tip            100        0.393
+ 0.257     Nosler Spitzer Partition        100        0.377
+ 0.257     Sierra Spitzer                  100        0.330
+ 0.257     Sierra Spitzer Boat Tail        100        0.333
+ 0.257     Speer Hollow Point              100        0.255
+ 0.257     Speer Spitzer SP                100        0.369
+ 0.257     Speer Spitzer SP BT             100        0.393
+ 0.257     Barnes "X" S                    115        0.429
+ 0.257     Berger VLD                      115        0.522
+ 0.257     Nosler Spitzer Partition        115        0.389
+ 0.257     Hornady BTSP                    117        0.391
+ 0.257     Hornady RN                      117        0.243
+ 0.257     Sierra Spitzer                  117        0.388
+ 0.257     Sierra Spitzer Boat Tail        117        0.410
+ 0.257     Hornady HP                      120        0.394
+ 0.257     Jensen J26                      120        0.508
+ 0.257     Nosler Spitzer Partition        120        0.391
+ 0.257     Sierra HPBT                     120        0.350
+ 0.257     Speer Grand Slam SP             120        0.328
+ 0.257     Speer Spitzer SP                120        0.410
+ 0.257     Speer Spitzer SP BT             120        0.435
+ 0.263     Speer Spitzer SP                120        0.433
+ 0.263     Speer Spitzer SP                140        0.496
+ 0.264     Norma Round Nose FMJ             80        0.160
+ 0.264     Sierra Hollow point              85        0.225
+ 0.264     Barnes "X" S                    100        0.381
+ 0.264     Barnes Solid                    100        0.395
+ 0.264     HT                              100        0.417
+ 0.264     Hornady SP                      100        0.358
+ 0.264     Lapua FMJ                       100        0.250
+ 0.264     Norma Hollow Point              100        0.320
+ 0.264     Nosler Ballistic Tip            100        0.350
+ 0.264     Sierra Hollow Point             100        0.259
+ 0.264     Sierra HPBT MatchKing LD        107        0.421
+ 0.264     Lapua Scenar HP                 108        0.502
+ 0.264     Barnes "X" S                    120        0.441
+ 0.264     Barnes Solid                    120        0.453
+ 0.264     HT                              120        0.502
+ 0.264     Nosler Ballistic Tip            120        0.458
+ 0.264     Sierra HPBT MatchKing           120        0.409
+ 0.264     Sierra Spitzer                  120        0.368
+ 0.264     Jensen J26                      125        0.539
+ 0.264     Nosler Spitzer Partition        125        0.449
+ 0.264     Hornady SP                      129        0.445
+ 0.264     Barnes "X" S                    130        0.479
+ 0.264     Barnes Solid                    130        0.461
+ 0.264     Norma Diamond Line VLD          130        0.548
+ 0.264     Norma VLD HP                    130        0.590
+ 0.264     Lapua Scenar HP                 139        0.660
+ 0.264     Norma Hollow Point              139        0.510
+ 0.264     Norma Pointed FMJ               139        0.580
+ 0.264     Norma Semi-pointed SP           139        0.410
+ 0.264     Norma Vulkan                    139        0.320
+ 0.264     Barnes "X" S                    140        0.522
+ 0.264     Hornady A-MAX                   140        0.618
+ 0.264     Hornady SP                      140        0.465
+ 0.264     Jensen J26                      140        0.595
+ 0.264     Nosler Spitzer Partition        140        0.490
+ 0.264     Sierra HPBT MatchKing           140        0.526
+ 0.264     Sierra Spitzer Boat Tail        140        0.490
+ 0.264     Sierra HPBT MatchKing LD        142        0.560
+ 0.264     Odin D-Spiss FMJ                143        0.636
+ 0.264     Lapua Mega SP                   155        0.377
+ 0.264     Sierra HPBT MatchKing           155        0.560
+ 0.264     Norma Alaska                    156        0.320
+ 0.264     Norma Vulkan                    156        0.350
+ 0.264     Hornady RN                      160        0.283
+ 0.264     Sierra Semi-Pointed             160        0.366
+ 0.277     Sierra Hollow Point              90        0.195
+ 0.277     Speer "TNT" HP                   90        0.275
+ 0.277     Barnes "X" S                    100        0.359
+ 0.277     Barnes Solid                    100        0.370
+ 0.277     Hornady SP                      100        0.307
+ 0.277     Speer Hollow Point              100        0.225
+ 0.277     Speer Spitzer SP                100        0.319
+ 0.277     Hornady HP                      110        0.352
+ 0.277     Hornady V-MAX                   110        0.370
+ 0.277     Sierra Spitzer                  110        0.318
+ 0.277     Barnes "X" BT                   120        0.423
+ 0.277     Barnes "X" S                    120        0.406
+ 0.277     Barnes Solid                    120        0.418
+ 0.277     HT                              120        0.453
+ 0.277     HT                              126        0.475
+ 0.277     Barnes "X" BT                   130        0.466
+ 0.277     Barnes "X" S                    130        0.428
+ 0.277     Barnes Solid                    130        0.448
+ 0.277     Barnes X                        130        0.428
+ 0.277     Bitterroot                      130        0.385
+ 0.277     HT                              130        0.492
+ 0.277     Hornady SP                      130        0.409
+ 0.277     Lapua Mira SP                   130        0.382
+ 0.277     Norma Semi-pointed SP           130        0.350
+ 0.277     Nosler Ballistic Tip            130        0.433
+ 0.277     Nosler Spitzer Partition        130        0.416
+ 0.277     Sierra Spitzer                  130        0.370
+ 0.277     Sierra Spitzer Boat Tail        130        0.418
+ 0.277     Speer Grand Slam SP             130        0.345
+ 0.277     Speer Spitzer SP                130        0.408
+ 0.277     Speer Spitzer SP BT             130        0.449
+ 0.277     Sierra HPBT MatchKing           135        0.482
+ 0.277     Barnes "X" BT                   140        0.497
+ 0.277     Barnes "X" S                    140        0.462
+ 0.277     HT                              140        0.530
+ 0.277     Hornady BTSP                    140        0.486
+ 0.277     Jensen J26                      140        0.487
+ 0.277     Nosler Ballistic Tip            140        0.456
+ 0.277     Sierra HPBT                     140        0.337
+ 0.277     Sierra Spitzer Boat Tail        140        0.450
+ 0.277     Barnes "X" S                    150        0.491
+ 0.277     Barnes Solid                    150        0.307
+ 0.277     Bitterroot                      150        0.450
+ 0.277     Hornady RN                      150        0.269
+ 0.277     Hornady SP                      150        0.462
+ 0.277     Jensen J26                      150        0.563
+ 0.277     Norma Semi-pointed SP           150        0.370
+ 0.277     Nosler Ballistic Tip            150        0.496
+ 0.277     Nosler Spitzer Partition        150        0.465
+ 0.277     Sierra Round Nose               150        0.223
+ 0.277     Sierra Spitzer Boat Tail        150        0.476
+ 0.277     Speer Grand Slam SP             150        0.385
+ 0.277     Speer Spitzer SP                150        0.481
+ 0.277     Speer Spitzer SP BT             150        0.496
+ 0.277     Lapua Mega SP                   160        0.319
+ 0.277     Nosler Spitzer Partition        160        0.434
+ 0.277     Barnes Original RNSP            180        0.372
+ 0.284     Barnes "X" S                    100        0.335
+ 0.284     Barnes Solid                    100        0.343
+ 0.284     Hornady HP                      100        0.279
+ 0.284     Sierra Hollow Point             100        0.215
+ 0.284     Speer "TNT" HP                  110        0.338
+ 0.284     Speer Hollow Point              115        0.257
+ 0.284     Barnes "X" BT                   120        0.411
+ 0.284     Barnes "X" S                    120        0.371
+ 0.284     Barnes Solid                    120        0.399
+ 0.284     HT                              120        0.434
+ 0.284     Hornady HP                      120        0.334
+ 0.284     Hornady SP                      120        0.350
+ 0.284     Hornady SS/PB                   120        0.350
+ 0.284     Nosler Ballistic Tip            120        0.417
+ 0.284     Nosler FP Ballistic Tip         120        0.195
+ 0.284     Sierra Spitzer                  120        0.328
+ 0.284     Speer Spitzer SP                120        0.386
+ 0.284     Barnes "X" BT                   130        0.444
+ 0.284     HT                              130        0.470
+ 0.284     Speer Spitzer SP BT             130        0.394
+ 0.284     Hornady BTSP                    139        0.453
+ 0.284     Hornady FP                      139        0.192
+ 0.284     Hornady SP                      139        0.392
+ 0.284     Barnes "X" BT                   140        0.477
+ 0.284     Barnes "X" S                    140        0.436
+ 0.284     Barnes Solid                    140        0.448
+ 0.284     Bitterroot                      140        0.385
+ 0.284     HT                              140        0.506
+ 0.284     Jensen J26                      140        0.538
+ 0.284     Nosler Ballistic Tip            140        0.485
+ 0.284     Nosler Spitzer Partition        140        0.434
+ 0.284     Sierra Spitzer                  140        0.377
+ 0.284     Sierra Spitzer Boat Tail        140        0.416
+ 0.284     Speer Grand Slam SP             145        0.327
+ 0.284     Speer Match HP BT               145        0.465
+ 0.284     Speer Spitzer SP                145        0.502
+ 0.284     Speer Spitzer SP                145        0.457
+ 0.284     Barnes "X" BT                   150        0.529
+ 0.284     Barnes "X" S                    150        0.488
+ 0.284     Norma Semi-pointed FMJ          150        0.500
+ 0.284     Nosler Ballistic Tip            150        0.493
+ 0.284     Nosler Spitzer Partition        150        0.456
+ 0.284     Sierra HPBT MatchKing           150        0.429
+ 0.284     Sierra Spitzer Boat Tail        150        0.430
+ 0.284     Hornady InterBond               154        0.525
+ 0.284     Hornady RN                      154        0.279
+ 0.284     Hornady SP                      154        0.433
+ 0.284     Jensen J26                      154        0.590
+ 0.284     Norma Soft Point                154        0.420
+ 0.284     Barnes "X" S                    160        0.508
+ 0.284     Barnes Solid                    160        0.522
+ 0.284     Bitterroot                      160        0.460
+ 0.284     Nosler Spitzer Partition        160        0.475
+ 0.284     Sierra HP Boat Tail             160        0.394
+ 0.284     Sierra HPBT MatchKing           160        0.494
+ 0.284     Sierra Spitzer Boat Tail        160        0.470
+ 0.284     Speer Grand Slam SP             160        0.387
+ 0.284     Speer Mag-Tip SP                160        0.354
+ 0.284     Speer Spitzer SP                160        0.502
+ 0.284     Speer Spitzer SP BT             160        0.556
+ 0.284     Hornady A/MAX                   162        0.625
+ 0.284     Hornady BTSP                    162        0.514
+ 0.284     Sierra HPBT MatchKing           168        0.494
+ 0.284     Norma Vulkan                    170        0.350
+ 0.284     Sierra Round Nose               170        0.317
+ 0.284     Barnes "X" S                    175        0.530
+ 0.284     Barnes Solid                    175        0.321
+ 0.284     Bitterroot                      175        0.495
+ 0.284     Hornady RN                      175        0.285
+ 0.284     Hornady SP                      175        0.462
+ 0.284     Jensen J26                      175        0.673
+ 0.284     Nosler Spitzer Partition        175        0.519
+ 0.284     Sierra Spitzer BT               175        0.533
+ 0.284     Speer Grand Slam SP             175        0.465
+ 0.284     Speer Mag-Tip SP                175        0.385
+ 0.284     Berger VLD                      180        0.698
+ 0.284     Barnes Original SSP             195        0.345
+ 0.285     Lapua Lock Base FMJ             170        0.470
+ 0.285     Lapua Mega SP                   170        0.319
+ 0.308     Hornady SJ                      100        0.152
+ 0.308     Lapua HP                        100        0.170
+ 0.308     Speer Plinker RN SP             100        0.124
+ 0.308     Lapua HP                        105        0.171
+ 0.308     Barnes "X" S                    110        0.322
+ 0.308     Barnes Solid                    110        0.337
+ 0.308     Berger MEF                      110        0.267
+ 0.308     Hornady FMJ                     110        0.178
+ 0.308     Hornady RN                      110        0.150
+ 0.308     Hornady SP                      110        0.256
+ 0.308     Sierra FMJ                      110        0.154
+ 0.308     Sierra Hollow Point             110        0.177
+ 0.308     Sierra Round Nose               110        0.154
+ 0.308     Speer Hollow Point              110        0.136
+ 0.308     Speer RN FMJ                    110        0.179
+ 0.308     Speer RN SP                     110        0.144
+ 0.308     Speer Spire SP                  110        0.273
+ 0.308     HT                              115        0.349
+ 0.308     Lapua FMJ                       123        0.280
+ 0.308     Barnes "X" S                    125        0.351
+ 0.308     Barnes Solid                    125        0.372
+ 0.308     Berger MEF                      125        0.304
+ 0.308     Nosler Ballistic Tip            125        0.366
+ 0.308     Sierra HP (.30-30)              125        0.153
+ 0.308     Sierra Spitzer                  125        0.279
+ 0.308     Barnes "X" BT                   130        0.374
+ 0.308     Hornady SP                      130        0.295
+ 0.308     Hornady SS/PB                   130        0.295
+ 0.308     Lapua HP                        130        0.214
+ 0.308     Speer "TNT" HP                  130        0.326
+ 0.308     Speer Flat SP                   130        0.248
+ 0.308     Speer Hollow Point              130        0.263
+ 0.308     Berger Flat-Base VLD            135        0.402
+ 0.308     Barnes "X" BT                   140        0.398
+ 0.308     HT                              140        0.428
+ 0.308     Norma Pointed FMJ               146        0.440
+ 0.308     Barnes "X" BT                   150        0.428
+ 0.308     Barnes "X" FN                   150        0.269
+ 0.308     Barnes "X" S                    150        0.386
+ 0.308     HT                              150        0.458
+ 0.308     Hornady BTSP                    150        0.349
+ 0.308     Hornady FMJ-BT                  150        0.398
+ 0.308     Hornady RN (30-30)              150        0.186
+ 0.308     Hornady SP                      150        0.338
+ 0.308     Lapua Lock Base FMJ             150        0.488
+ 0.308     Lapua Mega SP                   150        0.330
+ 0.308     Norma Flat-point SP             150        0.250
+ 0.308     Norma Semi-pointed SP           150        0.280
+ 0.308     Nosler Ballistic Tip            150        0.435
+ 0.308     Nosler Spitzer Partition        150        0.387
+ 0.308     Sierra FMJ Boat Tail            150        0.397
+ 0.308     Sierra Flat Nose (.30-30)       150        0.224
+ 0.308     Sierra HPBT MatchKing           150        0.397
+ 0.308     Sierra Round Nose               150        0.227
+ 0.308     Sierra Spitzer                  150        0.346
+ 0.308     Sierra Spitzer Boat Tail        150        0.368
+ 0.308     Speer FMJ BT w/cann.            150        0.425
+ 0.308     Speer Flat SP                   150        0.268
+ 0.308     Speer Grand Slam SP             150        0.305
+ 0.308     Speer Mag-Tip SP                150        0.301
+ 0.308     Speer Round Nose SP             150        0.266
+ 0.308     Speer Spitzer SP                150        0.389
+ 0.308     Speer Spitzer SP BT             150        0.423
+ 0.308     Berger LTB                      155        0.428
+ 0.308     Berger VLD                      155        0.484
+ 0.308     Hornady A-MAX                   155        0.475
+ 0.308     Sierra HPBT Palma Match         155        0.443
+ 0.308     Berger Flat-Base VLD            160        0.511
+ 0.308     HT                              160        0.489
+ 0.308     Barnes "X" BT                   165        0.505
+ 0.308     Barnes "X" FN                   165        0.302
+ 0.308     Barnes "X" S                    165        0.456
+ 0.308     Barnes Solid                    165        0.481
+ 0.308     Bitterroot                      165        0.402
+ 0.308     Hornady BTSP                    165        0.435
+ 0.308     Hornady SP                      165        0.387
+ 0.308     Jensen J26                      165        0.532
+ 0.308     Nosler Ballistic Tip            165        0.475
+ 0.308     Nosler Spitzer Partition        165        0.410
+ 0.308     Sierra HPBT                     165        0.355
+ 0.308     Sierra Spitzer Boat Tail        165        0.404
+ 0.308     Speer Grand Slam SP             165        0.393
+ 0.308     Speer Round Nose SP             165        0.274
+ 0.308     Speer Spitzer SP                165        0.433
+ 0.308     Speer Spitzer SP BT             165        0.477
+ 0.308     Swift A-Frame                   165        0.394
+ 0.308     Woodleigh PP                    165        0.320
+ 0.308     Lapua Scenar HP                 167        0.470
+ 0.308     Berger VLD                      168        0.512
+ 0.308     Hornady A-MAX                   168        0.520
+ 0.308     Hornady BTHP Match              168        0.431
+ 0.308     Sierra HPBT MatchKing           168        0.447
+ 0.308     Speer Match HP BT               168        0.480
+ 0.308     HT                              170        0.519
+ 0.308     Hornady FP (30-30)              170        0.189
+ 0.308     Lapua FMJ BT                    170        0.504
+ 0.308     Lapua Lock Base FMJ             170        0.525
+ 0.308     Sierra Flat Nose (.30-30)       170        0.248
+ 0.308     Speer Flat SP                   170        0.304
+ 0.308     Berger VLD                      175        0.537
+ 0.308     Sierra HPBT MatchKing           175        0.496
+ 0.308     Barnes "X" BT                   180        0.552
+ 0.308     Barnes "X" S                    180        0.511
+ 0.308     Bitterroot                      180        0.440
+ 0.308     Hornady A-MAX                   180        0.580
+ 0.308     Hornady BTHP Match              180        0.498
+ 0.308     Hornady BTSP                    180        0.452
+ 0.308     Hornady RN                      180        0.241
+ 0.308     Hornady SP                      180        0.425
+ 0.308     Jensen J26                      180        0.579
+ 0.308     Norma Alaska                    180        0.250
+ 0.308     Norma Semi-pointed SP           180        0.400
+ 0.308     Norma Vulkan                    180        0.310
+ 0.308     Nosler Ballistic Tip            180        0.507
+ 0.308     Nosler Spitzer Partition        180        0.474
+ 0.308     Sierra HPBT MatchKing           180        0.496
+ 0.308     Sierra Round Nose               180        0.280
+ 0.308     Sierra Spitzer                  180        0.415
+ 0.308     Sierra Spitzer Boat Tail        180        0.506
+ 0.308     Speer Grand Slam SP             180        0.416
+ 0.308     Speer Mag-Tip SP                180        0.352
+ 0.308     Speer Round Nose SP             180        0.304
+ 0.308     Speer Spitzer SP                180        0.483
+ 0.308     Speer Spitzer SP BT             180        0.540
+ 0.308     Swift A-Frame                   180        0.429
+ 0.308     Woodleigh PP                    180        0.376
+ 0.308     Berger VLD                      185        0.569
+ 0.308     Lapua FMJ BT                    185        0.547
+ 0.308     Lapua Forex SP                  185        0.220
+ 0.308     Lapua Mega SP                   185        0.319
+ 0.308     Lapua Scenar HP                 185        0.521
+ 0.308     Berger VLD                      190        0.583
+ 0.308     Hornady BTSP                    190        0.491
+ 0.308     Sierra HPBT MatchKing           190        0.533
+ 0.308     Speer Match HP BT               190        0.540
+ 0.308     Barnes "X" S                    200        0.550
+ 0.308     Bitterroot                      200        0.500
+ 0.308     Jensen J26                      200        0.640
+ 0.308     Lapua Mega SP                   200        0.344
+ 0.308     Norma Vulkan                    200        0.330
+ 0.308     Nosler Spitzer Partition        200        0.481
+ 0.308     Sierra HPBT MatchKing           200        0.565
+ 0.308     Sierra Spitzer Boat Tail        200        0.552
+ 0.308     Speer Grand Slam SP             200        0.448
+ 0.308     Speer Spitzer SP                200        0.556
+ 0.308     Swift A-Frame                   200        0.477
+ 0.308     Berger VLD                      210        0.640
+ 0.308     Barnes Solid                    220        0.305
+ 0.308     Hornady RN                      220        0.300
+ 0.308     Nosler Semi-Spitzer PT          220        0.351
+ 0.308     Sierra HPBT MatchKing           220        0.624
+ 0.308     Sierra Round Nose               220        0.335
+ 0.308     Woodleigh FMJ                   220        0.359
+ 0.308     Woodleigh RN                    220        0.367
+ 0.308     Sierra HPBT MatchKing           240        0.702
+ 0.308     Barnes Original RNSP            250        0.417
+ 0.308     Woodleigh SN                    300        0.416
+ 0.310     Hornady FMJ                     123        0.266
+ 0.310     Hornady SP                      123        0.252
+ 0.311     Lapua FMJ                       123        0.280
+ 0.311     Speer FMJ w/cann.               123        0.256
+ 0.311     Lapua Mega                      125        0.275
+ 0.311     Sierra Spitzer                  125        0.282
+ 0.311     Speer Spitzer SP w/cann.        125        0.292
+ 0.311     Norma Semi-pointed SP           150        0.320
+ 0.311     Sierra Spitzer                  150        0.341
+ 0.311     Speer Spitzer SP                150        0.411
+ 0.311     Sierra HPBT MatchKing           174        0.493
+ 0.311     HT                              180        0.516
+ 0.311     Norma Semi-pointed SP           180        0.420
+ 0.311     Sierra Spitzer                  180        0.411
+ 0.311     Speer Round Nose SP             180        0.328
+ 0.311     Speer Grand Slam SP             200        0.441
+ 0.312     Hornady SP                      150        0.361
+ 0.312     Hornady RN                      174        0.262
+ 0.321     Hornady FP                      170        0.249
+ 0.321     Speer Flat SP                   170        0.297
+ 0.323     Hornady SP                      125        0.246
+ 0.323     Hornady SP                      150        0.290
+ 0.323     Sierra Spitzer                  150        0.329
+ 0.323     Speer Spitzer SP                150        0.369
+ 0.323     Hornady RN                      170        0.217
+ 0.323     Speer Semi-Spitzer SP           170        0.354
+ 0.323     Sierra Spitzer                  175        0.381
+ 0.323     Barnes "X" S                    180        0.382
+ 0.323     HT                              180        0.506
+ 0.323     Norma Alaska                    196        0.300
+ 0.323     Norma Vulkan                    196        0.340
+ 0.323     Woodleigh SN                    196        0.370
+ 0.323     Barnes "X" S                    200        0.429
+ 0.323     HT                              200        0.560
+ 0.323     Lapua SP                        200        0.289
+ 0.323     Nosler Spitzer Partition        200        0.426
+ 0.323     Speer Spitzer SP                200        0.411
+ 0.323     Jensen J26                      210        0.559
+ 0.323     Barnes "X" S                    220        0.462
+ 0.323     Barnes Solid                    220        0.294
+ 0.323     Hornady SP                      220        0.464
+ 0.323     Sierra Spitzer Boat Tail        220        0.524
+ 0.330     Woodleigh FMJ                   250        0.364
+ 0.330     Woodleigh SN                    250        0.420
+ 0.333     Woodleigh SN                    250        0.400
+ 0.333     Woodleigh FMJ                   300        0.419
+ 0.333     Woodleigh SN                    300        0.428
+ 0.338     Barnes "X" S                    160        0.337
+ 0.338     Barnes "X" S                    175        0.392
+ 0.338     Barnes "X" BT                   185        0.437
+ 0.338     Barnes "X" S                    200        0.440
+ 0.338     Barnes Solid                    200        0.465
+ 0.338     Bitterroot                      200        0.407
+ 0.338     HT                              200        0.508
+ 0.338     Hornady FP                      200        0.200
+ 0.338     Hornady SP                      200        0.361
+ 0.338     Jensen J26                      200        0.483
+ 0.338     Nosler Ballistic Tip            200        0.414
+ 0.338     Speer Spitzer SP                200        0.448
+ 0.338     Barnes "X" BT                   210        0.471
+ 0.338     Barnes Solid                    210        0.480
+ 0.338     Nosler Spitzer Partition        210        0.400
+ 0.338     Sierra Spitzer Boat Tail        210        0.485
+ 0.338     HT                              215        0.525
+ 0.338     Barnes "X" S                    225        0.482
+ 0.338     Barnes Solid                    225        0.506
+ 0.338     Bitterroot                      225        0.452
+ 0.338     Hornady SP                      225        0.397
+ 0.338     Jensen J26                      225        0.545
+ 0.338     Nosler Spitzer Partition        225        0.454
+ 0.338     Speer Spitzer SP BT             225        0.484
+ 0.338     Swift A-Frame                   225        0.396
+ 0.338     Woodleigh PP                    225        0.425
+ 0.338     HT                              230        0.583
+ 0.338     A-Square Dead Tough SP          250        0.306
+ 0.338     A-Square Lion Load SP           250        0.306
+ 0.338     A-Square Monolithic Solid       250        0.306
+ 0.338     Barnes "X" S                    250        0.521
+ 0.338     Barnes Solid                    250        0.326
+ 0.338     Bitterroot                      250        0.508
+ 0.338     Hornady RN                      250        0.291
+ 0.338     Hornady SP                      250        0.431
+ 0.338     Jensen J26                      250        0.606
+ 0.338     Lapua Forex SP                  250        0.300
+ 0.338     Lapua Lock Base FMJ             250        0.662
+ 0.338     Nosler Spitzer Partition        250        0.473
+ 0.338     Sierra Spitzer Boat Tail        250        0.563
+ 0.338     Speer Grand Slam SP             250        0.431
+ 0.338     Swift A-Frame                   250        0.440
+ 0.338     Woodleigh FMJ                   250        0.326
+ 0.338     Woodleigh PP                    250        0.470
+ 0.338     Woodleigh SN                    250        0.332
+ 0.338     Speer AGS Tungsten Solid        275        0.291
+ 0.338     Speer Semi-Spitzer SP           275        0.456
+ 0.338     Swift A-Frame                   275        0.484
+ 0.338     Sierra HPBT MatchKing           300        0.768
+ 0.338     Woodleigh FMJ                   300        0.398
+ 0.348     Barnes "X" FN                   200        0.291
+ 0.348     Hornady FP                      200        0.246
+ 0.348     Barnes "X" FN                   220        0.315
+ 0.348     Barnes Original RNSP            220        0.301
+ 0.348     Barnes Original RNSP            250        0.327
+ 0.358     Barnes "X" S                    180        0.298
+ 0.358     Hornady SS/PB                   180        0.248
+ 0.358     Speer Flat-Nose SP              180        0.245
+ 0.358     HT                              190        0.400
+ 0.358     Barnes "X" S                    200        0.346
+ 0.358     Hornady RN                      200        0.195
+ 0.358     Hornady SP                      200        0.282
+ 0.358     Sierra Round Nose               200        0.148
+ 0.358     HT                              215        0.454
+ 0.358     Speer Flat-Nose SP              220        0.316
+ 0.358     Barnes "X" S                    225        0.405
+ 0.358     Bitterroot                      225        0.411
+ 0.358     Jensen J26                      225        0.524
+ 0.358     Nosler Spitzer Partition        225        0.430
+ 0.358     Sierra Spitzer Boat Tail        225        0.384
+ 0.358     Swift A-Frame                   225        0.350
+ 0.358     Woodleigh FMJ                   225        0.298
+ 0.358     Woodleigh SN                    225        0.227
+ 0.358     HT                              235        0.493
+ 0.358     Barnes "X" S                    250        0.458
+ 0.358     Barnes Solid                    250        0.313
+ 0.358     Bitterroot                      250        0.455
+ 0.358     Hornady RN                      250        0.271
+ 0.358     Hornady SP                      250        0.375
+ 0.358     Jensen J26                      250        0.554
+ 0.358     Nosler Spitzer Partition        250        0.446
+ 0.358     Speer Grand Slam SP             250        0.335
+ 0.358     Speer Spitzer SP                250        0.446
+ 0.358     Swift A-Frame                   250        0.389
+ 0.358     Woodleigh SN                    250        0.365
+ 0.358     Bitterroot                      275        0.490
+ 0.358     Woodleigh FMJ                   310        0.378
+ 0.358     Woodleigh SN                    310        0.400
+ 0.365     Norma Semi-pointed FMJ          232        0.380
+ 0.365     Norma Vulkan                    232        0.270
+ 0.365     Norma Alaska                    286        0.360
+ 0.366     HT                              225        0.479
+ 0.366     Barnes "X" S                    250        0.428
+ 0.366     Lapua Forex SP                  270        0.290
+ 0.366     Speer Spitzer SP                270        0.361
+ 0.366     Lapua Mega SP                   285        0.338
+ 0.366     A-Square Dead Tough SP          286        0.305
+ 0.366     A-Square Lion Load SP           286        0.305
+ 0.366     A-Square Monolithic Solid       286        0.305
+ 0.366     Barnes "X" S                    286        0.468
+ 0.366     Barnes Solid                    286        0.342
+ 0.366     Woodleigh FMJ                   286        0.324
+ 0.366     Woodleigh SN                    286        0.331
+ 0.366     Woodleigh FMJ                   320        0.362
+ 0.366     Woodleigh SN                    320        0.378
+ 0.375     Sierra Flat Nose                200        0.195
+ 0.375     Barnes "X" S                    210        0.341
+ 0.375     Barnes Original RNSP            220        0.246
+ 0.375     Hornady FP                      220        0.217
+ 0.375     Barnes "X" S                    235        0.400
+ 0.375     Barnes Solid                    235        0.442
+ 0.375     HT                              235        0.450
+ 0.375     Speer Semi-Spitzer SP           235        0.317
+ 0.375     Woodleigh PP                    235        0.331
+ 0.375     Barnes "X" S                    250        0.450
+ 0.375     Barnes Solid                    250        0.551
+ 0.375     Bitterroot                      250        0.352
+ 0.375     HT                              250        0.479
+ 0.375     Jensen J26                      250        0.451
+ 0.375     Sierra Spitzer Boat Tail        250        0.371
+ 0.375     Swift A-Frame                   250        0.278
+ 0.375     Barnes Original RNSP            255        0.290
+ 0.375     Barnes "X" S                    270        0.503
+ 0.375     Barnes Solid                    270        0.284
+ 0.375     HT                              270        0.518
+ 0.375     Hornady RN                      270        0.253
+ 0.375     Hornady SP                      270        0.380
+ 0.375     Speer Spitzer SP BT             270        0.429
+ 0.375     Woodleigh PP                    270        0.352
+ 0.375     Woodleigh RN                    270        0.305
+ 0.375     Woodleigh SP                    270        0.380
+ 0.375     Bitterroot                      275        0.395
+ 0.375     Speer Grand Slam SP             285        0.354
+ 0.375     A-Square Dead Tough SP          300        0.288
+ 0.375     A-Square Lion Load SP           300        0.288
+ 0.375     A-Square Monolithic Solid       300        0.288
+ 0.375     Barnes "X" S                    300        0.555
+ 0.375     Barnes Solid                    300        0.307
+ 0.375     Bitterroot                      300        0.430
+ 0.375     Hornady BTSP                    300        0.460
+ 0.375     Hornady FMJ-RN                  300        0.275
+ 0.375     Hornady RN                      300        0.250
+ 0.375     Jensen J26                      300        0.621
+ 0.375     Nosler Spitzer Partition        300        0.398
+ 0.375     Sierra Spitzer Boat Tail        300        0.480
+ 0.375     Speer AGS Tungsten Solid        300        0.258
+ 0.375     Swift A-Frame                   300        0.361
+ 0.375     Woodleigh FMJ                   300        0.307
+ 0.375     Woodleigh PP                    300        0.420
+ 0.375     Woodleigh RN                    300        0.340
+ 0.375     Woodleigh SP                    300        0.425
+ 0.377     Barnes Original RNSP            255        0.290
+ 0.406     Barnes Original RNSP            250        0.241
+ 0.411     Barnes "X" S                    300        0.401
+ 0.411     HT                              320        0.507
+ 0.411     Barnes "X" S                    325        0.478
+ 0.411     Barnes "X" S                    350        0.536
+ 0.411     Barnes Solid                    350        0.374
+ 0.411     Barnes "X" S                    400        0.562
+ 0.411     Barnes Solid                    400        0.406
+ 0.411     Woodleigh FMJ                   400        0.433
+ 0.411     Woodleigh SN                    400        0.384
+ 0.416     Barnes "X" S                    300        0.394
+ 0.416     HT                              320        0.495
+ 0.416     Barnes "X" S                    325        0.467
+ 0.416     Bitterroot                      335        0.390
+ 0.416     Jensen J26                      335        0.475
+ 0.416     Woodleigh PP                    340        0.425
+ 0.416     Barnes "X" S                    350        0.521
+ 0.416     Barnes Solid                    350        0.364
+ 0.416     Speer Mag-Tip SP                350        0.332
+ 0.416     Swift A-Frame                   350        0.318
+ 0.416     A-Square Dead Tough SP          400        0.326
+ 0.416     A-Square Lion Load SP           400        0.326
+ 0.416     A-Square Monolithic Solid       400        0.326
+ 0.416     Barnes "X" S                    400        0.546
+ 0.416     Barnes Solid                    400        0.388
+ 0.416     Hornady FMJ                     400        0.319
+ 0.416     Hornady RN                      400        0.311
+ 0.416     Speer AGS Soft Point            400        0.318
+ 0.416     Speer AGS Tungsten Point        400        0.262
+ 0.416     Swift A-Frame                   400        0.391
+ 0.416     Woodleigh FMJ                   410        0.341
+ 0.416     Woodleigh SN                    410        0.375
+ 0.423     Bitterroot                      335        0.385
+ 0.423     Woodleigh FMJ                   347        0.307
+ 0.423     Woodleigh SN                    347        0.355
+ 0.423     Barnes "X" S                    350        0.481
+ 0.423     Barnes Solid                    350        0.347
+ 0.423     Woodleigh SN                    350        0.357
+ 0.423     Barnes "X" S                    400        0.537
+ 0.423     Barnes Solid                    400        0.361
+ 0.423     Woodleigh FMJ                   400        0.358
+ 0.423     Woodleigh SN                    400        0.354
+ 0.430     Barnes Original JHP             250        0.214
+ 0.430     Hornady FP                      265        0.189
+ 0.430     Barnes Original JHP             275        0.239
+ 0.430     Barnes Original JHP             300        0.258
+ 0.435     Barnes Original RNSP            410        0.344
+ 0.435     Barnes Solid                    410        0.390
+ 0.435     Woodleigh FMJ                   410        0.336
+ 0.435     Woodleigh SN                    410        0.344
+ 0.440     Woodleigh SN                    410        0.411
+ 0.458     Barnes "X" S                    300        0.340
+ 0.458     Barnes Original FNSP            300        0.227
+ 0.458     Barnes Original SSP             300        0.291
+ 0.458     Hornady HP                      300        0.197
+ 0.458     Sierra Flat Nose HP             300        0.185
+ 0.458     Barnes "X" S                    350        0.402
+ 0.458     Hornady RN                      350        0.189
+ 0.458     Speer Flat-Nose SP              350        0.232
+ 0.458     Woodleigh RN                    350        0.305
+ 0.458     Barnes "X" S                    400        0.457
+ 0.458     Barnes Original FNSP            400        0.302
+ 0.458     Barnes Original SSP             400        0.389
+ 0.458     Barnes Solid                    400        0.321
+ 0.458     Jensen J26                      400        0.463
+ 0.458     Speer Flat-Nose SP              400        0.214
+ 0.458     Swift A-Frame                   400        0.271
+ 0.458     Woodleigh PP                    400        0.420
+ 0.458     Barnes "X" S                    450        0.488
+ 0.458     Barnes Solid                    450        0.362
+ 0.458     A-Square Dead Tough SP          465        0.364
+ 0.458     A-Square Lion Load SP           465        0.364
+ 0.458     Woodleigh FMJ                   480        0.410
+ 0.458     Woodleigh SN                    480        0.419
+ 0.458     A-Squaer Lion Load SP           500        0.374
+ 0.458     A-Square Dead Tough SP          500        0.374
+ 0.458     A-Square Monolithic Solid       500        0.374
+ 0.458     Barnes "X" S                    500        0.526
+ 0.458     Barnes Solid                    500        0.394
+ 0.458     Hornady FMJ-RN                  500        0.295
+ 0.458     Hornady RN                      500        0.287
+ 0.458     Speer AGS Soft Point            500        0.285
+ 0.458     Speer AGS Tungsten Solid        500        0.277
+ 0.458     Swift A-Frame                   500        0.354
+ 0.458     Woodleigh FMJ                   500        0.405
+ 0.458     Woodleigh SN                    500        0.430
+ 0.458     Woodleigh FMJ                   550        0.426
+ 0.458     Woodleigh SN                    550        0.480
+ 0.458     Barnes Original RNSP            600        0.454
+ 0.468     Barnes Original RNSP            480        0.362
+ 0.468     Barnes Solid                    480        0.391
+ 0.468     Woodleigh FMJ                   480        0.407
+ 0.468     Woodleigh SN                    480        0.410
+ 0.470     Barnes Solid                    500        0.365
+ 0.474     Woodleigh FMJ                   500        0.410
+ 0.474     Woodleigh SN                    500        0.411
+ 0.475     HT                              410        0.511
+ 0.475     Barnes Original RNSP            500        0.352
+ 0.475     Barnes Original RNSP            600        0.422
+ 0.476     Woodleigh FMJ                   520        0.455
+ 0.476     Woodleigh SN                    520        0.420
+ 0.483     Woodleigh FMJ                   480        0.410
+ 0.483     Woodleigh SN                    480        0.400
+ 0.483     Barnes Solid                    500        0.386
+ 0.488     Barnes Original RNSP            500        0.333
+ 0.488     Barnes Solid                    500        0.378
+ 0.488     Woodleigh FMJ                   500        0.416
+ 0.488     Woodleigh SN                    500        0.420
+ 0.505     HT                              480        0.500
+ 0.505     Barnes Solid                    525        0.344
+ 0.505     Woodleigh FMJ                   525        0.408
+ 0.505     Woodleigh SN                    525        0.455
+ 0.505     Barnes Solid                    600        0.395
+ 0.510     Barnes Original FNSP            300        0.183
+ 0.510     Woodleigh SN                    440        0.336
+ 0.510     Barnes Original FNSP            450        0.274
+ 0.510     HT                              495        0.482
+ 0.510     Barnes Solid                    525        0.342
+ 0.510     Woodleigh FMJ                   535        0.422
+ 0.510     Woodleigh SN                    535        0.460
+ 0.510     Woodleigh FMJ                   570        0.434
+ 0.510     Woodleigh SN                    570        0.474
+ 0.510     Barnes Original RNSP            600        0.365
+ 0.510     Barnes Solid                    600        0.391
+ 0.510     Speer .50 BMG FMJ BT            647        0.701
+ 0.510     Barnes Original RNSP            700        0.436
+ 0.510     Barnes Solid                    750        1.070
+ 0.510     Hornady A/MAX                   750        1.050
+ 0.510     Barnes Solid                    800        1.095
+ 0.585     Barnes Solid                    650        0.296
+ 0.585     Woodleigh SN                    650        0.320
+ 0.585     Barnes Original RNSP            750        0.346
+ 0.585     Barnes Solid                    750        0.351
+ 0.585     Woodleigh FMJ                   750        0.351
+ 0.585     Woodleigh SN                    750        0.346
+ 0.600     Woodleigh FMJ                  1000        0.340
+ 0.620     Barnes Original RNSP            900        0.371
+ 0.620     Barnes Solid                    900        0.380
+ 0.620     Woodleigh FMJ                   900        0.334
+ 0.620     Woodleigh SN                    900        0.371
+ 0.700     Woodleigh SN                   1000        0.340

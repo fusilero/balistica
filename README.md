@@ -15,6 +15,7 @@ exists to compute the following:
 ✓ Miller Stability Rule  
 ✓ Greenhill Twist  
 ✓ Standard Drag Functions G1-G8  
+✓ Drag Functions Ingalls and British  
 ✓ The PBR function (Point Blank Range)
 
 With the exception of the GUI for the cacluation of the Standard
