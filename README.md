@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 # balística
 
 [![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
