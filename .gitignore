@@ -11,3 +11,4 @@ bin/*
 
 # Glade temp files 
 ui/*.glade~
+ui/#*#
