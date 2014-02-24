@@ -52,7 +52,7 @@ CREATE INDEX pistols_model_idx ON pistols (model);
 
 CREATE TABLE calibers (
         id INTEGER PRIMARY KEY,
-        type TEXT,
+        description TEXT,
         caliber TEXT NOT NULL
 );
 
@@ -67,6 +67,7 @@ CREATE TABLE bullets (
         caliber_id INTEGER NOT NULL,
         diameter DOUBLE NOT NULL,
         weight DOUBLE NOT NULL,
+        bc DECIMAL,
         FOREIGN KEY(caliber_id) REFERENCES calibers (id)
 );
 
