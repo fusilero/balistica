@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
 [![Coverage Status](https://coveralls.io/repos/steveno/balistica/badge.png)](https://coveralls.io/r/steveno/balistica)
+[![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
 balística is a simple open source external ballistics calculator. It's 
