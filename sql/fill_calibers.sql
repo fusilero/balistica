@@ -16,11 +16,6 @@
 -- along with balística. If not, see <http://www.gnu.org/licenses/>.
 -----------------------------------------------------------------------
 
---!!
---!!  This file is meant to populate a starter set upon creation of a
---!!  new database. It's not meant to hold every possible entry.
---!!
-
 --
 --  CALIBERS
 --
