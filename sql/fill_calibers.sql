@@ -14,11 +14,7 @@
 --
 -- You should have received a copy of the GNU General Public License
 -- along with balística. If not, see <http://www.gnu.org/licenses/>.
------------------------------------------------------------------------
 
---
---  CALIBERS
---
 -- Rifle
 INSERT INTO calibers VALUES (1, 'R', '.204');
 INSERT INTO calibers VALUES (2, 'R', '.223');
@@ -49,6 +45,7 @@ INSERT INTO calibers VALUES (26, 'R', '.338 Win. Mag.');
 INSERT INTO calibers VALUES (27, 'R', '.338 Lapua Mag.');
 INSERT INTO calibers VALUES (28, 'R', '.338 Rem. Ultra Mag.');
 INSERT INTO calibers VALUES (29, 'R', '.375 H&H Mag.');
+
 -- Pistol
 INSERT INTO calibers VALUES (30, 'P', '.32 H&R Mag.');
 INSERT INTO calibers VALUES (31, 'P', '.38 S&W');
@@ -70,6 +67,7 @@ INSERT INTO calibers VALUES (46, 'P', '.41 Rem. Mag.');
 INSERT INTO calibers VALUES (47, 'P', '.44 S&W Special');
 INSERT INTO calibers VALUES (48, 'P', '.44 Rem. Mag.');
 INSERT INTO calibers VALUES (49, 'P', '.45 ACP');
+
 -- Shotgun
 INSERT INTO calibers VALUES (50, 'S', '.410');
 INSERT INTO calibers VALUES (51, 'S', '10ga');
