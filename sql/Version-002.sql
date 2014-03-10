@@ -64,11 +64,9 @@ CREATE TABLE gauges (
 CREATE TABLE bullets (
         id INTEGER PRIMARY KEY,
         brand TEXT NOT NULL,
-        caliber_id INTEGER NOT NULL,
         diameter DOUBLE NOT NULL,
         weight DOUBLE NOT NULL,
-        bc DECIMAL,
-        FOREIGN KEY(caliber_id) REFERENCES calibers (id)
+        bc DECIMAL
 );
 
 CREATE TABLE propellants (
