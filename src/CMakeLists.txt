@@ -22,6 +22,10 @@ set(LIB_BALISTICA
     LibBalistica/conversion/Temperature.vala
 )
 
+set(CUSTOM_VAPIS
+    ../data/gnuplot.vapi
+)
+
 set(DATABASE
     db/DataBase.vala
 )
@@ -112,6 +116,8 @@ vala_precompile(BALISTICA_VALA_C balistica
     ${DATABASE}
 PACKAGES
     ${LIB_BALISTICA_PACKAGES}
+CUSTOM_VAPIS
+    ${CUSTOM_VAPIS}
 OPTIONS
     ${VALAC_OPTIONS}
 )
