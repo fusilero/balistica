@@ -23,7 +23,7 @@ set(LIB_BALISTICA
 )
 
 set(CUSTOM_VAPIS
-    ../data/gnuplot.vapi
+    ../vapi/gnuplot.vapi
 )
 
 set(DATABASE
