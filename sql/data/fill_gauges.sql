@@ -16,8 +16,8 @@
 -- along with balística. If not, see <http://www.gnu.org/licenses/>.
 
 INSERT INTO gauges VALUES (1, '.410');
-INSERT INTO gauges VALUES (2, '10ga');
-INSERT INTO gauges VALUES (3, '12ga');
-INSERT INTO gauges VALUES (4, '16ga');
-INSERT INTO gauges VALUES (5, '20ga');
-INSERT INTO gauges VALUES (6, '28ga');
+INSERT INTO gauges VALUES (2, '10');
+INSERT INTO gauges VALUES (3, '12');
+INSERT INTO gauges VALUES (4, '16');
+INSERT INTO gauges VALUES (5, '20');
+INSERT INTO gauges VALUES (6, '28');
