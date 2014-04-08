@@ -20,6 +20,9 @@
  *	Steven Oliver <oliver.steven@gmail.com>
  */
 
+//
+// Written against version 4.6.5
+//
 namespace Gnuplot {
         [CCode (cheader_filename = "version.h", cname = "gnuplot_version")]
         public const char GnuplotVersion;
@@ -47,7 +50,6 @@ namespace Gnuplot {
                 SPLOT
         }
 
-
         [CCode (cheader_filename = "gp_types.h", cname = "PLOT_TYPE", cprefix = "PLOT_TYPE_", has_type_id = false)]
         public enum PlotTypes {
                 FUNC,
@@ -56,7 +58,6 @@ namespace Gnuplot {
                 DATA3D,
                 NODATA
         }
-
 
         [CCode (cheader_filename = "gp_types.h", cname = "e_PLOT_STYLE_FLAGS", cprefix = "PLOT_STYLE_", has_type_id = false)]
         [Flags]
@@ -120,11 +121,23 @@ namespace Gnuplot {
         }
 
         [CCode (cheader_filename = "gp_types.h", cname = "CMPLX")]
-        public struct cmplx {
+        public struct Cmplx {
                 public double real;
                 public double imag;
         }
 
+        [CCode (cheader_filename = "gp_types.h", cname = "V")]
+        public struct V {
+                public int int_val;
+                public struct Cmplx cmplx_val;
+                public char string_val;
+        }
+
+        [CCode (cheader_filename = "gptypes.h", cname = "VALUE")]
+        public struct Value {
+                public enum DataTypes type;
+                public struct V v;
+        }
 
         [CCode (cheader_filename = "gp_types.h", cname = "COORD_TYPE", cprefix = "COORD_TYPE_", has_type_id = false)]
         public enum CoordinateType {
