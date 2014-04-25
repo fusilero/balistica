@@ -53,3 +53,5 @@ used in an illegal fashion and I take no responsibility whatsoever
 for any acts, criminal or otherwise, committed using any calculations 
 derived by this program. This is also stated in the GNU GPL, 
 but repeated here just to make sure.
+
+[![Codeship](https://www.codeship.io/projects/b6b380a0-aedf-0131-e31f-324647e7d660/status)
