@@ -44,7 +44,7 @@ make
 make install
 ```
 ## Contributing
-Please see CONTRIBUTING.md
+Please see [CONTRIBUTING.md](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
 It is to be used as REFERENCE or curiosity ONLY. Much like
