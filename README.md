@@ -46,6 +46,8 @@ make install
 ## Contributing
 Please see [CONTRIBUTING.md](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
+[![Gitter chat](https://badges.gitter.im/steveno/balistica.png)](https://gitter.im/steveno/balistica)
+
 ## DISCLAIMER
 It is to be used as REFERENCE or curiosity ONLY. Much like
 Wikipedia, information gleaned from this program is not to be 
