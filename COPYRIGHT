@@ -1,0 +1,24 @@
+balística is copyrighted under the GNU GPL version 3.
+
+Large parts of the program though have been more or less 
+directly lifted from other programs under a different license.
+As far as I know all the code I didn't write is legal for me
+to use in my program. If someone feels differently please let 
+me know.
+
+src/LibBalistica/*
+Every file in this directory was originally part of The GNU
+Ballistics Calculator written by Derek Yates. It was licensed
+under the GNU GPL version 2.
+
+src/FileUtils.vala
+Was originaly part of Geary from Yorba which is licensed under
+the GNU LGPL version 2.1.
+
+sql/data/fill_bullets.sql
+Was originally from from saballistics which is licensed under
+the GNU GPL version 2.
+
+src/BalisticaApplication.vala -> protected override bool local_command_line
+This function was copying and modified from Cheese. Cheese is
+licensed under the GNU GPL version 2.
