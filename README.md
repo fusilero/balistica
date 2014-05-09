@@ -9,9 +9,9 @@ balística is a simple open source external ballistics calculator. It's
 named after the Catalan word for "ballistics" in English. Enjoy!
 
 ## Current Status
-While the GUI is still a work in progress, the back end currently 
-exists to compute the following:
-
+While the GUI is still a work in progress, the back end currently exists
+to make several different computations. Here's a task list of what I feel
+are major outstanding issues:
 - [x] Miller Twist Rule
 - [x] Miller Stability Rule
 - [x] Greenhill Twist
@@ -40,9 +40,9 @@ cmake ..
 make
 make install
 ```
+
 ## Contributing
 Please see [CONTRIBUTING.md](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
-
 [![Gitter chat](https://badges.gitter.im/steveno/balistica.png)](https://gitter.im/steveno/balistica)
 
 ## DISCLAIMER
