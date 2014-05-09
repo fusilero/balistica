@@ -12,21 +12,18 @@ named after the Catalan word for "ballistics" in English. Enjoy!
 While the GUI is still a work in progress, the back end currently 
 exists to compute the following:
 
-✓ Miller Twist Rule  
-✓ Miller Stability Rule  
-✓ Greenhill Twist  
-✓ Standard Drag Functions G1-G8  
-✓ Drag Functions Ingalls and British  
-✓ The PBR function (Point Blank Range)
-
-With the exception of the GUI for the cacluation of the Standard
-Drag Functions (still a WIP), several items are still very much outstanding: 
-* An icon (!)
-* GUI for Miller Twist
-* GUI for Miller Stability
-* GUI for Greenhill Twist
-* A database backend to store hand loads
-* GUI for said DB of hand loads
+[X] Miller Twist Rule  
+[X] Miller Stability Rule  
+[X] Greenhill Twist  
+[X] Standard Drag Functions G1-G8  
+[X] Drag Functions Ingalls and British  
+[X] The PBR function (Point Blank Range)  
+[ ] An icon (!)  
+[ ] GUI for Miller Twist  
+[ ] GUI for Miller Stability  
+[ ] GUI for Greenhill Twist  
+[ ] A database backend to store hand loads  
+[ ] GUI for said DB of hand loads  
 
 ## Minimum Requirements
 * vala >= 0.20.1 
