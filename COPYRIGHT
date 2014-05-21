@@ -7,18 +7,31 @@ to use in my program. If someone feels differently please let
 me know.
 
 src/LibBalistica/*
-Every file in this directory was originally part of The GNU
-Ballistics Calculator written by Derek Yates. It was licensed
-under the GNU GPL version 2.
+Many of the files in this directory were originally part of The 
+GNU Ballistics Calculator (GBC) written by Derek Yates. It was
+licensed under the GNU GPL version 2. Each file converted from 
+GBC is noted at the top of the file after the license header.
 
 src/FileUtils.vala
-Was originaly part of Geary from Yorba which is licensed under
-the GNU LGPL version 2.1.
+All of the functions in the file were originaly part of Geary
+from Yorba which is licensed under the GNU LGPL version 2.1.
 
 sql/data/fill_bullets.sql
 Was originally from from saballistics which is licensed under
 the GNU GPL version 2.
 
 src/BalisticaApplication.vala -> protected override bool local_command_line
-This function was copying and modified from Cheese. Cheese is
+This function was copied and modified from Cheese. Cheese is
 licensed under the GNU GPL version 2.
+
+cmake/FindGit.cmake
+I found this guy somewhere on the internet. I'm not 100% of It's license 
+is listed here: http://www.slicer.org/pages/LicenseText 
+Probably should swap this guy out for something with a license I 
+understand like the one here github.com/djkabala/KabalaEngine
+which is licensed under GPLv3. It appears to do everything I need.
+
+cmake_uninstall.cmake.in
+I lifted this file verbatim from Geary. Which is licensed under
+GNU LGPL version 2.1. There was no header text on the file
+but better safe than sorry I suppose.
