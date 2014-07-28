@@ -1,7 +1,7 @@
 # balística
 
-[![Build Status](https://travis-ci.org/steveno/balistica.png?branch=master)](https://travis-ci.org/steveno/balistica)
-[![Coverage Status](https://coveralls.io/repos/steveno/balistica/badge.png)](https://coveralls.io/r/steveno/balistica)
+[![Build Status](https://travis-ci.org/steveno/balistica.svg?branch=master)](https://travis-ci.org/steveno/balistica)
+[![Coverage Status](https://img.shields.io/coveralls/steveno/balistica.svg)](https://coveralls.io/r/steveno/balistica)
 [![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
