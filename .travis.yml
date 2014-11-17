@@ -19,6 +19,6 @@ before_install:
   - sudo pip install cpp-coveralls
 script:
   - cmake -D DEBUG=ON -D ADD_COVERAGE=ON .
-  - make
+  - make -j2
 after_success:
   - coveralls --exclude lib --exclude tests
