@@ -32,6 +32,10 @@ are major outstanding issues:
 * gee-0.8 >= 0.8.5
 * cmake 
 
+### Fedora
+```bash
+sudo dnf install gtk3-devel glib-devel libgee-devel
+```
 ## Build Instructions
 ```bash
 cd balistica
