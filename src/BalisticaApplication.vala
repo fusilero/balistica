@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2015 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -35,7 +35,7 @@ namespace Balistica {
          * available throughout the base of the application
          */
         public const string NAME = "balística";
-        public const string COPYRIGHT = "Copyright © 2012-2014 Steven Oliver";
+        public const string COPYRIGHT = "Copyright © 2012-2015 Steven Oliver";
         public const string WEBSITE = "http://steveno.github.io/balistica/";
 
         public const string DESKTOP_NAME = "balística";
