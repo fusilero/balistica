@@ -33,16 +33,16 @@ set(DATABASE
 # Vala
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.20.1" MINIMUM)
+ensure_vala_version("0.28.0" MINIMUM)
 include(ValaPrecompile)
 
 # Packages
-set(TARGET_GLIB 2.40)
+set(TARGET_GLIB 2.46)
 
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
-    gtk+-3.0>=3.14.0
-    gee-0.8>=0.16.0
+    gtk+-3.0>=3.18.0
+    gee-0.8>=0.18.0
     #sqlite3>=3.8.0
 )
 
