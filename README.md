@@ -26,16 +26,22 @@ are major outstanding issues:
 - [ ] GUI for said DB of hand loads
 
 ## Minimum Requirements
-* vala >= 0.20.1 
-* glib-2.0 >= 2.32.0
-* gtk+-3.0 >= 3.4.2
-* gee-0.8 >= 0.8.5
+* vala >= 0.28.0 
+* glib-2.0 >= 2.46.0
+* gtk+-3.0 >= 3.18.0
+* gee-0.8 >= 0.18.0
 * cmake 
 
 ### Fedora
 ```bash
-sudo dnf install gtk3-devel glib-devel libgee-devel
+sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake
 ```
+
+### Ubuntu
+```bash
+sudo apt-get install libgtk-3-dev vala cmake
+```
+
 ## Build Instructions
 ```bash
 cd balistica
