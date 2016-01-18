@@ -1,4 +1,4 @@
-/* Copyright 2012-2015 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2016 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -17,5 +17,5 @@
  */
 
 public static int main (string[] args) {
-        return new Balistica.Application().run(args);
+    return new Balistica.Application().run(args);
 }

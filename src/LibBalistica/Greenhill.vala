@@ -20,43 +20,43 @@ using GLib;
 
 namespace Balistica.LibBalistica {
 
-        public class Greenhill : GLib.Object {
-                public int C { get; set; }
-                public double diameter { get; set; }
-                public double length { get; set; }
-                public double specific_gravity { get; set; }
+    public class Greenhill : GLib.Object {
+        public int C { get; set; }
+        public double diameter { get; set; }
+        public double length { get; set; }
+        public double specific_gravity { get; set; }
 
-                /**
-                 * Default constructor
-                 */
-                public Greenhill() {
-                        this.diameter = 0;
-                        this.length = 0;
-                        this.specific_gravity = 0;
-                }
-
-                /**
-                 * Full constructor
-                 *
-                 * @param d The bullet's diameter as a double
-                 * @param l The bullet's length as a double
-                 * @param sg The bullet's specific gravity as a double
-                 */
-                public Greenhill.full(double d, double l, double sg) {
-                        this.diameter = d;
-                        this.length = l;
-                        this.specific_gravity = sg;
-                }
-
-                /**
-                 * Calculate the twist of the bullet
-                 *
-                 * @return The calculated twist as a double
-                 */
-                public double calc_twist() {
-                        double temp1 = C * Math.pow(this.diameter, 2) / this.length;
-                        double temp2 = Math.sqrt(this.specific_gravity / 10.9);
-                        return temp1 * temp2;
-                }
+        /**
+         * Default constructor
+         */
+        public Greenhill() {
+            this.diameter = 0;
+            this.length = 0;
+            this.specific_gravity = 0;
         }
+
+        /**
+         * Full constructor
+         *
+         * @param d The bullet's diameter as a double
+         * @param l The bullet's length as a double
+         * @param sg The bullet's specific gravity as a double
+         */
+        public Greenhill.full(double d, double l, double sg) {
+            this.diameter = d;
+            this.length = l;
+            this.specific_gravity = sg;
+        }
+
+        /**
+         * Calculate the twist of the bullet
+         *
+         * @return The calculated twist as a double
+         */
+        public double calc_twist() {
+            double temp1 = C * Math.pow(this.diameter, 2) / this.length;
+            double temp2 = Math.sqrt(this.specific_gravity / 10.9);
+            return temp1 * temp2;
+        }
+    }
 }

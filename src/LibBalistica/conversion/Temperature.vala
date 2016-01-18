@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2016 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -19,135 +19,135 @@
 using GLib;
 
 public class Conversion.Temperature : GLib.Object {
-        /**
-        * CelsiusToFahrenheit
-        *
-        * @param cel Degress in Celsius
-        *
-        * @return Degress in Fahrenheit
-        */
-        public inline static double CelsiusToFahrenheit (double cel) {
-                return cel * 9/5 + 32;
-        }
+    /**
+     * CelsiusToFahrenheit
+     *
+     * @param cel Degress in Celsius
+     *
+     * @return Degress in Fahrenheit
+     */
+    public inline static double CelsiusToFahrenheit (double cel) {
+        return cel * 9/5 + 32;
+    }
 
-        /**
-        * CelisusToKelvin
-        *
-        * @param cel Degrees in Celisus
-        *
-        * @return Degress in Kelvin
-        */
-        public inline static double CelisusToKelvin (double cel) {
-                return cel + 273.15;
-        }
+    /**
+     * CelisusToKelvin
+     *
+     * @param cel Degrees in Celisus
+     *
+     * @return Degress in Kelvin
+     */
+    public inline static double CelisusToKelvin (double cel) {
+        return cel + 273.15;
+    }
 
-        /**
-        * CelisusToRankine
-        *
-        * @param cel Degrees in Celisus
-        *
-        * @return Degress in Rankine
-        */
-        public inline static double CelisusToRankine (double cel) {
-                return (cel + 273.15) * 9/5;
-        }
+    /**
+     * CelisusToRankine
+     *
+     * @param cel Degrees in Celisus
+     *
+     * @return Degress in Rankine
+     */
+    public inline static double CelisusToRankine (double cel) {
+        return (cel + 273.15) * 9/5;
+    }
 
-        /**
-        * FahrenheitToCelsius
-        *
-        * @param fahr Degrees in Fahrenheit
-        *
-        * @return Degress in Celsius
-        */
-        public inline static double FahrenheitToCelsius (double fahr) {
-                return (fahr - 32) * 5/9;
-        }
+    /**
+     * FahrenheitToCelsius
+     *
+     * @param fahr Degrees in Fahrenheit
+     *
+     * @return Degress in Celsius
+     */
+    public inline static double FahrenheitToCelsius (double fahr) {
+        return (fahr - 32) * 5/9;
+    }
 
-        /**
-        * FahrenheitToKelvin
-        *
-        * @param fahr Degrees in Fahrenheit
-        *
-        * @return Degress in Kelvin
-        */
-        public inline static double FahrenheitToKelvin (double fahr) {
-                return (fahr + 459.67) * 5/9;
-        }
+    /**
+     * FahrenheitToKelvin
+     *
+     * @param fahr Degrees in Fahrenheit
+     *
+     * @return Degress in Kelvin
+     */
+    public inline static double FahrenheitToKelvin (double fahr) {
+        return (fahr + 459.67) * 5/9;
+    }
 
-        /**
-        * FahrenheitToRankine
-        *
-        * @param fahr Degrees in Fahrenheit
-        *
-        * @return Degress in Rankine
-        */
-        public inline static double FahrenheitToRankine (double fahr) {
-                return fahr + 459.67;
-        }
+    /**
+     * FahrenheitToRankine
+     *
+     * @param fahr Degrees in Fahrenheit
+     *
+     * @return Degress in Rankine
+     */
+    public inline static double FahrenheitToRankine (double fahr) {
+        return fahr + 459.67;
+    }
 
-        /**
-        * KelvinToCelsius
-        *
-        * @param kel Degrees in Kelvin
-        *
-        * @return Degress in Celsius
-        */
-        public inline static double KelvinToCelsius (double kel) {
-                return kel - 273.15;
-        }
+    /**
+     * KelvinToCelsius
+     *
+     * @param kel Degrees in Kelvin
+     *
+     * @return Degress in Celsius
+     */
+    public inline static double KelvinToCelsius (double kel) {
+        return kel - 273.15;
+    }
 
-        /**
-        * KelvinToFahrenheit
-        *
-        * @param kel Degrees in Kelvin
-        *
-        * @return Degress in Fahrenheit
-        */
-        public inline static double KelvinToFahrenheit (double kel) {
-                return kel * 9/5 - 459.67;
-        }
+    /**
+     * KelvinToFahrenheit
+     *
+     * @param kel Degrees in Kelvin
+     *
+     * @return Degress in Fahrenheit
+     */
+    public inline static double KelvinToFahrenheit (double kel) {
+        return kel * 9/5 - 459.67;
+    }
 
-        /**
-        * KelvinToRankine
-        *
-        * @param kel Degrees in Kelvin
-        *
-        * @return Degress in Rankine
-        */
-        public inline static double KelvinToRankine (double kel) {
-                return kel * 9/5;
-        }
+    /**
+     * KelvinToRankine
+     *
+     * @param kel Degrees in Kelvin
+     *
+     * @return Degress in Rankine
+     */
+    public inline static double KelvinToRankine (double kel) {
+        return kel * 9/5;
+    }
 
-        /**
-        * RankineToCelsius
-        *
-        * @param ran Degrees in Rankine
-        *
-        * @return Degress in Celsius
-        */
-        public inline static double RankineToCelsius (double ran) {
-                return (ran - 491.67) * 5/9;
-        }
+    /**
+     * RankineToCelsius
+     *
+     * @param ran Degrees in Rankine
+     *
+     * @return Degress in Celsius
+     */
+    public inline static double RankineToCelsius (double ran) {
+        return (ran - 491.67) * 5/9;
+    }
 
-        /**
-        * RankineToFahrenheit
-        *
-        * @param ran Degrees in Rankine
-        *
-        * @return Degress in Fahrenheit
-        */
-        public inline static double RankineToFahrenheit (double ran) {
-                return ran - 459.67;
-        }
+    /**
+     * RankineToFahrenheit
+     *
+     * @param ran Degrees in Rankine
+     *
+     * @return Degress in Fahrenheit
+     */
+    public inline static double RankineToFahrenheit (double ran) {
+        return ran - 459.67;
+    }
 
-        /**
-        * RankineToKelvin
-        *
-        * @param ran Degrees in Rankine
-        *
-        * @return Degress in Kelvin
-        */
-        public inline static double RankineToKelvin (double ran) {
-                return ran * 5/9;
-        }
+    /**
+     * RankineToKelvin
+     *
+     * @param ran Degrees in Rankine
+     *
+     * @return Degress in Kelvin
+     */
+    public inline static double RankineToKelvin (double ran) {
+        return ran * 5/9;
+    }
 }
