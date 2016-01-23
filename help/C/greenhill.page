@@ -7,5 +7,12 @@
       </info>
 
     <title>Greenhill Formula</title>
-  
+
+    <p>The Greenhill formula was originally developed in 1879 as a way to calculate the optimal 
+    twist rate for lead bullets. The formula uses the bullet's length, specific gravity, and diameter
+    in order to determine the proper twist.</p>
+    
+    <p>The Wikipedia page for the Alfred George Greenhill can be found <link href="https://en.wikipedia.org/wiki/Alfred_George_Greenhill">here</link>.</p>
+    <p>The Wikipedia page on Rifling can be found <link href="https://en.wikipedia.org/wiki/Rifling">here</link>.</p>
+ 
 </page>
