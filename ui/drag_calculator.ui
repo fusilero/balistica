@@ -28,6 +28,16 @@ Author: Steven Oliver
   <!-- interface-description An open source external balistics software package. -->
   <!-- interface-copyright 2016 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
+  <object class="GtkRadioButton" id="radgrpDrag">
+    <property name="label" translatable="yes">radiobutton</property>
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="xalign">0</property>
+    <property name="yalign">0.51999998092651367</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
   <object class="GtkBox" id="box1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -293,7 +303,9 @@ Author: Steven Oliver
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
+                        <property name="yalign">0.49000000953674316</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -308,6 +320,7 @@ Author: Steven Oliver
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -322,6 +335,7 @@ Author: Steven Oliver
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
@@ -336,6 +350,7 @@ Author: Steven Oliver
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -350,6 +365,7 @@ Author: Steven Oliver
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -364,6 +380,7 @@ Author: Steven Oliver
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <property name="group">radgrpDrag</property>
                       </object>
                       <packing>
                         <property name="left_attach">2</property>
