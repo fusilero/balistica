@@ -38,7 +38,7 @@ Author: Steven Oliver
     <property name="active">True</property>
     <property name="draw_indicator">True</property>
   </object>
-  <object class="GtkBox" id="box1">
+  <object class="GtkBox" id="drag_main">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
