@@ -31,13 +31,15 @@ namespace Balistica.LibBalistica {
 
     /**
      * Standard Tempurature in degrees Fahrenheit
-     * This value was determined the US Ordnance Department as an
+     * This value was determined by the US Ordnance Department as an
      * average value over a wide range of altitudes 
      */
     public const double STANDARD_TEMP = 59.0;
 
-    // Arbitrary constant used to denote the max range
-    // of calculations
+    /**
+     * Arbitrary constant used to denote the max range
+     * of calculations
+     */
     public const int BCOMP_MAX_RANGE = 50001;
 
     /**
