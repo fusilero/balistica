@@ -17,10 +17,10 @@ are major outstanding issues:
 - [x] Standard Drag Functions G1-G8
 - [x] Drag Functions Ingalls and British
 - [x] The PBR function (Point Blank Range)
-- [ ] An icon (!)
-- [ ] GUI for Miller Twist
+- [X] GUI for Miller Twist
+- [X] GUI for Greenhill Twist
 - [ ] GUI for Miller Stability
-- [ ] GUI for Greenhill Twist
+- [ ] An icon (!)
 - [ ] A database backend to store hand loads
 - [ ] GUI for said DB of hand loads
 
@@ -51,8 +51,8 @@ make install
 ```
 
 ## Contributing
-Please see [CONTRIBUTING.md](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 [![Gitter chat](https://badges.gitter.im/steveno/balistica.png)](https://gitter.im/steveno/balistica)
+Please see [the contributing file](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
 It is to be used as REFERENCE or curiosity ONLY. Much like
