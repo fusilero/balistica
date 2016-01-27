@@ -54,46 +54,47 @@ namespace Balistica {
         null
     };
 
-    private Gtk.Builder builder;
-    
-    // Drag calculation entry fields
-    private Gtk.Entry calc_name;
-    private Gtk.Entry drag_coefficient;
-    private Gtk.Entry projectile_weight;
-    private Gtk.Entry initial_velocity;
-    private Gtk.Entry zero_range;
-    private Gtk.Entry sight_height;
-    private Gtk.Entry shooting_angle;
-    private Gtk.Entry wind_velocity;
-    private Gtk.Entry wind_angle;
-    private Gtk.Entry altitude;
-    private Gtk.Entry temp;
-    private Gtk.Entry bar_press;
-    private Gtk.Entry rela_humid;
-    
-    // Checkbox for atmospheric corrections
-    private Gtk.CheckButton enable_atmosphere;
-    
-    // Drag calculation results
-    private Gtk.TextView drag_results;
-    
-    // Drag calculation Buttons
-    private Gtk.Button reset_drag;
-    private Gtk.Button solve_drag;
-    private Gtk.Button disp_solution;
-    private Gtk.Button disp_pbr;
-    
-    // Radio buttons for drag functions
-    private Gtk.RadioButton rad_g1;
-    private Gtk.RadioButton rad_g2;
-    private Gtk.RadioButton rad_g5;
-    private Gtk.RadioButton rad_g6;
-    private Gtk.RadioButton rad_g7;
-    private Gtk.RadioButton rad_g8;
-    
+   
     public class Application : Gtk.Application {
         private GLib.Settings settings;
-        public static Gtk.Window main_window;
+        private Gtk.Window main_window;
+        private Gtk.Builder drag_builder;
+        private Gtk.Builder twist_builder;
+        
+        // Drag calculation entry fields
+        private Gtk.Entry calc_name;
+        private Gtk.Entry drag_coefficient;
+        private Gtk.Entry projectile_weight;
+        private Gtk.Entry initial_velocity;
+        private Gtk.Entry zero_range;
+        private Gtk.Entry sight_height;
+        private Gtk.Entry shooting_angle;
+        private Gtk.Entry wind_velocity;
+        private Gtk.Entry wind_angle;
+        private Gtk.Entry altitude;
+        private Gtk.Entry temp;
+        private Gtk.Entry bar_press;
+        private Gtk.Entry rela_humid;
+        
+        // Checkbox for atmospheric corrections
+        private Gtk.CheckButton enable_atmosphere;
+        
+        // Drag calculation results
+        private Gtk.TextView drag_results;
+        
+        // Drag calculation Buttons
+        private Gtk.Button reset_drag;
+        private Gtk.Button solve_drag;
+        private Gtk.Button disp_solution;
+        private Gtk.Button disp_pbr;
+        
+        // Radio buttons for drag functions
+        private Gtk.RadioButton rad_g1;
+        private Gtk.RadioButton rad_g2;
+        private Gtk.RadioButton rad_g5;
+        private Gtk.RadioButton rad_g6;
+        private Gtk.RadioButton rad_g7;
+        private Gtk.RadioButton rad_g8;
 
         public static bool miller_twist = false;
         public static bool miller_stability = false;
@@ -119,6 +120,11 @@ namespace Balistica {
 
             Gtk.init (ref arguments);
             base.startup(); 
+            
+            //Gtk.Menu menu = new Gtk.Menu();
+            //Gtk.MenuItem item_about = new Gtk.MenuItem.with_label("About");
+            //menu.append(item_about);
+            //this.app_menu = menu;
         }
 
         /**
@@ -148,7 +154,7 @@ namespace Balistica {
 
                 // Add the main layout grid
                 Gtk.Grid grid = new Gtk.Grid();
-
+                
                 // Add the menu bar across the top
                 Gtk.MenuBar menubar = new Gtk.MenuBar();
 
@@ -169,7 +175,7 @@ namespace Balistica {
 
                 sub_item_quit.activate.connect(() => {
                         quit_selected();
-                        });
+                });
 
                 Gtk.MenuItem item_help = new Gtk.MenuItem.with_label("Help");
                 Gtk.Menu helpmenu = new Gtk.Menu();
@@ -182,11 +188,11 @@ namespace Balistica {
 
                 sub_item_help.activate.connect(() => {
                         help_selected();
-                        });
+                });
 
                 sub_item_about.activate.connect(() => {
                         about_selected();
-                        });
+                });
 
                 menubar.add(item_file);
                 menubar.add(item_help);
@@ -196,17 +202,22 @@ namespace Balistica {
                 // Add the notebook that will eventually hold everything else
                 Gtk.Notebook notebook = new Gtk.Notebook();
 
+                // Create the drag page of the notebook
                 Gtk.Label pg1_title = new Gtk.Label("Drag");
-                //Gtk.Label pg2_title = new Gtk.Label("Twist Rate");
-                //Gtk.Label pg3_title = new Gtk.Label("Load Database");
-
-                builder = Balistica.create_builder("drag_calculator.ui");
-                builder.connect_signals(null);
-                var content = builder.get_object("box1") as Gtk.Box;
-
-                notebook.append_page(content, pg1_title);
+                drag_builder = Balistica.create_builder("drag.glade");
+                drag_builder.connect_signals(null);
+                var drag_content = drag_builder.get_object("drag_main") as Gtk.Box;
+                notebook.append_page(drag_content, pg1_title);
+                
+                // Create the twist page of the notebook
+                Gtk.Label pg2_title = new Gtk.Label("Twist");
+                twist_builder = Balistica.create_builder("twist.glade");
+                twist_builder.connect_signals(null);
+                var twist_content = twist_builder.get_object("twist_main") as Gtk.Box;
+                notebook.append_page(twist_content, pg2_title);
+    
+                // Attach the grid (with the notebook) the main window and roll
                 grid.attach(notebook, 0, 1, 1, 1);
-
                 main_window.add(grid); 
                 main_window.show_all();
                 this.add_window(main_window);
@@ -219,17 +230,17 @@ namespace Balistica {
          */
         public void connect_entries() {
             // Stored calculation's name
-            calc_name = builder.get_object("txtName") as Gtk.Entry;
+            calc_name = drag_builder.get_object("txtName") as Gtk.Entry;
             
             // Basic inputs
-            drag_coefficient = builder.get_object("txtDrag_coefficient") as Gtk.Entry;
-            projectile_weight = builder.get_object("txtProjectile_weight") as Gtk.Entry;
-            initial_velocity = builder.get_object("txtIntial_velocity") as Gtk.Entry;
-            zero_range = builder.get_object("txtZero_range") as Gtk.Entry;
-            sight_height = builder.get_object("txtSight_height") as Gtk.Entry;
-            shooting_angle = builder.get_object("txtShooting_angle") as Gtk.Entry;
-            wind_velocity = builder.get_object("txtWind_velocity") as Gtk.Entry;
-            wind_angle = builder.get_object("txtWind_angle") as Gtk.Entry;
+            drag_coefficient = drag_builder.get_object("txtDrag_coefficient") as Gtk.Entry;
+            projectile_weight = drag_builder.get_object("txtProjectile_weight") as Gtk.Entry;
+            initial_velocity = drag_builder.get_object("txtIntial_velocity") as Gtk.Entry;
+            zero_range = drag_builder.get_object("txtZero_range") as Gtk.Entry;
+            sight_height = drag_builder.get_object("txtSight_height") as Gtk.Entry;
+            shooting_angle = drag_builder.get_object("txtShooting_angle") as Gtk.Entry;
+            wind_velocity = drag_builder.get_object("txtWind_velocity") as Gtk.Entry;
+            wind_angle = drag_builder.get_object("txtWind_angle") as Gtk.Entry;
             
             // Variables Suitable for debugging
             calc_name.set_text("308 Win Match, 168gr Sierra Match King");
@@ -243,7 +254,7 @@ namespace Balistica {
             wind_angle.set_text("0");
             
             // Checkbox to dis/en/able atmospheric corrections
-            enable_atmosphere = builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
+            enable_atmosphere = drag_builder.get_object("ckbAtmosCorr") as Gtk.CheckButton;
             enable_atmosphere.toggled.connect (() => {
                     if (enable_atmosphere.active) {
                         // checked
@@ -261,10 +272,10 @@ namespace Balistica {
             });
             
             // Atmospheric corrections
-            altitude = builder.get_object("txtAltitude") as Gtk.Entry;
-            temp = builder.get_object("txtTemp") as Gtk.Entry;
-            bar_press = builder.get_object("txtBarPress") as Gtk.Entry;
-            rela_humid = builder.get_object("txtRelaHumid") as Gtk.Entry;
+            altitude = drag_builder.get_object("txtAltitude") as Gtk.Entry;
+            temp = drag_builder.get_object("txtTemp") as Gtk.Entry;
+            bar_press = drag_builder.get_object("txtBarPress") as Gtk.Entry;
+            rela_humid = drag_builder.get_object("txtRelaHumid") as Gtk.Entry;
             
             // Set default values
             altitude.set_text("0");
@@ -273,36 +284,36 @@ namespace Balistica {
             rela_humid.set_text("78.0");
             
             // Drag Calculations Results
-            drag_results = builder.get_object("txtViewDragResults") as Gtk.TextView;
+            drag_results = drag_builder.get_object("txtViewDragResults") as Gtk.TextView;
             
             // Radio buttons for drag functions
-            rad_g1 = builder.get_object("radG1") as Gtk.RadioButton;
-            rad_g2 = builder.get_object("radG2") as Gtk.RadioButton;
-            rad_g5 = builder.get_object("radG5") as Gtk.RadioButton;
-            rad_g6 = builder.get_object("radG6") as Gtk.RadioButton;
-            rad_g7 = builder.get_object("radG7") as Gtk.RadioButton;
-            rad_g8 = builder.get_object("radG8") as Gtk.RadioButton;
+            rad_g1 = drag_builder.get_object("radG1") as Gtk.RadioButton;
+            rad_g2 = drag_builder.get_object("radG2") as Gtk.RadioButton;
+            rad_g5 = drag_builder.get_object("radG5") as Gtk.RadioButton;
+            rad_g6 = drag_builder.get_object("radG6") as Gtk.RadioButton;
+            rad_g7 = drag_builder.get_object("radG7") as Gtk.RadioButton;
+            rad_g8 = drag_builder.get_object("radG8") as Gtk.RadioButton;
             
             // Set G1 as selected by default
             rad_g1.active = true;
             
             // Buttons
-            solve_drag = builder.get_object("btnSolveDrag") as Gtk.Button;
+            solve_drag = drag_builder.get_object("btnSolveDrag") as Gtk.Button;
             solve_drag.clicked.connect(()=> {
                     btnSolveDrag_clicked();
             });
             
-            reset_drag = builder.get_object("btnResetDrag") as Gtk.Button;
+            reset_drag = drag_builder.get_object("btnResetDrag") as Gtk.Button;
             reset_drag.clicked.connect(()=> {
                     btnResetDrag_clicked();
             });
             
-            disp_solution = builder.get_object("btnSolution") as Gtk.Button;
+            disp_solution = drag_builder.get_object("btnSolution") as Gtk.Button;
             disp_solution.clicked.connect(()=> {
                     btnSolution_clicked();
             });
             
-            disp_pbr = builder.get_object("btnPBR") as Gtk.Button;
+            disp_pbr = drag_builder.get_object("btnPBR") as Gtk.Button;
             disp_pbr.clicked.connect(()=> {
                     btnPBR_clicked();
             });
@@ -368,18 +379,18 @@ namespace Balistica {
             // It doesn't make sense for any of the following variables
             // to be zero
             if (bc == 0 || v == 0 || sh == 0 || w == 0 || zero == 0) {
-                var builder = new StringBuilder ();
-                builder.append("The following fields must be positive values greater than 0!\n");
-                builder.append("\n\tDrag Coefficient");
-                builder.append("\n\tProjectile Weight");
-                builder.append("\n\tInitial Velocity");
-                builder.append("\n\tZero Range");
-                builder.append("\n\tSight Height Over Bore\n");
+                var drag_builder = new StringBuilder ();
+                drag_builder.append("The following fields must be positive values greater than 0!\n");
+                drag_builder.append("\n\tDrag Coefficient");
+                drag_builder.append("\n\tProjectile Weight");
+                drag_builder.append("\n\tInitial Velocity");
+                drag_builder.append("\n\tZero Range");
+                drag_builder.append("\n\tSight Height Over Bore\n");
                 
                 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons("Error", null,
                         Gtk.DialogFlags.DESTROY_WITH_PARENT, "OK", Gtk.ResponseType.CLOSE, null);
                 dialog.response.connect(() => { dialog.destroy(); });
-                dialog.get_content_area().add(new Gtk.Label(builder.str));
+                dialog.get_content_area().add(new Gtk.Label(drag_builder.str));
                 dialog.set_transient_for(main_window);
                 dialog.show_all();
                 dialog.run();
@@ -469,6 +480,8 @@ namespace Balistica {
             } else {
                 version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "-" + Balistica.VERSION_COMMIT;
             }
+
+
             
             Gtk.show_about_dialog (main_window,
                     "authors", Balistica.AUTHORS,
