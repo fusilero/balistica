@@ -116,7 +116,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblDrag_coefficient">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Drag Coefficient</property>
                 <property name="single_line_mode">True</property>
                 <property name="xalign">0</property>
@@ -130,7 +130,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblProjectile_weight">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Projectile Weight (grains)</property>
                 <property name="single_line_mode">True</property>
                 <property name="xalign">0</property>
@@ -227,7 +227,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblInitial_velocity">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
                 <property name="xalign">0</property>
               </object>
@@ -240,7 +240,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblZero_range">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Zero Range (yards)</property>
                 <property name="xalign">0</property>
               </object>
@@ -253,7 +253,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblSight_height">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Sight Height Over Bore (in)</property>
                 <property name="width_chars">0</property>
                 <property name="single_line_mode">True</property>
@@ -268,7 +268,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblShooting_angle">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Shooting Angle (deg)</property>
                 <property name="xalign">0</property>
               </object>
@@ -281,7 +281,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblWind_velocity">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Wind Velocity (mi/hr)</property>
                 <property name="xalign">0</property>
               </object>
@@ -294,7 +294,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblWind_angle">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Wind Angle (0-360 deg)</property>
                 <property name="xalign">0</property>
               </object>
@@ -533,7 +533,7 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblAlt">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Altitude (ft)</property>
                 <property name="xalign">0</property>
               </object>
@@ -546,39 +546,13 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblTemp">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
                 <property name="label" translatable="yes">Temperature (F)</property>
                 <property name="xalign">0</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblBarPress">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
-                <property name="label" translatable="yes">Barometric Pressure (Hg)</property>
-                <property name="xalign">0.25</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblRelHumid">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
-                <property name="label" translatable="yes">Relative Humidity (%)</property>
-                <property name="xalign">0</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -626,6 +600,33 @@ Author: Steven Oliver
               </object>
               <packing>
                 <property name="left_attach">3</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblBarPress">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="xpad">3</property>
+                <property name="label" translatable="yes">Barometric Pressure (Hg)</property>
+                <property name="xalign">0.25</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblRelHumid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">3</property>
+                <property name="xpad">3</property>
+                <property name="label" translatable="yes">Relative Humidity (%)</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
