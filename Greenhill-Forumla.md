@@ -1,0 +1,1 @@
+The Greenhill formula allows you to calculate the rate of twist for a bullet.
