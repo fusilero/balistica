@@ -1,1 +1,0 @@
-The "Miller twist rate" refers to a mathematical formula written to compute the rate of twist for a bullet.

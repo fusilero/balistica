@@ -22,14 +22,6 @@ set(LIB_BALISTICA
     LibBalistica/conversion/Temperature.vala
 )
 
-set(CUSTOM_VAPIS
-#    ../vapi/gnuplot.vapi
-)
-
-set(DATABASE
-    db/DataBase.vala
-)
-
 # Vala
 find_package(Vala REQUIRED)
 include(ValaVersion)
@@ -43,11 +35,10 @@ pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
     gtk+-3.0>=3.18.0
     gee-0.8>=0.18.0
-    #sqlite3>=3.8.0
 )
 
 set(LIB_BALISTICA_PACKAGES
-    glib-2.0 gtk+-3.0 gee-0.8 #sqlite3
+    glib-2.0 gtk+-3.0 gee-0.8
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -113,11 +104,8 @@ endif()
 vala_precompile(BALISTICA_VALA_C balistica
     ${MAIN}
     ${LIB_BALISTICA}
-    ${DATABASE}
 PACKAGES
     ${LIB_BALISTICA_PACKAGES}
-CUSTOM_VAPIS
-    ${CUSTOM_VAPIS}
 OPTIONS
     ${VALAC_OPTIONS}
 )

@@ -7,6 +7,7 @@ cmake_minimum_required(VERSION 2.8)
 cmake_policy(VERSION 2.6)
 
 project(balistica C)
+enable_testing(true)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 
@@ -62,13 +63,6 @@ endif()
 
 find_package(PkgConfig)
 
-# CMake's range-checking syntax doesn't allow for a bare less-than, so using
-# improbably high version numbers to indicate maximum
-pkg_check_modules(WEBKITGTK24X QUIET webkitgtk-3.0>=2.3.0)
-pkg_check_modules(WEBKITGTK22X QUIET webkitgtk-3.0>=2.2.0 webkitgtk-3.0<=2.2.100)
-pkg_check_modules(WEBKITGTK20X QUIET webkitgtk-3.0>=2.0.0 webkitgtk-3.0<=2.0.100)
-pkg_check_modules(WEBKITGTK110X QUIET webkitgtk-3.0>=1.10.0 webkitgtk-3.0<=1.10.2)
-
 #
 # Uninstall target
 #
@@ -115,4 +109,4 @@ add_subdirectory(help)
 add_subdirectory(sql)
 add_subdirectory(src)
 add_subdirectory(ui)
-#add_subdirectory(po)
+add_subdirectory(test)

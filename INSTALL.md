@@ -11,5 +11,6 @@ $ make install
 # or if needed
 $ sudo make install
 ```
+
 PS. You may need to execute "make install" as root (i.e. sudo make install)
   if installing to system directories.
