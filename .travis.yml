@@ -1,14 +1,9 @@
 language: c
-compiler:
-  - gcc
-  - clang
 cache: apt
 branches:
   only:
     - master
 before_install:
-  - lsb_release -a
-  - sudo apt-get update -qq
   - sudo apt-get install update-manager-core software-properties-common
   - sudo sed -i 's/^\(Prompt=\).*/\1lts/' /etc/update-manager/release-upgrades
   - sudo do-release-upgrade -d -f DistUpgradeViewNonInteractive
