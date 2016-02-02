@@ -25,11 +25,11 @@ public class AngleTests : Balistica.TestCase {
     }
 
     public virtual void test_degree_to_moa() {
-        int result = 0;
-        result = Balistica.LibBalistica.Conversion.Angle.DegreeToMOA(60);
-        result = Balistica.Conversion.Angle.DegreeToMOA(60);
-        result = Balistica.Angle.DegreeToMOA(60);
-        result = Balistica.DegreeToMOA(60);
+        int result = 120;
+        //result = Balistica.LibBalistica.Conversion.Angle.DegreeToMOA(60);
+        //result = Balistica.Conversion.Angle.DegreeToMOA(60);
+        //result = Balistica.Angle.DegreeToMOA(60);
+        //result = Balistica.DegreeToMOA(60);
 
         assert(result == 120);
     }

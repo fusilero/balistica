@@ -16,9 +16,6 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using GLib;
-using Gtk;
-
 // Defined by cmake build script.
 extern const string _VERSION_MAJOR;
 extern const string _VERSION_MINOR;
@@ -54,13 +51,12 @@ namespace Balistica {
         null
     };
 
-   
     public class Application : Gtk.Application {
         private GLib.Settings settings;
         private Gtk.Window main_window;
         private Gtk.Builder drag_builder;
         private Gtk.Builder twist_builder;
-        
+
         // Drag calculation entry fields
         private Gtk.Entry calc_name;
         private Gtk.Entry drag_coefficient;
@@ -75,19 +71,19 @@ namespace Balistica {
         private Gtk.Entry temp;
         private Gtk.Entry bar_press;
         private Gtk.Entry rela_humid;
-        
+
         // Checkbox for atmospheric corrections
         private Gtk.CheckButton enable_atmosphere;
-        
+
         // Drag calculation results
         private Gtk.TextView drag_results;
-        
+
         // Drag calculation Buttons
         private Gtk.Button reset_drag;
         private Gtk.Button solve_drag;
         private Gtk.Button disp_solution;
         private Gtk.Button disp_pbr;
-        
+
         // Radio buttons for drag functions
         private Gtk.RadioButton rad_g1;
         private Gtk.RadioButton rad_g2;
@@ -103,7 +99,7 @@ namespace Balistica {
         public static bool version = false;
 
         /**
-         *
+         * Constructor
          */
         public Application() {
             GLib.Object (application_id: "org.gnome.balistica");
@@ -113,116 +109,89 @@ namespace Balistica {
          * Override the default GTK startup procedure
          */
         protected override void startup() {
+            base.startup(); 
+
             settings = new GLib.Settings("org.gnome.balistica");
 
-            string[] args = { null };
-            unowned string[] arguments = args;
+            main_window = new Gtk.Window();
+            Environment.set_application_name(NAME);
 
-            Gtk.init (ref arguments);
-            base.startup(); 
-            
-            //Gtk.Menu menu = new Gtk.Menu();
-            //Gtk.MenuItem item_about = new Gtk.MenuItem.with_label("About");
-            //menu.append(item_about);
-            //this.app_menu = menu;
+            // Setup the main window
+            main_window.title = "balística";
+            main_window.window_position = Gtk.WindowPosition.CENTER;
+            main_window.set_default_size(830, 550);
+            main_window.destroy.connect(Gtk.main_quit);
+
+            // Add the main layout grid
+            Gtk.Grid grid = new Gtk.Grid();
+
+            // Add the menu bar across the top
+            Gtk.MenuBar menubar = new Gtk.MenuBar();
+
+            Gtk.MenuItem item_file = new Gtk.MenuItem.with_label("File");
+            Gtk.Menu filemenu = new Gtk.Menu();
+            Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label("Quit");
+            filemenu.add(sub_item_quit);
+            item_file.set_submenu(filemenu);
+
+            sub_item_quit.activate.connect(() => {
+                    quit_selected();
+                    });
+
+            Gtk.MenuItem item_help = new Gtk.MenuItem.with_label("Help");
+            Gtk.Menu helpmenu = new Gtk.Menu();
+            Gtk.MenuItem sub_item_about = new Gtk.MenuItem.with_label("About");
+            Gtk.MenuItem sub_item_help = new Gtk.MenuItem.with_label("Help");
+
+            helpmenu.add(sub_item_about);
+            helpmenu.add(sub_item_help);
+            item_help.set_submenu(helpmenu);
+
+            sub_item_help.activate.connect(() => {
+                    help_selected();
+                    });
+
+            sub_item_about.activate.connect(() => {
+                    about_selected();
+                    });
+
+            menubar.add(item_file);
+            menubar.add(item_help);
+
+            grid.attach(menubar, 0, 0, 1, 1);
+
+            // Add the notebook that will eventually hold everything else
+            Gtk.Notebook notebook = new Gtk.Notebook();
+
+            // Create the drag page of the notebook
+            Gtk.Label pg1_title = new Gtk.Label("Drag");
+            drag_builder = Balistica.create_builder("drag.glade");
+            drag_builder.connect_signals(null);
+            var drag_content = drag_builder.get_object("drag_main") as Gtk.Box;
+            notebook.append_page(drag_content, pg1_title);
+
+            // Create the twist page of the notebook
+            Gtk.Label pg2_title = new Gtk.Label("Twist");
+            twist_builder = Balistica.create_builder("twist.glade");
+            twist_builder.connect_signals(null);
+            var twist_content = twist_builder.get_object("twist_main") as Gtk.Box;
+            notebook.append_page(twist_content, pg2_title);
+
+            // Attach the grid (with the notebook) the main window and roll
+            grid.attach(notebook, 0, 1, 1, 1);
+            main_window.add(grid); 
+            main_window.show_all();
+            this.add_window(main_window);
+            connect_entries();
         }
 
         /**
          * Present the existing main window, or create a new one.
          */
         protected override void activate() {
-            if (this.get_windows() != null) {
-                main_window.present();
-            } else {
-                common_init();
-            }
-        }
-
-        /**
-         * Intialization sequence for the GUI
-         */
-        private void common_init() {
-            if (this.get_windows() == null) {
-                main_window = new Gtk.Window();
-                Environment.set_application_name(NAME);
-
-                // Setup the main window
-                main_window.title = "balística";
-                main_window.window_position = Gtk.WindowPosition.CENTER;
-                main_window.set_default_size(830, 550);
-                main_window.destroy.connect(Gtk.main_quit);
-
-                // Add the main layout grid
-                Gtk.Grid grid = new Gtk.Grid();
-                
-                // Add the menu bar across the top
-                Gtk.MenuBar menubar = new Gtk.MenuBar();
-
-                Gtk.MenuItem item_file = new Gtk.MenuItem.with_label("File");
-                Gtk.Menu filemenu = new Gtk.Menu();
-                Gtk.MenuItem sub_item_new = new Gtk.MenuItem.with_label("New");
-                Gtk.MenuItem sub_item_open = new Gtk.MenuItem.with_label("Open");
-                Gtk.MenuItem sub_item_save = new Gtk.MenuItem.with_label("Save");
-                Gtk.MenuItem sub_item_save_as = new Gtk.MenuItem.with_label("Save As");
-                Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label("Quit");
-
-                filemenu.add(sub_item_new);
-                filemenu.add(sub_item_open);
-                filemenu.add(sub_item_save);
-                filemenu.add(sub_item_save_as);
-                filemenu.add(sub_item_quit);
-                item_file.set_submenu(filemenu);
-
-                sub_item_quit.activate.connect(() => {
-                        quit_selected();
-                });
-
-                Gtk.MenuItem item_help = new Gtk.MenuItem.with_label("Help");
-                Gtk.Menu helpmenu = new Gtk.Menu();
-                Gtk.MenuItem sub_item_about = new Gtk.MenuItem.with_label("About");
-                Gtk.MenuItem sub_item_help = new Gtk.MenuItem.with_label("Help");
-
-                helpmenu.add(sub_item_about);
-                helpmenu.add(sub_item_help);
-                item_help.set_submenu(helpmenu);
-
-                sub_item_help.activate.connect(() => {
-                        help_selected();
-                });
-
-                sub_item_about.activate.connect(() => {
-                        about_selected();
-                });
-
-                menubar.add(item_file);
-                menubar.add(item_help);
-
-                grid.attach(menubar, 0, 0, 1, 1);
-
-                // Add the notebook that will eventually hold everything else
-                Gtk.Notebook notebook = new Gtk.Notebook();
-
-                // Create the drag page of the notebook
-                Gtk.Label pg1_title = new Gtk.Label("Drag");
-                drag_builder = Balistica.create_builder("drag.glade");
-                drag_builder.connect_signals(null);
-                var drag_content = drag_builder.get_object("drag_main") as Gtk.Box;
-                notebook.append_page(drag_content, pg1_title);
-                
-                // Create the twist page of the notebook
-                Gtk.Label pg2_title = new Gtk.Label("Twist");
-                twist_builder = Balistica.create_builder("twist.glade");
-                twist_builder.connect_signals(null);
-                var twist_content = twist_builder.get_object("twist_main") as Gtk.Box;
-                notebook.append_page(twist_content, pg2_title);
-    
-                // Attach the grid (with the notebook) the main window and roll
-                grid.attach(notebook, 0, 1, 1, 1);
-                main_window.add(grid); 
-                main_window.show_all();
-                this.add_window(main_window);
-                connect_entries();
-            }
+            base.activate();
+            
+            main_window.present();
         }
         
         /**
@@ -301,22 +270,22 @@ namespace Balistica {
             solve_drag = drag_builder.get_object("btnSolveDrag") as Gtk.Button;
             solve_drag.clicked.connect(()=> {
                     btnSolveDrag_clicked();
-            });
+                    });
             
             reset_drag = drag_builder.get_object("btnResetDrag") as Gtk.Button;
             reset_drag.clicked.connect(()=> {
                     btnResetDrag_clicked();
-            });
-            
+                    });
+
             disp_solution = drag_builder.get_object("btnSolution") as Gtk.Button;
             disp_solution.clicked.connect(()=> {
                     btnSolution_clicked();
-            });
+                    });
             
             disp_pbr = drag_builder.get_object("btnPBR") as Gtk.Button;
             disp_pbr.clicked.connect(()=> {
                     btnPBR_clicked();
-            });
+                    });
         }
         
         /**
@@ -432,7 +401,7 @@ namespace Balistica {
                 drag_results.buffer.text = "Solution generated!";
             }
         }
-
+        
         /**
          * Display the calculated solution
          */
@@ -446,18 +415,18 @@ namespace Balistica {
         public void btnPBR_clicked() {
             //TODO
         }
-        
+
         /**
          * Quit application
          */
-        public void quit_selected() {
+        private void quit_selected() {
             main_window.destroy();
         }
         
         /**
          * Show help browser
          */
-        public void help_selected() {
+        private void help_selected() {
             try {
                 Gtk.show_uri(main_window.get_screen(), "ghelp:balistica", Gtk.get_current_event_time());
             } catch (Error err) {
@@ -469,19 +438,17 @@ namespace Balistica {
                 dialog.run();
             }
         }
-                
+        
         /**
          * Show about dialog
          */
-        public void about_selected() {
+        private void about_selected() {
             string version;
             if (Balistica.VERSION_DESC == "Release") {
                 version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION;
             } else {
                 version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "-" + Balistica.VERSION_COMMIT;
             }
-
-
             
             Gtk.show_about_dialog (main_window,
                     "authors", Balistica.AUTHORS,
