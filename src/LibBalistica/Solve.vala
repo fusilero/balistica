@@ -21,11 +21,10 @@
  * License Version 2 by Derek Yates.
  */
 
-using GLib;
 using Conversion;
 using Gee;
 
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
 
     public class Solve : GLib.Object {
         /**

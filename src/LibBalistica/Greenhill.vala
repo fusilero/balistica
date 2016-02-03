@@ -16,9 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using GLib;
-
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
 
     public class Greenhill : GLib.Object {
         public int C { get; set; }

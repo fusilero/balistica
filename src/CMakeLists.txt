@@ -1,11 +1,11 @@
-set(MAIN
+set(MAIN_SRC
     BalisticaApplication.vala
     Calculate.vala
     FileUtils.vala
     Main.vala
 )
 
-set(LIB_BALISTICA
+set(LIB_BALISTICA_SRC
     LibBalistica/Atmosphere.vala
     LibBalistica/Greenhill.vala
     LibBalistica/LibBalistica.vala
@@ -28,6 +28,14 @@ include(ValaVersion)
 ensure_vala_version("0.28.0" MINIMUM)
 include(ValaPrecompile)
 
+# Vapigen
+find_program(VAPIGEN vapigen)
+if (VAPIGEN STREQUAL "VAPIGEN-NOTFOUND")
+    message(FATAL_ERROR "vapigen must be installed to build Balistica.")
+else ()
+    message(STATUS "Found vapigen: " ${VAPIGEN})
+endif ()
+
 # Packages
 set(TARGET_GLIB 2.46)
 
@@ -38,7 +46,11 @@ pkg_check_modules(DEPS REQUIRED
 )
 
 set(LIB_BALISTICA_PACKAGES
-    glib-2.0 gtk+-3.0 gee-0.8
+    glib-2.0 gee-0.8
+)
+
+set(BALISTICA_PACKAGES
+    glib-2.0 gtk+-3.0
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -99,19 +111,34 @@ else()
 	)
 endif()
 
-# Balistica
+# LibBalistica
 #################################################
-vala_precompile(BALISTICA_VALA_C balistica
-    ${MAIN}
-    ${LIB_BALISTICA}
+vala_precompile(LIB_BALISTICA_VALA_C lib-balistica
+    ${LIB_BALISTICA_SRC}
 PACKAGES
     ${LIB_BALISTICA_PACKAGES}
+GENERATE_VAPI
+    lib-balistica
 OPTIONS
     ${VALAC_OPTIONS}
 )
 
+add_library(lib-balistica STATIC ${LIB_BALISTICA_VALA_C})
+target_link_libraries(lib-balistica ${DEPS_LIBRARIES} gthread-2.0 m)
+
+# Balistica
+#################################################
+vala_precompile(BALISTICA_VALA_C balistica
+    ${MAIN_SRC}
+PACKAGES
+    ${BALISTICA_PACKAGES}
+OPTIONS
+    ${VALAC_OPTIONS}
+    --vapidir=${CMAKE_BINARY_DIR}/src
+)
+
 add_executable(balistica ${BALISTICA_VALA_C})
-target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 m)
+target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 add_custom_command(
     TARGET

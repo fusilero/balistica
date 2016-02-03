@@ -21,9 +21,7 @@
  * License Version 2 by Derek Yates.
  */
 
-using GLib;
-
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
 
     public class Retard : GLib.Object {
 

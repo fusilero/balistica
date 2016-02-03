@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
     /**
      * Gravity in feet per second squared
      * Value according to Wolfram Alpha

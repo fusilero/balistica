@@ -21,10 +21,9 @@
  * License Version 2 by Derek Yates.
  */
 
-using GLib;
 using Conversion;
 
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
 
     public class PBR : GLib.Object {
         private const int PBR_ERROR = 3;

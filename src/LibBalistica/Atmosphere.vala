@@ -21,10 +21,9 @@
  * License Version 2 by Derek Yates.
  */
 
-using GLib;
 using Conversion;
 
-namespace Balistica.LibBalistica {
+namespace LibBalistica {
 
     public class Atmosphere : GLib.Object {
 
