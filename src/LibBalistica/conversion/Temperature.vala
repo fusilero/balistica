@@ -16,9 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using GLib;
-
-public class Conversion.Temperature : GLib.Object {
+public class LibBalistica.Temperature : GLib.Object {
     /**
      * CelsiusToFahrenheit
      *

@@ -16,9 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using GLib;
-
-public class Conversion.Angle : GLib.Object {
+public class LibBalistica.Angle : GLib.Object {
 
     /**
      * DegreeToMOA

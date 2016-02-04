@@ -21,7 +21,6 @@
  * License Version 2 by Derek Yates.
  */
 
-using Conversion;
 using Gee;
 
 namespace LibBalistica {

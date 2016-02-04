@@ -21,8 +21,6 @@
  * License Version 2 by Derek Yates.
  */
 
-using Conversion;
-
 namespace LibBalistica {
 
     public class Windage : GLib.Object {

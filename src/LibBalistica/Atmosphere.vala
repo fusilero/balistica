@@ -21,8 +21,6 @@
  * License Version 2 by Derek Yates.
  */
 
-using Conversion;
-
 namespace LibBalistica {
 
     public class Atmosphere : GLib.Object {
@@ -102,7 +100,7 @@ namespace LibBalistica {
          *
          * @return The function returns a ballistic coefficient, corrected for the supplied atmospheric conditions.
          */
-        internal static double atm_correct (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
+        public static double atm_correct (double DragCoefficient, double Altitude, double Barometer, double Temperature, double RelativeHumidity) {
             double FA = calc_fa(Altitude);
             double FT = calc_ft(Temperature, Altitude);
             double FR = calc_fr(Temperature, Barometer, RelativeHumidity);

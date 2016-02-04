@@ -16,9 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using GLib;
-
-public class Conversion.Mass : GLib.Object {
+public class LibBalistica.Mass : GLib.Object {
 
     /**
      * GrainToSlug
