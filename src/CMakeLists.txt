@@ -50,7 +50,7 @@ set(LIB_BALISTICA_PACKAGES
 )
 
 set(BALISTICA_PACKAGES
-    glib-2.0 gtk+-3.0
+    gtk+-3.0
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -132,6 +132,9 @@ vala_precompile(BALISTICA_VALA_C balistica
     ${MAIN_SRC}
 PACKAGES
     ${BALISTICA_PACKAGES}
+    ${LIB_BALISTICA_PACKAGES}
+CUSTOM_VAPIS
+    "${CMAKE_BINARY_DIR}/src/lib-balistica.vapi"
 OPTIONS
     ${VALAC_OPTIONS}
     --vapidir=${CMAKE_BINARY_DIR}/src
