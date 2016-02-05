@@ -16,8 +16,6 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using Balistica;
-
 public class AngleTests : Balistica.TestCase {
     public AngleTests () {
         base("Angle");
@@ -25,13 +23,8 @@ public class AngleTests : Balistica.TestCase {
     }
 
     public virtual void test_degree_to_moa() {
-        int result = 120;
-        //result = Balistica.LibBalistica.Conversion.Angle.DegreeToMOA(60);
-        //result = Balistica.Conversion.Angle.DegreeToMOA(60);
-        //result = Balistica.Angle.DegreeToMOA(60);
-        //result = Balistica.DegreeToMOA(60);
+        double result = LibBalistica.Angle.DegreeToMOA(2);
 
         assert(result == 120);
     }
 }
-

@@ -33,7 +33,7 @@ are major outstanding issues:
 
 ### Fedora
 ```bash
-sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake vala-compat-tools
+sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake
 ```
 
 ### Ubuntu

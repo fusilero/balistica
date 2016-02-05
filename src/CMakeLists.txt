@@ -28,14 +28,6 @@ include(ValaVersion)
 ensure_vala_version("0.28.0" MINIMUM)
 include(ValaPrecompile)
 
-# Vapigen
-find_program(VAPIGEN vapigen)
-if (VAPIGEN STREQUAL "VAPIGEN-NOTFOUND")
-    message(FATAL_ERROR "vapigen must be installed to build Balistica.")
-else ()
-    message(STATUS "Found vapigen: " ${VAPIGEN})
-endif ()
-
 # Packages
 set(TARGET_GLIB 2.46)
 
@@ -80,7 +72,7 @@ set(VALAC_OPTIONS
     --fatal-warnings
 )
 
-# Debug vs not-Debug
+# Debug vs Release
 if(DEBUG OR ADD_COVERAGE)
     set(VALAC_OPTIONS
 	${VALAC_OPTIONS}
@@ -137,12 +129,13 @@ CUSTOM_VAPIS
     "${CMAKE_BINARY_DIR}/src/lib-balistica.vapi"
 OPTIONS
     ${VALAC_OPTIONS}
-    --vapidir=${CMAKE_BINARY_DIR}/src
 )
 
 add_executable(balistica ${BALISTICA_VALA_C})
 target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica)
 install(TARGETS balistica RUNTIME DESTINATION bin)
+
+# Copy the executable to the top-level build directory to make testing easier
 add_custom_command(
     TARGET
         balistica
@@ -151,9 +144,8 @@ add_custom_command(
         ${CMAKE_COMMAND} -E copy balistica ${CMAKE_BINARY_DIR}/
 )
 
-# GSettings
-# This needs to be here and not in data/CMakeLists.txt in order to run in the build
-# directory
+# This needs to be here and not in data/CMakeLists.txt in order to run in 
+# the build directory
 include(GSettings)
 add_schemas(balistica ${GSETTINGS_DIR} ${CMAKE_INSTALL_PREFIX})
 
