@@ -1,15 +1,8 @@
-# Based upon Geary's build script
-# Copyright 2011-2013 Yorba Foundation
-#
-# Check http://webdev.elementaryos.org/docs/developer-guide/cmake for documentation
-
-cmake_minimum_required(VERSION 2.8)
-cmake_policy(VERSION 2.6)
-
+cmake_minimum_required(VERSION 3.0)
 project(balistica C)
 enable_testing(true)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # We use this so we can append the latest commit hash
 # to the version string
@@ -19,18 +12,13 @@ if(GIT_FOUND)
 endif()
 
 #
-# Translation support
-#
-#set(GETTEXT_PACKAGE "balistica")
-set(LANGUAGE_SUPPORT_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/locale)
-
-#
 # Version information
 #
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
 set(VERSION_REVISION 1)
 set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
+
 # Anything other than "Release" will add the latest commit 
 # hash when built to the version string
 set(VERSION_DESC "Development")
