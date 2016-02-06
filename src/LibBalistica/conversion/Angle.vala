@@ -70,7 +70,7 @@ public class LibBalistica.Angle : GLib.Object {
      * @return Angle in Degrees
      */
     public inline static double MOAToDegree (double moa) {
-        return moa/60;
+        return moa / 60;
     }
 
     /**
@@ -81,6 +81,6 @@ public class LibBalistica.Angle : GLib.Object {
      * @return Angle in Radians
      */
     public inline static double MOAToRadian (double moa) {
-        return moa/60 * Math.PI/180;
+        return moa / 60 * Math.PI / 180;
     }
 }

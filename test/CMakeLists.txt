@@ -20,7 +20,8 @@ add_definitions(${CFLAGS})
 set(TEST_SRC
     TestMain.vala
     TestCase.vala 
-    Angle.vala
+    
+    LibBalistica/Conversion.vala
 ) 
 
 vala_precompile(BALISTICA_TEST balistica_test
@@ -35,4 +36,5 @@ OPTIONS
 
 add_executable(balistica_test ${BALISTICA_TEST})
 target_link_libraries(balistica_test ${DEPS_LIBRARIES} glib-2.0 gthread-2.0 m lib-balistica)
-add_test(balistica_test ${CMAKE_BINARY_DIR}/test)
+
+add_test(balistica_test ${CMAKE_BINARY_DIR}/test/balistica_test)
