@@ -1,6 +1,4 @@
 # balística
-
-[![Coverage Status](https://img.shields.io/coveralls/steveno/balistica.svg)](https://coveralls.io/r/steveno/balistica)
 [![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
@@ -44,14 +42,14 @@ sudo apt-get install libgtk-3-dev vala cmake
 ## Build Instructions
 ```bash
 cd balistica
-mkdir build && cd build
-cmake ..
-make
+mkdir -p build && cd build
+cmake .. && make
 make install
 ```
 
 ## Contributing
 [![Gitter chat](https://badges.gitter.im/steveno/balistica.png)](https://gitter.im/steveno/balistica)
+
 Please see [the contributing file](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
