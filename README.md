@@ -44,7 +44,8 @@ sudo apt-get install libgtk-3-dev vala cmake
 cd balistica
 mkdir -p build && cd build
 cmake .. && make
-make install
+make test
+sudo make install
 ```
 
 ## Contributing

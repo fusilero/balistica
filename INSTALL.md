@@ -4,9 +4,9 @@ balística Installation
 To build and install balística, type the following commands:
 
 ```bash
-$ mkdir build && cd build
-$ cmake ..
-$ make
+$ mkdir -p build && cd build
+$ cmake .. && make
+$ make test
 $ make install
 # or if needed
 $ sudo make install
