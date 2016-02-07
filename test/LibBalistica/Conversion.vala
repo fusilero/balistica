@@ -26,8 +26,9 @@ public class ConversionTests : Balistica.TestCase {
         add_test("[Angle] MOA to Degree", test_moa_to_degree); 
         add_test("[Angle] MOA to Radian", test_moa_to_radian); 
 
-        add_test("[Mass] Grain to Slug", test_grain_to_slug);
-    }
+        add_test("[Mass] Grain to Pound", test_grain_to_pound); 
+        add_test("[Mass] Grain to Ounce", test_grain_to_ounce);
+   }
 
     public virtual void test_degree_to_moa() {
         assert(LibBalistica.Angle.DegreeToMOA(2) == 120);
@@ -65,9 +66,18 @@ public class ConversionTests : Balistica.TestCase {
         assert(LibBalistica.Angle.MOAToDegree(-2) == -0.033333333333333333);
     }
 
-    public virtual void test_grain_to_slug() {
-        assert(LibBalistica.Mass.GrainToSlug(2) == 450436.67999999999);
-        assert(LibBalistica.Mass.GrainToSlug(0) == 0);
-        assert(LibBalistica.Mass.GrainToSlug(-2) == -450436.67999999999);
+    public virtual void test_grain_to_pound() {
+        assert(LibBalistica.Mass.GrainToPound(2) == 0.00028571428571428574);
+        assert(LibBalistica.Mass.GrainToPound(0) == 0);
+        assert(LibBalistica.Mass.GrainToPound(-2) == -0.00028571428571428574);
     }
+
+    public virtual void test_grain_to_ounce() {
+        stdout.printf(LibBalistica.Mass.GrainToOunce(2).to_string());
+        assert(LibBalistica.Mass.GrainToOunce(2) == 0.0045714285714285718);
+        assert(LibBalistica.Mass.GrainToOunce(0) == 0);
+        assert(LibBalistica.Mass.GrainToOunce(-2) == -0.0045714285714285718);
+    }
+
+
 }

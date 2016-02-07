@@ -17,15 +17,19 @@ set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
 
-set(TEST_SRC
+set(BALISTICA_TESTS
+    /LibBalistica/Conversion/Angle/DegreeToMOA
+)
+
+set(LIB_BALISTICA_CONVERSION_SRC
     TestMain.vala
     TestCase.vala 
     
     LibBalistica/Conversion.vala
 ) 
 
-vala_precompile(BALISTICA_TEST balistica_test
-    ${TEST_SRC}
+vala_precompile(BALISTICA_TEST lib-balistica_test
+    ${LIB_BALISTICA_CONVERSION_SRC}
 PACKAGES
     ${BALISTICA_TEST_PACKAGES}
 CUSTOM_VAPIS
@@ -34,7 +38,7 @@ OPTIONS
     ${VALAC_OPTIONS}
 )
 
-add_executable(balistica_test ${BALISTICA_TEST})
-target_link_libraries(balistica_test ${DEPS_LIBRARIES} glib-2.0 gthread-2.0 m lib-balistica)
+add_executable(lib-balistica_test ${BALISTICA_TEST})
+target_link_libraries(lib-balistica_test ${DEPS_LIBRARIES} glib-2.0 gthread-2.0 m lib-balistica)
 
-add_test(balistica_test ${CMAKE_BINARY_DIR}/test/balistica_test)
+add_test(lib-balistica_test ${CMAKE_BINARY_DIR}/test/lib-balistica_test)
