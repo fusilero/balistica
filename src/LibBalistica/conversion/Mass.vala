@@ -26,7 +26,7 @@ public class LibBalistica.Mass : GLib.Object {
      * @return Pounds
      */
     public inline static double GrainToPound (double grain) {
-        return grain * 7000;
+        return grain / 7000;
     }
 
     /**
@@ -37,7 +37,7 @@ public class LibBalistica.Mass : GLib.Object {
      * @return ounces
      */
     public inline static double GrainToOunce (double grain) {
-        return grain * 437.5;
+        return grain / 437.5;
     }
 
     /**
