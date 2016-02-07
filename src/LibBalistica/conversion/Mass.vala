@@ -19,17 +19,6 @@
 public class LibBalistica.Mass : GLib.Object {
 
     /**
-     * GrainToSlug
-     *
-     * @param grain
-     *
-     * @return Slugs
-     */
-    public inline static double GrainToSlug (double grain) {
-        return grain * 225218.34 ;
-    }
-
-    /**
      * GrainToPound
      *
      * @param grain
@@ -60,50 +49,6 @@ public class LibBalistica.Mass : GLib.Object {
      */
     public inline static double GrainToMiligrams (double grain) {
         return grain * 64.79891;
-    }
-
-    /**
-     * SlugToGrain
-     *
-     * @param slug
-     *
-     * @return Grains
-     */
-    public inline static double SlugToGrain (double slug) {
-        return slug * 0.00000444013571969;
-    }
-
-    /**
-     * SlugToPound
-     *
-     * @param slug
-     *
-     * @return Pounds
-     */
-    public inline static double SlugToPound (double slug) {
-        return slug * 0.0310809502;
-    }
-
-    /**
-     * SlugToOunce
-     *
-     * @param slug
-     *
-     * @return Ounces
-     */
-    public inline static double SlugToOunce (double slug) {
-        return slug * 0.00194255939;
-    }
-
-    /**
-     * SlugToMiligrams
-     *
-     * @param slug
-     *
-     * @return Miligrams
-     */
-    public inline static double SlugToMiligrams (double slug) {
-        return slug * 0.014593902999991705;
     }
 
     /**
@@ -140,17 +85,6 @@ public class LibBalistica.Mass : GLib.Object {
     }
 
     /**
-     * MiligramToSlug
-     *
-     * @param Miligram
-     *
-     * @return Slugs
-     */
-    public inline static double MiligramToSlug (double miligram) {
-        return miligram * 0.014593902999991705;
-    }
-
-    /**
      * PoundToGrain
      *
      * @param Pound
@@ -184,17 +118,6 @@ public class LibBalistica.Mass : GLib.Object {
         }
 
     /**
-     * PoundToSlug
-     *
-     * @param Pound
-     *
-     * @return Slugs
-     */
-        public inline static double PoundToSlug (double pound) {
-            return pound * 0.0310809502;
-        }
-
-    /**
      * OunceToGrain
      *
      * @param Ounce
@@ -225,16 +148,5 @@ public class LibBalistica.Mass : GLib.Object {
      */
         public inline static double OunceToPound (double ounce) {
             return ounce * 0.0625;
-        }
-
-    /**
-     * OunceToSlug
-     *
-     * @param Ounce
-     *
-     * @return Slugs
-     */
-        public inline static double OunceToSlug (double ounce) {
-            return ounce * 0.00194255939;
         }
 }
