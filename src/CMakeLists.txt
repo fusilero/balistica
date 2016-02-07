@@ -117,6 +117,16 @@ OPTIONS
 
 add_library(lib-balistica STATIC ${LIB_BALISTICA_VALA_C})
 target_link_libraries(lib-balistica ${DEPS_LIBRARIES} gthread-2.0 m)
+install (
+    TARGETS lib-balistica
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(
+    FILES ${CMAKE_BINARY_DIR}/src/lib-balistica.h
+    DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}
+)
 
 # Balistica
 #################################################
