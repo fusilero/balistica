@@ -6,6 +6,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # We use this so we can append the latest commit hash
 # to the version string
+include (GNUInstallDirs)
 include(cmake/FindGit.cmake)
 if(GIT_FOUND)
     GIT_WC_INFO(${PROJECT_SOURCE_DIR} Project)
