@@ -28,8 +28,23 @@ public class ConversionTests : Balistica.TestCase {
 
         add_test("[Mass] Grain to Pound", test_grain_to_pound); 
         add_test("[Mass] Grain to Ounce", test_grain_to_ounce);
-   }
+        add_test("[Mass] Grain to Miligram", test_grain_to_miligram);
+        add_test("[Mass] Miligram to Grain", test_miligram_to_grain);
+        add_test("[Mass] Miligram to Pound", test_miligram_to_pound);
+        add_test("[Mass] Miligram to Ounce", test_miligram_to_ounce);
+        add_test("[Mass] Pound to Grain", test_pound_to_grain);
+        add_test("[Mass] Pound to Miligram", test_pound_to_miligram);
+        add_test("[Mass] Pound to Ounce", test_pound_to_ounce);
+        add_test("[Mass] Ounce to Grain", test_ounce_to_grain);
+        add_test("[Mass] Ounce to Miligram", test_ounce_to_miligram);
+        add_test("[Mass] Ounce to Pound", test_ounce_to_pound);
 
+        //add_test("[Temp]  to ", test__to_);
+}
+   
+    /*
+     * Angle Tests
+     */
     public virtual void test_degree_to_moa() {
         assert(LibBalistica.Angle.DegreeToMOA(2) == 120);
         assert(LibBalistica.Angle.DegreeToMOA(0) == 0);
@@ -66,6 +81,9 @@ public class ConversionTests : Balistica.TestCase {
         assert(LibBalistica.Angle.MOAToDegree(-2) == -0.033333333333333333);
     }
 
+    /*
+     * Mass Tests
+     */
     public virtual void test_grain_to_pound() {
         assert(LibBalistica.Mass.GrainToPound(2) == 0.00028571428571428574);
         assert(LibBalistica.Mass.GrainToPound(0) == 0);
@@ -73,11 +91,75 @@ public class ConversionTests : Balistica.TestCase {
     }
 
     public virtual void test_grain_to_ounce() {
-        stdout.printf(LibBalistica.Mass.GrainToOunce(2).to_string());
         assert(LibBalistica.Mass.GrainToOunce(2) == 0.0045714285714285718);
         assert(LibBalistica.Mass.GrainToOunce(0) == 0);
         assert(LibBalistica.Mass.GrainToOunce(-2) == -0.0045714285714285718);
     }
 
+    public virtual void test_grain_to_miligram() {
+        assert(LibBalistica.Mass.GrainToMiligram(2) == 129.59782000000001);
+        assert(LibBalistica.Mass.GrainToMiligram(0) == 0);
+        assert(LibBalistica.Mass.GrainToMiligram(-2) == -129.59782000000001);
+    }
 
+    public virtual void test_miligram_to_grain() {
+        assert(LibBalistica.Mass.MiligramToGrain(2) == 0.030864716800000001);
+        assert(LibBalistica.Mass.MiligramToGrain(0) == 0);
+        assert(LibBalistica.Mass.MiligramToGrain(-2) == -0.030864716800000001);
+    }
+
+    public virtual void test_miligram_to_pound() {
+        assert(LibBalistica.Mass.MiligramToPound(2) == 4.4000000000000002e-06);
+        assert(LibBalistica.Mass.MiligramToPound(0) == 0);
+        assert(LibBalistica.Mass.MiligramToPound(-2) == -4.4000000000000002e-06);
+    }
+
+    public virtual void test_miligram_to_ounce() {
+        assert(LibBalistica.Mass.MiligramToOunce(2) == 7.0548000000000003e-05);
+        assert(LibBalistica.Mass.MiligramToOunce(0) == 0);
+        assert(LibBalistica.Mass.MiligramToOunce(-2) == -7.0548000000000003e-05);
+    }
+
+    public virtual void test_pound_to_grain() {
+        assert(LibBalistica.Mass.PoundToGrain(2) == 14000);
+        assert(LibBalistica.Mass.PoundToGrain(0) == 0);
+        assert(LibBalistica.Mass.PoundToGrain(-2) == -14000);
+    }
+
+    public virtual void test_pound_to_miligram() {
+        assert(LibBalistica.Mass.PoundToMiligram(2) == 907184);
+        assert(LibBalistica.Mass.PoundToMiligram(0) == 0);
+        assert(LibBalistica.Mass.PoundToMiligram(-2) == -907184);
+    }
+
+    public virtual void test_pound_to_ounce() {
+        stdout.printf(LibBalistica.Mass.PoundToOunce(2).to_string());
+
+        assert(LibBalistica.Mass.PoundToOunce(2) == 32);
+        assert(LibBalistica.Mass.PoundToOunce(0) == 0);
+        assert(LibBalistica.Mass.PoundToOunce(-2) == -32);
+    }
+    
+    public virtual void test_ounce_to_grain() {
+        assert(LibBalistica.Mass.OunceToGrain(2) == 875);
+        assert(LibBalistica.Mass.OunceToGrain(0) == 0);
+        assert(LibBalistica.Mass.OunceToGrain(-2) == -875);
+    }
+    
+    public virtual void test_ounce_to_miligram() {
+        assert(LibBalistica.Mass.OunceToMiligram(2) == 56699);
+        assert(LibBalistica.Mass.OunceToMiligram(0) == 0);
+        assert(LibBalistica.Mass.OunceToMiligram(-2) == -56699);
+    }
+    
+    public virtual void test_ounce_to_pound() {
+        assert(LibBalistica.Mass.OunceToPound(2) == 0.125);
+        assert(LibBalistica.Mass.OunceToPound(0) == 0);
+        assert(LibBalistica.Mass.OunceToPound(-2) == -0.125);
+    }
+
+    /*
+     * Temperature Tests
+     */
+ 
 }

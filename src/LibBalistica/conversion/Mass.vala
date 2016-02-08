@@ -47,7 +47,7 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Miligrams
      */
-    public inline static double GrainToMiligrams (double grain) {
+    public inline static double GrainToMiligram (double grain) {
         return grain * 64.79891;
     }
 
@@ -102,9 +102,9 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Miligrams
      */
-        public inline static double PoundToMiligram (double pound) {
-            return pound * 453592;
-        }
+    public inline static double PoundToMiligram (double pound) {
+        return pound * 453592;
+    }
 
     /**
      * PoundToOunce
@@ -113,9 +113,9 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Ounces
      */
-        public inline static double PoundToOunce (double pound) {
-            return pound * 16.0;
-        }
+    public inline static double PoundToOunce (double pound) {
+        return pound * 16.0;
+    }
 
     /**
      * OunceToGrain
@@ -124,9 +124,9 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Grains
      */
-        public inline static double OunceToGrain (double ounce) {
-            return ounce * 437.5;
-        }
+    public inline static double OunceToGrain (double ounce) {
+        return ounce * 437.5;
+    }
 
     /**
      * OunceToMiligram
@@ -135,9 +135,9 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Miligrams
      */
-        public inline static double OunceToMiligram (double ounce) {
-            return ounce * 28349.5;
-        }
+    public inline static double OunceToMiligram (double ounce) {
+        return ounce * 28349.5;
+    }
 
     /**
      * OunceToPound
@@ -146,7 +146,7 @@ public class LibBalistica.Mass : GLib.Object {
      *
      * @return Pounds
      */
-        public inline static double OunceToPound (double ounce) {
-            return ounce * 0.0625;
-        }
+    public inline static double OunceToPound (double ounce) {
+        return ounce * 0.0625;
+    }
 }

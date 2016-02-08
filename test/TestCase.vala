@@ -31,7 +31,7 @@ public abstract class Balistica.TestCase : Object {
 
     public void add_test(string name, owned TestMethod test)
     {
-        var adaptor = new Adaptor(name, (owned)test, this);
+        var adaptor = new Adaptor(name, (owned) test, this);
         this.adaptors += adaptor;
 
         this.suite.add(new GLib.TestCase(adaptor.name, adaptor.set_up, adaptor.run, adaptor.tear_down));
@@ -59,7 +59,7 @@ public abstract class Balistica.TestCase : Object {
         public Adaptor(string name, owned TestMethod test, TestCase test_case)
         {
             this.name = name;
-            this.test = (owned)test;
+            this.test = (owned) test;
             this.test_case = test_case;
         }
 
