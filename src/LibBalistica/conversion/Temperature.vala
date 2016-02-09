@@ -29,24 +29,24 @@ public class LibBalistica.Temperature : GLib.Object {
     }
 
     /**
-     * CelisusToKelvin
+     * CelsiusToKelvin
      *
-     * @param cel Degrees in Celisus
+     * @param cel Degrees in Celsius
      *
      * @return Degress in Kelvin
      */
-    public inline static double CelisusToKelvin (double cel) {
+    public inline static double CelsiusToKelvin (double cel) {
         return cel + 273.15;
     }
 
     /**
-     * CelisusToRankine
+     * CelsiusToRankine
      *
-     * @param cel Degrees in Celisus
+     * @param cel Degrees in Celsius
      *
      * @return Degress in Rankine
      */
-    public inline static double CelisusToRankine (double cel) {
+    public inline static double CelsiusToRankine (double cel) {
         return (cel + 273.15) * 9/5;
     }
 
