@@ -35,7 +35,7 @@
 
                 <h2>Welcome</h2>
 
-                <p>In the simplist terms, balística is an open source ballistics calculator. More 
+                <p>In the simplist terms, balística is an open source external ballistics calculator. More 
                 specifically, balística is a exterior balisitics calculator with some extra features 
                 tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan word</a> 
                 for "ballistics".</p>
@@ -45,14 +45,15 @@
 
                 <h2>Current Features</h2>
 
-                <h3>Calculate using the <a href="http://en.wikipedia.org/wiki/External_ballistics#Fixed_drag_curve_models_generated_for_standard-shaped_projectiles" target="_blank">standard drag functions</a> G1-G8</h3>
+                <h3>Calculate drag using the <a href="http://en.wikipedia.org/wiki/External_ballistics#Fixed_drag_curve_models_generated_for_standard-shaped_projectiles" target="_blank">standard drag functions</a> G1-G8</h3>
                 <p>The standard drag functions are an essential part of any ballistics program. It is simply
                 a have-to-have. Currently balística has the backend built out for this, but the GUI front end 
                 to is still a work in process.</p>
 
                 <h3>Calculate using the Ingalls and British drag functions</h3>
-                <p>These drag functions are older and a bit antiquated. They still work to extent but you'd 
-                probably be better off with the standard drag functions.</p>
+                <p>These drag functions are older and a bit antiquated. They still work to an extent but you'd 
+                probably be better off with the standard drag functions. Regardless, balística can still compute
+                them for you if you want.</p>
 
                 <h3>Miller Twist Rule</h3>
                 <p>The <a href="http://en.wikipedia.org/wiki/Miller_twist_rule" target="_blank">Miller Twist Rule</a> 
@@ -71,16 +72,16 @@
                 0 yards all the way out to 200 yards before the elevation of the barrel of the rifle needs to 
                 raised in order to arc the trajectory in order to continue to hit the bullseye.</p>
 
+                <h3>LibBalistica</h3>
+                <p><strong>LibBalistica</strong> is a ballistics library developed incordination with balística that 
+                allows developers to build their own ballistics software application should they choose. LibBalistica
+                is also unit tested to ensure reliable consistent calculations every release. With code developed 
+                independently of balística improvements can also potentionally be made without breaking LibBalistica.</p>
+
                 <h2>Features In Process</h2>
 
                 <h3>GUI for Standard Drag Functions</h3>
                 <p>This is very close to completion and should be done very soon!</p>
-
-                <h3>Seperate actual ballistics software into library</h3>
-                <p>I'd like to have a <strong>LibBalistica</strong> so that people could theoretically use the same
-                math in other programs. Or at the very least expand upon this one with little trouble. The code for
-                this backend has already been seperated out in the git repository, but it needs configured so that 
-                it truely is a seperate peice of software.</p>
 
                 <h2>Planned Features</h2>
 
@@ -128,12 +129,11 @@
 
                 <h2>Authors and Contributors</h2>
                 <p>At this point I am the author and only contributor.</p>
-                <p>I must clarify that I have been converting the 
-                <a href="http://sourceforge.net/projects/balcomp/">GNU Exterior Ballistics Computer</a> 
+                <p>I have been converting the <a href="http://sourceforge.net/projects/balcomp/">GNU Exterior Ballistics Computer</a> 
                 by Derek Yates to Vala. The program is open source and licensed under the GNU
-                GPL version 2. If you are Mr. Yates or know him I'd love to talk to him. I have no idea why he did a 
-                lot of what he did and I'd like to comment the code, at least my version of it, so it can be 
-                explained to myself and future users.</p>
+                GPL version 2. If you are Mr. Yates, or know him, I'd love to talk. I have no idea why he did a 
+                lot of what he did and I'd like to better comment the code. Or at least my version of it, so it can be 
+                explained to current and future users.</p>
 
                 <h3>Contact</h3>
                 <p>Steven Oliver  (<a href="https://github.com/steveno" class="user-mention">@steveno</a>)</p>
