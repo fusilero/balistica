@@ -39,7 +39,18 @@ public class ConversionTests : Balistica.TestCase {
         add_test("[Mass] Ounce to Miligram", test_ounce_to_miligram);
         add_test("[Mass] Ounce to Pound", test_ounce_to_pound);
 
-        //add_test("[Temp]  to ", test__to_);
+        add_test("[Temp] Fahrenheit to Kelvin", test_fahrenheit_to_kelvin);
+        add_test("[Temp] Fahrenheit to Celsius", test_fahrenheit_to_celsius);
+        add_test("[Temp] Fahrenheit to Rankine", test_fahrenheit_to_rankine);
+        add_test("[Temp] Kelvin to Fahrenheit", test_kelvin_to_fahrenheit);
+        add_test("[Temp] Kelvin to Celsius", test_kelvin_to_celsius);
+        add_test("[Temp] Kelvin to Rankine", test_kelvin_to_rankine);
+        add_test("[Temp] Celsius to Fahrenheit", test_celsius_to_fahrenheit); 
+        add_test("[Temp] Celsius to Kelvin", test_celsius_to_kelvin);
+        add_test("[Temp] Celsius to Rankine", test_celsius_to_rankine);
+        add_test("[Temp] Rankine to Fahrenheit", test_rankine_to_fahrenheit);
+        add_test("[Temp] Rankine to Celsius", test_rankine_to_celsius);
+        add_test("[Temp] Rankine to Kelvin", test_rankine_to_kelvin);
 }
    
     /*
@@ -133,8 +144,6 @@ public class ConversionTests : Balistica.TestCase {
     }
 
     public virtual void test_pound_to_ounce() {
-        stdout.printf(LibBalistica.Mass.PoundToOunce(2).to_string());
-
         assert(LibBalistica.Mass.PoundToOunce(2) == 32);
         assert(LibBalistica.Mass.PoundToOunce(0) == 0);
         assert(LibBalistica.Mass.PoundToOunce(-2) == -32);
@@ -161,5 +170,77 @@ public class ConversionTests : Balistica.TestCase {
     /*
      * Temperature Tests
      */
- 
+    public virtual void test_fahrenheit_to_kelvin() {
+		assert(LibBalistica.Temperature.FahrenheitToKelvin(2) == 256.48333333333335);
+		assert(LibBalistica.Temperature.FahrenheitToKelvin(0) == 255.37222222222221);
+		assert(LibBalistica.Temperature.FahrenheitToKelvin(-2) == 254.26111111111109);
+    }
+    
+    public virtual void test_fahrenheit_to_celsius() {
+		assert(LibBalistica.Temperature.FahrenheitToCelsius(2) == -16.666666666666668);
+		assert(LibBalistica.Temperature.FahrenheitToCelsius(0) == -17.777777777777779);
+		assert(LibBalistica.Temperature.FahrenheitToCelsius(-2) == -18.888888888888889);
+    }
+    
+    public virtual void test_fahrenheit_to_rankine() {
+		assert(LibBalistica.Temperature.FahrenheitToRankine(2) == 461.67000000000002);
+		assert(LibBalistica.Temperature.FahrenheitToRankine(0) == 459.67000000000002);
+		assert(LibBalistica.Temperature.FahrenheitToRankine(-2) == 457.67000000000002);
+
+    }
+    
+    public virtual void test_kelvin_to_fahrenheit() {
+		assert(LibBalistica.Temperature.KelvinToFahrenheit(2) == -456.06999999999999);
+		assert(LibBalistica.Temperature.KelvinToFahrenheit(0) == -459.67000000000002);
+		assert(LibBalistica.Temperature.KelvinToFahrenheit(-2) == -463.27000000000004);
+    }
+    
+    public virtual void test_kelvin_to_celsius() {
+		assert(LibBalistica.Temperature.KelvinToCelsius(2) == -271.14999999999998);
+		assert(LibBalistica.Temperature.KelvinToCelsius(0) == -273.14999999999998);
+		assert(LibBalistica.Temperature.KelvinToCelsius(-2) == -275.14999999999998);
+    }
+    
+    public virtual void test_kelvin_to_rankine() {
+		assert(LibBalistica.Temperature.KelvinToRankine(2) == 3.6000000000000001);
+		assert(LibBalistica.Temperature.KelvinToRankine(0) == 0);
+		assert(LibBalistica.Temperature.KelvinToRankine(-2) == -3.6000000000000001);
+    }
+    
+    public virtual void test_celsius_to_fahrenheit() {
+		assert(LibBalistica.Temperature.CelsiusToFahrenheit(2) == 35.600000000000001);
+		assert(LibBalistica.Temperature.CelsiusToFahrenheit(0) == 32);
+		assert(LibBalistica.Temperature.CelsiusToFahrenheit(-2) == 28.399999999999999);
+		
+ 	}
+    
+    public virtual void test_celsius_to_kelvin() {
+		assert(LibBalistica.Temperature.CelsiusToKelvin(2) == 275.14999999999998);
+		assert(LibBalistica.Temperature.CelsiusToKelvin(0) == 273.14999999999998);
+		assert(LibBalistica.Temperature.CelsiusToKelvin(-2) == 271.14999999999998);
+	}
+    
+    public virtual void test_celsius_to_rankine() {
+		assert(LibBalistica.Temperature.CelsiusToRankine(2) == 495.26999999999998);
+		assert(LibBalistica.Temperature.CelsiusToRankine(0) == 491.66999999999996);
+		assert(LibBalistica.Temperature.CelsiusToRankine(-2) == 488.06999999999999);
+    }
+    
+    public virtual void test_rankine_to_fahrenheit() {
+		assert(LibBalistica.Temperature.RankineToFahrenheit(2) == -457.67000000000002);
+		assert(LibBalistica.Temperature.RankineToFahrenheit(0) == -459.67000000000002);
+		assert(LibBalistica.Temperature.RankineToFahrenheit(-2) == -461.67000000000002);
+    }
+    
+    public virtual void test_rankine_to_celsius() {
+		assert(LibBalistica.Temperature.RankineToCelsius(2) == -272.03888888888889);
+		assert(LibBalistica.Temperature.RankineToCelsius(0) == -273.14999999999998);
+		assert(LibBalistica.Temperature.RankineToCelsius(-2) == -274.26111111111112);
+    }
+    
+    public virtual void test_rankine_to_kelvin() {
+		assert(LibBalistica.Temperature.RankineToKelvin(2) == 1.1111111111111112);
+		assert(LibBalistica.Temperature.RankineToKelvin(0) == 0);
+		assert(LibBalistica.Temperature.RankineToKelvin(-2) == -1.1111111111111112);
+    }
 }
