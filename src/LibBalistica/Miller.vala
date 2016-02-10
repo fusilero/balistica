@@ -23,15 +23,14 @@ namespace LibBalistica {
         public double length { get; set; }
         public double mass { get; set; }
         public int safe_value { get; set; }
-        public double twist { get; set; }
 
         /**
          * Default constructor
          */
         public Miller() {
-            this.diameter = 0.0;
-            this.length = 0.0;
-            this.mass = 0.0;
+            this.diameter = 1.0;
+            this.length = 1.0;
+            this.mass = 1.0;
             this.safe_value = 2;
         }
 
@@ -69,7 +68,7 @@ namespace LibBalistica {
          */
         public double calc_stability() {
             double temp1 = 30.0 * this.mass;
-            double temp2 = Math.pow(this.twist, 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
+            double temp2 = Math.pow(this.calc_twist(), 2) * Math.pow(this.diameter, 3) * this.length * (1.0 + Math.pow(this.length, 2));
 
             return temp1 / temp2;
         }

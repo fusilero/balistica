@@ -29,8 +29,9 @@ namespace LibBalistica {
          */
         public Greenhill() {
             this.diameter = 0;
-            this.length = 0;
+            this.length = 1;
             this.specific_gravity = 0;
+			this.C = 150;
         }
 
         /**
@@ -38,12 +39,21 @@ namespace LibBalistica {
          *
          * @param d The bullet's diameter as a double
          * @param l The bullet's length as a double
-         * @param sg The bullet's specific gravity as a double
+         * @param sg The bullet's specific gravity as a double. Typical values
+		 *			 values for the specific gravity include:
+		 *				11.3 - lead
+		 *				8.9  - copper
+		 *				8.5  - brass
+		 *				7.8  - steel
+		 * @param c An integer value used in place of knowing the bullet's 
+		 *			velocity. For bullets up to 2800 ft/s 150 is a safe 
+		 *			value. Beyond that most source suggest 180.
          */
-        public Greenhill.full(double d, double l, double sg) {
+        public Greenhill.full(double d, double l, double sg, int c) {
             this.diameter = d;
             this.length = l;
             this.specific_gravity = sg;
+			this.C = c;
         }
 
         /**

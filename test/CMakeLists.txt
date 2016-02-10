@@ -26,6 +26,8 @@ set(LIB_BALISTICA_CONVERSION_SRC
     TestCase.vala 
     
     LibBalistica/Conversion.vala
+    LibBalistica/Greenhill.vala
+    LibBalistica/Miller.vala
 ) 
 
 vala_precompile(BALISTICA_TEST lib-balistica_test
