@@ -17,34 +17,36 @@
  */
 
 public class MillerTests : Balistica.TestCase {
-    public MillerTests () {
-        base("Miller");
-        add_test("[Twist] Calculate twist", test_calc_twist);
-		add_test("[Stability] Calculate stability", test_calc_stability);
-	}
+   public MillerTests()
+   {
+      base("Miller");
+      add_test("[Twist] Calculate twist", test_calc_twist);
+      add_test("[Stability] Calculate stability", test_calc_stability);
+   }
 
-    public virtual void test_calc_twist() {
-		LibBalistica.Miller m = new LibBalistica.Miller();
-		m.diameter = 0.5;
-		m.length = 1.5;
-		m.mass = 1;
-		m.safe_value = 2;
-        assert(m.calc_twist() == 4.4941338051705939);
+   public virtual void test_calc_twist()
+   {
+      LibBalistica.Miller m = new LibBalistica.Miller();
+      m.diameter   = 0.5;
+      m.length     = 1.5;
+      m.mass       = 1;
+      m.safe_value = 2;
+      assert(m.calc_twist() == 4.4941338051705939);
 
-		m = new LibBalistica.Miller();
-        assert(m.calc_twist() == 1.3693063937629153);
-    }
+      m = new LibBalistica.Miller();
+      assert(m.calc_twist() == 1.3693063937629153);
+   }
 
-	public virtual void test_calc_stability() {
-		LibBalistica.Miller m = new LibBalistica.Miller();
-		m.diameter = 0.5;
-		m.length = 1.5;
-		m.mass = 1;
-		m.safe_value = 2;
-        assert(m.calc_stability() == 2.4375);
+   public virtual void test_calc_stability()
+   {
+      LibBalistica.Miller m = new LibBalistica.Miller();
+      m.diameter   = 0.5;
+      m.length     = 1.5;
+      m.mass       = 1;
+      m.safe_value = 2;
+      assert(m.calc_stability() == 2.4375);
 
-		m = new LibBalistica.Miller();
-        assert(m.calc_stability() == 8);
-
-	}
+      m = new LibBalistica.Miller();
+      assert(m.calc_stability() == 8);
+   }
 }

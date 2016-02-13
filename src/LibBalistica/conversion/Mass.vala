@@ -17,136 +17,147 @@
  */
 
 public class LibBalistica.Mass : GLib.Object {
+   /**
+    * GrainToPound
+    *
+    * @param grain
+    *
+    * @return Pounds
+    */
+   public inline static double GrainToPound(double grain)
+   {
+      return grain / 7000;
+   }
 
-    /**
-     * GrainToPound
-     *
-     * @param grain
-     *
-     * @return Pounds
-     */
-    public inline static double GrainToPound (double grain) {
-        return grain / 7000;
-    }
+   /**
+    * GrainToOunce
+    *
+    * @param grain
+    *
+    * @return ounces
+    */
+   public inline static double GrainToOunce(double grain)
+   {
+      return grain / 437.5;
+   }
 
-    /**
-     * GrainToOunce
-     *
-     * @param grain
-     *
-     * @return ounces
-     */
-    public inline static double GrainToOunce (double grain) {
-        return grain / 437.5;
-    }
+   /**
+    * GrainToMiligrams
+    *
+    * @param grain
+    *
+    * @return Miligrams
+    */
+   public inline static double GrainToMiligram(double grain)
+   {
+      return grain * 64.79891;
+   }
 
-    /**
-     * GrainToMiligrams
-     *
-     * @param grain
-     *
-     * @return Miligrams
-     */
-    public inline static double GrainToMiligram (double grain) {
-        return grain * 64.79891;
-    }
+   /**
+    * MiligramToGrain
+    *
+    * @param Miligram
+    *
+    * @return Grains
+    */
+   public inline static double MiligramToGrain(double miligram)
+   {
+      return miligram * 0.0154323584;
+   }
 
-    /**
-     * MiligramToGrain
-     *
-     * @param Miligram
-     *
-     * @return Grains
-     */
-    public inline static double MiligramToGrain (double miligram) {
-        return miligram * 0.0154323584;
-    }
+   /**
+    * MiligramToPound
+    *
+    * @param Miligram
+    *
+    * @return Pounds
+    */
+   public inline static double MiligramToPound(double miligram)
+   {
+      return miligram * 0.0000022;
+   }
 
-    /**
-     * MiligramToPound
-     *
-     * @param Miligram
-     *
-     * @return Pounds
-     */
-    public inline static double MiligramToPound (double miligram) {
-        return miligram * 0.0000022;
-    }
+   /**
+    * MiligramToOunce
+    *
+    * @param Miligram
+    *
+    * @return Ounces
+    */
+   public inline static double MiligramToOunce(double miligram)
+   {
+      return miligram * 0.000035274;
+   }
 
-    /**
-     * MiligramToOunce
-     *
-     * @param Miligram
-     *
-     * @return Ounces
-     */
-    public inline static double MiligramToOunce (double miligram) {
-        return miligram * 0.000035274;
-    }
+   /**
+    * PoundToGrain
+    *
+    * @param Pound
+    *
+    * @return Grains
+    */
+   public inline static double PoundToGrain(double pound)
+   {
+      return pound * 7000;
+   }
 
-    /**
-     * PoundToGrain
-     *
-     * @param Pound
-     *
-     * @return Grains
-     */
-    public inline static double PoundToGrain (double pound) {
-        return pound * 7000;
-    }
+   /**
+    * PoundToMiligram
+    *
+    * @param Pound
+    *
+    * @return Miligrams
+    */
+   public inline static double PoundToMiligram(double pound)
+   {
+      return pound * 453592;
+   }
 
-    /**
-     * PoundToMiligram
-     *
-     * @param Pound
-     *
-     * @return Miligrams
-     */
-    public inline static double PoundToMiligram (double pound) {
-        return pound * 453592;
-    }
+   /**
+    * PoundToOunce
+    *
+    * @param Pound
+    *
+    * @return Ounces
+    */
+   public inline static double PoundToOunce(double pound)
+   {
+      return pound * 16.0;
+   }
 
-    /**
-     * PoundToOunce
-     *
-     * @param Pound
-     *
-     * @return Ounces
-     */
-    public inline static double PoundToOunce (double pound) {
-        return pound * 16.0;
-    }
+   /**
+    * OunceToGrain
+    *
+    * @param Ounce
+    *
+    * @return Grains
+    */
+   public inline static double OunceToGrain(double ounce)
+   {
+      return ounce * 437.5;
+   }
 
-    /**
-     * OunceToGrain
-     *
-     * @param Ounce
-     *
-     * @return Grains
-     */
-    public inline static double OunceToGrain (double ounce) {
-        return ounce * 437.5;
-    }
+   /**
+    * OunceToMiligram
+    *
+    * @param Ounce
+    *
+    * @return Miligrams
+    */
+   public inline static double OunceToMiligram(double ounce)
+   {
+      return ounce * 28349.5;
+   }
 
-    /**
-     * OunceToMiligram
-     *
-     * @param Ounce
-     *
-     * @return Miligrams
-     */
-    public inline static double OunceToMiligram (double ounce) {
-        return ounce * 28349.5;
-    }
-
-    /**
-     * OunceToPound
-     *
-     * @param Ounce
-     *
-     * @return Pounds
-     */
-    public inline static double OunceToPound (double ounce) {
-        return ounce * 0.0625;
-    }
+   /**
+    * OunceToPound
+    *
+    * @param Ounce
+    *
+    * @return Pounds
+    */
+   public inline static double OunceToPound(double ounce)
+   {
+      return ounce * 0.0625;
+   }
 }

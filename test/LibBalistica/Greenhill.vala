@@ -17,20 +17,22 @@
  */
 
 public class GreenhillTests : Balistica.TestCase {
-    public GreenhillTests () {
-        base("Greenhill");
-        add_test("[Twist] Calculate twist", test_calc_twist); 
-	}
-   
-    public virtual void test_calc_twist() {
-		LibBalistica.Greenhill g = new LibBalistica.Greenhill();
-		g.diameter = 0.5;
-		g.length = 1.5;
-		g.specific_gravity = 1;
-		g.C = 150;
-        assert(g.calc_twist() ==7.5722816601922833);
+   public GreenhillTests()
+   {
+      base("Greenhill");
+      add_test("[Twist] Calculate twist", test_calc_twist);
+   }
 
-		g = new LibBalistica.Greenhill();
-        assert(g.calc_twist() == 0);
-    }
+   public virtual void test_calc_twist()
+   {
+      LibBalistica.Greenhill g = new LibBalistica.Greenhill();
+      g.diameter         = 0.5;
+      g.length           = 1.5;
+      g.specific_gravity = 1;
+      g.C = 150;
+      assert(g.calc_twist() == 7.5722816601922833);
+
+      g = new LibBalistica.Greenhill();
+      assert(g.calc_twist() == 0);
+   }
 }

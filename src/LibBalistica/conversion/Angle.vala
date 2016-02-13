@@ -17,70 +17,75 @@
  */
 
 public class LibBalistica.Angle : GLib.Object {
+   /**
+    * DegreeToMOA
+    *
+    * @param deg Angle in degrees
+    *
+    * @return Angle in MOAs
+    */
+   public inline static double DegreeToMOA(double deg)
+   {
+      return deg * 60;
+   }
 
-    /**
-     * DegreeToMOA
-     *
-     * @param deg Angle in degrees
-     *
-     * @return Angle in MOAs
-     */
-    public inline static double DegreeToMOA (double deg) {
-        return deg * 60;
-    }
+   /**
+    * DegreeToRadian
+    *
+    * @param deg Angle in degrees
+    *
+    * @return Angle in Radians
+    */
+   public inline static double DegreeToRadian(double deg)
+   {
+      return deg * Math.PI / 180;
+   }
 
-    /**
-     * DegreeToRadian
-     *
-     * @param deg Angle in degrees
-     *
-     * @return Angle in Radians
-     */
-    public inline static double DegreeToRadian (double deg) {
-        return deg * Math.PI/180;
-    }
+   /**
+    * RadianToDegree
+    *
+    * @param rad Angle in radians
+    *
+    * @return Angle in Degrees
+    */
+   public inline static double RadianToDegree(double rad)
+   {
+      return rad * 180 / Math.PI;
+   }
 
-    /**
-     * RadianToDegree
-     *
-     * @param rad Angle in radians
-     *
-     * @return Angle in Degrees
-     */
-    public inline static double RadianToDegree (double rad) {
-        return rad * 180/Math.PI;
-    }
+   /**
+    * RadianToMOA
+    *
+    * @param rad Angle in radians
+    *
+    * @return Angle in MOAs
+    */
+   public inline static double RadianToMOA(double rad)
+   {
+      return rad * 60 * 180 / Math.PI;
+   }
 
-    /**
-     * RadianToMOA
-     *
-     * @param rad Angle in radians
-     *
-     * @return Angle in MOAs
-     */
-    public inline static double RadianToMOA (double rad) {
-        return rad * 60 * 180/Math.PI;
-    }
+   /**
+    * MOAToDegree
+    *
+    * @param moa Angle in minutes of angle
+    *
+    * @return Angle in Degrees
+    */
+   public inline static double MOAToDegree(double moa)
+   {
+      return moa / 60;
+   }
 
-    /**
-     * MOAToDegree
-     *
-     * @param moa Angle in minutes of angle
-     *
-     * @return Angle in Degrees
-     */
-    public inline static double MOAToDegree (double moa) {
-        return moa / 60;
-    }
-
-    /**
-     * MOAToRadian
-     *
-     * @param moa Angle in minutes of angle
-     *
-     * @return Angle in Radians
-     */
-    public inline static double MOAToRadian (double moa) {
-        return moa / 60 * Math.PI / 180;
-    }
+   /**
+    * MOAToRadian
+    *
+    * @param moa Angle in minutes of angle
+    *
+    * @return Angle in Radians
+    */
+   public inline static double MOAToRadian(double moa)
+   {
+      return moa / 60 * Math.PI / 180;
+   }
 }
