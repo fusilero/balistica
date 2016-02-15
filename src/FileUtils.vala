@@ -22,7 +22,7 @@ extern const string _INSTALL_PREFIX;
 extern const string _SOURCE_ROOT_DIR;
 
 namespace Balistica {
-public const string INSTALL_PREFIX  = _INSTALL_PREFIX;
+public const string INSTALL_PREFIX	= _INSTALL_PREFIX;
 public const string SOURCE_ROOT_DIR = _SOURCE_ROOT_DIR;
 
 private File exec_dir;
@@ -37,7 +37,7 @@ private File exec_dir;
  */
 public File get_install_prefix_dir()
 {
-   return File.new_for_path(INSTALL_PREFIX);
+	return File.new_for_path(INSTALL_PREFIX);
 }
 
 
@@ -51,9 +51,9 @@ public File get_install_prefix_dir()
  */
 public File ? get_install_dir()
 {
-   File prefix_dir = get_install_prefix_dir();
+	File prefix_dir = get_install_prefix_dir();
 
-   return exec_dir.has_prefix(prefix_dir) ? prefix_dir : null;
+	return exec_dir.has_prefix(prefix_dir) ? prefix_dir : null;
 }
 
 /**
@@ -68,14 +68,14 @@ public File ? get_install_dir()
  */
 public File get_resource_directory()
 {
-   if (get_install_dir() != null)
-   {
-      return get_install_dir().get_child("share").get_child("passpad");
-   }
-   else
-   {
-      return File.new_for_path(SOURCE_ROOT_DIR);
-   }
+	if (get_install_dir() != null)
+	{
+		return get_install_dir().get_child("share").get_child("passpad");
+	}
+	else
+	{
+		return File.new_for_path(SOURCE_ROOT_DIR);
+	}
 }
 
 
@@ -90,14 +90,14 @@ public File get_resource_directory()
  */
 public Gtk.Builder create_builder(string ui_filename)
 {
-   Gtk.Builder builder = new Gtk.Builder();
-   try {
-      builder.add_from_file(get_resource_directory().get_child("ui").get_child(ui_filename).get_path());
-   }
-   catch (GLib.Error error) {
-      warning("Unable to create Gtk.Builder: %s".printf(error.message));
-   }
+	Gtk.Builder builder = new Gtk.Builder();
+	try {
+		builder.add_from_file(get_resource_directory().get_child("ui").get_child(ui_filename).get_path());
+	}
+	catch (GLib.Error error) {
+		warning("Unable to create Gtk.Builder: %s".printf(error.message));
+	}
 
-   return builder;
+	return builder;
 }
 } //namespace
