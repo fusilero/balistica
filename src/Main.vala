@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
-public static int main(string[] args)
-{
-	return new Balistica.Application().run(args);
+public static int main(string[] args) {
+    return new Balistica.Application ().run (args) ;
 }
+
