@@ -16,12 +16,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 void main(string[] args) {
-    Test.init (ref args) ;
+   Test.init (ref args) ;
 
-    TestSuite.get_root ().add_suite (new ConversionTests ().get_suite ()) ;
-    TestSuite.get_root ().add_suite (new GreenhillTests ().get_suite ()) ;
-    TestSuite.get_root ().add_suite (new MillerTests ().get_suite ()) ;
+   TestSuite.get_root ().add_suite (new ConversionTests ().get_suite ()) ;
+   TestSuite.get_root ().add_suite (new GreenhillTests ().get_suite ()) ;
+   TestSuite.get_root ().add_suite (new MillerTests ().get_suite ()) ;
 
-    Test.run () ;
+   Test.run () ;
 }
 

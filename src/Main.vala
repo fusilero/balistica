@@ -16,6 +16,6 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 public static int main(string[] args) {
-    return new Balistica.Application ().run (args) ;
+   return new Balistica.Application ().run (args) ;
 }
 
