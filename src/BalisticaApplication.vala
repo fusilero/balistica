@@ -82,8 +82,6 @@ namespace Balistica{
         // Drag calculation Buttons
         private Gtk.Button reset_drag ;
         private Gtk.Button solve_drag ;
-        private Gtk.Button disp_solution ;
-        private Gtk.Button disp_pbr ;
 
         // Radio buttons for drag functions
         private Gtk.RadioButton rad_g1 ;
@@ -274,16 +272,6 @@ namespace Balistica{
             reset_drag.clicked.connect (() => {
                 btnResetDrag_clicked () ;
             }) ;
-
-            disp_solution = drag_builder.get_object ("btnSolution") as Gtk.Button ;
-            disp_solution.clicked.connect (() => {
-                btnSolution_clicked () ;
-            }) ;
-
-            disp_pbr = drag_builder.get_object ("btnPBR") as Gtk.Button ;
-            disp_pbr.clicked.connect (() => {
-                btnPBR_clicked () ;
-            }) ;
         }
 
         /**
@@ -308,6 +296,9 @@ namespace Balistica{
             rad_g1.active = true ;
         }
 
+		/**
+		 * Set atmosphere settings back to the default
+		 */
         public void setDefaultAtmosphere() {
             altitude.set_text ("0") ;
             temp.set_text ("59.0") ;
@@ -319,15 +310,15 @@ namespace Balistica{
          * Solve the drag function
          */
         public void btnSolveDrag_clicked() {
-            string name = "" ;                    // Name used to store the calculation
-            double bc = -1 ;                      // Ballistic cefficient
-            double v = -1 ;                       // Initial velocity (ft/s)
-            double sh = -1 ;                      // Sight height over bore (inches)
-            double w = -1 ;                       // Projectile weight (grains)
+            string name = "" ;            // Name used to store the calculation
+            double bc = -1 ;              // Ballistic cefficient
+            double v = -1 ;               // Initial velocity (ft/s)
+            double sh = -1 ;              // Sight height over bore (inches)
+            double w = -1 ;               // Projectile weight (grains)
             double angle = -1 ;           // Shooting Angle (degrees)
-            double zero = -1 ;                    // Zero range of the rifle (yards)
+            double zero = -1 ;            // Zero range of the rifle (yards)
             double windspeed = -1 ;       // Wind speed (mph)
-            double windangle = -1 ;       // Wind angle (0=headwind, 90=right to left, 180=tailwind, 270/-90=left to right)
+            double windangle = -1 ;       // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
 
             double alt = 0.0 ;            // Altitude
             double bar = 29.53 ;          // Barometeric pressure
@@ -399,22 +390,13 @@ namespace Balistica{
             if( lsln.getRows () == -1 ){
                 drag_results.buffer.text = "ERROR creating solution results!" ;
             } else {
-                drag_results.buffer.text = "Solution generated!" ;
+                drag_results.buffer.text = "Solution generated!\n\n" ;
             }
-        }
 
-        /**
-         * Display the calculated solution
-         */
-        public void btnSolution_clicked() {
-            // TODO
-        }
-
-        /**
-         * Display the calculated PBR
-         */
-        public void btnPBR_clicked() {
-            // TODO
+			drag_results.buffer.text += ("Drag Coefficient: %f  Projectile Weight: %f grains\n").printf(lsln.getBc(), lsln.getWeight());
+			drag_results.buffer.text += ("Initial Velocity: %f (ft/s)   Zero Range: %f yards   Shooting Angle: %f degrees\n").printf(lsln.getMv(), lsln.getZerorange(), lsln.getAngle());
+			drag_results.buffer.text += ("Wind Velocity: %f mph    Wind Direction: %f degrees\n").printf(lsln.getWindspeed(), lsln.getWindangle());
+			drag_results.buffer.text += ("Altitude: %f ft   Barometer: %f in-Hg  Temperature: %f F   Relative Humidity: %f%\n\n").printf(lsln.getAltitude(), lsln.getPressure(), lsln.getTemp(), lsln.getHumidity());
         }
 
         /**
