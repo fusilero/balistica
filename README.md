@@ -33,6 +33,13 @@ are major outstanding issues:
 ```bash
 sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake
 ```
+Optionally, if you'd like to generate the valadoc documentation
+```bash
+sudo dnf install graphviz-devel
+git clone git://git.gnome.org/valadoc
+cd valadoc && ./autogen.sh && make 
+sudo make install
+```
 
 ### Ubuntu
 ```bash
