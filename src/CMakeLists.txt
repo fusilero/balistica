@@ -69,7 +69,6 @@ set(VALAC_OPTIONS
     --target-glib=${TARGET_GLIB}
     --thread
     --enable-checking
-    --fatal-warnings
 )
 
 # Debug vs Release
