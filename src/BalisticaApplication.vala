@@ -210,16 +210,7 @@ namespace Balistica{
 		 wind_velocity = drag_builder.get_object ("txtWind_velocity") as Gtk.Entry ;
 		 wind_angle = drag_builder.get_object ("txtWind_angle") as Gtk.Entry ;
 
-		 // Variables Suitable for debugging
-		 calc_name.set_text ("308 Win Match, 168gr Sierra Match King") ;
-		 drag_coefficient.set_text ("0.465") ;
-		 projectile_weight.set_text ("168") ;
-		 initial_velocity.set_text ("2650") ;
-		 zero_range.set_text ("200") ;
-		 sight_height.set_text ("1.6") ;
-		 shooting_angle.set_text ("0") ;
-		 wind_velocity.set_text ("0") ;
-		 wind_angle.set_text ("0") ;
+		 setExampleCalculation() ;
 
 		 // Checkbox to dis/en/able atmospheric corrections
 		 enable_atmosphere = drag_builder.get_object ("ckbAtmosCorr") as Gtk.CheckButton ;
@@ -299,11 +290,26 @@ namespace Balistica{
 	  /**
 	   * Set atmosphere settings back to the default
 	   */
-	  public void setDefaultAtmosphere() {
+	  private void setDefaultAtmosphere() {
 		 altitude.set_text ("0") ;
 		 temp.set_text ("59.0") ;
 		 bar_press.set_text ("29.53") ;
 		 rela_humid.set_text ("78.0") ;
+	  }
+
+	  /**
+	   * Setup an example calculation
+	   */
+	  private void setExampleCalculation() {
+		 calc_name.set_text ("308 Win Match, 168gr Sierra Match King") ;
+		 drag_coefficient.set_text ("0.465") ;
+		 projectile_weight.set_text ("168") ;
+		 initial_velocity.set_text ("2650") ;
+		 zero_range.set_text ("200") ;
+		 sight_height.set_text ("1.6") ;
+		 shooting_angle.set_text ("0") ;
+		 wind_velocity.set_text ("0") ;
+		 wind_angle.set_text ("0") ;
 	  }
 
 	  /**
@@ -397,6 +403,23 @@ namespace Balistica{
 		 drag_results.buffer.text += ("Initial Velocity: %f (ft/s)   Zero Range: %f yards   Shooting Angle: %f degrees\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ()) ;
 		 drag_results.buffer.text += ("Wind Velocity: %f mph    Wind Direction: %f degrees\n").printf (lsln.getWindspeed (), lsln.getWindangle ()) ;
 		 drag_results.buffer.text += ("Altitude: %f ft   Barometer: %f in-Hg  Temperature: %f F   Relative Humidity: %f%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
+
+		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity\tEnergy\tWind Drift\tWindage\tTime\n" ;
+		 drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t\t(MOA)\t(s)" ;
+
+		 /*
+		 double r, p, m, wi, wm, t, e;
+		 for (int n = 0; n <= 1000; n = n + 10) { 
+			 r = lsln.getRange(n);
+			 p = lsln.getPath(n);
+			 m = lsln.getMOA(n);
+			 v = lsln.getVelocity(n);
+			 wi = lsln.getWindage(n);
+			 wm = lsln.getWindageMOA(n);
+			 t = lsln.getTime(n);
+			 e = lsln.getWeight() * v * v / 450436;
+		 }
+		 */
 	  }
 
 	  /**
