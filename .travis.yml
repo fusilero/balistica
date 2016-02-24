@@ -1,19 +1,20 @@
 language: c
 cache: apt
+dist: trusty
 branches:
   only:
     - master
 before_install:
-  - sudo apt-get install update-manager-core software-properties-common
-  - sudo sed -i 's/^\(Prompt=\).*/\1lts/' /etc/update-manager/release-upgrades
-  - sudo do-release-upgrade -d -f DistUpgradeViewNonInteractive
-  - sudo add-apt-repository -y ppa:vala-team/ppa
   - sudo apt-get update -qq
-  - sudo apt-get install -qq gnome-common libglib2.0-dev libgtk-3-dev 
-         libsqlite3-dev libvala-0.28-dev valac-0.28 libgee-0.8 gobject-introspection
+  - sudo apt-get install -qq python-software-properties
+  - sudo add-apt-repository -y ppa:vala-team/pp
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq valac libgee-0.8 gobject-introspection libgtk-3-dev
   - sudo pip install cpp-coveralls
 script:
-  - cmake -D DEBUG=ON -D ADD_COVERAGE=ON .
-  - make -j2
+  - mkdir build && cd build
+  - cmake .. -DDEBUG=ON -DADD_COVERAGE=ON .
+  - make VERBOSE=1 -j2
+  - make test
 after_success:
   - coveralls --exclude lib --exclude tests

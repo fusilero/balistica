@@ -29,7 +29,7 @@ ensure_vala_version("0.28.0" MINIMUM)
 include(ValaPrecompile)
 
 # Packages
-set(TARGET_GLIB 2.46)
+set(TARGET_GLIB 2.40)
 
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
