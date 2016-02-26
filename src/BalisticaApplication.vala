@@ -210,7 +210,7 @@ namespace Balistica{
 		 wind_velocity = drag_builder.get_object ("txtWind_velocity") as Gtk.Entry ;
 		 wind_angle = drag_builder.get_object ("txtWind_angle") as Gtk.Entry ;
 
-		 setExampleCalculation() ;
+		 setExampleCalculation () ;
 
 		 // Checkbox to dis/en/able atmospheric corrections
 		 enable_atmosphere = drag_builder.get_object ("ckbAtmosCorr") as Gtk.CheckButton ;
@@ -316,22 +316,22 @@ namespace Balistica{
 	   * Solve the drag function
 	   */
 	  public void btnSolveDrag_clicked() {
-		 string name = "" ;               // Name used to store the calculation
-		 double bc = -1 ;                 // Ballistic cefficient
-		 double v = -1 ;                  // Initial velocity (ft/s)
-		 double sh = -1 ;                 // Sight height over bore (inches)
-		 double w = -1 ;                  // Projectile weight (grains)
-		 double angle = -1 ;              // Shooting Angle (degrees)
-		 double zero = -1 ;               // Zero range of the rifle (yards)
-		 double windspeed = -1 ;          // Wind speed (mph)
-		 double windangle = -1 ;          // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+		 string name = "" ;                                                       // Name used to store the calculation
+		 double bc = -1 ;                                                         // Ballistic cefficient
+		 double v = -1 ;                                                          // Initial velocity (ft/s)
+		 double sh = -1 ;                                                         // Sight height over bore (inches)
+		 double w = -1 ;                                                          // Projectile weight (grains)
+		 double angle = -1 ;                                                      // Shooting Angle (degrees)
+		 double zero = -1 ;                                                       // Zero range of the rifle (yards)
+		 double windspeed = -1 ;                                                  // Wind speed (mph)
+		 double windangle = -1 ;                                                  // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
 
-		 double alt = 0.0 ;               // Altitude
-		 double bar = 29.53 ;             // Barometeric pressure
-		 double tp = 59.0 ;               // Temperature
-		 double rh = 78.0 ;               // Relative Humidity
+		 double alt = 0.0 ;                                                       // Altitude
+		 double bar = 29.53 ;                                                     // Barometeric pressure
+		 double tp = 59.0 ;                                                       // Temperature
+		 double rh = 78.0 ;                                                       // Relative Humidity
 
-		 int df ;                         // Selected Drag Function
+		 int df ;                                                                 // Selected Drag Function
 
 		 name = calc_name.get_text () ;
 		 bc = double.parse (drag_coefficient.get_text ()) ;
@@ -393,7 +393,7 @@ namespace Balistica{
 		 // Calculate the solution and populate the object
 		 lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
-		 if( lsln.getRows () == -1 ){
+		 if( lsln.getSolutionSize () == -1 ){
 			drag_results.buffer.text = "ERROR creating solution results!" ;
 		 } else {
 			drag_results.buffer.text = "Solution generated!\n\n" ;
@@ -407,19 +407,35 @@ namespace Balistica{
 		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity\tEnergy\tWind Drift\tWindage\tTime\n" ;
 		 drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t\t(MOA)\t(s)" ;
 
-		 /*
-		 double r, p, m, wi, wm, t, e;
-		 for (int n = 0; n <= 1000; n = n + 10) { 
-			 r = lsln.getRange(n);
-			 p = lsln.getPath(n);
-			 m = lsln.getMOA(n);
-			 v = lsln.getVelocity(n);
-			 wi = lsln.getWindage(n);
-			 wm = lsln.getWindageMOA(n);
-			 t = lsln.getTime(n);
-			 e = lsln.getWeight() * v * v / 450436;
+		 double r, p, m, wi, wm, t, e ;
+
+		 int max = lsln.getSolutionSize () ;
+		 if( max > 1000 ){
+			max = 1000 ;
 		 }
-		 */
+
+		 drag_results.buffer.text += (lsln.getPath (1)).to_string () ;
+		 drag_results.buffer.text += (lsln.getMOA (1)).to_string () ;
+		 drag_results.buffer.text += (lsln.getVelocity (1)).to_string () ;
+		 drag_results.buffer.text += (lsln.getWindage (1)).to_string () ;
+		 drag_results.buffer.text += (lsln.getWindageMOA (0)).to_string () ;
+		 drag_results.buffer.text += (lsln.getTime (1)).to_string () ;
+		 drag_results.buffer.text += (lsln.getWeight () * v * v / 450436).to_string () ;
+
+		 /*
+		 for( int n = 0 ; n <= max ; n++  ){
+			r = lsln.getRange (n) ;
+			p = lsln.getPath (n) ;
+			m = lsln.getMOA (n) ;
+			v = lsln.getVelocity (n) ;
+			wi = lsln.getWindage (n) ;
+			wm = lsln.getWindageMOA (n) ;
+			t = lsln.getTime (n) ;
+			e = lsln.getWeight () * v * v / 450436 ;
+
+			drag_results.buffer.text += ("%f\t%f\t@%f\t%f\t%f\t%f\t%f\t%f").printf (r, p, m, v, e, wi, wm, t) ;
+		 }
+		*/
 	  }
 
 	  /**

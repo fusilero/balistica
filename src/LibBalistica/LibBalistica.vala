@@ -43,6 +43,22 @@ namespace LibBalistica{
    public const int BCOMP_MAX_RANGE = 50001 ;
 
 /**
+ * When computing a ballistics solution this holds
+ * all the values from each computation interval.
+ */
+   public struct CompUnit {
+	  public double range ;
+	  public double path ;
+	  public double correction ;
+	  public double time ;
+	  public double windage_in ;
+	  public double windage_moa ;
+	  public double velocity_com ;
+	  public double horizontal_velocity ;
+	  public double vertical_velocity ;
+   }
+
+/**
  * The different drag functions you are allowed to pick from
  */
    public enum DragFunction {

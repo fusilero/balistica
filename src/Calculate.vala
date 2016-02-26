@@ -41,9 +41,8 @@ public class Balistica.Calculate : GLib.Object {
 											double wspeed, double wangle, double alt, double bar, double tp, double rh,
 											string name, int df) {
 	  LibBalistica.DragFunction d ;
-	  int numRows ;
-	  double zero_angle ;            // Bore / sight angle
-	  var solution = new Gee.LinkedList<double ? >() ;
+	  double zero_angle ;                                // Bore / sight angle
+	  Gee.LinkedList solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
 
 	  double corrected_bc = LibBalistica.Atmosphere.atm_correct (bc, alt, bar, tp, rh) ;
 
@@ -80,20 +79,21 @@ public class Balistica.Calculate : GLib.Object {
 	  zero_angle = LibBalistica.Zero.ZeroAngle (d, corrected_bc, v, sh, zero, 0) ;
 
 	  // Generate a solution
-	  numRows = LibBalistica.Solve.SolveAll (d, corrected_bc, v, sh, angle, zero_angle, wspeed, wangle, solution) ;
+	  solution = LibBalistica.Solve.SolveAll (d, corrected_bc, v, sh, angle, zero_angle, wspeed, wangle) ;
+
+	  stdout.printf ("Made it\n") ;
 
 	  // If this succedes then we have a valid solution
-	  if((numRows > 0) && (solution.size > 0)){
+	  if( solution.size > 0 ){
 		 LibBalistica.Solution lsln = new LibBalistica.Solution.full (solution, name, corrected_bc, sh, weight, v, angle, zero,
-																	  wspeed, wangle, tp, rh, bar, alt,
-																	  solution.size, d) ;
+																	  wspeed, wangle, tp, rh, bar, alt, d) ;
 
 		 return lsln ;
+	  } else {
+		 // If we reach here we've failed to generate a proper solution, so
+		 // return an empty one to signify failure
+		 return new LibBalistica.Solution () ;
 	  }
-
-	  // If we reach here we've failed to generate a proper solution, so
-	  // return an empty one to signify failure
-	  return new LibBalistica.Solution () ;
    }
 
-}
+} // namespace

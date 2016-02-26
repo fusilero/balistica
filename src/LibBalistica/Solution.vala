@@ -24,7 +24,7 @@
 namespace LibBalistica{
    public class Solution : GLib.Object {
 	  int _df ;
-	  private Gee.LinkedList<double ? > _sln ;
+	  private Gee.LinkedList<CompUnit ? > _sln ;
 	  private string _name ;
 	  private double _weight ;
 	  private double _bc ;
@@ -39,7 +39,6 @@ namespace LibBalistica{
 	  private double _pressure ;
 	  private double _humidity ;
 	  private double _altitude ;
-	  private int _rows ;
 
 	  /**
 	   * Default constructor.
@@ -51,7 +50,7 @@ namespace LibBalistica{
 	   * 2) an empty state where no calculation has taken place
 	   */
 	  public Solution () {
-		 this._sln = new Gee.LinkedList<double ? >() ;
+		 this._sln = new Gee.LinkedList<CompUnit ? >() ;
 		 this._name = "" ;
 		 this._bc = -1 ;
 		 this._sightheight = -1 ;
@@ -65,7 +64,6 @@ namespace LibBalistica{
 		 this._humidity = -1 ;
 		 this._pressure = -1 ;
 		 this._altitude = -1 ;
-		 this._rows = -1 ;
 		 this._df = 1 ;
 	  }
 
@@ -84,12 +82,11 @@ namespace LibBalistica{
 	   * @param h Humidity
 	   * @param p Pressure
 	   * @param a Altitude
-	   * @param entries Number of entries in the solution
 	   * @param df The selected drag function (G1-G8)
 	   */
-	  public Solution.full (Gee.LinkedList<double ? > solution, string name, double bc, double sh,
+	  public Solution.full (Gee.LinkedList<CompUnit ? > solution, string name, double bc, double sh,
 							double w, double mv, double angle, double zr, double ws, double wa,
-							double t, double h, double p, double a, int entries, int df)
+							double t, double h, double p, double a, int df)
 	  {
 		 this._sln = solution ;
 		 this._name = name ;
@@ -105,14 +102,13 @@ namespace LibBalistica{
 		 this._humidity = h ;
 		 this._pressure = p ;
 		 this._altitude = a ;
-		 this._rows = entries ;
 		 this._df = df ;
 	  }
 
 	  /**
 	   * @return Solution calculation results
 	   */
-	  public Gee.LinkedList<double ? > getSolution() {
+	  public Gee.LinkedList<CompUnit ? > getSolution() {
 		 return this._sln ;
 	  }
 
@@ -210,114 +206,121 @@ namespace LibBalistica{
 	  /**
 	   * @return Instance value of number of rows in a solution
 	   */
-	  public int getRows() {
-		 return this._rows ;
+	  public int getSolutionSize() {
+		 return this._sln.size ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
-	   * @return The calculated range, in yards.
+	   * @return The calculated range, in yards, at a given position.
 	   */
-	  public double getRange(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage] ;
+	  public double getRange(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.range ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The projectile path, in inches, relative to the line of sight.
 	   */
-	  public double getPath(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 1] ;
+	  public double getPath(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.path ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return An estimated elevation correction for achieving a zero at this range.
 	   *         This is useful for "click charts" and the like.
 	   */
-	  public double getMOA(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 2] ;
+	  public double getMOA(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.correction ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The projectile's time of flight to this range.
 	   */
-	  public double getTime(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 3] ;
+	  public double getTime(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.time ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The windage correction in inches required to achieve zero at this range.
 	   */
-	  public double getWindage(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 4] ;
+	  public double getWindage(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.windage_in ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return An approximate windage correction in MOA to achieve a zero at this range.
 	   */
-	  public double getWindageMOA(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 5] ;
+	  public double getWindageMOA(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.windage_moa ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The projectile's total velocity (Vector product of Vx and Vy)
 	   */
-	  public double getVelocity(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 6] ;
+	  public double getVelocity(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.velocity_com ;
 	  }
 
 	  /**
@@ -325,33 +328,35 @@ namespace LibBalistica{
 	   * to the ground, because Vx is referencing the bore's axis.  All computations are carried out
 	   * relative to the bore's axis, and have very little to do with the ground's orientation.
 	   *
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The velocity of the projectile in the bore direction.
 	   */
-	  public double getVx(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 7] ;
+	  public double getVx(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.vertical_velocity ;
 	  }
 
 	  /**
-	   * @param yardage
+	   * @param position
 	   *
 	   * @return The velocity of the projectile perpendicular to the bore direction.
 	   */
-	  public double getVy(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 8] ;
+	  public double getVy(int position) {
+		 CompUnit cu ;
+		 if( position > this._sln.size ){
+			cu = this._sln[this._sln.size] ;
 		 } else {
-			return 0 ;
+			cu = this._sln[position] ;
 		 }
+
+		 return cu.horizontal_velocity ;
 	  }
 
 	  /**
@@ -360,13 +365,8 @@ namespace LibBalistica{
 	   * @return Calculated bullet drop in yards.
 	   */
 	  public double getDrop(int yardage) {
-		 double size = this._sln[BCOMP_MAX_RANGE * 10 + 1] ;
-
-		 if( yardage < size ){
-			return this._sln[10 * yardage + 9] ;
-		 } else {
-			return 0 ;
-		 }
+		 // FIXME
+		 return 0 ;
 	  }
 
 	  /**
@@ -376,9 +376,9 @@ namespace LibBalistica{
 	   */
 	  public double getKineticEnergy(int yardage) {
 		 /* The 450436 is (2 x 7000 x 32.174)
+		  *     - 7000 converts grains to pounds
+		  *     - 32.174 converts pounds to slugs (unit of mass in the English system)
 		  * 2 is from the formula for kinetic energy (1/2 x Mass x Velocity^2)
-		  * 7000 converts grains to pounds
-		  * 32.174 converts pounds to slugs (unit of mass in the English system)
 		  */
 		 return this._weight * Math.pow (getVelocity (yardage), 2) / 450436 ;
 	  }

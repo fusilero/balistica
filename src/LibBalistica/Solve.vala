@@ -46,8 +46,8 @@ namespace LibBalistica{
 	   * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
 	   *         number of rows in the solution matrix, and should not be exceeded.
 	   */
-	  public static int SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle,
-								 double ZeroAngle, double WindSpeed, double WindAngle, Gee.LinkedList<double ? > Solution) {
+	  public static Gee.LinkedList<LibBalistica.CompUnit ? > SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle,
+																	  double ZeroAngle, double WindSpeed, double WindAngle) {
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
@@ -67,6 +67,7 @@ namespace LibBalistica{
 
 		 y = -SightHeight / 12 ;
 
+		 Gee.LinkedList<LibBalistica.CompUnit ? > solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
 		 int n = 0 ;
 		 for( t = 0 ; ; t = t + dt ){
 			vx1 = vx ;
@@ -84,17 +85,20 @@ namespace LibBalistica{
 			vy = vy + dt * dvy + dt * Gy ;
 
 			if( x / 3 >= n ){
-			   Solution.insert (10 * n + 0, x / 3) ;                                                                 // Range in yards
-			   Solution.insert (10 * n + 1, y * 12) ;                                                                // Path in inches
-			   Solution.insert (10 * n + 2, -Angle.RadianToMOA (Math.atan (y / x))) ;                                // Correction in MOA
-			   Solution.insert (10 * n + 3, t + dt) ;                                                                // Time in s
-			   Solution.insert (10 * n + 4, Windage.CalcWindage (crosswind, Vi, x, t + dt)) ;                        // Windage in inches
-			   Solution.insert (10 * n + 5, Angle.RadianToMOA (Math.atan (Solution.get (10 * n + 4)))) ;             // Windage in MOA
-			   Solution.insert (10 * n + 6, v) ;                                                                     // Velocity (combined)
-			   Solution.insert (10 * n + 7, vx) ;                                                                    // Velocity (x)
-			   Solution.insert (10 * n + 8, vy) ;                                                                    // Velocity (y)
-			   Solution.insert (10 * n + 9, 0) ;                                                                     // Reserved
+			   double wind_tmp = Windage.CalcWindage (crosswind, Vi, x, t + dt) ;
+			   CompUnit unit = CompUnit () {
+				  range = x / 3,
+				  path = y * 12,
+				  correction = -Angle.RadianToMOA (Math.atan (y / x)),
+				  time = t + dt,
+				  windage_in = wind_tmp,
+				  windage_moa = Angle.RadianToMOA (Math.atan (wind_tmp)),
+				  velocity_com = v,
+				  horizontal_velocity = vx,
+				  vertical_velocity = vy
+			   } ;
 
+			   solution.add (unit) ;
 			   n++ ;
 			}
 
@@ -111,9 +115,7 @@ namespace LibBalistica{
 			}
 		 }
 
-		 Solution.insert (Solution.size, n) ;
-
-		 return n ;
+		 return solution ;
 	  }
 
    }

@@ -35,7 +35,7 @@ namespace LibBalistica{
 	   * @return The amount of windage correction, in inches, required to achieve zero on a target at the given range.
 	   */
 	  internal static double CalcWindage(double WindSpeed, double Vi, double xx, double t) {
-		 double Vw = WindSpeed * 17.60 ;             // Convert to inches per second.
+		 double Vw = WindSpeed * 17.60 ;                                                     // Convert to inches per second.
 
 		 return (Vw * (t - xx / Vi)) ;
 	  }
