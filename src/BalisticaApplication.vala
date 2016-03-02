@@ -396,7 +396,7 @@ namespace Balistica{
 		 if( lsln.getSolutionSize () == -1 ){
 			drag_results.buffer.text = "ERROR creating solution results!" ;
 		 } else {
-			drag_results.buffer.text = "Solution generated!\n\n" ;
+		    drag_results.buffer.text = ("");
 		 }
 
 		 drag_results.buffer.text += ("Drag Coefficient: %f  Projectile Weight: %f grains\n").printf (lsln.getBc (), lsln.getWeight ()) ;
@@ -414,16 +414,7 @@ namespace Balistica{
 			max = 1000 ;
 		 }
 
-		 drag_results.buffer.text += (lsln.getPath (1)).to_string () ;
-		 drag_results.buffer.text += (lsln.getMOA (1)).to_string () ;
-		 drag_results.buffer.text += (lsln.getVelocity (1)).to_string () ;
-		 drag_results.buffer.text += (lsln.getWindage (1)).to_string () ;
-		 drag_results.buffer.text += (lsln.getWindageMOA (0)).to_string () ;
-		 drag_results.buffer.text += (lsln.getTime (1)).to_string () ;
-		 drag_results.buffer.text += (lsln.getWeight () * v * v / 450436).to_string () ;
-
-		 /*
-		 for( int n = 0 ; n <= max ; n++  ){
+		 for( int n = 0 ; n <= 1000 ; n = n + 100  ){
 			r = lsln.getRange (n) ;
 			p = lsln.getPath (n) ;
 			m = lsln.getMOA (n) ;
@@ -435,7 +426,7 @@ namespace Balistica{
 
 			drag_results.buffer.text += ("%f\t%f\t@%f\t%f\t%f\t%f\t%f\t%f").printf (r, p, m, v, e, wi, wm, t) ;
 		 }
-		*/
+		
 	  }
 
 	  /**

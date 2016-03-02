@@ -35,13 +35,14 @@ public class Balistica.Calculate : GLib.Object {
     * @param name The solution's name
     * @param df The selected drag function
     *
-    * @return
+    * @return A completed solution.
     */
    public static LibBalistica.Solution drag(double bc, double v, double sh, double weight, double angle, double zero,
 											double wspeed, double wangle, double alt, double bar, double tp, double rh,
 											string name, int df) {
 	  LibBalistica.DragFunction d ;
-	  double zero_angle ;                                // Bore / sight angle
+	  // bore / sight angle
+	  double zero_angle ;                                
 	  Gee.LinkedList solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
 
 	  double corrected_bc = LibBalistica.Atmosphere.atm_correct (bc, alt, bar, tp, rh) ;
@@ -81,8 +82,6 @@ public class Balistica.Calculate : GLib.Object {
 	  // Generate a solution
 	  solution = LibBalistica.Solve.SolveAll (d, corrected_bc, v, sh, angle, zero_angle, wspeed, wangle) ;
 
-	  stdout.printf ("Made it\n") ;
-
 	  // If this succedes then we have a valid solution
 	  if( solution.size > 0 ){
 		 LibBalistica.Solution lsln = new LibBalistica.Solution.full (solution, name, corrected_bc, sh, weight, v, angle, zero,
@@ -95,5 +94,4 @@ public class Balistica.Calculate : GLib.Object {
 		 return new LibBalistica.Solution () ;
 	  }
    }
-
 } // namespace
