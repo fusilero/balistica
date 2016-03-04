@@ -26,10 +26,11 @@ extern const string _VERSION_DESC ;
 extern const string _GSETTINGS_DIR ;
 
 namespace Balistica{
-/**
- * These are publicly shared strings that will be
- * available throughout the base of the application
- */
+
+   /**
+    * These are publicly shared strings that will be
+    * available throughout the base of the application
+    */
    public const string NAME = "balística" ;
    public const string COPYRIGHT = "Copyright © 2012-2016 Steven Oliver" ;
    public const string WEBSITE = "http://steveno.github.io/balistica/" ;
@@ -91,6 +92,11 @@ namespace Balistica{
 	  private Gtk.RadioButton rad_g7 ;
 	  private Gtk.RadioButton rad_g8 ;
 
+	  // Radio buttons for calculation step size
+	  private Gtk.RadioButton rad_s10 ;
+	  private Gtk.RadioButton rad_s50 ;
+	  private Gtk.RadioButton rad_s100 ;
+
 	  public static bool miller_twist = false ;
 	  public static bool miller_stability = false ;
 	  public static bool greenhill = false ;
@@ -129,9 +135,15 @@ namespace Balistica{
 
 		 Gtk.MenuItem item_file = new Gtk.MenuItem.with_label ("File") ;
 		 Gtk.Menu filemenu = new Gtk.Menu () ;
+		 Gtk.MenuItem sub_item_demo = new Gtk.MenuItem.with_label ("Populate Demo") ;
+		 filemenu.add (sub_item_demo) ;
 		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
 		 filemenu.add (sub_item_quit) ;
 		 item_file.set_submenu (filemenu) ;
+
+		 sub_item_demo.activate.connect (() => {
+			populate_demo_selected () ;
+		 }) ;
 
 		 sub_item_quit.activate.connect (() => {
 			quit_selected () ;
@@ -253,6 +265,14 @@ namespace Balistica{
 		 // Set G1 as selected by default
 		 rad_g1.active = true ;
 
+		 // Radio buttons for calculation step size
+		 rad_s10 = drag_builder.get_object ("radS10") as Gtk.RadioButton ;
+		 rad_s50 = drag_builder.get_object ("radS50") as Gtk.RadioButton ;
+		 rad_s100 = drag_builder.get_object ("radS100") as Gtk.RadioButton ;
+
+		 // Set G1 as selected by default
+		 rad_s10.active = true ;
+
 		 // Buttons
 		 solve_drag = drag_builder.get_object ("btnSolveDrag") as Gtk.Button ;
 		 solve_drag.clicked.connect (() => {
@@ -285,6 +305,7 @@ namespace Balistica{
 		 enable_atmosphere.set_active (false) ;
 		 drag_results.buffer.text = "" ;
 		 rad_g1.active = true ;
+		 rad_s10.active = true ;
 	  }
 
 	  /**
@@ -316,22 +337,22 @@ namespace Balistica{
 	   * Solve the drag function
 	   */
 	  public void btnSolveDrag_clicked() {
-		 string name = "" ;                                                       // Name used to store the calculation
-		 double bc = -1 ;                                                         // Ballistic cefficient
-		 double v = -1 ;                                                          // Initial velocity (ft/s)
-		 double sh = -1 ;                                                         // Sight height over bore (inches)
-		 double w = -1 ;                                                          // Projectile weight (grains)
-		 double angle = -1 ;                                                      // Shooting Angle (degrees)
-		 double zero = -1 ;                                                       // Zero range of the rifle (yards)
-		 double windspeed = -1 ;                                                  // Wind speed (mph)
-		 double windangle = -1 ;                                                  // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+		 string name = "" ;                                                               // Name used to store the calculation
+		 double bc = -1 ;                                                                 // Ballistic cefficient
+		 double v = -1 ;                                                                  // Initial velocity (ft/s)
+		 double sh = -1 ;                                                                 // Sight height over bore (inches)
+		 double w = -1 ;                                                                  // Projectile weight (grains)
+		 double angle = -1 ;                                                              // Shooting Angle (degrees)
+		 double zero = -1 ;                                                               // Zero range of the rifle (yards)
+		 double windspeed = -1 ;                                                          // Wind speed (mph)
+		 double windangle = -1 ;                                                          // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
 
-		 double alt = 0.0 ;                                                       // Altitude
-		 double bar = 29.53 ;                                                     // Barometeric pressure
-		 double tp = 59.0 ;                                                       // Temperature
-		 double rh = 78.0 ;                                                       // Relative Humidity
+		 double alt = 0.0 ;                                                               // Altitude
+		 double bar = 29.53 ;                                                             // Barometeric pressure
+		 double tp = 59.0 ;                                                               // Temperature
+		 double rh = 78.0 ;                                                               // Relative Humidity
 
-		 int df ;                                                                 // Selected Drag Function
+		 int df ;                                                                         // Selected Drag Function
 
 		 name = calc_name.get_text () ;
 		 bc = double.parse (drag_coefficient.get_text ()) ;
@@ -396,7 +417,7 @@ namespace Balistica{
 		 if( lsln.getSolutionSize () == -1 ){
 			drag_results.buffer.text = "ERROR creating solution results!" ;
 		 } else {
-		    drag_results.buffer.text = ("");
+			drag_results.buffer.text = ("") ;
 		 }
 
 		 drag_results.buffer.text += ("Drag Coefficient: %f  Projectile Weight: %f grains\n").printf (lsln.getBc (), lsln.getWeight ()) ;
@@ -414,7 +435,17 @@ namespace Balistica{
 			max = 1000 ;
 		 }
 
-		 for( int n = 0 ; n <= 1000 ; n = n + 100  ){
+		 // The user can pick how many steps of the calculation they want to see
+		 int step = 1 ;
+		 if( rad_s10.get_active ()){
+			step = 10 ;
+		 } else if( rad_s50.get_active ()){
+			step = 50 ;
+		 } else if( rad_s100.get_active ()){
+			step = 100 ;
+		 }
+
+		 for( int n = 0 ; n <= max ; n = n + step ){
 			r = lsln.getRange (n) ;
 			p = lsln.getPath (n) ;
 			m = lsln.getMOA (n) ;
@@ -426,7 +457,14 @@ namespace Balistica{
 
 			drag_results.buffer.text += ("%f\t%f\t@%f\t%f\t%f\t%f\t%f\t%f").printf (r, p, m, v, e, wi, wm, t) ;
 		 }
-		
+
+	  }
+
+	  /**
+	   * Populate the drag field with the demostration values
+	   */
+	  private void populate_demo_selected() {
+		 setExampleCalculation () ;
 	  }
 
 	  /**

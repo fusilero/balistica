@@ -42,7 +42,7 @@ public class Balistica.Calculate : GLib.Object {
 											string name, int df) {
 	  LibBalistica.DragFunction d ;
 	  // bore / sight angle
-	  double zero_angle ;                                
+	  double zero_angle ;
 	  Gee.LinkedList solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
 
 	  double corrected_bc = LibBalistica.Atmosphere.atm_correct (bc, alt, bar, tp, rh) ;
@@ -94,4 +94,5 @@ public class Balistica.Calculate : GLib.Object {
 		 return new LibBalistica.Solution () ;
 	  }
    }
+
 } // namespace
