@@ -337,22 +337,22 @@ namespace Balistica{
 	   * Solve the drag function
 	   */
 	  public void btnSolveDrag_clicked() {
-		 string name = "" ;                                                               // Name used to store the calculation
-		 double bc = -1 ;                                                                 // Ballistic cefficient
-		 double v = -1 ;                                                                  // Initial velocity (ft/s)
-		 double sh = -1 ;                                                                 // Sight height over bore (inches)
-		 double w = -1 ;                                                                  // Projectile weight (grains)
-		 double angle = -1 ;                                                              // Shooting Angle (degrees)
-		 double zero = -1 ;                                                               // Zero range of the rifle (yards)
-		 double windspeed = -1 ;                                                          // Wind speed (mph)
-		 double windangle = -1 ;                                                          // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+		 string name = "" ;                                                                       // Name used to store the calculation
+		 double bc = -1 ;                                                                         // Ballistic cefficient
+		 double v = -1 ;                                                                          // Initial velocity (ft/s)
+		 double sh = -1 ;                                                                         // Sight height over bore (inches)
+		 double w = -1 ;                                                                          // Projectile weight (grains)
+		 double angle = -1 ;                                                                      // Shooting Angle (degrees)
+		 double zero = -1 ;                                                                       // Zero range of the rifle (yards)
+		 double windspeed = -1 ;                                                                  // Wind speed (mph)
+		 double windangle = -1 ;                                                                  // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
 
-		 double alt = 0.0 ;                                                               // Altitude
-		 double bar = 29.53 ;                                                             // Barometeric pressure
-		 double tp = 59.0 ;                                                               // Temperature
-		 double rh = 78.0 ;                                                               // Relative Humidity
+		 double alt = 0.0 ;                                                                       // Altitude
+		 double bar = 29.53 ;                                                                     // Barometeric pressure
+		 double tp = 59.0 ;                                                                       // Temperature
+		 double rh = 78.0 ;                                                                       // Relative Humidity
 
-		 int df ;                                                                         // Selected Drag Function
+		 int df ;                                                                                 // Selected Drag Function
 
 		 name = calc_name.get_text () ;
 		 bc = double.parse (drag_coefficient.get_text ()) ;

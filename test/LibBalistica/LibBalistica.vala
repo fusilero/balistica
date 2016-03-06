@@ -35,4 +35,5 @@ public class LibBalisticaTests : Balistica.TestCase {
    public virtual void test_standard_tempurature() {
 	  assert (LibBalistica.STANDARD_TEMP == 59.0) ;
    }
+
 }
