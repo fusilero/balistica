@@ -25,6 +25,7 @@ set(LIB_BALISTICA_CONVERSION_SRC
     TestMain.vala
     TestCase.vala 
     
+    LibBalistica/LibBalistica.vala
     LibBalistica/Conversion.vala
     LibBalistica/Greenhill.vala
     LibBalistica/Miller.vala

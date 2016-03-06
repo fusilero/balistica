@@ -1,32 +1,23 @@
 # balística
+[![Build Status](https://travis-ci.org/steveno/balistica.svg?branch=master)](https://travis-ci.org/steveno/balistica)
 [![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
 balística is a simple open source external ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
 
-## Current Status
-While the GUI is still a work in progress, the back end currently exists
-to make several different computations. Here's a task list of what I feel
-are major outstanding issues:
-- [x] Miller Twist Rule
-- [x] Miller Stability Rule
-- [x] Greenhill Twist
-- [x] Standard Drag Functions G1-G8
-- [x] Drag Functions Ingalls and British
-- [x] The PBR function (Point Blank Range)
-- [X] GUI for Miller Twist
-- [X] GUI for Greenhill Twist
-- [ ] GUI for Miller Stability
-- [ ] An icon (!)
-- [ ] A database backend to store hand loads
-- [ ] GUI for said DB of hand loads
+## TODO List
+Here's a short list of major outstanding issues:
+- GUI for Miller Stability
+- An icon (!)
+- A database backend to store hand loads
+- GUI for said DB of hand loads
 
 ## Minimum Requirements
-* vala >= 0.28.0 
-* glib-2.0 >= 2.46.0
-* gtk+-3.0 >= 3.18.0
-* gee-0.8 >= 0.18.0
+* vala >= 0.28.0
+* glib-2.0 >= 2.40.0
+* gtk+-3.0 >= 3.10.8
+* gee-0.8 >= 0.16.1
 * cmake 
 
 ### Fedora
@@ -43,15 +34,15 @@ sudo make install
 
 ### Ubuntu
 ```bash
-sudo apt-get install libgtk-3-dev vala cmake
+sudo apt-get install libgtk-3-dev vala valadoc cmake
 ```
 
 ## Build Instructions
 ```bash
 cd balistica
 mkdir -p build && cd build
-cmake .. && make
-make test
+./../configure
+make && make test
 sudo make install
 ```
 
