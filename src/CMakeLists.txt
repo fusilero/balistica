@@ -61,8 +61,6 @@ set(CFLAGS
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
 )
 
-message(STATUS ${CFLAGS})
-
 set(LIB_PATHS ${DEPS_LIBRARY_DIRS})
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
@@ -72,9 +70,6 @@ set(VALAC_OPTIONS
     --thread
     --enable-checking
 )
-
-message(STATUS ${CFLAGS})
-
 
 # Debug vs Release
 if(DEBUG OR ADD_COVERAGE)
@@ -106,8 +101,6 @@ else()
 	-O2
 	)
 endif()
-
-message(STATUS ${CFLAGS})
 
 # LibBalistica
 #################################################

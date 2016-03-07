@@ -171,11 +171,16 @@ namespace LibBalistica{
 			}
 		 }
 
-		 result[0] = (int) (zero / 3) ;                                                                       // Near Zero
-		 result[1] = (int) (farzero / 3) ;                                                                    // Far zero
-		 result[2] = (int) (min_pbr_range / 3) ;                                                              // Minimum PBR
-		 result[3] = (int) (max_pbr_range / 3) ;                                                              // Maximum PBR
-		 result[4] = tin100 ;                                                                                 // Sight-in at 100 yds (in 100ths of an inch)
+		 // Near zero
+		 result[0] = (int) (zero / 3) ;
+		 // Far zero
+		 result[1] = (int) (farzero / 3) ;
+		 // Minimum PBR
+		 result[2] = (int) (min_pbr_range / 3) ;
+		 // Maximum PBR
+		 result[3] = (int) (max_pbr_range / 3) ;
+		 // Sight-in at 100 yards (in 100ths of an inch)
+		 result[4] = tin100 ;
 
 		 return 0 ;
 	  }

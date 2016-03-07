@@ -53,9 +53,9 @@ Author: Steven Oliver
     <property name="margin_left">7</property>
     <property name="margin_right">7</property>
     <property name="margin_top">7</property>
-    <property name="margin_bottom">7</property>
+    <property name="margin_bottom">5</property>
     <property name="orientation">vertical</property>
-    <property name="spacing">5</property>
+    <property name="baseline_position">top</property>
     <child>
       <object class="GtkGrid" id="grid2">
         <property name="visible">True</property>
@@ -748,23 +748,32 @@ Author: Steven Oliver
       </packing>
     </child>
     <child>
-      <object class="GtkTextView" id="txtViewDragResults">
-        <property name="height_request">100</property>
+      <object class="GtkScrolledWindow" id="scrolledwindow1">
         <property name="visible">True</property>
-        <property name="app_paintable">True</property>
         <property name="can_focus">True</property>
-        <property name="margin_top">8</property>
-        <property name="margin_bottom">8</property>
-        <property name="hexpand">True</property>
-        <property name="border_width">3</property>
-        <property name="vscroll_policy">natural</property>
-        <property name="editable">False</property>
-        <property name="wrap_mode">word</property>
-        <property name="cursor_visible">False</property>
-        <property name="monospace">True</property>
+        <property name="opacity">0.95999999999999996</property>
+        <property name="halign">baseline</property>
+        <property name="resize_mode">immediate</property>
+        <property name="vscrollbar_policy">always</property>
+        <property name="shadow_type">in</property>
+        <property name="min_content_height">150</property>
+        <child>
+          <object class="GtkTextView" id="txtViewDragResults">
+            <property name="height_request">100</property>
+            <property name="visible">True</property>
+            <property name="app_paintable">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="vscroll_policy">natural</property>
+            <property name="editable">False</property>
+            <property name="cursor_visible">False</property>
+            <property name="monospace">True</property>
+          </object>
+        </child>
       </object>
       <packing>
-        <property name="expand">False</property>
+        <property name="expand">True</property>
         <property name="fill">True</property>
         <property name="position">2</property>
       </packing>

@@ -53,12 +53,17 @@ namespace LibBalistica{
 		 double da ;
 
 		 // State variables for each integration loop.
-		 double v = 0, vx = 0, vy = 0 ;                                                                          // velocity
-		 double vx1 = 0, vy1 = 0 ;                                                                        // Last frame's velocity, used for computing average velocity.
-		 double dv = 0, dvx = 0, dvy = 0 ;                                                                // acceleration
-		 double Gx = 0, Gy = 0 ;                                                                          // Gravitational acceleration
+		 // Velocity
+		 double v = 0, vx = 0, vy = 0 ;
+		 // Last frame's velocity, used for computing average velocity
+		 double vx1 = 0, vy1 = 0 ;
+		 // Acceleration
+		 double dv = 0, dvx = 0, dvy = 0 ;
+		 // Gravitational acceleration
+		 double Gx = 0, Gy = 0 ;
 
-		 double angle = 0 ;                                                                               // The actual angle of the bore.
+		 // The actual angle of the bore
+		 double angle = 0 ;
 
 		 bool quit = false ;
 
