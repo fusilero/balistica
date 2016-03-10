@@ -124,7 +124,7 @@ namespace Balistica{
 		 // Setup the main window
 		 main_window.title = "balística" ;
 		 main_window.window_position = Gtk.WindowPosition.CENTER ;
-		 main_window.set_default_size (830, 550) ;
+		 main_window.set_default_size (850, 880) ;
 		 main_window.destroy.connect (Gtk.main_quit) ;
 
 		 // Add the main layout grid
@@ -420,13 +420,13 @@ namespace Balistica{
 			drag_results.buffer.text = ("") ;
 		 }
 
-		 drag_results.buffer.text += ("Drag Coefficient: %f  Projectile Weight: %f grains\n").printf (lsln.getBc (), lsln.getWeight ()) ;
-		 drag_results.buffer.text += ("Initial Velocity: %f (ft/s)   Zero Range: %f yards   Shooting Angle: %f degrees\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ()) ;
-		 drag_results.buffer.text += ("Wind Velocity: %f mph    Wind Direction: %f degrees\n").printf (lsln.getWindspeed (), lsln.getWindangle ()) ;
-		 drag_results.buffer.text += ("Altitude: %f ft   Barometer: %f in-Hg  Temperature: %f F   Relative Humidity: %f%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
+		 drag_results.buffer.text += ("Drag Coefficient: %.3f  Projectile Weight: %.2f grains\n").printf (lsln.getBc (), lsln.getWeight ()) ;
+		 drag_results.buffer.text += ("Initial Velocity: %.2f ft/s  Zero Range: %.2f yards  Shooting Angle: %.2f degrees\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ()) ;
+		 drag_results.buffer.text += ("Wind Velocity: %.2f mph  Wind Direction: %.2f degrees\n").printf (lsln.getWindspeed (), lsln.getWindangle ()) ;
+		 drag_results.buffer.text += ("Altitude: %.2f ft  Barometer: %.2f in-Hg  Temperature: %.2f F  Relative Humidity: %.2f%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
 
-		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity\tEnergy\tWind Drift\tWindage\tTime\n" ;
-		 drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t\t(MOA)\t(s)\n" ;
+		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity  Energy  Drift\tWindage\tTime\n" ;
+		 //drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t(MOA)\t(s)\n" ;
 
 		 double r, p, m, wi, wm, t, e ;
 
@@ -455,7 +455,7 @@ namespace Balistica{
 			t = lsln.getTime (n) ;
 			e = lsln.getWeight () * v * v / 450436 ;
 
-			drag_results.buffer.text += ("%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\n").printf (r, p, m, v, e, wi, wm, t) ;
+			drag_results.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, p, m, v, e, wi, wm, t) ;
 		 }
 
 	  }
