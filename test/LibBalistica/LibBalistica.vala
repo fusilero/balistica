@@ -22,6 +22,7 @@ public class LibBalisticaTests : Balistica.TestCase {
 	  add_test ("[LibBalistica] Verify gravity", test_gravity) ;
 	  add_test ("[LibBalistica] Verify standard pressure", test_standard_pressure) ;
 	  add_test ("[LibBalistica] Verify standard tempurature", test_standard_tempurature) ;
+	  add_test ("[LibBalistica] Verify computational unit", test_computation_unit) ;
    }
 
    public virtual void test_gravity() {
@@ -34,6 +35,30 @@ public class LibBalisticaTests : Balistica.TestCase {
 
    public virtual void test_standard_tempurature() {
 	  assert (LibBalistica.STANDARD_TEMP == 59.0) ;
+   }
+
+   public virtual void test_computation_unit() {
+	  LibBalistica.CompUnit unit = LibBalistica.CompUnit () {
+		 range = 5.1,
+		 path = 5.2,
+		 correction = 5.3,
+		 time = 5.4,
+		 windage_in = 5.5,
+		 windage_moa = 5.6,
+		 velocity_com = 5.7,
+		 horizontal_velocity = 5.8,
+		 vertical_velocity = 5.9
+	  } ;
+
+	  assert (unit.range == 5.1) ;
+	  assert (unit.path == 5.2) ;
+	  assert (unit.correction == 5.3) ;
+	  assert (unit.time == 5.4) ;
+	  assert (unit.windage_in == 5.5) ;
+	  assert (unit.windage_moa == 5.6) ;
+	  assert (unit.velocity_com == 5.7) ;
+	  assert (unit.horizontal_velocity == 5.8) ;
+	  assert (unit.vertical_velocity == 5.9) ;
    }
 
 }

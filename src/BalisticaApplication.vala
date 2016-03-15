@@ -337,22 +337,36 @@ namespace Balistica{
 	   * Solve the drag function
 	   */
 	  public void btnSolveDrag_clicked() {
-		 string name = "" ;                                                                                               // Name used to store the calculation
-		 double bc = -1 ;                                                                                                 // Ballistic cefficient
-		 double v = -1 ;                                                                                                  // Initial velocity (ft/s)
-		 double sh = -1 ;                                                                                                 // Sight height over bore (inches)
-		 double w = -1 ;                                                                                                  // Projectile weight (grains)
-		 double angle = -1 ;                                                                                              // Shooting Angle (degrees)
-		 double zero = -1 ;                                                                                               // Zero range of the rifle (yards)
-		 double windspeed = -1 ;                                                                                          // Wind speed (mph)
-		 double windangle = -1 ;                                                                                          // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+		 // Name used to store the calculation
+		 string name = "" ;
+		 // Ballistic cofficient
+		 double bc = -1 ;
+		 // Initial velocity (ft/s)
+		 double v = -1 ;
+		 // Sight height over bore (inches)
+		 double sh = -1 ;
+		 // Projectile weight (grains)
+		 double w = -1 ;
+		 // Shooting Angle (degrees)
+		 double angle = -1 ;
+		 // Zero range of the rifle (yards)(
+		 double zero = -1 ;
+		 // Wind speed (mph)
+		 double windspeed = -1 ;
+		 // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+		 double windangle = -1 ;
 
-		 double alt = 0.0 ;                                                                                               // Altitude
-		 double bar = 29.53 ;                                                                                             // Barometeric pressure
-		 double tp = 59.0 ;                                                                                               // Temperature
-		 double rh = 78.0 ;                                                                                               // Relative Humidity
+		 // Altitude
+		 double alt = 0.0 ;
+		 // Barometeric pressure
+		 double bar = 29.53 ;
+		 // Temerature
+		 double tp = 59.0 ;
+		 // Relative Humidity
+		 double rh = 78.0 ;
 
-		 int df ;                                                                                                         // Selected Drag Function
+		 // Selected Drag Function
+		 int df ;
 
 		 name = calc_name.get_text () ;
 		 bc = double.parse (drag_coefficient.get_text ()) ;
@@ -426,7 +440,7 @@ namespace Balistica{
 		 drag_results.buffer.text += ("Altitude: %.2f ft  Barometer: %.2f in-Hg  Temperature: %.2f F  Relative Humidity: %.2f%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
 
 		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity  Energy  Drift\tWindage\tTime\n" ;
-		 //drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t(MOA)\t(s)\n" ;
+		 // drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t(MOA)\t(s)\n" ;
 
 		 double r, p, m, wi, wm, t, e ;
 
