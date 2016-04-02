@@ -7,11 +7,11 @@ balística is a simple open source external ballistics calculator. It's
 named after the Catalan word for "ballistics" in English. Enjoy!
 
 ## TODO List
-Here's a short list of major outstanding issues:
-- GUI for Miller Stability
+Here's a short list of outstanding issues:
 - An icon (!)
 - A database backend to store hand loads
 - GUI for said DB of hand loads
+- Graphs
 
 ## Minimum Requirements
 * vala >= 0.28.0
@@ -52,9 +52,8 @@ sudo make install
 Please see [the contributing file](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
-It is to be used as REFERENCE or curiosity ONLY. Much like
+This program is to be used as REFERENCE or curiosity ONLY. Much like
 Wikipedia, information gleaned from this program is not to be 
 used in an illegal fashion and I take no responsibility whatsoever
 for any acts, criminal or otherwise, committed using any calculations 
-derived by this program. This is also stated in the GNU GPL, 
-but repeated here just to make sure.
+derived by this program.
