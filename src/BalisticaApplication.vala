@@ -203,19 +203,19 @@ namespace Balistica{
 		 drag_builder = Balistica.create_builder ("drag.glade") ;
 		 drag_builder.connect_signals (null) ;
 		 var drag_content = drag_builder.get_object ("drag_main") as Gtk.Box ;
-		 notebook.append_page (drag_content, new Gtk.Label("Drag")) ;
+		 notebook.append_page (drag_content, new Gtk.Label ("Drag")) ;
 
 		 // Create the twist page of the notebook
 		 twist_builder = Balistica.create_builder ("twist.glade") ;
 		 twist_builder.connect_signals (null) ;
 		 var twist_content = twist_builder.get_object ("twist_main") as Gtk.Box ;
-		 notebook.append_page (twist_content, new Gtk.Label("Twist")) ;
+		 notebook.append_page (twist_content, new Gtk.Label ("Twist")) ;
 
 		 // Create the stability page of the notebook
 		 stability_builder = Balistica.create_builder ("stability.glade") ;
 		 stability_builder.connect_signals (null) ;
 		 var stability_content = stability_builder.get_object ("stability_main") as Gtk.Box ;
-		 notebook.append_page (stability_content, new Gtk.Label("Stability")) ;
+		 notebook.append_page (stability_content, new Gtk.Label ("Stability")) ;
 
 		 // Attach the grid (with the notebook) the main window and roll
 		 grid.attach (notebook, 0, 1, 1, 1) ;
