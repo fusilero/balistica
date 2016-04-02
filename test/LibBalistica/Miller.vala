@@ -25,26 +25,26 @@ public class MillerTests : Balistica.TestCase {
 
    public virtual void test_calc_twist() {
 	  LibBalistica.Miller m = new LibBalistica.Miller () ;
-	  m.diameter = 0.5 ;
-	  m.length = 1.5 ;
-	  m.mass = 1 ;
+	  m.diameter = 0.308 ;
+	  m.length = 3.83 ;
+	  m.mass = 180 ;
 	  m.safe_value = 2 ;
-	  assert (m.calc_twist () == 4.4941338051705939) ;
+	  assert (m.calc_twist () == 12.086147286066234) ;
 
 	  m = new LibBalistica.Miller () ;
-	  assert (m.calc_twist () == 1.3693063937629153) ;
+	  assert (m.calc_twist () == 2.7386127875258306) ;
    }
 
    public virtual void test_calc_stability() {
 	  LibBalistica.Miller m = new LibBalistica.Miller () ;
-	  m.diameter = 0.5 ;
-	  m.length = 1.5 ;
-	  m.mass = 1 ;
+	  m.diameter = 0.308 ;
+	  m.length = 3.83 ;
+	  m.mass = 180 ;
 	  m.safe_value = 2 ;
-	  assert (m.calc_stability () == 2.4375) ;
+	  assert (m.calc_stability () == 21.0828132906055) ;
 
 	  m = new LibBalistica.Miller () ;
-	  assert (m.calc_stability () == 8) ;
+	  assert (m.calc_stability () == 2) ;
    }
 
 }
