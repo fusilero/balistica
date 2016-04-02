@@ -7,6 +7,7 @@
 
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/pygment_trac.css">
+        <link rel="stylesheet" href="css/image_gallery.css">
         <script src="js/scale.fix.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <!--[if lt IE 9]>
@@ -46,8 +47,7 @@
 
                 <h3>Calculate drag using the <a href="http://en.wikipedia.org/wiki/External_ballistics#Fixed_drag_curve_models_generated_for_standard-shaped_projectiles" target="_blank">standard drag functions</a> G1-G8</h3>
                 <p>The standard drag functions are an essential part of any ballistics program. It is simply
-                a have-to-have. <img src="img/drag_calculation.png" alt="drag_calculation" width="300">
-                </p>
+                a have-to-have.</p>
 
                 <h3>Calculate using the Ingalls and British drag functions</h3>
                 <p>These drag functions are older and a bit antiquated. They still work to an extent but you'd 
@@ -64,6 +64,10 @@
                 in the same vien as the Miller Twist Rule is a much older formula for the same purpose that has 
                 been used for centuries now. It is the defacto standard for this type of computation.</p>
 
+                <h3>Miller Stability</h3>
+                <p>The Miller Stability calculation is a mathematical formula that calculates the estimated stability
+                of a projectie using the Miller Twist Rule as it's base.</p>
+
                 <h3>PBR (Point Blank Range)</h3>
                 <p> The <a href="http://en.wikipedia.org/wiki/Point-blank_range" target="_blank">PBR function</a> 
                 clculates how far a given projectile can travel before the elevation needs adjusted to continue to 
@@ -76,7 +80,31 @@
                 allows developers to build their own ballistics software application should they choose. LibBalistica
                 is also unit tested to ensure reliable consistent calculations every release. With code developed 
                 independently of balística improvements can also potentionally be made without breaking LibBalistica.</p>
+            </section>
+            
+            <section>
+                <h2>Image Gallery</h2>
+                <div class="img_gal">
+                    <a target="_blank" href="img/drag_calculation.png">
+                        <img src="img/drag_calculation.png" alt="drag calculation" width="300">
+                    </a>
+                    <div class="desc">Calculating the drag of a .30-06 bullet.</div>
+                </div>
+                <div class="img_gal">
+                    <a target="_blank" href="img/miller_twist.png">
+                        <img src="img/miller_twist.png" alt="miller twist" width="300">
+                    </a>
+                    <div class="desc">Calculating the twist of a .308 using the Miller Twist Rule </div>
+                </div>
+                <div class="img_gal">
+                    <a target="_blank" href="img/miller_stability.png">
+                        <img src="img/miller_stability.png" alt="miller stability" width="300">
+                    </a>
+                    <div class="desc">Calculating the stabilit of a .308 using the Miller Stability formula.</div>
+                </div>
+            </section>
 
+            <section> 
                 <h2>Features In Process</h2>
 
                 <h3>A database to store custom handloads in</h3>

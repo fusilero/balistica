@@ -136,18 +136,6 @@ hr {
     margin:0 0 24px;
 }
 
-/* Images */
-
-img {
-    position: relative;
-    margin: 0 auto;
-    max-width: 650px;
-    padding: 5px;
-    margin: 10px 0 32px 0;
-    border: 1px solid #ccc;
-}
-
-
 /* Code blocks */
 
 code, pre {
@@ -310,7 +298,7 @@ a.buttons:hover {
 section {
     width:750px;
     float:right;
-    padding-bottom:50px;
+    padding-bottom:20px;
 }
 
 
