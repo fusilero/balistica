@@ -2,6 +2,15 @@
 <!-- Generated with glade 3.19.0 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
+  <object class="GtkRadioButton" id="radgrpTwist">
+    <property name="label" translatable="yes">radiobutton</property>
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="xalign">0</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
   <object class="GtkBox" id="twist_main">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -113,6 +122,31 @@
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblC">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="xpad">3</property>
+                    <property name="label" translatable="yes">C</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="txtC">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
                   </packing>
                 </child>
               </object>
@@ -271,16 +305,19 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
+            <property name="row_homogeneous">True</property>
             <child>
-              <object class="GtkEntry" id="txtResult">
+              <object class="GtkButton" id="btnCalculate">
+                <property name="label" translatable="yes">Calculate</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="editable">False</property>
+                <property name="receives_default">True</property>
+                <property name="opacity">0.96862745098039216</property>
+                <property name="margin_top">6</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-                <property name="width">3</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -289,28 +326,60 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">3</property>
                 <property name="margin_top">6</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnCalculate">
-                <property name="label" translatable="yes">Calculate</property>
+              <object class="GtkEntry" id="txtResult">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="opacity">0.96999999999999997</property>
-                <property name="margin_right">3</property>
-                <property name="margin_top">6</property>
+                <property name="editable">False</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
+                <property name="width">3</property>
               </packing>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="radGreenhill">
+                <property name="label" translatable="yes">Greenhill</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <property name="group">radgrpTwist</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="radMiller">
+                <property name="label" translatable="yes">Miller</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="xalign">0</property>
+                <property name="draw_indicator">True</property>
+                <property name="group">radgrpTwist</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
             </child>
             <child>
               <placeholder/>

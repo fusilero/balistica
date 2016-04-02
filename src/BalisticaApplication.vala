@@ -97,11 +97,24 @@ namespace Balistica{
 	  private Gtk.RadioButton rad_s50 ;
 	  private Gtk.RadioButton rad_s100 ;
 
-	  public static bool miller_twist = false ;
-	  public static bool miller_stability = false ;
-	  public static bool greenhill = false ;
-	  public static bool help = false ;
-	  public static bool version = false ;
+	  // Twist fields
+	  private Gtk.Entry miller_diameter ;
+	  private Gtk.Entry miller_length ;
+	  private Gtk.Entry miller_mass ;
+	  private Gtk.Entry miller_safe_value ;
+	  private Gtk.Entry greenhill_diameter ;
+	  private Gtk.Entry greenhill_length ;
+	  private Gtk.Entry greenhill_spec_gravity ;
+	  private Gtk.Entry greenhill_c ;
+	  private Gtk.Entry twist_results ;
+
+	  // Twist buttons
+	  private Gtk.Button reset_twist ;
+	  private Gtk.Button solve_twist ;
+
+	  // Radio buttons for calculation step size
+	  private Gtk.RadioButton rad_greenhill ;
+	  private Gtk.RadioButton rad_miller ;
 
 	  /**
 	   * Constructor
@@ -209,10 +222,10 @@ namespace Balistica{
 	   * Connect the GUI elements to our code so we can play with them
 	   */
 	  public void connect_entries() {
-		 // Stored calculation's name
+		 // Stored drag calculation's name
 		 calc_name = drag_builder.get_object ("txtName") as Gtk.Entry ;
 
-		 // Basic inputs
+		 // Basic drag inputs
 		 drag_coefficient = drag_builder.get_object ("txtDrag_coefficient") as Gtk.Entry ;
 		 projectile_weight = drag_builder.get_object ("txtProjectile_weight") as Gtk.Entry ;
 		 initial_velocity = drag_builder.get_object ("txtIntial_velocity") as Gtk.Entry ;
@@ -222,6 +235,7 @@ namespace Balistica{
 		 wind_velocity = drag_builder.get_object ("txtWind_velocity") as Gtk.Entry ;
 		 wind_angle = drag_builder.get_object ("txtWind_angle") as Gtk.Entry ;
 
+		 // Setup our example drag calculation
 		 setExampleCalculation () ;
 
 		 // Checkbox to dis/en/able atmospheric corrections
@@ -283,10 +297,65 @@ namespace Balistica{
 		 reset_drag.clicked.connect (() => {
 			btnResetDrag_clicked () ;
 		 }) ;
+
+		 // Setup twist entries & results
+		 miller_diameter = twist_builder.get_object ("txtMDiameter") as Gtk.Entry ;
+		 miller_length = twist_builder.get_object ("txtMLength") as Gtk.Entry ;
+		 miller_mass = twist_builder.get_object ("txtMass") as Gtk.Entry ;
+		 miller_safe_value = twist_builder.get_object ("txtSafeValue") as Gtk.Entry ;
+
+		 greenhill_diameter = twist_builder.get_object ("txtGDiameter") as Gtk.Entry ;
+		 greenhill_length = twist_builder.get_object ("txtGLength") as Gtk.Entry ;
+		 greenhill_spec_gravity = twist_builder.get_object ("txtSpecificGravity") as Gtk.Entry ;
+		 greenhill_c = twist_builder.get_object ("txtC") as Gtk.Entry ;
+
+		 twist_results = twist_builder.get_object ("txtResult") as Gtk.Entry ;
+
+		 // Twist buttons
+		 reset_twist = twist_builder.get_object ("btnReset") as Gtk.Button ;
+		 reset_twist.clicked.connect (() => {
+			btnResetTwist_clicked () ;
+		 }) ;
+
+		 solve_twist = twist_builder.get_object ("btnCalculate") as Gtk.Button ;
+		 solve_twist.clicked.connect (() => {
+			btnSolveTwist_clicked () ;
+		 }) ;
+
+		 // Radio buttons for twist calculation type
+		 rad_miller = twist_builder.get_object ("radMiller") as Gtk.RadioButton ;
+		 rad_greenhill = twist_builder.get_object ("radGreenhill") as Gtk.RadioButton ;
+
+		 rad_miller.toggled.connect (() => {
+			miller_diameter.set_sensitive (true) ;
+			miller_length.set_sensitive (true) ;
+			miller_mass.set_sensitive (true) ;
+			miller_safe_value.set_sensitive (true) ;
+
+			greenhill_diameter.set_sensitive (false) ;
+			greenhill_length.set_sensitive (false) ;
+			greenhill_spec_gravity.set_sensitive (false) ;
+			greenhill_c.set_sensitive (false) ;
+		 }) ;
+
+		 rad_greenhill.toggled.connect (() => {
+			miller_diameter.set_sensitive (false) ;
+			miller_length.set_sensitive (false) ;
+			miller_mass.set_sensitive (false) ;
+			miller_safe_value.set_sensitive (false) ;
+
+			greenhill_diameter.set_sensitive (true) ;
+			greenhill_length.set_sensitive (true) ;
+			greenhill_spec_gravity.set_sensitive (true) ;
+			greenhill_c.set_sensitive (true) ;
+		 }) ;
+
+		 // Default Twist calculation type
+		 rad_miller.active = true ;
 	  }
 
 	  /**
-	   * Reset the front end to prepare for a new calculation
+	   * Reset the front end to prepare for a new drag calculation
 	   */
 	  public void btnResetDrag_clicked() {
 		 calc_name.set_text ("") ;
@@ -471,26 +540,67 @@ namespace Balistica{
 
 			drag_results.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, p, m, v, e, wi, wm, t) ;
 		 }
-
 	  }
 
 	  /**
-	   * Populate the drag field with the demostration values
+	   * Reset the front end to prepare for a new twist calculation
 	   */
+	  public void btnResetTwist_clicked() {
+		 miller_diameter.set_text ("") ;
+		 miller_length.set_text ("") ;
+		 miller_mass.set_text ("") ;
+		 miller_safe_value.set_text ("") ;
+
+		 greenhill_diameter.set_text ("") ;
+		 greenhill_length.set_text ("") ;
+		 greenhill_spec_gravity.set_text ("") ;
+		 greenhill_c.set_text ("") ;
+
+		 twist_results.set_text ("") ;
+	  }
+
+	  /**
+	   * Solve the twist calculation for the selected formula
+	   */
+	  public void btnSolveTwist_clicked() {
+		 if( rad_miller.get_active ()){
+			LibBalistica.Miller m = new LibBalistica.Miller () ;
+
+			m.diameter = double.parse (miller_diameter.get_text ()) ;
+			m.length = double.parse (miller_length.get_text ()) ;
+			m.mass = double.parse (miller_mass.get_text ()) ;
+			m.safe_value = int.parse (miller_safe_value.get_text ()) ;
+
+			twist_results.set_text(m.calc_twist().to_string());
+		 } else {
+			LibBalistica.Greenhill g = new LibBalistica.Greenhill () ;
+
+			g.diameter = double.parse (greenhill_diameter.get_text ()) ;
+			g.length = double.parse (greenhill_length.get_text ()) ;
+			g.specific_gravity = double.parse (greenhill_spec_gravity.get_text ()) ;
+			g.C = int.parse (greenhill_c.get_text()) ;
+
+			twist_results.set_text(g.calc_twist().to_string());
+		 }
+	  }
+
+/**
+ * Populate the drag field with the demostration values
+ */
 	  private void populate_demo_selected() {
 		 setExampleCalculation () ;
 	  }
 
-	  /**
-	   * Quit application
-	   */
+/**
+ * Quit application
+ */
 	  private void quit_selected() {
 		 main_window.destroy () ;
 	  }
 
-	  /**
-	   * Show help browser
-	   */
+/**
+ * Show help browser
+ */
 	  private void help_selected() {
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
@@ -504,9 +614,9 @@ namespace Balistica{
 		 }
 	  }
 
-	  /**
-	   * Show about dialog
-	   */
+/**
+ * Show about dialog
+ */
 	  private void about_selected() {
 		 string version ;
 
