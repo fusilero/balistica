@@ -35,7 +35,7 @@ namespace Balistica{
  *
  * From Geary by Yorba http://www.yorba.org/projects/geary/
  */
-   public File get_install_prefix_dir() {
+   private File get_install_prefix_dir() {
 	  return File.new_for_path (INSTALL_PREFIX) ;
    }
 
@@ -47,7 +47,7 @@ namespace Balistica{
  *
  * From Geary by Yorba http://www.yorba.org/projects/geary/
  */
-   public File ? get_install_dir ()
+   private File ? get_install_dir ()
    {
 	  File prefix_dir = get_install_prefix_dir () ;
 
@@ -64,9 +64,9 @@ namespace Balistica{
  *
  * From Geary by Yorba http://www.yorba.org/projects/geary/
  */
-   public File get_resource_directory() {
+   private File get_resource_directory() {
 	  if( get_install_dir () != null ){
-		 return get_install_dir ().get_child ("share").get_child ("passpad") ;
+		 return get_install_dir ().get_child ("share").get_child ("balistica") ;
 	  } else {
 		 return File.new_for_path (SOURCE_ROOT_DIR) ;
 	  }
