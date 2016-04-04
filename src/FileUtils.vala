@@ -16,43 +16,10 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using Gtk ;
-
-extern const string _INSTALL_PREFIX ;
 extern const string _SOURCE_ROOT_DIR ;
 
 namespace Balistica{
-   public const string INSTALL_PREFIX = _INSTALL_PREFIX ;
    public const string SOURCE_ROOT_DIR = _SOURCE_ROOT_DIR ;
-
-   private File exec_dir ;
-
-/**
- * Find the install prefix directory
- *
- * @return The configure installation prefix directory, which does not imply it's installed
- * or that it's running from this directory.
- *
- * From Geary by Yorba http://www.yorba.org/projects/geary/
- */
-   private File get_install_prefix_dir() {
-	  return File.new_for_path (INSTALL_PREFIX) ;
-   }
-
-/**
- * Find the installation directory
- *
- * @return The installation directory, or null if we're running outside of the installation
- * directory.
- *
- * From Geary by Yorba http://www.yorba.org/projects/geary/
- */
-   private File ? get_install_dir ()
-   {
-	  File prefix_dir = get_install_prefix_dir () ;
-
-	  return exec_dir.has_prefix (prefix_dir) ? prefix_dir : null ;
-   }
 
 /**
  * Find the resource directory
@@ -65,11 +32,7 @@ namespace Balistica{
  * From Geary by Yorba http://www.yorba.org/projects/geary/
  */
    private File get_resource_directory() {
-	  if( get_install_dir () != null ){
-		 return get_install_dir ().get_child ("share").get_child ("balistica") ;
-	  } else {
-		 return File.new_for_path (SOURCE_ROOT_DIR) ;
-	  }
+	 return File.new_for_path (SOURCE_ROOT_DIR) ;
    }
 
 /**
