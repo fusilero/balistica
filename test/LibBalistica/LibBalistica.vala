@@ -40,7 +40,7 @@ public class LibBalisticaTests : Balistica.TestCase {
    public virtual void test_computation_unit() {
 	  LibBalistica.CompUnit unit = LibBalistica.CompUnit () {
 		 range = 5.1,
-		 path = 5.2,
+		 drop = 5.2,
 		 correction = 5.3,
 		 time = 5.4,
 		 windage_in = 5.5,
@@ -51,7 +51,7 @@ public class LibBalisticaTests : Balistica.TestCase {
 	  } ;
 
 	  assert (unit.range == 5.1) ;
-	  assert (unit.path == 5.2) ;
+	  assert (unit.drop == 5.2) ;
 	  assert (unit.correction == 5.3) ;
 	  assert (unit.time == 5.4) ;
 	  assert (unit.windage_in == 5.5) ;

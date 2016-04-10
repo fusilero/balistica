@@ -32,7 +32,7 @@ namespace Balistica{
  * From Geary by Yorba http://www.yorba.org/projects/geary/
  */
    private File get_resource_directory() {
-	 return File.new_for_path (SOURCE_ROOT_DIR) ;
+	  return File.new_for_path (SOURCE_ROOT_DIR) ;
    }
 
 /**

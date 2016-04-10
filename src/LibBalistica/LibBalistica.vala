@@ -48,7 +48,7 @@ namespace LibBalistica{
  */
    public struct CompUnit {
 	  public double range ;
-	  public double path ;
+	  public double drop ;
 	  public double correction ;
 	  public double time ;
 	  public double windage_in ;

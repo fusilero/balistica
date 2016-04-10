@@ -36,6 +36,7 @@ namespace LibBalistica{
 		 double VPw = 4e-6 * Math.pow (Temperature, 3) - 0.0004 * Math.pow (Temperature, 2) + 0.0234 * Temperature - 0.2517 ;
 		 double FRH = 0.995 * (Pressure / (Pressure - (0.3783) * (RelativeHumidity) * VPw)) ;
 
+		 debug ("Standardized Refraction: %f", FRH) ;
 		 return FRH ;
 	  }
 
@@ -47,7 +48,10 @@ namespace LibBalistica{
 	   * @return Standardized pressure
 	   */
 	  private static inline double calc_fp(double Pressure) {
-		 return (Pressure - STANDARD_PRESSURE) / STANDARD_PRESSURE ;
+		 double FP = (Pressure - STANDARD_PRESSURE) / STANDARD_PRESSURE ;
+		 debug ("Standardized Pressure: %f", FP) ;
+
+		 return FP ;
 	  }
 
 	  /**
@@ -68,6 +72,7 @@ namespace LibBalistica{
 		 // converted to Rankine
 		 double FT = (Temp - Tstd) / Temperature.FahrenheitToRankine (Tstd) ;
 
+		 debug ("Standardized Temperature: %f", FT) ;
 		 return FT ;
 	  }
 
@@ -81,6 +86,7 @@ namespace LibBalistica{
 	  private static double calc_fa(double Altitude) {
 		 double fa = -4e-15 * Math.pow (Altitude, 3) + 4e-10 * Math.pow (Altitude, 2) - 3e-5 * Altitude + 1 ;
 
+		 debug ("Standardized altitude: %f", (1 / fa)) ;
 		 return (1 / fa) ;
 	  }
 
@@ -106,6 +112,8 @@ namespace LibBalistica{
 
 		 // Calculate the atmospheric correction factor
 		 double CD = (FA * (1 + FT - FP) * FR) ;
+		 debug ("Calculated Atmospheric Correction Factor: %f", CD) ;
+		 debug ("Atmospheric Correction Factor * Drag: %f", DragCoefficient * CD) ;
 
 		 return DragCoefficient * CD ;
 	  }

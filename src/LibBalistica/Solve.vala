@@ -30,24 +30,22 @@ namespace LibBalistica{
 	   *
 	   * @param DragFunction The drag function you wish to use for the solution (G1, G2, G3, G5, G6, G7, or G8)
 	   * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
-	   * @param Vi The projectile initial velocity.
-	   * @param SightHeight The height of the sighting system above the bore centerline.
-	   *              Most scopes are in the 1.5-2.0 inch range.
-	   * @param ShootingAngle The uphill or downhill shooting angle, in degrees.  Usually 0, but can be anything from
+	   * @param Vi The projectile's initial velocity.
+	   * @param SightHeight The height of the sighting system above the bore centerline. Most scopes are in the 1.5-2.0 inch range.
+	   * @param ShootingAngle The uphill or downhill shooting angle in degrees. Usually 0, but can be anything from
 	   *              90 (directly up), to -90 (directly down).
-	   * @param ZeroAngle The angle of the sighting system relative to the bore, in degrees.  This can be easily computed
-	   *              using the ZeroAngle() function documented above.
-	   * @param WindSpeed The wind velocity, in mi/hr
+	   * @param ZeroAngle The angle of the sighting system relative to the bore in degrees.
+	   * @param WindSpeed The wind velocity, in miles per hour.
 	   * @param WindAngle The angle at which the wind is approaching from, in degrees.
 	   *              0 degrees is a straight headwind
 	   *              90 degrees is from right to left
 	   *              180 degrees is a straight tailwind
 	   *              -90 or 270 degrees is from left to right.
-	   * @return An integer representing the maximum valid range of the solution.  This also indicates the maximum
-	   *         number of rows in the solution matrix, and should not be exceeded.
+	   * @param Zero The range in yards away from the muzzle at which the rifle is zeroed.
+	   * @return A list of computational units that were calculated over the entire estimated range of the projectile.
 	   */
 	  public static Gee.LinkedList<LibBalistica.CompUnit ? > SolveAll(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ShootingAngle,
-																	  double ZeroAngle, double WindSpeed, double WindAngle) {
+																	  double ZeroAngle, double WindSpeed, double WindAngle, double Zero) {
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
@@ -80,7 +78,7 @@ namespace LibBalistica{
 			dvx = -(vx / v) * dv ;
 			dvy = -(vy / v) * dv ;
 
-			// Compute velocity, including the resolved gravity vectors.
+			// Compute velocity, including the resolved gravity vectors
 			vx = vx + dt * dvx + dt * Gx ;
 			vy = vy + dt * dvy + dt * Gy ;
 
@@ -88,7 +86,7 @@ namespace LibBalistica{
 			   double wind_tmp = Windage.CalcWindage (crosswind, Vi, x, t + dt) ;
 			   CompUnit unit = CompUnit () {
 				  range = x / 3,
-				  path = y * 12,
+				  drop = y * 12,
 				  correction = -Angle.RadianToMOA (Math.atan (y / x)),
 				  time = t + dt,
 				  windage_in = wind_tmp,
@@ -102,7 +100,7 @@ namespace LibBalistica{
 			   n++ ;
 			}
 
-			// Compute position based on average velocity.
+			// Compute position based on average velocity
 			x = x + dt * (vx + vx1) / 2 ;
 			y = y + dt * (vy + vy1) / 2 ;
 

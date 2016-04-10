@@ -477,10 +477,20 @@ namespace Balistica{
 		 v = double.parse (initial_velocity.get_text ()) ;
 		 sh = double.parse (sight_height.get_text ()) ;
 		 w = double.parse (projectile_weight.get_text ()) ;
-		 angle = double.parse (wind_angle.get_text ()) ;
+		 angle = double.parse (shooting_angle.get_text ()) ;
 		 zero = double.parse (zero_range.get_text ()) ;
 		 windspeed = double.parse (wind_velocity.get_text ()) ;
 		 windangle = double.parse (wind_angle.get_text ()) ;
+
+		 debug ("Calculation Name = %s", name) ;
+		 debug ("Ballistic Coefficent: %f", bc) ;
+		 debug ("Intial Velocity: %f", v) ;
+		 debug ("Sight Height: %f", sh) ;
+		 debug ("Projectile Weight: %f", w) ;
+		 debug ("Angle: %f", angle) ;
+		 debug ("Zero: %f", zero) ;
+		 debug ("Wind speed: %f", windspeed) ;
+		 debug ("Wind Angle: %f", windangle) ;
 
 		 // It doesn't make sense for any of the following variables
 		 // to be zero
@@ -509,6 +519,11 @@ namespace Balistica{
 			bar = double.parse (bar_press.get_text ()) ;
 			tp = double.parse (temp.get_text ()) ;
 			rh = double.parse (rela_humid.get_text ()) ;
+
+			debug ("Altitude: %f", alt) ;
+			debug ("Barometric Pressure: %f", bar) ;
+			debug ("Temperature: %f", tp) ;
+			debug ("Relative Humidty: %f", rh) ;
 		 }
 
 		 // Which version of the drag do they want to calculate?
@@ -543,11 +558,9 @@ namespace Balistica{
 		 drag_results.buffer.text += ("Wind Velocity: %.2f mph  Wind Direction: %.2f degrees\n").printf (lsln.getWindspeed (), lsln.getWindangle ()) ;
 		 drag_results.buffer.text += ("Altitude: %.2f ft  Barometer: %.2f in-Hg  Temperature: %.2f F  Relative Humidity: %.2f%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
 
-		 drag_results.buffer.text += "Range\tDrop\tDrop\tVelocity  Energy  Drift\tWindage\tTime\n" ;
-		 // drag_results.buffer.text += "(yards)\t(inches)\t(MOA)\t(ft/s)\t(ft-lb)\t(inches)\t(MOA)\t(s)\n" ;
+		 drag_results.buffer.text += "Range\tDropI\tDropM\tVelocity  Energy  Drift\tWindage\tTime\n" ;
 
-		 double r, p, m, wi, wm, t, e ;
-
+		 double r, d, m, wi, wm, t, e ;
 		 int max = lsln.getSolutionSize () ;
 		 if( max > 1000 ){
 			max = 1000 ;
@@ -565,7 +578,7 @@ namespace Balistica{
 
 		 for( int n = 0 ; n <= max ; n = n + step ){
 			r = lsln.getRange (n) ;
-			p = lsln.getPath (n) ;
+			d = lsln.getDrop (n) ;
 			m = lsln.getMOA (n) ;
 			v = lsln.getVelocity (n) ;
 			wi = lsln.getWindage (n) ;
@@ -573,7 +586,7 @@ namespace Balistica{
 			t = lsln.getTime (n) ;
 			e = lsln.getWeight () * v * v / 450436 ;
 
-			drag_results.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, p, m, v, e, wi, wm, t) ;
+			drag_results.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, d, m, v, e, wi, wm, t) ;
 		 }
 	  }
 

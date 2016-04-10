@@ -47,6 +47,8 @@ public class Balistica.Calculate : GLib.Object {
 
 	  double corrected_bc = LibBalistica.Atmosphere.atm_correct (bc, alt, bar, tp, rh) ;
 
+	  debug ("Corrected BC: %f", corrected_bc) ;
+
 	  switch( df ){
 	  case 1 :
 		 d = LibBalistica.DragFunction.G1 ;
@@ -76,11 +78,16 @@ public class Balistica.Calculate : GLib.Object {
 		 assert_not_reached () ;
 	  }
 
+	  debug ("Selected Drag Function: %s", d.to_string ()) ;
+
+
 	  // Find the zero angle of the bore relative to the sighting system
 	  zero_angle = LibBalistica.Zero.ZeroAngle (d, corrected_bc, v, sh, zero, 0) ;
+	  debug ("Zero Angle: %f", zero_angle) ;
 
 	  // Generate a solution
-	  solution = LibBalistica.Solve.SolveAll (d, corrected_bc, v, sh, angle, zero_angle, wspeed, wangle) ;
+	  solution = LibBalistica.Solve.SolveAll (d, corrected_bc, v, sh, angle, zero_angle, wspeed, wangle, zero) ;
+	  debug ("Solution Size: %d", solution.size) ;
 
 	  // If this succedes then we have a valid solution
 	  if( solution.size > 0 ){

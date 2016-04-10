@@ -229,9 +229,9 @@ namespace LibBalistica{
 	  /**
 	   * @param position
 	   *
-	   * @return The projectile path, in inches, relative to the line of sight.
+	   * @return The projectile drop, in inches, relative to the line of sight.
 	   */
-	  public double getPath(int position) {
+	  public double getDrop(int position) {
 		 CompUnit cu ;
 		 if( position > this._sln.size ){
 			cu = this._sln[this._sln.size] ;
@@ -239,7 +239,7 @@ namespace LibBalistica{
 			cu = this._sln[position] ;
 		 }
 
-		 return cu.path ;
+		 return cu.drop ;
 	  }
 
 	  /**
@@ -357,16 +357,6 @@ namespace LibBalistica{
 		 }
 
 		 return cu.horizontal_velocity ;
-	  }
-
-	  /**
-	   * @param yardage
-	   *
-	   * @return Calculated bullet drop in yards.
-	   */
-	  public double getDrop(int yardage) {
-		 // FIXME
-		 return 0 ;
 	  }
 
 	  /**

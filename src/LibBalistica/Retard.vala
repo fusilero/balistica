@@ -254,11 +254,15 @@ namespace LibBalistica{
 			break ;
 
 		 default:
-			break ;
+			assert_not_reached () ;
 		 }
 
+		 debug ("A: %f", A) ;
+		 debug ("M: %f", M) ;
+		 debug ("vp: %f", vp) ;
 		 if((A != -1) && (M != -1) && (vp > 0) && (vp < 10000)){
 			val = A * Math.pow (vp, M) / DragCoefficient ;
+			debug ("val: %f", val) ;
 			return val ;
 		 } else {
 			return -1 ;
