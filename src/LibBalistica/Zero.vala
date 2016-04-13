@@ -45,14 +45,15 @@ namespace LibBalistica{
 	  public static double ZeroAngle(DragFunction drag, double DragCoefficient, double Vi, double SightHeight, double ZeroRange, double yIntercept) {
 		 // Numerical Integration variables
 		 double t = 0 ;
-		 // The solution accuracy generally doesn't suffer if its within a foot for each second of time.
+		 // The solution accuracy generally doesn't suffer if its within a foot for each second of time
 		 double dt = 1 / Vi ;
 		 double y = -SightHeight / 12 ;
 		 double x = 0 ;
-		 // The change in the bore angle used to iterate in on the correct zero angle.
-		 double da ;
+		 // The change in the bore angle used to iterate in on the correct zero angle
+		 // Start with a very coarse angular change, to quickly solve even large launch angle problems
+		 double da = Angle.DegreeToRadian (14) ;
 
-		 // State variables for each integration loop.
+		 // State variables for each integration
 		 // Velocity
 		 double v = 0, vx = 0, vy = 0 ;
 		 // Last frame's velocity, used for computing average velocity
@@ -67,9 +68,6 @@ namespace LibBalistica{
 
 		 bool quit = false ;
 
-		 // Start with a very coarse angular change, to quickly solve even large launch angle problems.
-		 da = Angle.DegreeToRadian (14) ;
-
 		 // The general idea here is to start at 0 degrees elevation, and increase the elevation by
 		 // 14 degrees until we are above the correct elevation.  Then reduce the angular change by half,
 		 // and begin reducing the angle.  Once we are again below the correct angle, reduce the angular
@@ -81,23 +79,29 @@ namespace LibBalistica{
 			Gx = GRAVITY * Math.sin (angle) ;
 			Gy = GRAVITY * Math.cos (angle) ;
 
+			debug("vy: %f", vy);
+			debug("vx: %f", vx);
+			debug("Gx: %f", Gx);
+			debug("Gy: %f", Gy);			
+
 			for( t = 0, x = 0, y = -SightHeight / 12 ; x <= ZeroRange * 3 ; t = t + dt ){
 			   vy1 = vy ;
 			   vx1 = vx ;
 			   v = Math.pow ((Math.pow (vx, 2) + Math.pow (vy, 2)), 0.5) ;
+			   debug("v: %f", v);
 			   dt = 1 / v ;
 
 			   dv = Retard.CalcRetard (drag, DragCoefficient, v) ;
 			   dvy = -dv * vy / v * dt ;
 			   dvx = -dv * vx / v * dt ;
+			   debug("dvy: %f", dvy);
+			   debug("dvx: %f", dvx);
 
-			   vx = vx + dvx ;
-			   vy = vy + dvy ;
-			   vy = vy + dt * Gy ;
-			   vx = vx + dt * Gx ;
+			   vy += (dvy + dt * Gy) ;
+			   vx += (dvx + dt * Gx) ;
 
-			   x = x + dt * (vx + vx1) / 2 ;
-			   y = y + dt * (vy + vy1) / 2 ;
+			   x += (dt * (vx + vx1) / 2) ;
+			   y += (dt * (vy + vy1) / 2) ;
 
 			   // Break early to save CPU time if we won't find a solution
 			   if((vy < 0) && (y < yIntercept)){
@@ -130,6 +134,7 @@ namespace LibBalistica{
 		 }
 
 		 // Convert to degrees for return value.
+		 debug("angle: %f", angle);
 		 return Angle.RadianToDegree (angle) ;
 	  }
 
