@@ -23,8 +23,7 @@
 
 namespace LibBalistica{
    public class PBR : GLib.Object {
-	  private const int PBR_ERROR = 3 ;
-
+	  
 	  /**
 	   * Solves for the maximum Point Blank Range (PBR) and associated details
 	   *
@@ -38,21 +37,19 @@ namespace LibBalistica{
 	   *
 	   * @return ??
 	   */
-	  public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, int * result) {
+	  public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, out double[] result) {
+	     result = new double[4];	 
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
-		 double vx = 0, vx1 = 0, vy = 0, vy1 = 0 ;
+		 double vx, vx1, vy, vy1 ;
 		 double dv = 0, dvx = 0, dvy = 0 ;
-		 double x = 0, y = 0 ;
+		 double x, y ;
 		 double ShootingAngle = 0 ;
 		 double ZAngle = 0 ;
 		 double Step = 10 ;
 
 		 bool quit = true ;
-
-		 double zero = -1 ;
-		 double farzero = 0 ;
 
 		 bool vertex_keep = false ;
 		 double y_vertex = 0 ;
@@ -64,13 +61,13 @@ namespace LibBalistica{
 		 double max_pbr_range = 0 ;
 		 bool max_pbr_keep = false ;
 
-		 int tin100 = 0 ;
-		 bool keep = false ;
-		 bool keep2 = false ;
-		 bool tinkeep = false ;
+		 double tin100 = 0 ;
 
-		 double Gy = GRAVITY * Math.cos (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
-		 double Gx = GRAVITY * Math.sin (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
+		 double zero = -1 ;
+		 double farzero = 0 ;
+		 bool zero_keep, farzero_keep, tinkeep  ;
+
+		 double Gx,Gy ;
 
 		 while( quit ){
 			Gy = GRAVITY * Math.cos (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
@@ -80,7 +77,7 @@ namespace LibBalistica{
 			vy = Vi * Math.sin (Angle.DegreeToRadian (ZAngle)) ;
 
 			x = 0 ;
-			y = -1 * SightHeight / 12.0 ;
+			y = -SightHeight / 12.0 ;
 
 			min_pbr_keep = false ;
 			max_pbr_keep = false ;
@@ -88,15 +85,15 @@ namespace LibBalistica{
 
 			tin100 = 0 ;
 			tinkeep = false ;
-			keep = false ;
-			keep2 = false ;
+			zero_keep = false ;
+			farzero_keep = false ;
 
 			int n = 0 ;
 			for( t = 0 ; ; t = t + dt ){
 			   vx1 = vx ;
 			   vy1 = vy ;
 			   v = Math.pow (Math.pow (vx, 2) + Math.pow (vy, 2), 0.5) ;
-			   dt = 0.5 / v ;
+			   dt = 0.5 / Vi ;
 
 			   // Compute acceleration using the drag function retardation
 			   dv = Retard.CalcRetard (Drag, DragCoefficient, v) ;
@@ -111,14 +108,14 @@ namespace LibBalistica{
 			   x = x + dt * (vx + vx1) / 2.0 ;
 			   y = y + dt * (vy + vy1) / 2.0 ;
 
-			   if((y > 0) && (keep == false) && (vy >= 0)){
+			   if((y > 0) && (zero_keep == false) && (vy >= 0)){
 				  zero = x ;
-				  keep = true ;
+				  zero_keep = true ;
 			   }
 
-			   if((y < 0) && (keep2 == false) && (vy <= 0)){
+			   if((y < 0) && (farzero_keep == false) && (vy <= 0)){
 				  farzero = x ;
-				  keep2 = true ;
+				  farzero_keep = true ;
 			   }
 
 			   if(((12 * y) > -(VitalSize / 2)) && (min_pbr_keep == false)){
@@ -132,7 +129,7 @@ namespace LibBalistica{
 			   }
 
 			   if((x >= 300) && (tinkeep == false)){
-				  tin100 = (int) (100.0 * y * 12.0) ;
+				  tin100 = 100.0 * y * 12.0 ;
 				  tinkeep = true ;
 			   }
 
@@ -147,7 +144,7 @@ namespace LibBalistica{
 				  vertex_keep = true ;
 			   }
 
-			   if((keep == true) && (keep2 == true) && (min_pbr_keep == true) && (max_pbr_keep == true) && (vertex_keep == true) && (tinkeep == true)){
+			   if((zero_keep == true) && (farzero_keep == true) && (min_pbr_keep == true) && (max_pbr_keep == true) && (vertex_keep == true) && (tinkeep == true)){
 				  break ;
 			   }
 			}
@@ -172,13 +169,13 @@ namespace LibBalistica{
 		 }
 
 		 // Near zero
-		 result[0] = (int) (zero / 3) ;
+		 result[0] = zero / 3 ;
 		 // Far zero
-		 result[1] = (int) (farzero / 3) ;
+		 result[1] = farzero / 3 ;
 		 // Minimum PBR
-		 result[2] = (int) (min_pbr_range / 3) ;
+		 result[2] = min_pbr_range / 3;
 		 // Maximum PBR
-		 result[3] = (int) (max_pbr_range / 3) ;
+		 result[3] = max_pbr_range / 3 ;
 		 // Sight-in at 100 yards (in 100ths of an inch)
 		 result[4] = tin100 ;
 
