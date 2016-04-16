@@ -79,23 +79,23 @@ namespace LibBalistica{
 			Gx = GRAVITY * Math.sin (angle) ;
 			Gy = GRAVITY * Math.cos (angle) ;
 
-			debug("vy: %f", vy);
-			debug("vx: %f", vx);
-			debug("Gx: %f", Gx);
-			debug("Gy: %f", Gy);			
+			debug ("vy: %f", vy) ;
+			debug ("vx: %f", vx) ;
+			debug ("Gx: %f", Gx) ;
+			debug ("Gy: %f", Gy) ;
 
 			for( t = 0, x = 0, y = -SightHeight / 12 ; x <= ZeroRange * 3 ; t = t + dt ){
 			   vy1 = vy ;
 			   vx1 = vx ;
 			   v = Math.pow ((Math.pow (vx, 2) + Math.pow (vy, 2)), 0.5) ;
-			   debug("v: %f", v);
+			   debug ("v: %f", v) ;
 			   dt = 1 / v ;
 
 			   dv = Retard.CalcRetard (drag, DragCoefficient, v) ;
 			   dvy = -dv * vy / v * dt ;
 			   dvx = -dv * vx / v * dt ;
-			   debug("dvy: %f", dvy);
-			   debug("dvx: %f", dvx);
+			   debug ("dvy: %f", dvy) ;
+			   debug ("dvx: %f", dvx) ;
 
 			   vy += (dvy + dt * Gy) ;
 			   vx += (dvx + dt * Gx) ;
@@ -134,7 +134,7 @@ namespace LibBalistica{
 		 }
 
 		 // Convert to degrees for return value.
-		 debug("angle: %f", angle);
+		 debug ("angle: %f", angle) ;
 		 return Angle.RadianToDegree (angle) ;
 	  }
 

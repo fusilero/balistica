@@ -58,17 +58,17 @@ namespace LibBalistica{
 
 		 double Gy = GRAVITY * Math.cos (Angle.DegreeToRadian ((ShootingAngle + ZeroAngle))) ;
 		 double Gx = GRAVITY * Math.sin (Angle.DegreeToRadian ((ShootingAngle + ZeroAngle))) ;
-		 debug("Gy: %f", Gy);
-		 debug("Gx: %f", Gx);
+		 debug ("Gy: %f", Gy) ;
+		 debug ("Gx: %f", Gx) ;
 
 		 // Compute the horizontal and vertical components of velocity, respectively
 		 vx = Vi * Math.cos (Angle.DegreeToRadian (ZeroAngle)) ;
 		 vy = Vi * Math.sin (Angle.DegreeToRadian (ZeroAngle)) ;
-		 debug("vx: %f", vx);
-	     debug("vy: %f", vy);
+		 debug ("vx: %f", vx) ;
+		 debug ("vy: %f", vy) ;
 
 		 y = -SightHeight / 12 ;
-		 debug("y: %f", y);
+		 debug ("y: %f", y) ;
 
 		 Gee.LinkedList<LibBalistica.CompUnit ? > solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
 		 int n = 0 ;
@@ -108,15 +108,15 @@ namespace LibBalistica{
 			// Compute position based on average velocity
 			x = x + dt * (vx + vx1) / 2 ;
 			y = y + dt * (vy + vy1) / 2 ;
-			debug("Updated Postion x: %f", x);
-			debug("Updated Poistion y: %f", );
+			debug ("Updated Postion x: %f", x) ;
+			debug ("Updated Poistion y: %f", y) ;
 
 			if( Math.fabs (vy) > Math.fabs (3 * vx)){
 			   break ;
 			}
 
 			if( n >= BCOMP_MAX_RANGE + 1 ){
-			   debug("Reached max range for calculation");
+			   debug ("Reached max range for calculation") ;
 			   break ;
 			}
 		 }

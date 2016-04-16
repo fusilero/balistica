@@ -38,7 +38,7 @@ namespace LibBalistica{
 		 // Convert to inches per second
 		 double Vw = WindSpeed * 17.60 ;
 		 debug ("Vw: %f", Vw) ;
-		 
+
 		 return (Vw * (t - xx / Vi)) ;
 	  }
 
@@ -51,7 +51,7 @@ namespace LibBalistica{
 	   */
 	  internal static double HeadWind(double WindSpeed, double WindAngle) {
 		 double Wangle = Angle.DegreeToRadian (WindAngle) ;
-		 debug ("Headwind: %f", Math.cos(Wangle) * WindSpeed) ;
+		 debug ("Headwind: %f", Math.cos (Wangle) * WindSpeed) ;
 
 		 return (Math.cos (Wangle) * WindSpeed) ;
 	  }
@@ -70,7 +70,7 @@ namespace LibBalistica{
 	   */
 	  internal static double CrossWind(double WindSpeed, double WindAngle) {
 		 double Wangle = Angle.DegreeToRadian (WindAngle) ;
-		 debug ("Crosswind: %f", Math.sin(Wangle) * WindSpeed) ;
+		 debug ("Crosswind: %f", Math.sin (Wangle) * WindSpeed) ;
 
 		 return (Math.sin (Wangle) * WindSpeed) ;
 	  }
