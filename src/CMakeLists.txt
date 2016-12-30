@@ -25,7 +25,7 @@ set(LIB_BALISTICA_SRC
 # Vala
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.28.0" MINIMUM)
+ensure_vala_version("0.30.1" MINIMUM)
 include(ValaPrecompile)
 
 # Packages
@@ -34,7 +34,7 @@ set(TARGET_GLIB 2.40)
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
     gtk+-3.0>=3.10.8
-    gee-0.8>=0.16.1
+    gee-0.8>=0.18.1
 )
 
 set(LIB_BALISTICA_PACKAGES
