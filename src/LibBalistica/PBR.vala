@@ -23,7 +23,7 @@
 
 namespace LibBalistica{
    public class PBR : GLib.Object {
-	  
+
 	  /**
 	   * Solves for the maximum Point Blank Range (PBR) and associated details
 	   *
@@ -38,7 +38,7 @@ namespace LibBalistica{
 	   * @return ??
 	   */
 	  public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, out double[] result) {
-	     result = new double[4];	 
+	     result = new double[4];
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
