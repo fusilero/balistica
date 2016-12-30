@@ -15,14 +15,14 @@ endif()
 #
 # Version information
 #
-set(VERSION_MAJOR 0)
+set(VERSION_MAJOR 1)
 set(VERSION_MINOR 0)
-set(VERSION_REVISION 1)
+set(VERSION_REVISION 0)
 set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 
 # Anything other than "Release" will add the latest commit 
 # hash when built to the version string
-set(VERSION_DESC "Development")
+set(VERSION_DESC "Release")
 
 if(NOT ${VERSION_DESC} MATCHES "Development")
 	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION})

@@ -1,3 +1,9 @@
-For now please see the git commit log. 
-
-Thank you.
+Version 1.0
+============================
+* First offical release!
+* Converted to Vala from C
+* Brand new GUI
+* Creation of LibBalistica - a seperate library used for calculations
+* Added unit testing of libBalistica
+* Ability to calculate twist using Greenhill or Miller
+* Ability calculate drag using G1-8 models
