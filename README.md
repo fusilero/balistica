@@ -32,9 +32,7 @@ make && make test
 sudo make install
 ```
 
-## Optional: Install Valadoc documentation
-Optionally, if you'd like to generate the valadoc documentation
-
+## Optional: Valadoc documentation
 ### Ubuntu
 ```bash
 sudo apt-get install graphviz-dev
@@ -45,6 +43,7 @@ sudo apt-get install graphviz-dev
 sudo dnf install graphviz-devel
 ```
 
+### Build and Install
 ```bash
 git clone git://git.gnome.org/valadoc
 cd valadoc && ./autogen.sh && make 
