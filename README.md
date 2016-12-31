@@ -17,13 +17,6 @@ named after the Catalan word for "ballistics" in English. Enjoy!
 ```bash
 sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake
 ```
-Optionally, if you'd like to generate the valadoc documentation
-```bash
-sudo dnf install graphviz-devel
-git clone git://git.gnome.org/valadoc
-cd valadoc && ./autogen.sh && make 
-sudo make install
-```
 
 ### Ubuntu
 ```bash
@@ -36,6 +29,25 @@ cd balistica
 mkdir -p build && cd build
 ./../configure
 make && make test
+sudo make install
+```
+
+## Optional: Install Valadoc documentation
+Optionally, if you'd like to generate the valadoc documentation
+
+### Ubuntu
+```bash
+sudo apt-get install graphviz-dev
+```
+
+### Fedora
+```bash
+sudo dnf install graphviz-devel
+```
+
+```bash
+git clone git://git.gnome.org/valadoc
+cd valadoc && ./autogen.sh && make 
 sudo make install
 ```
 
