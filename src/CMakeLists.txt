@@ -34,7 +34,7 @@ set(TARGET_GLIB 2.40)
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=${TARGET_GLIB}.0
     gtk+-3.0>=3.10.8
-    gee-0.8>=0.18.1
+    gee-0.8>=0.18.0
 )
 
 set(LIB_BALISTICA_PACKAGES
