@@ -1,25 +1,25 @@
 set(MAIN_SRC
-    BalisticaApplication.vala
-    Calculate.vala
-    FileUtils.vala
-    Main.vala
+    balistica_application.vala
+    calculate.vala
+    file_utils.vala
+    main.vala
 )
 
 set(LIB_BALISTICA_SRC
-    LibBalistica/Atmosphere.vala
-    LibBalistica/Greenhill.vala
-    LibBalistica/LibBalistica.vala
-    LibBalistica/Miller.vala
-    LibBalistica/PBR.vala
-    LibBalistica/Retard.vala
-    LibBalistica/Solution.vala
-    LibBalistica/Solve.vala
-    LibBalistica/Windage.vala
-    LibBalistica/Zero.vala
+    libbalistica/atmosphere.vala
+    libbalistica/greenhill.vala
+    libbalistica/libbalistica.vala
+    libbalistica/miller.vala
+    libbalistica/pbr.vala
+    libbalistica/retard.vala
+    libbalistica/solution.vala
+    libbalistica/solve.vala
+    libbalistica/windage.vala
+    libbalistica/zero.vala
 
-    LibBalistica/conversion/Angle.vala
-    LibBalistica/conversion/Mass.vala
-    LibBalistica/conversion/Temperature.vala
+    libbalistica/conversion/angle.vala
+    libbalistica/conversion/mass.vala
+    libbalistica/conversion/temperature.vala
 )
 
 # Vala
@@ -42,7 +42,7 @@ set(LIB_BALISTICA_PACKAGES
 )
 
 set(BALISTICA_PACKAGES
-    gtk+-3.0
+    gtk+-3.0 gio-2.0
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -102,7 +102,7 @@ else()
 	)
 endif()
 
-# LibBalistica
+# libbalistica
 #################################################
 vala_precompile(LIB_BALISTICA_VALA_C lib-balistica
     ${LIB_BALISTICA_SRC}

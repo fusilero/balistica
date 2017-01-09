@@ -132,7 +132,7 @@ namespace Balistica{
 	   * Constructor
 	   */
 	  public Application () {
-		 GLib.Object (application_id: "org.gnome.balistica") ;
+		 GLib.Object (application_id: "org.gnome.balistica", flags : ApplicationFlags.HANDLES_OPEN) ;
 	  }
 
 	  /**
