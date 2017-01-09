@@ -38,7 +38,7 @@ namespace LibBalistica{
 	   * @return ??
 	   */
 	  public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, out double[] result) {
-	     result = new double[4];
+		 result = new double[4] ;
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
@@ -65,9 +65,9 @@ namespace LibBalistica{
 
 		 double zero = -1 ;
 		 double farzero = 0 ;
-		 bool zero_keep, farzero_keep, tinkeep  ;
+		 bool zero_keep, farzero_keep, tinkeep ;
 
-		 double Gx,Gy ;
+		 double Gx, Gy ;
 
 		 while( quit ){
 			Gy = GRAVITY * Math.cos (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
@@ -173,7 +173,7 @@ namespace LibBalistica{
 		 // Far zero
 		 result[1] = farzero / 3 ;
 		 // Minimum PBR
-		 result[2] = min_pbr_range / 3;
+		 result[2] = min_pbr_range / 3 ;
 		 // Maximum PBR
 		 result[3] = max_pbr_range / 3 ;
 		 // Sight-in at 100 yards (in 100ths of an inch)
