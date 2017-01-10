@@ -32,12 +32,6 @@ namespace Balistica{
     * available throughout the base of the application
     */
    public const string NAME = "balística" ;
-   public const string COPYRIGHT = "Copyright © 2012-2017 Steven Oliver" ;
-   public const string WEBSITE = "http://steveno.github.io/balistica/" ;
-
-   public const string DESKTOP_NAME = "balística" ;
-   public const string DESKTOP_GENERIC_NAME = "Ballistics Calculator" ;
-   public const string DESKTOP_KEYWORDS = "ballistics;calculator;" ;
 
    public const string VERSION_MAJOR = _VERSION_MAJOR ;
    public const string VERSION_MINOR = _VERSION_MINOR ;
@@ -144,13 +138,12 @@ namespace Balistica{
 		 settings = new GLib.Settings ("org.gnome.balistica") ;
 
 		 main_window = new Gtk.Window () ;
-		 Environment.set_application_name (NAME) ;
+		 Environment.set_application_name (Balistica.NAME) ;
 
 		 // Setup the main window
-		 main_window.title = "balística" ;
+		 main_window.title = Balistica.NAME ;
 		 main_window.window_position = Gtk.WindowPosition.CENTER ;
 		 main_window.set_default_size (850, 880) ;
-		 main_window.destroy.connect (Gtk.main_quit) ;
 
 		 // Add the main layout grid
 		 Gtk.Grid grid = new Gtk.Grid () ;
@@ -232,6 +225,11 @@ namespace Balistica{
 		 base.activate () ;
 
 		 main_window.present () ;
+	  }
+
+	  protected override void shutdown ()
+	  {
+		  base.shutdown ();
 	  }
 
 	  /**
@@ -744,10 +742,10 @@ namespace Balistica{
 		 Gtk.show_about_dialog (main_window,
 								"authors", Balistica.AUTHORS,
 								"comments", "An open source external ballistics calculator.",
-								"copyright", Balistica.COPYRIGHT,
+								"copyright", "Copyright \xc2\xa9 2012-2017 Steven Oliver",
 								"license-type", Gtk.License.GPL_3_0,
 								"program-name", Balistica.NAME,
-								"website", Balistica.WEBSITE,
+								"website", "http://steveno.github.io/balistica/",
 								"website-label", "balística Website",
 								"version", version) ;
 	  }
