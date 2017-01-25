@@ -17,7 +17,6 @@ endif()
 #
 set(VERSION_MAJOR 2)
 set(VERSION_MINOR 0)
-set(VERSION_REVISION 0)
 set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 
 # Anything other than "Release" will add the latest commit 
@@ -25,9 +24,9 @@ set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 set(VERSION_DESC "Development")
 
 if(NOT ${VERSION_DESC} MATCHES "Development")
-	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION})
+	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR})
 else()
-	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REVISION}-${VERSION_COMMIT})
+	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}-${VERSION_COMMIT})
 endif()
 
 #
@@ -91,9 +90,12 @@ add_custom_target(
 	COMMAND git archive --prefix=${ARCHIVE_BASE_NAME}/ HEAD	| xz -z > ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME}
 		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 	
-	COMMAND	sha512sum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME} > ${CMAKE_BINARY_DIR}/balistica-${VERSION}-checksum 
+        COMMAND md5sum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME} >> ${CMAKE_BINARY_DIR}/balistica-${VERSION}-checksum
+	COMMAND	sha1sum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME} >> ${CMAKE_BINARY_DIR}/balistica-${VERSION}-checksum
+	COMMAND	sha256sum ${CMAKE_BINARY_DIR}/${ARCHIVE_FULL_NAME} >> ${CMAKE_BINARY_DIR}/balistica-${VERSION}-checksum
 )
 
+add_subdirectory(data)
 add_subdirectory(help)
 add_subdirectory(sql)
 add_subdirectory(src)

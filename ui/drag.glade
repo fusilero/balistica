@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.19.0 
+<!-- Generated with glade 3.18.3 
 
-Copyright (C) 2016 Steven Oliver
+Copyright (C) 2017 Steven Oliver
 
 This file is part of balistica.
 
@@ -26,7 +26,7 @@ Author: Steven Oliver
   <!-- interface-license-type gplv3 -->
   <!-- interface-name balistica -->
   <!-- interface-description An open source external balistics software package. -->
-  <!-- interface-copyright 2016 Steven Oliver -->
+  <!-- interface-copyright 2017 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
   <object class="GtkRadioButton" id="radgrpDragFunc">
     <property name="label" translatable="yes">radiobutton</property>
@@ -696,11 +696,10 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">10</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
@@ -709,7 +708,18 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_left">10</property>
+              </object>
+              <packing>
+                <property name="left_attach">3</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btnExportResults">
+                <property name="label" translatable="yes">Export Results</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -717,10 +727,16 @@ Author: Steven Oliver
               </packing>
             </child>
             <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
+              <object class="GtkButton" id="btnCalcPBR">
+                <property name="label" translatable="yes">Calculate PBR</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">3</property>
+              </packing>
             </child>
             <child>
               <placeholder/>

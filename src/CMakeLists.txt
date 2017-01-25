@@ -53,7 +53,6 @@ set(CFLAGS
     ${DEPS_CFLAGS_OTHER}
     -D_VERSION_MAJOR=\"${VERSION_MAJOR}\"
     -D_VERSION_MINOR=\"${VERSION_MAJOR}\"
-    -D_VERSION_REVISION=\"${VERSION_REVISION}\"
     -D_VERSION_COMMIT=\"${VERSION_COMMIT}\"
     -D_VERSION_DESC=\"${VERSION_DESC}\"
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
@@ -135,22 +134,22 @@ if(VALADOC_FOUND)
     foreach(pkg ${LIB_BALISTICA_PACKAGES})
         list(APPEND valadoc_pkg_opts "--pkg=${pkg}")
     endforeach(pkg ${LIB_BALISTICA_PACKAGES})
-    
+
     include(FindValadoc)
     add_custom_target(
         valadoc
         WORKING_DIRECTORY
         ${CMAKE_SOURCE_DIR}/src
     COMMAND
-        ${VALADOC_EXECUTABLE} 
-        --force 
-        --no-protected 
-        --target-glib=${TARGET_GLIB} 
-        -b ${CMAKE_CURRENT_SOURCE_DIR} 
-        -o ${CMAKE_SOURCE_DIR}/valadoc 
-        --package-name=lib-balistica 
-        ${LIB_BALISTICA_SRC} 
+        ${VALADOC_EXECUTABLE}
+        --verbose --force --deps
+        --package-name=lib-balistica
+        --package-version=${VERSION}
+        --target-glib=${TARGET_GLIB}
+        -b ${CMAKE_CURRENT_SOURCE_DIR}
+        -o ${CMAKE_SOURCE_DIR}/valadoc
         ${valadoc_pkg_opts}
+        ${LIB_BALISTICA_SRC}
     )
 endif()
 

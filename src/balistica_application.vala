@@ -19,7 +19,6 @@
 // Defined by cmake build script.
 extern const string _VERSION_MAJOR ;
 extern const string _VERSION_MINOR ;
-extern const string _VERSION_REVISION ;
 extern const string _VERSION_COMMIT ;
 extern const string _VERSION_DESC ;
 
@@ -35,7 +34,6 @@ namespace Balistica{
 
    public const string VERSION_MAJOR = _VERSION_MAJOR ;
    public const string VERSION_MINOR = _VERSION_MINOR ;
-   public const string VERSION_REVISION = _VERSION_REVISION ;
    public const string VERSION_COMMIT = _VERSION_COMMIT ;
    public const string VERSION_DESC = _VERSION_DESC ;
 
@@ -74,10 +72,13 @@ namespace Balistica{
 
 	  // Drag calculation results
 	  private Gtk.TextView drag_results ;
+	  private LibBalistica.Solution lsln ;
 
 	  // Drag calculation Buttons
 	  private Gtk.Button reset_drag ;
 	  private Gtk.Button solve_drag ;
+	  private Gtk.Button export_results ;
+	  private Gtk.Button calc_pbr ;
 
 	  // Radio buttons for drag functions
 	  private Gtk.RadioButton rad_g1 ;
@@ -143,7 +144,9 @@ namespace Balistica{
 		 // Setup the main window
 		 main_window.title = Balistica.NAME ;
 		 main_window.window_position = Gtk.WindowPosition.CENTER ;
-		 main_window.set_default_size (850, 880) ;
+
+		 // width x height
+		 main_window.set_default_size (735, 750) ;
 
 		 // Add the main layout grid
 		 Gtk.Grid grid = new Gtk.Grid () ;
@@ -227,11 +230,6 @@ namespace Balistica{
 		 main_window.present () ;
 	  }
 
-	  protected override void shutdown ()
-	  {
-		  base.shutdown ();
-	  }
-
 	  /**
 	   * Connect the GUI elements to our code so we can play with them
 	   */
@@ -311,6 +309,18 @@ namespace Balistica{
 		 reset_drag.clicked.connect (() => {
 			btnResetDrag_clicked () ;
 		 }) ;
+
+		 export_results = drag_builder.get_object ("btnExportResults") as Gtk.Button ;
+		 export_results.clicked.connect (() => {
+			btnExportResults_clicked () ;
+		 }) ;
+		 export_results.set_sensitive (false) ;
+
+		 calc_pbr = drag_builder.get_object ("btnCalcPBR") as Gtk.Button ;
+		 calc_pbr.clicked.connect (() => {
+			btnCalcPBR_clicked () ;
+		 }) ;
+		 calc_pbr.set_sensitive (false) ;
 
 		 // Setup twist entries & results
 		 miller_diameter = twist_builder.get_object ("txtMDiameter") as Gtk.Entry ;
@@ -408,6 +418,135 @@ namespace Balistica{
 		 drag_results.buffer.text = "" ;
 		 rad_g1.active = true ;
 		 rad_s10.active = true ;
+
+		 export_results.set_sensitive (false) ;
+		 calc_pbr.set_sensitive (false) ;
+	  }
+
+	  /**
+	   * Display popup to calculate Point Blank Range (PBR)
+	   */
+	  public void btnCalcPBR_clicked() {
+
+	  }
+
+	  /**
+	   * Export the drag results to HTML
+	   */
+	  public void btnExportResults_clicked() {
+		 if( this.lsln == null ){
+			display_error ("Cannot export an empty drag solution", null) ;
+			return ;
+		 }
+
+		 // Create a save as dialog
+		 Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
+																		this.main_window,
+																		Gtk.FileChooserAction.SAVE,
+																		"_Cancel",
+																		Gtk.ResponseType.CANCEL,
+																		"_Save",
+																		Gtk.ResponseType.ACCEPT) ;
+
+		 // Filter to only HTML documents
+		 Gtk.FileFilter filter = new Gtk.FileFilter () ;
+		 save_dialog.set_filter (filter) ;
+		 filter.add_mime_type ("text/html") ;
+
+		 GLib.File ? file ;
+		 file = null ;
+
+		 // Confirm if the user wants to overwrite
+		 save_dialog.set_do_overwrite_confirmation (true) ;
+		 save_dialog.set_modal (true) ;
+		 if( file != null ){
+			try {
+			   (save_dialog as Gtk.FileChooser).set_file (file) ;
+			} catch ( GLib.Error err ){
+			   display_error ("Error selecting file to save as", err) ;
+			   return ;
+			}
+		 }
+
+		 if( save_dialog.run () == Gtk.ResponseType.ACCEPT ){
+			file = save_dialog.get_file () ;
+
+			// Write out the file
+			try {
+			   var file_stream = file.create (FileCreateFlags.NONE) ;
+			   var data_stream = new DataOutputStream (file_stream) ;
+			   data_stream.put_string ("<!DOCTYPE html>\n") ;
+			   data_stream.put_string ("<html>\n<head>\n<meta charset=\"UTF-8\">\n<title></title>\n") ;
+			   data_stream.put_string ("<style type=\"text/css\"> table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 10px; }</style>") ;
+			   data_stream.put_string ("</head>\n<body>\n") ;
+
+			   data_stream.put_string ("<table>\n") ;
+			   data_stream.put_string (("<tr>\n<td><b>Drag Coefficient:</b> %.2f</td>\n<td><b>Projectile Weight:</b> %.2f</td>\n").printf (lsln.getBc (), lsln.getWeight ())) ;
+			   data_stream.put_string ("</tr>\n<tr>\n") ;
+			   data_stream.put_string (("<td><b>Initial Velocity:</b> %.2f ft/s</td>\n<td><b>Zero Range:</b> %.2f yards</td>\n<td><b>Shooting Angle:</b> %f.2f degress</td>\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ())) ;
+			   data_stream.put_string ("</tr>\n<tr>\n") ;
+			   data_stream.put_string (("<td><b>Wind Velocity:</b> %.2f mph</td>\n<td><b>Wind Direction:</b> %.2f degress</td>\n").printf (lsln.getWindspeed (), lsln.getWindangle ())) ;
+			   data_stream.put_string ("</tr>\n<tr>\n") ;
+			   data_stream.put_string (("<td><b>Altitude:</b> %.2f ft</td>\n<td><b>Barometer:</b> %2f in-Hg</td>\n<td><b>Temperature:</b> %2f F</td>\n<td><b>Relative Humidity:</b> %.2F%%</td>\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ())) ;
+			   data_stream.put_string ("</table>\n") ;
+
+			   data_stream.put_string ("<table width=560>\n") ;
+			   data_stream.put_string ("<tr>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Range (yards)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Drop (inches)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Drop (MOA)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Velocity (ft/s)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Energy (ft-lb)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Winddrift (inches)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Windage (MOA)</b></th>\n") ;
+			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Time (s)</b></th>\n") ;
+			   data_stream.put_string ("</tr>\n") ;
+
+			   int max = lsln.getSolutionSize () ;
+			   if( max > 1000 ){
+				  max = 1000 ;
+			   }
+
+			   // The user can pick how many steps of the calculation they want to see
+			   int step = 1 ;
+			   if( rad_s10.get_active ()){
+				  step = 10 ;
+			   } else if( rad_s50.get_active ()){
+				  step = 50 ;
+			   } else if( rad_s100.get_active ()){
+				  step = 100 ;
+			   }
+
+			   double r, d, m, wi, wm, t, e ;
+			   double v = double.parse (initial_velocity.get_text ()) ;
+			   for( int n = 0 ; n <= max ; n = n + step ){
+				  r = lsln.getRange (n) ;
+				  d = lsln.getDrop (n) ;
+				  m = lsln.getMOA (n) ;
+				  v = lsln.getVelocity (n) ;
+				  wi = lsln.getWindage (n) ;
+				  wm = lsln.getWindageMOA (n) ;
+				  t = lsln.getTime (n) ;
+				  e = lsln.getWeight () * v * v / 450436 ;
+
+				  data_stream.put_string ("<tr>\n") ;
+				  data_stream.put_string (("<td>%.0f</td><td>%.2f</td><td>%.2f</td><td>%.0f</td><td>%.0f</td><td>%.2f</td><td>%.2f</td><td>%.2f</td>\n").printf (r, d, m, v, e, wi, wm, t)) ;
+				  data_stream.put_string ("</tr>\n") ;
+			   }
+
+			   data_stream.put_string ("</table>\n") ;
+
+			   data_stream.put_string ("</body>\n</html>") ;
+			} catch ( GLib.Error err ){
+			   save_dialog.close () ;
+			   display_error ("Error creating HTML output", err) ;
+
+			   return ;
+			}
+		 }
+
+		 // We're done with the save dialog
+		 save_dialog.close () ;
 	  }
 
 	  /**
@@ -440,45 +579,31 @@ namespace Balistica{
 	   */
 	  public void btnSolveDrag_clicked() {
 		 // Name used to store the calculation
-		 string name = "" ;
+		 string name = calc_name.get_text () ;
+
 		 // Ballistic cofficient
-		 double bc = -1 ;
+		 double bc = double.parse (drag_coefficient.get_text ()) ;
+
 		 // Initial velocity (ft/s)
-		 double v = -1 ;
+		 double v = double.parse (initial_velocity.get_text ()) ;
+
 		 // Sight height over bore (inches)
-		 double sh = -1 ;
+		 double sh = double.parse (sight_height.get_text ()) ;
+
 		 // Projectile weight (grains)
-		 double w = -1 ;
+		 double w = double.parse (projectile_weight.get_text ()) ;
+
 		 // Shooting Angle (degrees)
-		 double angle = -1 ;
+		 double angle = double.parse (shooting_angle.get_text ()) ;
+
 		 // Zero range of the rifle (yards)
-		 double zero = -1 ;
+		 double zero = double.parse (zero_range.get_text ()) ;
+
 		 // Wind speed (mph)
-		 double windspeed = -1 ;
+		 double windspeed = double.parse (wind_velocity.get_text ()) ;
+
 		 // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
-		 double windangle = -1 ;
-
-		 // Altitude
-		 double alt = 0.0 ;
-		 // Barometeric pressure
-		 double bar = 29.53 ;
-		 // Temerature
-		 double tp = 59.0 ;
-		 // Relative Humidity
-		 double rh = 78.0 ;
-
-		 // Selected Drag Function
-		 int df ;
-
-		 name = calc_name.get_text () ;
-		 bc = double.parse (drag_coefficient.get_text ()) ;
-		 v = double.parse (initial_velocity.get_text ()) ;
-		 sh = double.parse (sight_height.get_text ()) ;
-		 w = double.parse (projectile_weight.get_text ()) ;
-		 angle = double.parse (shooting_angle.get_text ()) ;
-		 zero = double.parse (zero_range.get_text ()) ;
-		 windspeed = double.parse (wind_velocity.get_text ()) ;
-		 windangle = double.parse (wind_angle.get_text ()) ;
+		 double windangle = double.parse (wind_angle.get_text ()) ;
 
 		 debug ("Calculation Name = %s", name) ;
 		 debug ("Ballistic Coefficent: %f", bc) ;
@@ -494,7 +619,7 @@ namespace Balistica{
 		 // to be zero
 		 if((bc == 0) || (v == 0) || (sh == 0) || (w == 0) || (zero == 0)){
 			var drag_builder = new StringBuilder () ;
-			drag_builder.append ("The following fields must be positive values greater than 0!\n") ;
+			drag_builder.append ("The following fields must be positive values greater than 0\n") ;
 			drag_builder.append ("\n\tDrag Coefficient") ;
 			drag_builder.append ("\n\tProjectile Weight") ;
 			drag_builder.append ("\n\tInitial Velocity") ;
@@ -502,9 +627,17 @@ namespace Balistica{
 			drag_builder.append ("\n\tSight Height Over Bore\n") ;
 
 			display_error (drag_builder.str, null) ;
-
 			return ;
 		 }
+
+		 // Altitude
+		 double alt = 0.0 ;
+		 // Barometeric pressure
+		 double bar = 29.53 ;
+		 // Temerature
+		 double tp = 59.0 ;
+		 // Relative Humidity
+		 double rh = 78.0 ;
 
 		 if( enable_atmosphere.active ){
 			alt = double.parse (altitude.get_text ()) ;
@@ -517,6 +650,9 @@ namespace Balistica{
 			debug ("Temperature: %f", tp) ;
 			debug ("Relative Humidty: %f", rh) ;
 		 }
+
+		 // Selected Drag Function
+		 int df ;
 
 		 // Which version of the drag do they want to calculate?
 		 if( rad_g1.get_active ()){
@@ -533,14 +669,15 @@ namespace Balistica{
 			df = 8 ;
 		 }
 
-		 // Create a new solution object
-		 LibBalistica.Solution lsln = new LibBalistica.Solution () ;
+		 // Make sure we're working with a new solution object
+		 lsln = new LibBalistica.Solution () ;
 
 		 // Calculate the solution and populate the object
 		 lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 		 if( lsln.getSolutionSize () == -1 ){
-			drag_results.buffer.text = "ERROR creating solution results!" ;
+			display_error ("ERROR creating solution results", null) ;
+			return ;
 		 } else {
 			drag_results.buffer.text = ("") ;
 		 }
@@ -580,58 +717,9 @@ namespace Balistica{
 
 			drag_results.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, d, m, v, e, wi, wm, t) ;
 		 }
-	  }
 
-	  /**
-	   * Create FileChooserDialog in SAVE mode to save the HTML export
-	   */
-	  void btnSaveDragOutput(SimpleAction action, Variant ? parameter) {
-		 GLib.File ? file ;
-		 file = null ;
-
-		 // Create a save as dialog
-		 Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
-																		this as Gtk.Window,
-																		Gtk.FileChooserAction.SAVE,
-																		"_Cancel",
-																		Gtk.ResponseType.CANCEL,
-																		"_Save",
-																		Gtk.ResponseType.ACCEPT) ;
-
-		 // Filter to only HTML documents
-		 Gtk.FileFilter filter = new Gtk.FileFilter () ;
-		 save_dialog.set_filter (filter) ;
-		 filter.add_mime_type ("text/html") ;
-
-		 // Confirm if the user wants to overwrite
-		 save_dialog.set_do_overwrite_confirmation (true) ;
-		 save_dialog.set_modal (true) ;
-		 if( file != null ){
-			try {
-			   (save_dialog as Gtk.FileChooser).set_file (file) ;
-			} catch ( GLib.Error err ){
-			   display_error ("Error selecting file to save as", err) ;
-			}
-		 }
-
-		 if( save_dialog.run () == Gtk.ResponseType.ACCEPT ){
-			file = save_dialog.get_file () ;
-			this.export_drag_html (file) ;
-		 }
-	  }
-
-	  /**
-	   * Export the drag results as a webpage
-	   */
-	  public void export_drag_html(GLib.File file) {
-		 try {
-			var file_stream = file.create (FileCreateFlags.NONE) ;
-			var data_stream = new DataOutputStream (file_stream) ;
-
-			data_stream.put_string ("") ;
-		 } catch ( GLib.Error err ){
-			display_error ("Error creating HTML output", err) ;
-		 }
+		 export_results.set_sensitive (true) ;
+		 calc_pbr.set_sensitive (true) ;
 	  }
 
 	  /**
@@ -734,9 +822,9 @@ namespace Balistica{
 		 string version ;
 
 		 if( Balistica.VERSION_DESC == "Release" ){
-			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION ;
+			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR ;
 		 } else {
-			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "." + Balistica.VERSION_REVISION + "-" + Balistica.VERSION_COMMIT ;
+			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "-" + Balistica.VERSION_COMMIT ;
 		 }
 
 		 Gtk.show_about_dialog (main_window,
@@ -754,14 +842,15 @@ namespace Balistica{
 	   * Display an error dialog to the user
 	   */
 	  private void display_error(string error_msg, GLib.Error ? err) {
-		 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons ("Error", null,
-														  Gtk.DialogFlags.DESTROY_WITH_PARENT, "ERROR: ", Gtk.ResponseType.CLOSE, null) ;
+		 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons ("Error", this.main_window, Gtk.DialogFlags.DESTROY_WITH_PARENT, "OK", Gtk.ResponseType.CLOSE, null) ;
 		 dialog.response.connect (() => { dialog.destroy () ; }) ;
+
 		 if( err != null ){
 			dialog.get_content_area ().add (new Gtk.Label (error_msg + ": %s".printf (err.message))) ;
 		 } else {
 			dialog.get_content_area ().add (new Gtk.Label (error_msg)) ;
 		 }
+
 		 dialog.show_all () ;
 		 dialog.run () ;
 	  }
