@@ -476,16 +476,16 @@ namespace Balistica{
 			   var file_stream = file.create (FileCreateFlags.NONE) ;
 			   var data_stream = new DataOutputStream (file_stream) ;
 			   data_stream.put_string ("<!DOCTYPE html>\n") ;
-			   data_stream.put_string ("<html>\n<head>\n<meta charset=\"UTF-8\">\n<title></title>\n") ;
+			   data_stream.put_string (("<html>\n<head>\n<meta charset=\"UTF-8\">\n<title>%s</title>\n").printf(lsln.getName())) ;
 			   data_stream.put_string ("<style type=\"text/css\"> table, th, td { border: 1px solid black; border-collapse: collapse; } th, td { padding: 10px; }</style>") ;
 			   data_stream.put_string ("</head>\n<body>\n") ;
 
 			   data_stream.put_string ("<table>\n") ;
-			   data_stream.put_string (("<tr>\n<td><b>Drag Coefficient:</b> %.2f</td>\n<td><b>Projectile Weight:</b> %.2f</td>\n").printf (lsln.getBc (), lsln.getWeight ())) ;
+			   data_stream.put_string (("<tr>\n<td><b>Drag Coefficient:</b> %.2f</td>\n<td colspan=\"3\"><b>Projectile Weight:</b> %.2f</td>\n").printf (lsln.getBc (), lsln.getWeight ())) ;
 			   data_stream.put_string ("</tr>\n<tr>\n") ;
-			   data_stream.put_string (("<td><b>Initial Velocity:</b> %.2f ft/s</td>\n<td><b>Zero Range:</b> %.2f yards</td>\n<td><b>Shooting Angle:</b> %f.2f degress</td>\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ())) ;
+			   data_stream.put_string (("<td><b>Initial Velocity:</b> %.2f ft/s</td>\n<td><b>Zero Range:</b> %.2f yards</td>\n<td colspan=\"2\"><b>Shooting Angle:</b> %.2f degress</td>\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ())) ;
 			   data_stream.put_string ("</tr>\n<tr>\n") ;
-			   data_stream.put_string (("<td><b>Wind Velocity:</b> %.2f mph</td>\n<td><b>Wind Direction:</b> %.2f degress</td>\n").printf (lsln.getWindspeed (), lsln.getWindangle ())) ;
+			   data_stream.put_string (("<td><b>Wind Velocity:</b> %.2f mph</td>\n<td colspan=\"3\"><b>Wind Direction:</b> %.2f degress</td>\n").printf (lsln.getWindspeed (), lsln.getWindangle ())) ;
 			   data_stream.put_string ("</tr>\n<tr>\n") ;
 			   data_stream.put_string (("<td><b>Altitude:</b> %.2f ft</td>\n<td><b>Barometer:</b> %2f in-Hg</td>\n<td><b>Temperature:</b> %2f F</td>\n<td><b>Relative Humidity:</b> %.2F%%</td>\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ())) ;
 			   data_stream.put_string ("</table>\n") ;
