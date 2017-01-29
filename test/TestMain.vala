@@ -1,5 +1,5 @@
 /* Copyright (C) 2009 Julien Peeters
- * Copyright (C) 2016 Steven Oliver
+ * Copyright (C) 2016-2017 Steven Oliver
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

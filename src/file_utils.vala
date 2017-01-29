@@ -1,4 +1,4 @@
-/* Copyright 2013-2016 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2013-2017 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
