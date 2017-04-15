@@ -22,8 +22,6 @@ extern const string _VERSION_MINOR ;
 extern const string _VERSION_COMMIT ;
 extern const string _VERSION_DESC ;
 
-extern const string _GSETTINGS_DIR ;
-
 namespace Balistica{
 
    /**
@@ -36,8 +34,6 @@ namespace Balistica{
    public const string VERSION_MINOR = _VERSION_MINOR ;
    public const string VERSION_COMMIT = _VERSION_COMMIT ;
    public const string VERSION_DESC = _VERSION_DESC ;
-
-   public const string GSETTINGS_DIR = _GSETTINGS_DIR ;
 
    public const string[] AUTHORS =
    {
@@ -443,15 +439,17 @@ namespace Balistica{
 		 Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
 																		this.main_window,
 																		Gtk.FileChooserAction.SAVE,
-																		"_Cancel",
+																		"Cancel",
 																		Gtk.ResponseType.CANCEL,
-																		"_Save",
+																		"Save",
 																		Gtk.ResponseType.ACCEPT) ;
 
 		 // Filter to only HTML documents
 		 Gtk.FileFilter filter = new Gtk.FileFilter () ;
-		 save_dialog.set_filter (filter) ;
+		 filter.set_filter_name("HTML");
+		 filter.add_pattern("*.html");
 		 filter.add_mime_type ("text/html") ;
+		 save_dialog.add_filter (filter) ;
 
 		 GLib.File ? file ;
 		 file = null ;
@@ -459,17 +457,28 @@ namespace Balistica{
 		 // Confirm if the user wants to overwrite
 		 save_dialog.set_do_overwrite_confirmation (true) ;
 		 save_dialog.set_modal (true) ;
-		 if( file != null ){
-			try {
-			   (save_dialog as Gtk.FileChooser).set_file (file) ;
-			} catch ( GLib.Error err ){
-			   display_error ("Error selecting file to save as", err) ;
-			   return ;
-			}
-		 }
 
 		 if( save_dialog.run () == Gtk.ResponseType.ACCEPT ){
 			file = save_dialog.get_file () ;
+
+			// If the file already exists, delete it and write a new one
+			if (file.query_exists()) {
+				try {
+					file.delete();
+				} catch (Error err) {
+					display_error("Failed to overwrite existing file", err);
+					return;
+				}
+			}
+
+			if( file != null ){
+				try {
+				   	(save_dialog as Gtk.FileChooser).set_file (file) ;
+				} catch ( GLib.Error err ){
+			   		display_error ("Error selecting file to save as", err) ;
+			   		return ;
+				}
+		 	}
 
 			// Write out the file
 			try {
