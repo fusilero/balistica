@@ -444,6 +444,8 @@ namespace Balistica{
 																		"Save",
 																		Gtk.ResponseType.ACCEPT) ;
 
+		 save_dialog.select_multiple = false;
+
 		 // Filter to only HTML documents
 		 Gtk.FileFilter filter = new Gtk.FileFilter () ;
 		 filter.set_filter_name("HTML");
@@ -453,12 +455,17 @@ namespace Balistica{
 
 		 GLib.File ? file ;
 		 file = null ;
+		 string filename = "";
 
 		 // Confirm if the user wants to overwrite
 		 save_dialog.set_do_overwrite_confirmation (true) ;
 		 save_dialog.set_modal (true) ;
 
 		 if( save_dialog.run () == Gtk.ResponseType.ACCEPT ){
+			filename = save_dialog.get_filename ();
+			if ( !filename.has_suffix(".html")) {
+				save_dialog.set_current_name(filename + ".html");
+			}
 			file = save_dialog.get_file () ;
 
 			// If the file already exists, delete it and write a new one
@@ -471,6 +478,7 @@ namespace Balistica{
 				}
 			}
 
+			// Prevent null file errors
 			if( file != null ){
 				try {
 				   	(save_dialog as Gtk.FileChooser).set_file (file) ;
