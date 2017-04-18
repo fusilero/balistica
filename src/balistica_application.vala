@@ -119,6 +119,12 @@ namespace Balistica{
 	  private Gtk.Button reset_stability ;
 	  private Gtk.Button solve_stability ;
 
+	  // Struct used to hold calculation setup variables
+	  private struct calc_setup {
+		  public int max;
+		  public int step;
+	  }
+
 	  /**
 	   * Constructor
 	   */
@@ -427,6 +433,28 @@ namespace Balistica{
 	  }
 
 	  /**
+	   * Return some basic setup values for each calculation
+	   */
+	  private calc_setup setupCalcResults() {
+		  int max = lsln.getSolutionSize () ;
+		  if( max > 1000 ){
+			  max = 1000 ;
+		  }
+		  
+		  // The user can pick how many steps of the calculation they want to see
+		  int step = 1 ;
+		  if( rad_s10.get_active ()){
+			  step = 10 ;
+		  } else if( rad_s50.get_active ()){
+			  step = 50 ;
+		  } else if( rad_s100.get_active ()){
+			  step = 100 ;
+		  }
+
+		  return calc_setup() {max=max, step=step};
+	  }
+
+	  /**
 	   * Export the drag results to HTML
 	   */
 	  public void btnExportResults_clicked() {
@@ -519,24 +547,11 @@ namespace Balistica{
 			   data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Time (s)</b></th>\n") ;
 			   data_stream.put_string ("</tr>\n") ;
 
-			   int max = lsln.getSolutionSize () ;
-			   if( max > 1000 ){
-				  max = 1000 ;
-			   }
-
-			   // The user can pick how many steps of the calculation they want to see
-			   int step = 1 ;
-			   if( rad_s10.get_active ()){
-				  step = 10 ;
-			   } else if( rad_s50.get_active ()){
-				  step = 50 ;
-			   } else if( rad_s100.get_active ()){
-				  step = 100 ;
-			   }
+			   calc_setup setup = setupCalcResults();
 
 			   double r, d, m, wi, wm, t, e ;
 			   double v = double.parse (initial_velocity.get_text ()) ;
-			   for( int n = 0 ; n <= max ; n = n + step ){
+			   for( int n = 0 ; n <= setup.max ; n = n + setup.step ){
 				  r = lsln.getRange (n) ;
 				  d = lsln.getDrop (n) ;
 				  m = lsln.getMOA (n) ;
@@ -707,22 +722,10 @@ namespace Balistica{
 		 drag_results.buffer.text += "Range\tDropI\tDropM\tVelocity  Energy  Drift\tWindage\tTime\n" ;
 
 		 double r, d, m, wi, wm, t, e ;
-		 int max = lsln.getSolutionSize () ;
-		 if( max > 1000 ){
-			max = 1000 ;
-		 }
+ 
+		 calc_setup setup = setupCalcResults();
 
-		 // The user can pick how many steps of the calculation they want to see
-		 int step = 1 ;
-		 if( rad_s10.get_active ()){
-			step = 10 ;
-		 } else if( rad_s50.get_active ()){
-			step = 50 ;
-		 } else if( rad_s100.get_active ()){
-			step = 100 ;
-		 }
-
-		 for( int n = 0 ; n <= max ; n = n + step ){
+		 for( int n = 0 ; n <= setup.max ; n = n + setup.step ){
 			r = lsln.getRange (n) ;
 			d = lsln.getDrop (n) ;
 			m = lsln.getMOA (n) ;
