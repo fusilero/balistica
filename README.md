@@ -51,8 +51,6 @@ sudo make install
 ```
 
 ## Contributing
-[![Gitter chat](https://badges.gitter.im/steveno/balistica.png)](https://gitter.im/steveno/balistica)
-
 Please see [the contributing file](https://github.com/steveno/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
