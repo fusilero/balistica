@@ -44,6 +44,8 @@ namespace Balistica{
    public class Application : Gtk.Application {
 	  private GLib.Settings settings ;
 	  private Gtk.Window main_window ;
+	  private Balistica.PbrWindow pbr_window ;
+
 	  private Gtk.Builder drag_builder ;
 	  private Gtk.Builder twist_builder ;
 	  private Gtk.Builder stability_builder ;
@@ -429,7 +431,13 @@ namespace Balistica{
 	   * Display popup to calculate Point Blank Range (PBR)
 	   */
 	  public void btnCalcPBR_clicked() {
-
+		  if (pbr_window == null) {
+			  pbr_window = new PbrWindow(this.main_window);
+			  pbr_window.destroy.connect( () => {pbr_window = null;} );
+			  pbr_window.show_all();
+		  } else {
+			  pbr_window.present();
+		  }
 	  }
 
 	  /**
