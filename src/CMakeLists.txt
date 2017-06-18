@@ -172,7 +172,6 @@ OPTIONS
 include(GResource)
 GLIB_COMPILE_RESOURCES(BALISTICA_RESOURCES SOURCE ../ui/resources.xml)
 
-message(${BALISTICA_RESOURCES})
 add_executable(balistica ${BALISTICA_VALA_C} ${BALISTICA_RESOURCES})
 target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica)
 install(TARGETS balistica RUNTIME DESTINATION bin)
