@@ -180,11 +180,6 @@ add_custom_command(
         ${CMAKE_COMMAND} -E copy balistica ${CMAKE_BINARY_DIR}/
 )
 
-# This needs to be here and not in data/CMakeLists.txt in order to run in 
-# the build directory
-include(GSettings)
-add_schemas(balistica ${GSETTINGS_DIR} ${CMAKE_INSTALL_PREFIX})
-
 ## Make clean: remove copied files
 ##################################################
 set_property(
