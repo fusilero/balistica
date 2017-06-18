@@ -4,6 +4,7 @@ set(MAIN_SRC
     file_utils.vala
     main.vala
     pbr_window.vala
+    DragMain.vala
 )
 
 set(LIB_BALISTICA_SRC
@@ -165,9 +166,14 @@ CUSTOM_VAPIS
     "${CMAKE_BINARY_DIR}/src/lib-balistica.vapi"
 OPTIONS
     ${VALAC_OPTIONS}
+    --gresources ${CMAKE_SOURCE_DIR}/ui/resources.xml
 )
 
-add_executable(balistica ${BALISTICA_VALA_C})
+include(GResource)
+GLIB_COMPILE_RESOURCES(BALISTICA_RESOURCES SOURCE ../ui/resources.xml)
+
+message(${BALISTICA_RESOURCES})
+add_executable(balistica ${BALISTICA_VALA_C} ${BALISTICA_RESOURCES})
 target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 

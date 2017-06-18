@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -47,7 +47,7 @@ Author: Steven Oliver
     <property name="active">True</property>
     <property name="draw_indicator">True</property>
   </object>
-  <object class="GtkBox" id="drag_main">
+  <template class="BalisticaDragMain" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">7</property>
@@ -550,6 +550,7 @@ Author: Steven Oliver
             <property name="margin_top">4</property>
             <property name="xalign">0</property>
             <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="atmo_toggled" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -795,5 +796,5 @@ Author: Steven Oliver
         <property name="position">2</property>
       </packing>
     </child>
-  </object>
+  </template>
 </interface>
