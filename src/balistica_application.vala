@@ -45,8 +45,8 @@ namespace Balistica{
 	  private GLib.Settings settings ;
 	  private Gtk.Window main_window ;
 	  private Balistica.PbrWindow pbr_window ;
+	  private Balistica.DragMain drag_content ;
 
-	  private Gtk.Builder drag_builder ;
 	  private Gtk.Builder twist_builder ;
 	  private Gtk.Builder stability_builder ;
 
@@ -200,9 +200,7 @@ namespace Balistica{
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 
 		 // Create the drag page of the notebook
-		 drag_builder = Balistica.create_builder ("drag.glade") ;
-		 drag_builder.connect_signals (null) ;
-		 var drag_content = drag_builder.get_object ("drag_main") as Gtk.Box ;
+		 this.drag_content = new Balistica.DragMain ();
 		 notebook.append_page (drag_content, new Gtk.Label ("Drag")) ;
 
 		 // Create the twist page of the notebook
@@ -239,48 +237,31 @@ namespace Balistica{
 	   */
 	  public void connect_entries() {
 		 // Stored drag calculation's name
-		 calc_name = drag_builder.get_object ("txtName") as Gtk.Entry ;
+		 calc_name = drag_content.txtName;
 
 		 // Basic drag inputs
-		 drag_coefficient = drag_builder.get_object ("txtDrag_coefficient") as Gtk.Entry ;
-		 projectile_weight = drag_builder.get_object ("txtProjectile_weight") as Gtk.Entry ;
-		 initial_velocity = drag_builder.get_object ("txtIntial_velocity") as Gtk.Entry ;
-		 zero_range = drag_builder.get_object ("txtZero_range") as Gtk.Entry ;
-		 sight_height = drag_builder.get_object ("txtSight_height") as Gtk.Entry ;
-		 shooting_angle = drag_builder.get_object ("txtShooting_angle") as Gtk.Entry ;
-		 wind_velocity = drag_builder.get_object ("txtWind_velocity") as Gtk.Entry ;
-		 wind_angle = drag_builder.get_object ("txtWind_angle") as Gtk.Entry ;
+		 drag_coefficient = drag_content.txtDrag_coefficient;
+		 projectile_weight = drag_content.txtProjectile_weight;
+		 initial_velocity = drag_content.txtIntial_velocity;
+		 zero_range = drag_content.txtZero_range;
+		 sight_height = drag_content.txtSight_height;
+		 shooting_angle = drag_content.txtShooting_angle;
+		 wind_velocity = drag_content.txtWind_velocity;
+		 wind_angle = drag_content.txtWind_angle;
 
 		 // Setup our example drag calculation
 		 setExampleCalculation () ;
 
-		 // Checkbox to dis/en/able atmospheric corrections
-		 enable_atmosphere = drag_builder.get_object ("ckbAtmosCorr") as Gtk.CheckButton ;
-		 enable_atmosphere.toggled.connect (() => {
-			if( enable_atmosphere.active ){
-			   // checked
-			   altitude.set_sensitive (true) ;
-			   temp.set_sensitive (true) ;
-			   bar_press.set_sensitive (true) ;
-			   rela_humid.set_sensitive (true) ;
-			} else {
-			   // not checked
-			   altitude.set_sensitive (false) ;
-			   temp.set_sensitive (false) ;
-			   bar_press.set_sensitive (false) ;
-			   rela_humid.set_sensitive (false) ;
-			}
-		 }) ;
-
 		 // Atmospheric corrections
-		 altitude = drag_builder.get_object ("txtAltitude") as Gtk.Entry ;
-		 temp = drag_builder.get_object ("txtTemp") as Gtk.Entry ;
-		 bar_press = drag_builder.get_object ("txtBarPress") as Gtk.Entry ;
-		 rela_humid = drag_builder.get_object ("txtRelaHumid") as Gtk.Entry ;
+		 altitude = drag_content.txtAltitude;
+		 temp = drag_content.txtTemp;
+		 bar_press = drag_content.txtBarPress;
+		 rela_humid = drag_content.txtRelaHumid;
 
 		 // Set default values
 		 setDefaultAtmosphere () ;
 
+		 /*
 		 // Drag Calculations Results
 		 drag_results = drag_builder.get_object ("txtViewDragResults") as Gtk.TextView ;
 
@@ -380,6 +361,7 @@ namespace Balistica{
 
 		 // Default Twist calculation type
 		 rad_miller.active = true ;
+		 */
 
 		 // Stability fields
 		 miller_sta_diameter = stability_builder.get_object ("txtMDiameter") as Gtk.Entry ;

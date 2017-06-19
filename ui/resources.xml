@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/balistica">
+    <file>database.glade</file>
+    <file>drag.glade</file>
+    <file>pbr.glade</file>
+    <file>stability.glade</file>
+    <file>twist.glade</file>
+  </gresource>
+</gresources>
