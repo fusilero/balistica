@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 
+<!-- Generated with glade 3.18.3 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -345,7 +345,7 @@ Author: Steven Oliver
                         <property name="can_focus">False</property>
                         <property name="valign">start</property>
                         <child>
-                          <object class="GtkRadioButton" id="radG1">
+                          <object class="GtkRadioButton" id="rad_g1">
                             <property name="label" translatable="yes">G1</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -360,7 +360,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radG6">
+                          <object class="GtkRadioButton" id="rad_g6">
                             <property name="label" translatable="yes">G6</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -375,7 +375,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radG8">
+                          <object class="GtkRadioButton" id="rad_g8">
                             <property name="label" translatable="yes">G8</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -390,7 +390,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radG7">
+                          <object class="GtkRadioButton" id="rad_g7">
                             <property name="label" translatable="yes">G7</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -405,7 +405,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radG2">
+                          <object class="GtkRadioButton" id="rad_g2">
                             <property name="label" translatable="yes">G2</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -420,7 +420,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radG5">
+                          <object class="GtkRadioButton" id="rad_g5">
                             <property name="label" translatable="yes">G5</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -468,7 +468,7 @@ Author: Steven Oliver
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkRadioButton" id="radS10">
+                          <object class="GtkRadioButton" id="rad_s10">
                             <property name="label" translatable="yes">10</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -484,7 +484,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radS100">
+                          <object class="GtkRadioButton" id="rad_s100">
                             <property name="label" translatable="yes">100</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -500,7 +500,7 @@ Author: Steven Oliver
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkRadioButton" id="radS50">
+                          <object class="GtkRadioButton" id="rad_s50">
                             <property name="label" translatable="yes">50</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -697,6 +697,7 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="btnSolveDrag_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -709,6 +710,7 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="btnResetDrag_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -721,6 +723,7 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <signal name="clicked" handler="btnExportResults_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>

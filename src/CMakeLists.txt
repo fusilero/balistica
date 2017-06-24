@@ -1,5 +1,5 @@
 set(MAIN_SRC
-    balistica_application.vala
+    BalisticaApplication.vala
     calculate.vala
     file_utils.vala
     main.vala
