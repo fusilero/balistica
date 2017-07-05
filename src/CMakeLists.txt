@@ -1,6 +1,7 @@
 set(MAIN_SRC
     BalisticaApplication.vala
     calculate.vala
+	ErrorHandler.vala
     file_utils.vala
     main.vala
     pbr_window.vala

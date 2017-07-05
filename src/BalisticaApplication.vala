@@ -118,8 +118,8 @@ namespace Balistica{
 		 // width x height
 		 main_window.set_default_size (735, 750) ;
 
-		 // Add the main layout grid
-		 Gtk.Grid grid = new Gtk.Grid () ;
+		 // Add the main layout box
+		 Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
 
 		 // Add the menu bar across the top
 		 Gtk.MenuBar menubar = new Gtk.MenuBar () ;
@@ -160,7 +160,7 @@ namespace Balistica{
 		 menubar.add (item_file) ;
 		 menubar.add (item_help) ;
 
-		 grid.attach (menubar, 0, 0, 1, 1) ;
+		 box.pack_start (menubar, false, false, 0) ;
 
 		 // Add the notebook that will eventually hold everything else
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
@@ -180,10 +180,19 @@ namespace Balistica{
 		 stability_builder.connect_signals (null) ;
 		 var stability_content = stability_builder.get_object ("stability_main") as Gtk.Box ;
 		 notebook.append_page (stability_content, new Gtk.Label ("Stability")) ;
+		 box.pack_start (notebook, true, true, 0) ;
 
-		 // Attach the grid (with the notebook) the main window and roll
-		 grid.attach (notebook, 0, 1, 1, 1) ;
-		 main_window.add (grid) ;
+		 // Create and add the status bar
+		 Gtk.Statusbar bar = new Gtk.Statusbar () ;
+		 box.pack_start (bar, false, false, 0) ;
+
+		 ErrorHandler.get_default ().publish.connect ((err) => {
+			uint context_id = bar.get_context_id ("Error") ;
+			bar.push (context_id, err.message) ;
+		 }) ;
+
+		 // Attach the box (with the notebook) the main window and roll
+		 main_window.add (box) ;
 		 main_window.show_all () ;
 		 this.add_window (main_window) ;
 		 connect_entries () ;
@@ -391,7 +400,7 @@ namespace Balistica{
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			display_error ("Error showing help", err, this.main_window) ;
+			ErrorHandler.get_default ().publish (new IOError.FAILED ("Error showing help")) ;
 		 }
 	  }
 
@@ -416,23 +425,6 @@ namespace Balistica{
 								"website", "http://steveno.github.io/balistica/",
 								"website-label", "balística Website",
 								"version", version) ;
-	  }
-
-	  /**
-	   * Display an error dialog to the user
-	   */
-	  public static void display_error(string error_msg, GLib.Error ? err, Gtk.Window window) {
-		 Gtk.Dialog dialog = new Gtk.Dialog.with_buttons ("Error", window, Gtk.DialogFlags.DESTROY_WITH_PARENT, "OK", Gtk.ResponseType.CLOSE, null) ;
-		 dialog.response.connect (() => { dialog.destroy () ; }) ;
-
-		 if( err != null ){
-			dialog.get_content_area ().add (new Gtk.Label (error_msg + ": %s".printf (err.message))) ;
-		 } else {
-			dialog.get_content_area ().add (new Gtk.Label (error_msg)) ;
-		 }
-
-		 dialog.show_all () ;
-		 dialog.run () ;
 	  }
 
    }

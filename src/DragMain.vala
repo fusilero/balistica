@@ -112,6 +112,21 @@ public class Balistica.DragMain : Gtk.Box {
 	  this.btnCalcPBR.set_sensitive (false) ;
    }
 
+   void dialog_response(Gtk.Dialog dialog, int response_id) {
+	  switch( response_id ){
+	  case Gtk.ResponseType.OK:
+		 print ("*boom*\n") ;
+		 break ;
+	  case Gtk.ResponseType.CANCEL:
+		 print ("good choice\n") ;
+		 break ;
+	  case Gtk.ResponseType.DELETE_EVENT:
+		 print ("dialog closed or cancelled\n") ;
+		 break ;
+	  }
+	  dialog.destroy () ;
+   }
+
    /**
     * Solve the drag function
     */
@@ -156,16 +171,28 @@ public class Balistica.DragMain : Gtk.Box {
 
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
-	  if((bc == 0) || (v == 0) || (sh == 0) || (w == 0) || (zero == 0)){
-		 var drag_builder = new StringBuilder () ;
-		 drag_builder.append ("The following fields must be positive values greater than 0\n") ;
-		 drag_builder.append ("\n\tDrag Coefficient") ;
-		 drag_builder.append ("\n\tProjectile Weight") ;
-		 drag_builder.append ("\n\tInitial Velocity") ;
-		 drag_builder.append ("\n\tZero Range") ;
-		 drag_builder.append ("\n\tSight Height Over Bore\n") ;
+	  if( bc == 0 ){
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Drag Coefficient must be a positive value greater than 0")) ;
+		 return ;
+	  }
 
-		 // display_error (drag_builder.str, null) ;
+	  if( v == 0 ){
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Initial Velocity must be a positive value greater than 0")) ;
+		 return ;
+	  }
+
+	  if( sh == 0 ){
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Sight Height over Bore must be a positive value greater than 0")) ;
+		 return ;
+	  }
+
+	  if( w == 0 ){
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Projectile Weight must be a positive value greater than 0")) ;
+		 return ;
+	  }
+
+	  if( zero == 0 ){
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Zero Range must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
@@ -215,7 +242,7 @@ public class Balistica.DragMain : Gtk.Box {
 	  lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 	  if( lsln.getSolutionSize () == -1 ){
-		 // display_error ("ERROR creating solution results", null) ;
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Error creating solution results")) ;
 		 return ;
 	  } else {
 		 txtViewDragResults.buffer.text = ("") ;
@@ -255,7 +282,7 @@ public class Balistica.DragMain : Gtk.Box {
    [GtkCallback]
    public void btnExportResults_clicked() {
 	  if( this.lsln == null ){
-		 // display_error ("Cannot export an empty drag solution", null) ;
+		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Cannot export an empty drag solution")) ;
 		 return ;
 	  }
 
@@ -297,7 +324,7 @@ public class Balistica.DragMain : Gtk.Box {
 			try {
 			   file.delete () ;
 			} catch ( Error err ){
-			   // display_error ("Failed to overwrite existing file", err, this.main_window) ;
+			   ErrorHandler.get_default ().publish (new IOError.FAILED ("Failed to overwrite existing file")) ;
 			   return ;
 			}
 		 }
@@ -307,7 +334,7 @@ public class Balistica.DragMain : Gtk.Box {
 			try {
 			   (save_dialog as Gtk.FileChooser).set_file (file) ;
 			} catch ( GLib.Error err ){
-			   // display_error ("Error selecting file to save as", err, this.main_window) ;
+			   ErrorHandler.get_default ().publish (new IOError.FAILED ("Error selecting file to save as")) ;
 			   return ;
 			}
 		 }
@@ -367,7 +394,7 @@ public class Balistica.DragMain : Gtk.Box {
 			data_stream.put_string ("</body>\n</html>") ;
 		 } catch ( GLib.Error err ){
 			save_dialog.close () ;
-			// display_error ("Error creating HTML output", err, this.main_window) ;
+			ErrorHandler.get_default ().publish (new IOError.FAILED ("Error creating HTML output")) ;
 
 			return ;
 		 }
@@ -409,9 +436,9 @@ public class Balistica.DragMain : Gtk.Box {
 	  this.txtWind_angle.set_text ("0") ;
    }
 
-/**
- * Return some basic setup values for each calculation
- */
+   /**
+    * Return some basic setup values for each calculation
+    */
    private calc_setup setupCalcResults() {
 	  int max = lsln.getSolutionSize () ;
 	  if( max > 1000 ){
