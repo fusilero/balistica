@@ -5,7 +5,7 @@ set(MAIN_SRC
     file_utils.vala
     main.vala
     pbr_window.vala
-    DragMain.vala
+    DragBox.vala
 )
 
 set(LIB_BALISTICA_SRC

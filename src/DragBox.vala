@@ -1,5 +1,5 @@
 [GtkTemplate (ui = "/org/gnome/balistica/drag.glade")]
-public class Balistica.DragMain : Gtk.Box {
+public class Balistica.DragBox : Gtk.Box {
 
    // Struct used to hold calculation setup variables
    private struct calc_setup {
@@ -76,6 +76,13 @@ public class Balistica.DragMain : Gtk.Box {
    [GtkChild]
    public Gtk.RadioButton rad_s100 ;
 
+   public DragBox () {
+	  setDefaultAtmosphere () ;
+   }
+
+   /**
+    * Toggle the atomospheric correction fields
+    */
    [GtkCallback]
    public void atmo_toggled(Gtk.ToggleButton button) {
 	  var enable = button.active ;
@@ -110,21 +117,6 @@ public class Balistica.DragMain : Gtk.Box {
 
 	  this.btnExportResults.set_sensitive (false) ;
 	  this.btnCalcPBR.set_sensitive (false) ;
-   }
-
-   void dialog_response(Gtk.Dialog dialog, int response_id) {
-	  switch( response_id ){
-	  case Gtk.ResponseType.OK:
-		 print ("*boom*\n") ;
-		 break ;
-	  case Gtk.ResponseType.CANCEL:
-		 print ("good choice\n") ;
-		 break ;
-	  case Gtk.ResponseType.DELETE_EVENT:
-		 print ("dialog closed or cancelled\n") ;
-		 break ;
-	  }
-	  dialog.destroy () ;
    }
 
    /**
@@ -171,27 +163,27 @@ public class Balistica.DragMain : Gtk.Box {
 
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
-	  if( bc == 0 ){
+	  if( bc <= 0 ){
 		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Drag Coefficient must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
-	  if( v == 0 ){
+	  if( v <= 0 ){
 		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Initial Velocity must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
-	  if( sh == 0 ){
+	  if( sh <= 0 ){
 		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Sight Height over Bore must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
-	  if( w == 0 ){
+	  if( w <= 0 ){
 		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Projectile Weight must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
-	  if( zero == 0 ){
+	  if( zero <= 0 ){
 		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Zero Range must be a positive value greater than 0")) ;
 		 return ;
 	  }
@@ -402,13 +394,6 @@ public class Balistica.DragMain : Gtk.Box {
 
 	  // We're done with the save dialog
 	  save_dialog.close () ;
-   }
-
-   /**
-    * Populate the drag field with the demostration values
-    */
-   private void populate_demo_selected() {
-	  setExampleCalculation () ;
    }
 
    /**

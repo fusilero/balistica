@@ -45,7 +45,7 @@ namespace Balistica{
 	  private GLib.Settings settings ;
 	  public Gtk.Window main_window ;
 	  private Balistica.PbrWindow pbr_window ;
-	  private Balistica.DragMain drag_content ;
+	  private Balistica.DragBox drag_content ;
 
 	  private Gtk.Builder twist_builder ;
 	  private Gtk.Builder stability_builder ;
@@ -126,19 +126,9 @@ namespace Balistica{
 
 		 Gtk.MenuItem item_file = new Gtk.MenuItem.with_label ("File") ;
 		 Gtk.Menu filemenu = new Gtk.Menu () ;
-		 Gtk.MenuItem sub_item_demo = new Gtk.MenuItem.with_label ("Populate Demo") ;
-		 filemenu.add (sub_item_demo) ;
 		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
 		 filemenu.add (sub_item_quit) ;
 		 item_file.set_submenu (filemenu) ;
-
-		 sub_item_demo.activate.connect (() => {
-			// FIXME
-		 }) ;
-
-		 sub_item_quit.activate.connect (() => {
-			quit_selected () ;
-		 }) ;
 
 		 Gtk.MenuItem item_help = new Gtk.MenuItem.with_label ("Help") ;
 		 Gtk.Menu helpmenu = new Gtk.Menu () ;
@@ -149,6 +139,14 @@ namespace Balistica{
 		 helpmenu.add (sub_item_help) ;
 		 item_help.set_submenu (helpmenu) ;
 
+		 menubar.add (item_file) ;
+		 menubar.add (item_help) ;
+
+		 // Connect menu entries
+		 sub_item_quit.activate.connect (() => {
+			quit_selected () ;
+		 }) ;
+
 		 sub_item_help.activate.connect (() => {
 			help_selected () ;
 		 }) ;
@@ -157,16 +155,13 @@ namespace Balistica{
 			about_selected () ;
 		 }) ;
 
-		 menubar.add (item_file) ;
-		 menubar.add (item_help) ;
-
 		 box.pack_start (menubar, false, false, 0) ;
 
 		 // Add the notebook that will eventually hold everything else
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 
 		 // Create the drag page of the notebook
-		 this.drag_content = new Balistica.DragMain () ;
+		 this.drag_content = new Balistica.DragBox () ;
 		 notebook.append_page (drag_content, new Gtk.Label ("Drag")) ;
 
 		 // Create the twist page of the notebook
@@ -181,15 +176,6 @@ namespace Balistica{
 		 var stability_content = stability_builder.get_object ("stability_main") as Gtk.Box ;
 		 notebook.append_page (stability_content, new Gtk.Label ("Stability")) ;
 		 box.pack_start (notebook, true, true, 0) ;
-
-		 // Create and add the status bar
-		 Gtk.Statusbar bar = new Gtk.Statusbar () ;
-		 box.pack_start (bar, false, false, 0) ;
-
-		 ErrorHandler.get_default ().publish.connect ((err) => {
-			uint context_id = bar.get_context_id ("Error") ;
-			bar.push (context_id, err.message) ;
-		 }) ;
 
 		 // Attach the box (with the notebook) the main window and roll
 		 main_window.add (box) ;
@@ -302,6 +288,11 @@ namespace Balistica{
 		 solve_stability = stability_builder.get_object ("btnCalculate") as Gtk.Button ;
 		 solve_stability.clicked.connect (() => {
 			btnSolveStability_clicked () ;
+		 }) ;
+
+		 ErrorHandler.get_default ().publish.connect ((err) => {
+			// FIXME
+			// At some point this should log errors somewhere
 		 }) ;
 	  }
 
