@@ -28,7 +28,7 @@ Author: Steven Oliver
   <!-- interface-description An open source external balistics software package. -->
   <!-- interface-copyright 2017 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
-  <object class="GtkBox" id="stability_main">
+  <template class="BalisticaStabilityBox" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">7</property>
@@ -69,7 +69,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMDiameter">
+                  <object class="GtkEntry" id="diameter">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -81,7 +81,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMLength">
+                  <object class="GtkEntry" id="length">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -93,7 +93,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMass">
+                  <object class="GtkEntry" id="mass">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -105,7 +105,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtSafeValue">
+                  <object class="GtkEntry" id="safe_value">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -181,19 +181,20 @@ Author: Steven Oliver
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="results">
+          <object class="GtkGrid" id="grid_results">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
             <property name="row_homogeneous">True</property>
             <child>
-              <object class="GtkButton" id="btnCalculate">
+              <object class="GtkButton" id="btnSolve">
                 <property name="label" translatable="yes">Calculate</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="opacity">0.96862745098039216</property>
                 <property name="margin_top">6</property>
+                <signal name="clicked" handler="btnCalculateStability_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -207,6 +208,7 @@ Author: Steven Oliver
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="margin_top">6</property>
+                <signal name="clicked" handler="btnResetStability_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -214,7 +216,7 @@ Author: Steven Oliver
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="txtResult">
+              <object class="GtkEntry" id="results">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
@@ -263,5 +265,5 @@ Author: Steven Oliver
         <property name="position">0</property>
       </packing>
     </child>
-  </object>
+  </template>
 </interface>

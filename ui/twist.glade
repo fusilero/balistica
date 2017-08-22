@@ -37,7 +37,7 @@ Author: Steven Oliver
     <property name="active">True</property>
     <property name="draw_indicator">True</property>
   </object>
-  <object class="GtkBox" id="twist_main">
+  <template class="BalisticaTwistBox" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="margin_left">7</property>
@@ -76,7 +76,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtGDiameter">
+                  <object class="GtkEntry" id="gdiameter">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -88,7 +88,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtGLength">
+                  <object class="GtkEntry" id="glength">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -100,7 +100,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtSpecificGravity">
+                  <object class="GtkEntry" id="gspec_gravity">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -164,7 +164,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtC">
+                  <object class="GtkEntry" id="gc">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -215,7 +215,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMDiameter">
+                  <object class="GtkEntry" id="mdiameter">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -227,7 +227,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMLength">
+                  <object class="GtkEntry" id="mlength">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -239,7 +239,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtMass">
+                  <object class="GtkEntry" id="mmass">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -251,7 +251,7 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry" id="txtSafeValue">
+                  <object class="GtkEntry" id="msafe_value">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="max_length">15</property>
@@ -327,19 +327,20 @@ Author: Steven Oliver
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="results">
+          <object class="GtkGrid" id="grid_results">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
             <property name="row_homogeneous">True</property>
             <child>
-              <object class="GtkButton" id="btnCalculate">
+              <object class="GtkButton" id="btnSolve">
                 <property name="label" translatable="yes">Calculate</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="opacity">0.96862745098039216</property>
                 <property name="margin_top">6</property>
+                <signal name="clicked" handler="btnCalculateTwist_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -353,6 +354,7 @@ Author: Steven Oliver
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="margin_top">6</property>
+                <signal name="clicked" handler="btnResetTwist_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">3</property>
@@ -360,7 +362,7 @@ Author: Steven Oliver
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="txtResult">
+              <object class="GtkEntry" id="results">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="editable">False</property>
@@ -430,5 +432,5 @@ Author: Steven Oliver
         <property name="position">0</property>
       </packing>
     </child>
-  </object>
+  </template>
 </interface>

@@ -46,9 +46,9 @@ namespace Balistica{
 	  public Gtk.Window main_window ;
 	  private Balistica.PbrWindow pbr_window ;
 	  private Balistica.DragBox drag_content ;
+	  private Balistica.TwistBox twist_content ;
+	  private Balistica.StabilityBox stability_content ;
 
-	  private Gtk.Builder twist_builder ;
-	  private Gtk.Builder stability_builder ;
 
 	  // Drag calculation results
 	  private Gtk.TextView drag_results ;
@@ -62,36 +62,6 @@ namespace Balistica{
 
 	  // Radio buttons for calculation step size
 	  private Gtk.RadioButton rad_s10 ;
-
-	  // Twist fields
-	  private Gtk.Entry miller_diameter ;
-	  private Gtk.Entry miller_length ;
-	  private Gtk.Entry miller_mass ;
-	  private Gtk.Entry miller_safe_value ;
-	  private Gtk.Entry greenhill_diameter ;
-	  private Gtk.Entry greenhill_length ;
-	  private Gtk.Entry greenhill_spec_gravity ;
-	  private Gtk.Entry greenhill_c ;
-	  private Gtk.Entry twist_results ;
-
-	  // Twist buttons
-	  private Gtk.Button reset_twist ;
-	  private Gtk.Button solve_twist ;
-
-	  // Radio buttons for calculation step size
-	  private Gtk.RadioButton rad_greenhill ;
-	  private Gtk.RadioButton rad_miller ;
-
-	  // Stability fields
-	  private Gtk.Entry miller_sta_diameter ;
-	  private Gtk.Entry miller_sta_length ;
-	  private Gtk.Entry miller_sta_mass ;
-	  private Gtk.Entry miller_sta_safe_value ;
-	  private Gtk.Entry stability_results ;
-
-	  // Stability buttons
-	  private Gtk.Button reset_stability ;
-	  private Gtk.Button solve_stability ;
 
 	  /**
 	   * Constructor
@@ -164,17 +134,12 @@ namespace Balistica{
 		 this.drag_content = new Balistica.DragBox () ;
 		 notebook.append_page (drag_content, new Gtk.Label ("Drag")) ;
 
-		 // Create the twist page of the notebook
-		 twist_builder = Balistica.create_builder ("twist.glade") ;
-		 twist_builder.connect_signals (null) ;
-		 var twist_content = twist_builder.get_object ("twist_main") as Gtk.Box ;
+		 this.twist_content = new Balistica.TwistBox () ;
 		 notebook.append_page (twist_content, new Gtk.Label ("Twist")) ;
 
-		 // Create the stability page of the notebook
-		 stability_builder = Balistica.create_builder ("stability.glade") ;
-		 stability_builder.connect_signals (null) ;
-		 var stability_content = stability_builder.get_object ("stability_main") as Gtk.Box ;
+		 this.stability_content = new Balistica.StabilityBox () ;
 		 notebook.append_page (stability_content, new Gtk.Label ("Stability")) ;
+
 		 box.pack_start (notebook, true, true, 0) ;
 
 		 // Attach the box (with the notebook) the main window and roll
@@ -215,81 +180,6 @@ namespace Balistica{
 		 calc_pbr = drag_content.btnCalcPBR ;
 		 calc_pbr.set_sensitive (false) ;
 
-		 // Setup twist entries & results
-		 miller_diameter = twist_builder.get_object ("txtMDiameter") as Gtk.Entry ;
-		 miller_length = twist_builder.get_object ("txtMLength") as Gtk.Entry ;
-		 miller_mass = twist_builder.get_object ("txtMass") as Gtk.Entry ;
-		 miller_safe_value = twist_builder.get_object ("txtSafeValue") as Gtk.Entry ;
-
-		 greenhill_diameter = twist_builder.get_object ("txtGDiameter") as Gtk.Entry ;
-		 greenhill_length = twist_builder.get_object ("txtGLength") as Gtk.Entry ;
-		 greenhill_spec_gravity = twist_builder.get_object ("txtSpecificGravity") as Gtk.Entry ;
-		 greenhill_c = twist_builder.get_object ("txtC") as Gtk.Entry ;
-
-		 twist_results = twist_builder.get_object ("txtResult") as Gtk.Entry ;
-
-		 // Twist buttons
-		 reset_twist = twist_builder.get_object ("btnReset") as Gtk.Button ;
-		 reset_twist.clicked.connect (() => {
-			btnResetTwist_clicked () ;
-		 }) ;
-
-		 solve_twist = twist_builder.get_object ("btnCalculate") as Gtk.Button ;
-		 solve_twist.clicked.connect (() => {
-			btnSolveTwist_clicked () ;
-		 }) ;
-
-		 // Radio buttons for twist calculation type
-		 rad_miller = twist_builder.get_object ("radMiller") as Gtk.RadioButton ;
-		 rad_greenhill = twist_builder.get_object ("radGreenhill") as Gtk.RadioButton ;
-
-		 rad_miller.toggled.connect (() => {
-			miller_diameter.set_sensitive (true) ;
-			miller_length.set_sensitive (true) ;
-			miller_mass.set_sensitive (true) ;
-			miller_safe_value.set_sensitive (true) ;
-
-			greenhill_diameter.set_sensitive (false) ;
-			greenhill_length.set_sensitive (false) ;
-			greenhill_spec_gravity.set_sensitive (false) ;
-			greenhill_c.set_sensitive (false) ;
-		 }) ;
-
-		 rad_greenhill.toggled.connect (() => {
-			miller_diameter.set_sensitive (false) ;
-			miller_length.set_sensitive (false) ;
-			miller_mass.set_sensitive (false) ;
-			miller_safe_value.set_sensitive (false) ;
-
-			greenhill_diameter.set_sensitive (true) ;
-			greenhill_length.set_sensitive (true) ;
-			greenhill_spec_gravity.set_sensitive (true) ;
-			greenhill_c.set_sensitive (true) ;
-		 }) ;
-
-		 // Default Twist calculation type
-		 rad_miller.active = true ;
-
-
-		 // Stability fields
-		 miller_sta_diameter = stability_builder.get_object ("txtMDiameter") as Gtk.Entry ;
-		 miller_sta_length = stability_builder.get_object ("txtMLength") as Gtk.Entry ;
-		 miller_sta_mass = stability_builder.get_object ("txtMass") as Gtk.Entry ;
-		 miller_sta_safe_value = stability_builder.get_object ("txtSafeValue") as Gtk.Entry ;
-
-		 stability_results = stability_builder.get_object ("txtResult") as Gtk.Entry ;
-
-		 // Stability buttons
-		 reset_stability = stability_builder.get_object ("btnReset") as Gtk.Button ;
-		 reset_stability.clicked.connect (() => {
-			btnResetStability_clicked () ;
-		 }) ;
-
-		 solve_stability = stability_builder.get_object ("btnCalculate") as Gtk.Button ;
-		 solve_stability.clicked.connect (() => {
-			btnSolveStability_clicked () ;
-		 }) ;
-
 		 ErrorHandler.get_default ().publish.connect ((err) => {
 			// FIXME
 			// At some point this should log errors somewhere
@@ -307,74 +197,6 @@ namespace Balistica{
 		 } else {
 			pbr_window.present () ;
 		 }
-	  }
-
-	  /**
-	   * Reset the front end to prepare for a new twist calculation
-	   */
-	  public void btnResetTwist_clicked() {
-		 miller_diameter.set_text ("") ;
-		 miller_length.set_text ("") ;
-		 miller_mass.set_text ("") ;
-		 miller_safe_value.set_text ("") ;
-
-		 greenhill_diameter.set_text ("") ;
-		 greenhill_length.set_text ("") ;
-		 greenhill_spec_gravity.set_text ("") ;
-		 greenhill_c.set_text ("") ;
-
-		 twist_results.set_text ("") ;
-	  }
-
-	  /**
-	   * Solve the twist calculation for the selected formula
-	   */
-	  public void btnSolveTwist_clicked() {
-		 if( rad_miller.get_active ()){
-			LibBalistica.Miller m = new LibBalistica.Miller () ;
-
-			m.diameter = double.parse (miller_diameter.get_text ()) ;
-			m.length = double.parse (miller_length.get_text ()) ;
-			m.mass = double.parse (miller_mass.get_text ()) ;
-			m.safe_value = int.parse (miller_safe_value.get_text ()) ;
-
-			twist_results.set_text (m.calc_twist ().to_string ()) ;
-		 } else {
-			LibBalistica.Greenhill g = new LibBalistica.Greenhill () ;
-
-			g.diameter = double.parse (greenhill_diameter.get_text ()) ;
-			g.length = double.parse (greenhill_length.get_text ()) ;
-			g.specific_gravity = double.parse (greenhill_spec_gravity.get_text ()) ;
-			g.C = int.parse (greenhill_c.get_text ()) ;
-
-			twist_results.set_text (g.calc_twist ().to_string ()) ;
-		 }
-	  }
-
-	  /**
-	   * Reset the front end to prepare for a new stability calculation
-	   */
-	  public void btnResetStability_clicked() {
-		 miller_sta_diameter.set_text ("") ;
-		 miller_sta_length.set_text ("") ;
-		 miller_sta_mass.set_text ("") ;
-		 miller_sta_safe_value.set_text ("") ;
-
-		 stability_results.set_text ("") ;
-	  }
-
-	  /**
-	   * Solve the stability calculation
-	   */
-	  public void btnSolveStability_clicked() {
-		 LibBalistica.Miller m = new LibBalistica.Miller () ;
-
-		 m.diameter = double.parse (miller_sta_diameter.get_text ()) ;
-		 m.length = double.parse (miller_sta_length.get_text ()) ;
-		 m.mass = double.parse (miller_sta_mass.get_text ()) ;
-		 m.safe_value = int.parse (miller_sta_safe_value.get_text ()) ;
-
-		 stability_results.set_text (m.calc_stability ().to_string ()) ;
 	  }
 
 	  /**

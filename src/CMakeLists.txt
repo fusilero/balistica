@@ -6,6 +6,8 @@ set(MAIN_SRC
     main.vala
     pbr_window.vala
     DragBox.vala
+    TwistBox.vala
+    StabilityBox.vala
 )
 
 set(LIB_BALISTICA_SRC
