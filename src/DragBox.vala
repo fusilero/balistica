@@ -25,6 +25,7 @@ public class Balistica.DragBox : Gtk.Box {
 	  public int step ;
    }
 
+   // Holds our calculation results
    private LibBalistica.Solution lsln ;
 
    // Checkbox for atmospheric corrections
@@ -94,8 +95,16 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkChild]
    public Gtk.RadioButton rad_s100 ;
 
+   /**
+	* Constructor
+	*/
    public DragBox () {
 	  setDefaultAtmosphere () ;
+	  
+	  btnExportResults.set_sensitive (false) ;
+	  btnCalcPBR.set_sensitive (false) ;
+	  rad_g1.active = true ;
+	  rad_s10.active = true ;
    }
 
    /**
@@ -135,6 +144,17 @@ public class Balistica.DragBox : Gtk.Box {
 
 	  this.btnExportResults.set_sensitive (false) ;
 	  this.btnCalcPBR.set_sensitive (false) ;
+   }
+
+   /**
+    * Display the diaglog to solve the PBR
+    */
+   [GtkCallback]
+   public void btnCalcPBR_clicked() {
+	   var dialog = new Balistica.PbrDialog();
+
+	   dialog.destroy.connect(Gtk.main_quit);
+	   dialog.show_all();
    }
 
    /**

@@ -44,24 +44,9 @@ namespace Balistica{
    public class Application : Gtk.Application {
 	  private GLib.Settings settings ;
 	  public Gtk.Window main_window ;
-	  private Balistica.PbrWindow pbr_window ;
 	  private Balistica.DragBox drag_content ;
 	  private Balistica.TwistBox twist_content ;
 	  private Balistica.StabilityBox stability_content ;
-
-
-	  // Drag calculation results
-	  private Gtk.TextView drag_results ;
-
-	  // Drag calculation Buttons
-	  private Gtk.Button export_results ;
-	  private Gtk.Button calc_pbr ;
-
-	  // Radio buttons for drag functions
-	  private Gtk.RadioButton rad_g1 ;
-
-	  // Radio buttons for calculation step size
-	  private Gtk.RadioButton rad_s10 ;
 
 	  /**
 	   * Constructor
@@ -146,7 +131,10 @@ namespace Balistica{
 		 main_window.add (box) ;
 		 main_window.show_all () ;
 		 this.add_window (main_window) ;
-		 connect_entries () ;
+		 
+		 ErrorHandler.get_default ().publish.connect ((err) => {
+			// FIXME At some point this should log errors somewhere
+		 }) ;	
 	  }
 
 	  /**
@@ -156,47 +144,6 @@ namespace Balistica{
 		 base.activate () ;
 
 		 main_window.present () ;
-	  }
-
-	  /**
-	   * Connect the GUI elements to our code so we can play with them
-	   */
-	  public void connect_entries() {
-		 // Drag Calculations Results
-		 drag_results = drag_content.txtViewDragResults ;
-
-		 // Set G1 as selected by default
-		 rad_g1 = drag_content.rad_g1 ;
-		 rad_g1.active = true ;
-
-		 // Set G1 as selected by default
-		 rad_s10 = drag_content.rad_s10 ;
-		 rad_s10.active = true ;
-
-		 // Buttons
-		 export_results = drag_content.btnExportResults ;
-		 export_results.set_sensitive (false) ;
-
-		 calc_pbr = drag_content.btnCalcPBR ;
-		 calc_pbr.set_sensitive (false) ;
-
-		 ErrorHandler.get_default ().publish.connect ((err) => {
-			// FIXME
-			// At some point this should log errors somewhere
-		 }) ;
-	  }
-
-	  /**
-	   * Display popup to calculate Point Blank Range (PBR)
-	   */
-	  public void btnCalcPBR_clicked() {
-		 if( pbr_window == null ){
-			pbr_window = new PbrWindow (this.main_window) ;
-			pbr_window.destroy.connect (() => { pbr_window = null ; }) ;
-			pbr_window.show_all () ;
-		 } else {
-			pbr_window.present () ;
-		 }
 	  }
 
 	  /**

@@ -4,7 +4,7 @@ set(MAIN_SRC
     ErrorHandler.vala
     file_utils.vala
     main.vala
-    pbr_window.vala
+    PbrDialog.vala
     DragBox.vala
     TwistBox.vala
     StabilityBox.vala

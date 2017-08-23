@@ -16,37 +16,31 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using Gtk;
 
-namespace Balistica {
-	public class PbrWindow : GLib.Object {
-		private Gtk.Dialog dialog;
-		public signal void destroy();
-		
-		public PbrWindow( Gtk.Window parent) {
-			Gtk.Builder pbr_builder ;
-			try {
-				pbr_builder = Balistica.create_builder ("pbr.glade") ;
-				pbr_builder.connect_signals (null) ;
-				var pbr_content = pbr_builder.get_object ("pbr_main") as Gtk.Box ;
-			} catch (GLib.Error e) {
+[GtkTemplate (ui = "/org/gnome/balistica/pbr.glade")]
+public class Balistica.PbrDialog : Gtk.Dialog {
+   [GtkChild]
+   public Gtk.Button btnCalculate ;
+   [GtkChild]
+   public Gtk.Button btnReset ;
 
-			}
+   [GtkChild]
+   public Gtk.Entry drag_coeff ;
+   [GtkChild]
+   public Gtk.Entry initial_vel ;
+   [GtkChild]
+   public Gtk.Entry sight_height ;
+   [GtkChild]
+   public Gtk.Entry vital_zone_sz ;
+ 
+   [GtkChild]
+   public Gtk.TextView results ;
+  
+	/**
+	 * Constructor
+	 */
+	public PbrDialog () {
 
-			dialog = pbr_builder.get_object("pbr_dialog") as Gtk.Dialog;
-			dialog.set_transient_for(parent);
-		}		
-
-		public void show_all() {
-			dialog.show_all();
-			dialog.response.connect( () => {
-					dialog.destroy();
-					destroy();
-					});
-		}
-
-		public void present() {
-			dialog.present();
-		}
 	}
+		
 }
