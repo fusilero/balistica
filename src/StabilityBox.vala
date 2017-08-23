@@ -31,13 +31,6 @@ public class Balistica.StabilityBox : Gtk.Box {
    [GtkChild]
    private Gtk.Entry results ;
 
-   // Buttons
-   [GtkChild]
-   private Gtk.Button btnReset ;
-   [GtkChild]
-   private Gtk.Button btnSolve ;
-
-
    /**
     * Reset the front end to prepare for a new stability calculation
     */
@@ -65,4 +58,5 @@ public class Balistica.StabilityBox : Gtk.Box {
 
 	  results.set_text (m.calc_stability ().to_string ()) ;
    }
+
 }

@@ -39,12 +39,6 @@ public class Balistica.TwistBox : Gtk.Box {
    [GtkChild]
    private Gtk.Entry results ;
 
-   // Buttons
-   [GtkChild]
-   private Gtk.Button btnReset ;
-   [GtkChild]
-   private Gtk.Button btnSolve ;
-
    // Radio buttons for calculation step size
    [GtkChild]
    private Gtk.RadioButton radGreenhill ;
@@ -52,9 +46,6 @@ public class Balistica.TwistBox : Gtk.Box {
    private Gtk.RadioButton radMiller ;
 
    public TwistBox () {
-	  // Default Twist calculation type
-	  radMiller.active = true ;
-
 	  radMiller.toggled.connect (() => {
 		 mdiameter.set_sensitive (true) ;
 		 mlength.set_sensitive (true) ;
@@ -78,6 +69,9 @@ public class Balistica.TwistBox : Gtk.Box {
 		 gspec_gravity.set_sensitive (true) ;
 		 gc.set_sensitive (true) ;
 	  }) ;
+
+	  // Default Twist calculation type
+	  radMiller.active = true ;
    }
 
    /**
@@ -123,4 +117,5 @@ public class Balistica.TwistBox : Gtk.Box {
 		 results.set_text (g.calc_twist ().to_string ()) ;
 	  }
    }
+
 }
