@@ -151,7 +151,9 @@ Author: Steven Oliver
                         <child>
                           <object class="GtkEntry" id="drag_coeff">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">True</property>
+                            <property name="editable">False</property>
                             <property name="max_length">15</property>
                             <property name="input_purpose">number</property>
                           </object>
@@ -163,7 +165,9 @@ Author: Steven Oliver
                         <child>
                           <object class="GtkEntry" id="initial_vel">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">True</property>
+                            <property name="editable">False</property>
                             <property name="max_length">15</property>
                             <property name="input_purpose">number</property>
                           </object>
@@ -175,7 +179,9 @@ Author: Steven Oliver
                         <child>
                           <object class="GtkEntry" id="sight_height">
                             <property name="visible">True</property>
+                            <property name="sensitive">False</property>
                             <property name="can_focus">True</property>
+                            <property name="editable">False</property>
                             <property name="max_length">15</property>
                             <property name="input_purpose">number</property>
                           </object>

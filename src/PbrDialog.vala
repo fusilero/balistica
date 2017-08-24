@@ -32,15 +32,39 @@ public class Balistica.PbrDialog : Gtk.Dialog {
    public Gtk.Entry sight_height ;
    [GtkChild]
    public Gtk.Entry vital_zone_sz ;
- 
+
    [GtkChild]
    public Gtk.TextView results ;
-  
-	/**
-	 * Constructor
-	 */
-	public PbrDialog () {
 
-	}
-		
+   // Stores the drag solution for further PBR calculations
+   private LibBalistica.Solution sln ;
+
+   /**
+    * Constructor
+    */
+   public PbrDialog (LibBalistica.Solution psln) {
+	  sln = psln ;
+
+	  drag_coeff.set_text (sln.getBc ().to_string ()) ;
+	  initial_vel.set_text (sln.getMv ().to_string ()) ;
+	  sight_height.set_text (sln.getSightheight ().to_string ()) ;
+   }
+
+   /**
+    * Reset the front end to prepare for a new calculation
+    */
+   [GtkCallback]
+   public void btnReset_clicked() {
+	  vital_zone_sz.set_text ("") ;
+	  results.buffer.text = "" ;
+   }
+
+   /**
+    * Calculate the PBR results
+    */
+   [GtkCallback]
+   public void btnCalculate_clicked() {
+
+   }
+
 }

@@ -131,10 +131,10 @@ namespace Balistica{
 		 main_window.add (box) ;
 		 main_window.show_all () ;
 		 this.add_window (main_window) ;
-		 
+
 		 ErrorHandler.get_default ().publish.connect ((err) => {
 			// FIXME At some point this should log errors somewhere
-		 }) ;	
+		 }) ;
 	  }
 
 	  /**

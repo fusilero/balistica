@@ -31,8 +31,10 @@ namespace LibBalistica{
 	   * @param DragCoefficient The coefficient of drag for the projectile you wish to model.
 	   * @param Vi The projectile initial velocity.
 	   * @param SightHeight The height of the sighting system above the bore centerline.
-	   *              Most scopes are in the 1.5-2.0 inch range.
-	   * @param VitalSize ??
+	   *					Most scopes are in the 1.5-2.0 inch range.
+	   * @param VitalSize Size in inches of the target at which the point of impact
+	   *				  must remain in, e.g. the point impact must always be within a
+	   *				  two inch diameter circle.
 	   * @param result ??
 	   *
 	   * @return ??
