@@ -2,8 +2,7 @@ set(MAIN_SRC
     BalisticaApplication.vala
     Calculate.vala
     ErrorHandler.vala
-    file_utils.vala
-    main.vala
+    Main.vala
     PbrDialog.vala
     DragBox.vala
     TwistBox.vala
