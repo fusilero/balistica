@@ -10,20 +10,20 @@ set(MAIN_SRC
 )
 
 set(LIB_BALISTICA_SRC
-    libbalistica/atmosphere.vala
-    libbalistica/greenhill.vala
-    libbalistica/libbalistica.vala
-    libbalistica/miller.vala
-    libbalistica/pbr.vala
-    libbalistica/retard.vala
-    libbalistica/solution.vala
-    libbalistica/solve.vala
-    libbalistica/windage.vala
-    libbalistica/zero.vala
+    LibBalistica/Atmosphere.vala
+    LibBalistica/Greenhill.vala
+    LibBalistica/LibBalistica.vala
+    LibBalistica/Miller.vala
+    LibBalistica/Pbr.vala
+    LibBalistica/Retard.vala
+    LibBalistica/Solution.vala
+    LibBalistica/Solve.vala
+    LibBalistica/Windage.vala
+    LibBalistica/Zero.vala
 
-    libbalistica/conversion/angle.vala
-    libbalistica/conversion/mass.vala
-    libbalistica/conversion/temperature.vala
+    LibBalistica/conversion/Angle.vala
+    LibBalistica/conversion/Mass.vala
+    LibBalistica/conversion/Temperature.vala
 )
 
 # Vala
@@ -105,7 +105,7 @@ else()
 	)
 endif()
 
-# libbalistica
+# LibBalistica
 #################################################
 vala_precompile(LIB_BALISTICA_VALA_C lib-balistica
     ${LIB_BALISTICA_SRC}
