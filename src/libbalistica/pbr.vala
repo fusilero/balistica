@@ -35,12 +35,12 @@ namespace LibBalistica{
 	   * @param VitalSize Size in inches of the target at which the point of impact
 	   *				  must remain in, e.g. the point impact must always be within a
 	   *				  two inch diameter circle.
-	   * @param result ??
 	   *
-	   * @return ??
+	   * @return An array of 5 doubles consisting of the near zero, far zero, min pbr,
+	   *				  max pbr, and sight-in height at 100 yards.
 	   */
-	  public int pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize, out double[] result) {
-		 result = new double[4] ;
+	  public static double[] pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize) {
+		 double result[4] ;
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
@@ -151,10 +151,10 @@ namespace LibBalistica{
 			   }
 			}
 
-			if((y_vertex * 12) > (VitalSize / 2)){
+			if((y_vertex * 12) > (VitalSize / 2.0)){
 			   // Vertex too high. Go downwards.
 			   if( Step > 0 ){
-				  Step = -1 * Step / 2.0 ;
+				  Step = -Step / 2.0 ;
 			   }
 			} else if((y_vertex * 12) <= (VitalSize / 2.0)){
 			   // Vertex too low. Go upwards.
@@ -181,7 +181,7 @@ namespace LibBalistica{
 		 // Sight-in at 100 yards (in 100ths of an inch)
 		 result[4] = tin100 ;
 
-		 return 0 ;
+		 return result ;
 	  }
 
    }

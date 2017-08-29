@@ -151,7 +151,29 @@ public class Balistica.DragBox : Gtk.Box {
     */
    [GtkCallback]
    public void btnCalcPBR_clicked() {
-	  var dialog = new Balistica.PbrDialog (lsln) ;
+	  // Selected Drag Function
+	  int df ;
+
+	  // Which version of the drag do they want to calculate?
+	  if( rad_g1.get_active ()){
+		 df = 1 ;
+	  } else if( rad_g2.get_active ()){
+		 df = 2 ;
+	  } else if( rad_g5.get_active ()){
+		 df = 5 ;
+	  } else if( rad_g6.get_active ()){
+		 df = 6 ;
+	  } else if( rad_g7.get_active ()){
+		 df = 7 ;
+	  } else {
+		 df = 8 ;
+	  }
+
+	  var dialog = new Balistica.PbrDialog (
+		 double.parse (this.txtDrag_coefficient.get_text ()),
+		 double.parse (this.txtIntial_velocity.get_text ()),
+		 double.parse (this.txtSight_height.get_text ()),
+		 df) ;
 
 	  dialog.destroy.connect (Gtk.main_quit) ;
 	  dialog.show_all () ;

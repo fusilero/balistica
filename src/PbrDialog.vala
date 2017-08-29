@@ -25,6 +25,8 @@ public class Balistica.PbrDialog : Gtk.Dialog {
    public Gtk.Button btnReset ;
 
    [GtkChild]
+   public Gtk.Entry drag_function ;
+   [GtkChild]
    public Gtk.Entry drag_coeff ;
    [GtkChild]
    public Gtk.Entry initial_vel ;
@@ -36,18 +38,46 @@ public class Balistica.PbrDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.TextView results ;
 
-   // Stores the drag solution for further PBR calculations
-   private LibBalistica.Solution sln ;
+   private LibBalistica.DragFunction d ;
 
    /**
     * Constructor
     */
-   public PbrDialog (LibBalistica.Solution psln) {
-	  sln = psln ;
+   public PbrDialog (double dc, double iv, double sh, int df) {
+	  drag_coeff.set_text (dc.to_string ()) ;
+	  initial_vel.set_text (iv.to_string ()) ;
+	  sight_height.set_text (sh.to_string ()) ;
 
-	  drag_coeff.set_text (sln.getBc ().to_string ()) ;
-	  initial_vel.set_text (sln.getMv ().to_string ()) ;
-	  sight_height.set_text (sln.getSightheight ().to_string ()) ;
+	  switch( df ){
+	  case 1:
+		 d = LibBalistica.DragFunction.G1 ;
+		 break ;
+
+	  case 2:
+		 d = LibBalistica.DragFunction.G2 ;
+		 break ;
+
+	  case 5:
+		 d = LibBalistica.DragFunction.G5 ;
+		 break ;
+
+	  case 6:
+		 d = LibBalistica.DragFunction.G6 ;
+		 break ;
+
+	  case 7:
+		 d = LibBalistica.DragFunction.G7 ;
+		 break ;
+
+	  case 8:
+		 d = LibBalistica.DragFunction.G8 ;
+		 break ;
+
+	  default:
+		 assert_not_reached () ;
+	  }
+
+	  drag_function.set_text (d.to_string ()) ;
    }
 
    /**
@@ -64,7 +94,17 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     */
    [GtkCallback]
    public void btnCalculate_clicked() {
+	  double pbr_results[4] = LibBalistica.PBR.pbr (d,
+													double.parse (drag_coeff.get_text ()),
+													double.parse (initial_vel.get_text ()),
+													double.parse (sight_height.get_text ()),
+													double.parse (vital_zone_sz.get_text ())) ;
 
+	  results.buffer.text = "Near Zero: " + pbr_results[0].to_string () + " yards\n" ;
+	  results.buffer.text += "Far Zero: " + pbr_results[1].to_string () + " yards\n" ;
+	  results.buffer.text += "Minimum PBR: " + pbr_results[2].to_string () + " yards\n" ;
+	  results.buffer.text += "Maximum PBR: " + pbr_results[3].to_string () + " yards\n\n" ;
+	  results.buffer.text += "Sight-in at 100 yards: " + pbr_results[4].to_string () + " inches high" ;
    }
 
 }
