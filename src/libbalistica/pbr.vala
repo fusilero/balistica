@@ -36,11 +36,11 @@ namespace LibBalistica{
 	   *				  must remain in, e.g. the point impact must always be within a
 	   *				  two inch diameter circle.
 	   *
-	   * @return An array of 5 doubles consisting of the near zero, far zero, min pbr,
-	   *				  max pbr, and sight-in height at 100 yards.
+	   * @return A LibBalistica.PbrResult struct containing our five results.
 	   */
-	  public static double[] pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize) {
-		 double result[4] ;
+	  public static LibBalistica.PbrResult pbr(DragFunction Drag, double DragCoefficient, double Vi, double SightHeight, double VitalSize) {
+		 LibBalistica.PbrResult result = LibBalistica.PbrResult () ;
+
 		 double t = 0 ;
 		 double dt = 0.5 / Vi ;
 		 double v = 0 ;
@@ -170,16 +170,12 @@ namespace LibBalistica{
 			}
 		 }
 
-		 // Near zero
-		 result[0] = zero / 3 ;
-		 // Far zero
-		 result[1] = farzero / 3 ;
-		 // Minimum PBR
-		 result[2] = min_pbr_range / 3 ;
-		 // Maximum PBR
-		 result[3] = max_pbr_range / 3 ;
-		 // Sight-in at 100 yards (in 100ths of an inch)
-		 result[4] = tin100 ;
+		 result.near_zero = zero / 3 ;
+		 result.far_zero = farzero / 3 ;
+		 result.min_pbr = min_pbr_range / 3 ;
+		 result.max_pbr = max_pbr_range / 3 ;
+		 // At 100 yards (in 100ths of an inch)
+		 result.sight_in_height = tin100 ;
 
 		 return result ;
 	  }

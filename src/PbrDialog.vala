@@ -94,17 +94,17 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     */
    [GtkCallback]
    public void btnCalculate_clicked() {
-	  double pbr_results[4] = LibBalistica.PBR.pbr (d,
-													double.parse (drag_coeff.get_text ()),
-													double.parse (initial_vel.get_text ()),
-													double.parse (sight_height.get_text ()),
-													double.parse (vital_zone_sz.get_text ())) ;
+	  LibBalistica.PbrResult pbr_result = LibBalistica.PBR.pbr (d,
+																double.parse (drag_coeff.get_text ()),
+																double.parse (initial_vel.get_text ()),
+																double.parse (sight_height.get_text ()),
+																double.parse (vital_zone_sz.get_text ())) ;
 
-	  results.buffer.text = "Near Zero: " + pbr_results[0].to_string () + " yards\n" ;
-	  results.buffer.text += "Far Zero: " + pbr_results[1].to_string () + " yards\n" ;
-	  results.buffer.text += "Minimum PBR: " + pbr_results[2].to_string () + " yards\n" ;
-	  results.buffer.text += "Maximum PBR: " + pbr_results[3].to_string () + " yards\n\n" ;
-	  results.buffer.text += "Sight-in at 100 yards: " + pbr_results[4].to_string () + " inches high" ;
+	  results.buffer.text = "Near Zero: %.2f yards\n".printf (pbr_result.near_zero) ;
+	  results.buffer.text += "Far Zero: %.2f yards\n".printf (pbr_result.far_zero) ;
+	  results.buffer.text += "Minimum PBR: %.2f yards\n".printf (pbr_result.min_pbr) ;
+	  results.buffer.text += "Maximum PBR: %.2f yards\n\n".printf (pbr_result.max_pbr) ;
+	  results.buffer.text += "Sight-in at 100 yards: %.2f inches high".printf (pbr_result.sight_in_height) ;
    }
 
 }

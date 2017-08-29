@@ -58,6 +58,17 @@ namespace LibBalistica{
 	  public double vertical_velocity ;
    }
 
+   /**
+    * Return value for a PBR optimization results
+    */
+   public struct PbrResult {
+	  public double near_zero ;
+	  public double far_zero ;
+	  public double min_pbr ;
+	  public double max_pbr ;
+	  public double sight_in_height ;
+   }
+
 /**
  * The different drag functions you are allowed to pick from
  */
