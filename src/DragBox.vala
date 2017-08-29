@@ -152,22 +152,7 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkCallback]
    public void btnCalcPBR_clicked() {
 	  // Selected Drag Function
-	  int df ;
-
-	  // Which version of the drag do they want to calculate?
-	  if( rad_g1.get_active ()){
-		 df = 1 ;
-	  } else if( rad_g2.get_active ()){
-		 df = 2 ;
-	  } else if( rad_g5.get_active ()){
-		 df = 5 ;
-	  } else if( rad_g6.get_active ()){
-		 df = 6 ;
-	  } else if( rad_g7.get_active ()){
-		 df = 7 ;
-	  } else {
-		 df = 8 ;
-	  }
+	  int df = getSelectedDragFunction () ;
 
 	  var dialog = new Balistica.PbrDialog (
 		 double.parse (this.txtDrag_coefficient.get_text ()),
@@ -270,22 +255,7 @@ public class Balistica.DragBox : Gtk.Box {
 	  }
 
 	  // Selected Drag Function
-	  int df ;
-
-	  // Which version of the drag do they want to calculate?
-	  if( rad_g1.get_active ()){
-		 df = 1 ;
-	  } else if( rad_g2.get_active ()){
-		 df = 2 ;
-	  } else if( rad_g5.get_active ()){
-		 df = 5 ;
-	  } else if( rad_g6.get_active ()){
-		 df = 6 ;
-	  } else if( rad_g7.get_active ()){
-		 df = 7 ;
-	  } else {
-		 df = 8 ;
-	  }
+	  int df = getSelectedDragFunction () ;
 
 	  // Make sure we're working with a new solution object
 	  lsln = new LibBalistica.Solution () ;
@@ -454,6 +424,25 @@ public class Balistica.DragBox : Gtk.Box {
 
 	  // We're done with the save dialog
 	  save_dialog.close () ;
+   }
+
+   /**
+    * Determine which version of the drag function they would like to use
+    */
+   private int getSelectedDragFunction() {
+	  if( rad_g1.get_active ()){
+		 return 1 ;
+	  } else if( rad_g2.get_active ()){
+		 return 2 ;
+	  } else if( rad_g5.get_active ()){
+		 return 5 ;
+	  } else if( rad_g6.get_active ()){
+		 return 6 ;
+	  } else if( rad_g7.get_active ()){
+		 return 7 ;
+	  } else {
+		 return 8 ;
+	  }
    }
 
    /**
