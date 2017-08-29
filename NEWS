@@ -1,6 +1,8 @@
 Version 1.1
 ============================
+* Compute the optimized point blank range (PBR)
 * Can now export drag calculation results to HTML
+* More modern code approach using Glade files and signals
 * Various minor bug fixes & improvements
 
 Version 1.0
