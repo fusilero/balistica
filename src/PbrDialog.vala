@@ -104,7 +104,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
 	  results.buffer.text += "Far Zero: %.2f yards\n".printf (pbr_result.far_zero) ;
 	  results.buffer.text += "Minimum PBR: %.2f yards\n".printf (pbr_result.min_pbr) ;
 	  results.buffer.text += "Maximum PBR: %.2f yards\n\n".printf (pbr_result.max_pbr) ;
-	  results.buffer.text += "Sight-in at 100 yards: %.2f inches high".printf (pbr_result.sight_in_height) ;
+	  results.buffer.text += "Sight-in at 100 yards: %.2f\" high".printf (pbr_result.sight_in_height) ;
    }
 
 }

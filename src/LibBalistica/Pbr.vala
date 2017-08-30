@@ -176,7 +176,7 @@ namespace LibBalistica{
 		 result.min_pbr = min_pbr_range / 3 ;
 		 result.max_pbr = max_pbr_range / 3 ;
 		 // At 100 yards (in 100ths of an inch)
-		 result.sight_in_height = tin100 ;
+		 result.sight_in_height = tin100 / 100 ;
 
 		 return result ;
 	  }
