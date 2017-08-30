@@ -51,7 +51,7 @@ namespace LibBalistica{
 		 double ZAngle = 0 ;
 		 double Step = 10 ;
 
-		 bool quit = true ;
+		 bool quit = false ;
 
 		 bool vertex_keep = false ;
 		 double y_vertex = 0 ;
@@ -71,7 +71,7 @@ namespace LibBalistica{
 
 		 double Gx, Gy ;
 
-		 while( quit ){
+		 while( !quit ){
 			Gy = GRAVITY * Math.cos (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
 			Gx = GRAVITY * Math.sin (Angle.DegreeToRadian ((ShootingAngle + ZAngle))) ;
 
@@ -90,12 +90,11 @@ namespace LibBalistica{
 			zero_keep = false ;
 			farzero_keep = false ;
 
-			int n = 0 ;
 			for( t = 0 ; ; t = t + dt ){
 			   vx1 = vx ;
 			   vy1 = vy ;
 			   v = Math.pow (Math.pow (vx, 2) + Math.pow (vy, 2), 0.5) ;
-			   dt = 0.5 / Vi ;
+			   dt = 0.5 / v ;
 
 			   // Compute acceleration using the drag function retardation
 			   dv = Retard.CalcRetard (Drag, DragCoefficient, v) ;
@@ -103,12 +102,12 @@ namespace LibBalistica{
 			   dvy = -(vy / v) * dv ;
 
 			   // Compute velocity, including the resolved gravity vectors
-			   vx = vx + dt * dvx + dt * Gx ;
-			   vy = vy + dt * dvy + dt * Gy ;
+			   vx += dt * dvx + dt * Gx ;
+			   vy += dt * dvy + dt * Gy ;
 
 			   // Compute position based on average velocity
-			   x = x + dt * (vx + vx1) / 2.0 ;
-			   y = y + dt * (vy + vy1) / 2.0 ;
+			   x += dt * (vx + vx1) / 2.0 ;
+			   y += dt * (vy + vy1) / 2.0 ;
 
 			   if((y > 0) && (zero_keep == false) && (vy >= 0)){
 				  zero = x ;
@@ -135,7 +134,8 @@ namespace LibBalistica{
 				  tinkeep = true ;
 			   }
 
-			   if((Math.fabs (vy) > Math.fabs (3 * vx)) || (n >= BCOMP_MAX_RANGE + 1)){
+			   if( Math.fabs (vy) > Math.fabs (3 * vx)){
+				  // FIXME this should produce an error
 				  break ;
 			   }
 
@@ -151,6 +151,7 @@ namespace LibBalistica{
 			   }
 			}
 
+			debug ("y_vertex %f", y_vertex) ;
 			if((y_vertex * 12) > (VitalSize / 2.0)){
 			   // Vertex too high. Go downwards.
 			   if( Step > 0 ){
@@ -166,7 +167,7 @@ namespace LibBalistica{
 			ZAngle += Step ;
 
 			if( Math.fabs (Step) < (0.01 / 60)){
-			   quit = false ;
+			   quit = true ;
 			}
 		 }
 
