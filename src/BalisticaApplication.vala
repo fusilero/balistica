@@ -112,18 +112,29 @@ namespace Balistica{
 
 		 box.pack_start (menubar, false, false, 0) ;
 
+		 // Create labels here so that we can add pango formatting
+		 Gtk.Label drag_lbl = new Gtk.Label ("<big>Drag</big>") ;
+		 drag_lbl.set_use_markup (true) ;
+
+		 Gtk.Label twist_lbl = new Gtk.Label ("<big>Twist</big>") ;
+		 twist_lbl.set_use_markup (true) ;
+
+		 Gtk.Label stability_lbl = new Gtk.Label ("<big>Stability</big>") ;
+		 stability_lbl.set_use_markup (true) ;
+
 		 // Add the notebook that will eventually hold everything else
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
+		 notebook.set_tab_pos (Gtk.PositionType.LEFT) ;
 
-		 // Create the drag page of the notebook
+		 // Create & add our pages to the notebook
 		 this.drag_content = new Balistica.DragBox () ;
-		 notebook.append_page (drag_content, new Gtk.Label ("Drag")) ;
+		 notebook.append_page (drag_content, drag_lbl) ;
 
 		 this.twist_content = new Balistica.TwistBox () ;
-		 notebook.append_page (twist_content, new Gtk.Label ("Twist")) ;
+		 notebook.append_page (twist_content, twist_lbl) ;
 
 		 this.stability_content = new Balistica.StabilityBox () ;
-		 notebook.append_page (stability_content, new Gtk.Label ("Stability")) ;
+		 notebook.append_page (stability_content, stability_lbl) ;
 
 		 box.pack_start (notebook, true, true, 0) ;
 
