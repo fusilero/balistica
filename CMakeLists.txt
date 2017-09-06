@@ -16,12 +16,12 @@ endif()
 # Version information
 #
 set(VERSION_MAJOR 1)
-set(VERSION_MINOR 2)
+set(VERSION_MINOR 3)
 set(VERSION_COMMIT ${Project_WC_REVISION_HASH})
 
 # Anything other than "Release" will add the latest commit 
 # hash when built to the version string
-set(VERSION_DESC "Release")
+set(VERSION_DESC "Development")
 
 if(NOT ${VERSION_DESC} MATCHES "Development")
 	set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR})
