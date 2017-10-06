@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.18.3 
+
+Copyright (C) 2017 Steven Oliver
+
+This file is part of balistica.
+
+balistica is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+balistica is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with balistica.  If not, see <http://www.gnu.org/licenses/>.
+
+Author: Steven Oliver
+
+-->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="gtk+" version="3.10"/>
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name balistica -->
+  <!-- interface-description An open source external balistics software package. -->
+  <!-- interface-copyright 2017 Steven Oliver -->
+  <!-- interface-authors Steven Oliver -->
   <object class="GtkBox" id="caseBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -44,6 +70,18 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="btnSaveCase">
+            <property name="label" translatable="yes">Save</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkComboBox" id="combobox1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -54,6 +92,16 @@
           </packing>
         </child>
         <child>
+          <object class="GtkComboBox" id="combobox2">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkComboBox" id="combobox3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -61,28 +109,6 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkComboBox" id="combobox4">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnSaveCase">
-            <property name="label" translatable="yes">Save</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">2</property>
           </packing>
         </child>
         <child>
