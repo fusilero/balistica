@@ -209,27 +209,42 @@ public class Balistica.DragBox : Gtk.Box {
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
 	  if( bc <= 0 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Drag Coefficient must be a positive value greater than 0")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Drag Coefficient must be a positive value greater than 0" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( v <= 0 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Initial Velocity must be a positive value greater than 0")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Initial Velocity must be a positive value greater than 0" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( sh <= 0 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Sight Height over Bore must be a positive value greater than 0")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Sight Height over Bore must be a positive value greater than 0" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( w <= 0 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Projectile Weight must be a positive value greater than 0")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Projectile Weight must be a positive value greater than 0" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( zero <= 0 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Zero Range must be a positive value greater than 0")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Zero Range must be a positive value greater than 0" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
@@ -264,7 +279,10 @@ public class Balistica.DragBox : Gtk.Box {
 	  lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 	  if( lsln.getSolutionSize () == -1 ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Error creating solution results")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Error creating solution results" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  } else {
 		 txtViewDragResults.buffer.text = ("") ;
@@ -304,7 +322,10 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkCallback]
    public void btnExportResults_clicked() {
 	  if( this.lsln == null ){
-		 ErrorHandler.get_default ().publish (new IOError.FAILED ("Cannot export an empty drag solution")) ;
+		 Logging.LogMsg msg = Logging.LogMsg () ;
+		 msg.level = Logging.LogLevel.ERROR ;
+		 msg.message = "Cannot export an empty drag solution" ;
+		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
@@ -346,7 +367,10 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   file.delete () ;
 			} catch ( Error err ){
-			   ErrorHandler.get_default ().publish (new IOError.FAILED ("Failed to overwrite existing file")) ;
+			   Logging.LogMsg msg = Logging.LogMsg () ;
+			   msg.level = Logging.LogLevel.ERROR ;
+			   msg.message = "Failed to overwrite existing file" ;
+			   Logging.get_default ().publish (msg) ;
 			   return ;
 			}
 		 }
@@ -356,7 +380,10 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   (save_dialog as Gtk.FileChooser).set_file (file) ;
 			} catch ( GLib.Error err ){
-			   ErrorHandler.get_default ().publish (new IOError.FAILED ("Error selecting file to save as")) ;
+			   Logging.LogMsg msg = Logging.LogMsg () ;
+			   msg.level = Logging.LogLevel.ERROR ;
+			   msg.message = "Error selecting file to save as" ;
+			   Logging.get_default ().publish (msg) ;
 			   return ;
 			}
 		 }
@@ -416,8 +443,10 @@ public class Balistica.DragBox : Gtk.Box {
 			data_stream.put_string ("</body>\n</html>") ;
 		 } catch ( GLib.Error err ){
 			save_dialog.close () ;
-			ErrorHandler.get_default ().publish (new IOError.FAILED ("Error creating HTML output")) ;
-
+			Logging.LogMsg msg = Logging.LogMsg () ;
+			msg.level = Logging.LogLevel.ERROR ;
+			msg.message = "Error creating HTML output" ;
+			Logging.get_default ().publish (msg) ;
 			return ;
 		 }
 	  }

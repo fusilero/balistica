@@ -16,13 +16,51 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class ErrorHandler {
-   public signal void publish(Error err) ;
+public class Logging {
 
-   private static ErrorHandler _default ;
-   public static ErrorHandler get_default() {
+   public enum LogLevel {
+	  DEBUG,
+	  INFO,
+	  WARNING,
+	  ERROR,
+	  FATAL ;
+
+	  public string to_string() {
+		 switch( this ){
+		 case DEBUG:
+			return "DEBUG" ;
+
+		 case INFO:
+			return "INFO" ;
+
+		 case WARNING:
+			return "WARNING" ;
+
+		 case ERROR:
+			return "ERROR" ;
+
+		 case FATAL:
+			return "FATAL" ;
+
+		 default:
+			assert_not_reached () ;
+		 }
+	  }
+
+   }
+
+   public struct LogMsg {
+	  LogLevel level ;
+	  string message ;
+   }
+
+   public signal void publish(LogMsg msg) ;
+
+   private static Logging _default ;
+
+   public static Logging get_default() {
 	  if( _default == null ){
-		 _default = new ErrorHandler () ;
+		 _default = new Logging () ;
 	  }
 	  return _default ;
    }

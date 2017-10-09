@@ -47,6 +47,8 @@ namespace Balistica{
 	  private Balistica.DragBox drag_content ;
 	  private Balistica.TwistBox twist_content ;
 	  private Balistica.StabilityBox stability_content ;
+	  private string data_dir ;
+	  private string config_dir ;
 
 	  /**
 	   * Constructor
@@ -144,38 +146,68 @@ namespace Balistica{
 		 main_window.show_all () ;
 		 this.add_window (main_window) ;
 
-		 this.setup_user_config_directory () ;
-		 this.setup_user_data_directory () ;
+		 config_dir = this.setup_user_config_directory () ;
+		 data_dir = this.setup_user_data_directory () ;
 
-		 ErrorHandler.get_default ().publish.connect ((err) => {
-			// FIXME At some point this should log errors somewhere
+		 Logging.get_default ().publish.connect ((LogMsg) => {
+			this.log (LogMsg) ;
 		 }) ;
 	  }
 
 	  /**
 	   * Return the current user's configuration directory
 	   */
-	  private void setup_user_config_directory() {
+	  private string setup_user_config_directory() {
+		 string config_dir = Environment.get_user_config_dir () + "/balistica/" ;
 		 try {
-			File.new_for_path (Environment.get_user_config_dir ()).get_child ("balistica").make_directory_with_parents () ;
+			File file = File.new_for_path (config_dir) ;
+			file.make_directory_with_parents () ;
 		 } catch ( Error err ){
 			// The user may have already created the directory, so don't throw EXISTS.
-			if( !(err is IOError.EXISTS))
-			   throw err ;
+			if( !(err is IOError.EXISTS)){
+			   Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG configuration directory") ;
+			   msg.response.connect ((response_id) => {
+				  switch( response_id ){
+				  case Gtk.ResponseType.OK:
+					 stdout.puts ("Ok\n") ;
+					 break ;
+				  }
+
+				  msg.destroy () ;
+			   }) ;
+			   msg.show () ;
+			}
 		 }
+
+		 return config_dir ;
 	  }
 
 	  /**
 	   * Return the current user's data directory
 	   */
-	  private void setup_user_data_directory() {
+	  private string setup_user_data_directory() {
+		 string data_dir = Environment.get_user_data_dir () + "/balistica/" ;
 		 try {
-			File.new_for_path (Environment.get_user_data_dir ()).get_child ("balistica").make_directory_with_parents () ;
+			File file = File.new_for_path (data_dir) ;
+			file.make_directory_with_parents () ;
 		 } catch ( Error err ){
 			// The user may have already created the directory, so don't throw EXISTS.
-			if( !(err is IOError.EXISTS))
-			   throw err ;
+			if( !(err is IOError.EXISTS)){
+			   Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG data directory") ;
+			   msg.response.connect ((response_id) => {
+				  switch( response_id ){
+				  case Gtk.ResponseType.OK:
+					 stdout.puts ("Ok\n") ;
+					 break ;
+				  }
+
+				  msg.destroy () ;
+			   }) ;
+			   msg.show () ;
+			}
 		 }
+
+		 return data_dir ;
 	  }
 
 	  /**
@@ -201,7 +233,10 @@ namespace Balistica{
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			ErrorHandler.get_default ().publish (new IOError.FAILED ("Error showing help")) ;
+			Logging.LogMsg msg = Logging.LogMsg () ;
+			msg.level = Logging.LogLevel.ERROR ;
+			msg.message = "Error showing help" ;
+			Logging.get_default ().publish (msg) ;
 		 }
 	  }
 
@@ -226,6 +261,22 @@ namespace Balistica{
 								"website", "http://steveno.github.io/balistica/",
 								"website-label", "balística Website",
 								"version", version) ;
+	  }
+
+	  /**
+	   * Append new log entry to the log
+	   */
+	  private void log(Logging.LogMsg msg) {
+		 File file = File.new_for_path (this.data_dir + "balistica.log") ;
+		 var dt = new DateTime.now_local ().format ("%F %T") ;
+		 string entry = dt.to_string () + " " + msg.level.to_string () + " " + msg.message + "\n" ;
+
+		 try {
+			FileOutputStream os = file.append_to (FileCreateFlags.NONE) ;
+			os.write (entry.data) ;
+		 } catch ( Error e ){
+			stdout.printf ("Error: %s\n", e.message) ;
+		 }
 	  }
 
    }
