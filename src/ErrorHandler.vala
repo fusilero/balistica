@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-class ErrorHandler {
+public class ErrorHandler {
    public signal void publish(Error err) ;
 
    private static ErrorHandler _default ;
