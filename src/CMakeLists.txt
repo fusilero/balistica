@@ -3,10 +3,10 @@ set(MAIN_SRC
     Calculate.vala
     ErrorHandler.vala
     Main.vala
-    PbrDialog.vala
-    DragBox.vala
-    TwistBox.vala
-    StabilityBox.vala
+    gui/PbrDialog.vala
+    gui/DragBox.vala
+    gui/TwistBox.vala
+    gui/StabilityBox.vala
 )
 
 set(LIB_BALISTICA_SRC
