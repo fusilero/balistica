@@ -65,6 +65,7 @@ namespace Balistica{
 
 		 main_window = new Gtk.Window () ;
 		 Environment.set_application_name (Balistica.NAME) ;
+		 Environment.set_prgname (Balistica.NAME) ;
 
 		 // Setup the main window
 		 main_window.title = Balistica.NAME ;
@@ -143,9 +144,38 @@ namespace Balistica{
 		 main_window.show_all () ;
 		 this.add_window (main_window) ;
 
+		 this.setup_user_config_directory () ;
+		 this.setup_user_data_directory () ;
+
 		 ErrorHandler.get_default ().publish.connect ((err) => {
 			// FIXME At some point this should log errors somewhere
 		 }) ;
+	  }
+
+	  /**
+	   * Return the current user's configuration directory
+	   */
+	  private void setup_user_config_directory() {
+		 try {
+			File.new_for_path (Environment.get_user_config_dir ()).get_child ("balistica").make_directory_with_parents () ;
+		 } catch ( Error err ){
+			// The user may have already created the directory, so don't throw EXISTS.
+			if( !(err is IOError.EXISTS))
+			   throw err ;
+		 }
+	  }
+
+	  /**
+	   * Return the current user's data directory
+	   */
+	  private void setup_user_data_directory() {
+		 try {
+			File.new_for_path (Environment.get_user_data_dir ()).get_child ("balistica").make_directory_with_parents () ;
+		 } catch ( Error err ){
+			// The user may have already created the directory, so don't throw EXISTS.
+			if( !(err is IOError.EXISTS))
+			   throw err ;
+		 }
 	  }
 
 	  /**
