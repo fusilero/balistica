@@ -86,6 +86,8 @@ namespace Balistica{
 		 Gtk.Menu filemenu = new Gtk.Menu () ;
 		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
 		 filemenu.add (sub_item_quit) ;
+		 Gtk.MenuItem sub_item_log = new Gtk.MenuItem.with_label ("View Log") ;
+		 filemenu.add (sub_item_log) ;
 		 item_file.set_submenu (filemenu) ;
 
 		 Gtk.MenuItem item_help = new Gtk.MenuItem.with_label ("Help") ;
@@ -103,6 +105,10 @@ namespace Balistica{
 		 // Connect menu entries
 		 sub_item_quit.activate.connect (() => {
 			quit_selected () ;
+		 }) ;
+
+		 sub_item_log.activate.connect (() => {
+			log_viewer_selected () ;
 		 }) ;
 
 		 sub_item_help.activate.connect (() => {
@@ -227,15 +233,23 @@ namespace Balistica{
 	  }
 
 	  /**
+	   * Show log viewer
+	   */
+	  private void log_viewer_selected() {
+		 var dialog = new Balistica.LogViewerDialog () ;
+
+		 dialog.destroy.connect (Gtk.main_quit) ;
+		 dialog.show_all () ;
+	  }
+
+	  /**
 	   * Show help browser
 	   */
 	  private void help_selected() {
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			Logging.LogMsg msg = Logging.LogMsg () ;
-			msg.level = Logging.LogLevel.ERROR ;
-			msg.message = "Error showing help" ;
+			Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Error showing help"} ;
 			Logging.get_default ().publish (msg) ;
 		 }
 	  }
