@@ -209,31 +209,31 @@ public class Balistica.DragBox : Gtk.Box {
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
 	  if( bc <= 0 ){
-		 Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Drag Coefficient must be a positive value greater than 0"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Drag Coefficient must be a positive value greater than 0" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( v <= 0 ){
-         Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Initial Velocity must be a positive value greater than 0"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Initial Velocity must be a positive value greater than 0" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( sh <= 0 ){
-         Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Sight Height over Bore must be a positive value greater than 0"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Sight Height over Bore must be a positive value greater than 0" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( w <= 0 ){
-         Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Projectile Weight must be a positive value greater than 0"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Projectile Weight must be a positive value greater than 0" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
 
 	  if( zero <= 0 ){
-         Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Zero Range must be a positive value greater than 0"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Zero Range must be a positive value greater than 0" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
@@ -269,7 +269,7 @@ public class Balistica.DragBox : Gtk.Box {
 	  lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 	  if( lsln.getSolutionSize () == -1 ){
-		 Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Error creating solution results"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Error creating solution results" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  } else {
@@ -310,7 +310,7 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkCallback]
    public void btnExportResults_clicked() {
 	  if( this.lsln == null ){
-		 Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Cannot export an empty drag solution"} ;
+		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Cannot export an empty drag solution" } ;
 		 Logging.get_default ().publish (msg) ;
 		 return ;
 	  }
@@ -353,7 +353,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   file.delete () ;
 			} catch ( Error err ){
-			   Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Failed to overwrite existing file"} ;
+			   Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Failed to overwrite existing file" } ;
 			   Logging.get_default ().publish (msg) ;
 			   return ;
 			}
@@ -364,7 +364,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   (save_dialog as Gtk.FileChooser).set_file (file) ;
 			} catch ( GLib.Error err ){
-			   Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Error selecting file to save as"} ;
+			   Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Error selecting file to save as" } ;
 			   Logging.get_default ().publish (msg) ;
 			   return ;
 			}
@@ -425,7 +425,7 @@ public class Balistica.DragBox : Gtk.Box {
 			data_stream.put_string ("</body>\n</html>") ;
 		 } catch ( GLib.Error err ){
 			save_dialog.close () ;
-			Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Error creating HTML output"} ;
+			Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Error creating HTML output" } ;
 			Logging.get_default ().publish (msg) ;
 			return ;
 		 }

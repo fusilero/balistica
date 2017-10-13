@@ -236,7 +236,7 @@ namespace Balistica{
 	   * Show log viewer
 	   */
 	  private void log_viewer_selected() {
-		 var dialog = new Balistica.LogViewerDialog () ;
+		 var dialog = new Balistica.LogViewerDialog (this.data_dir + "balistica.log") ;
 
 		 dialog.destroy.connect (Gtk.main_quit) ;
 		 dialog.show_all () ;
@@ -249,7 +249,7 @@ namespace Balistica{
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			Logging.LogMsg msg = {Logging.LogLevel.ERROR, "Error showing help"} ;
+			Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Error showing help" } ;
 			Logging.get_default ().publish (msg) ;
 		 }
 	  }
@@ -283,7 +283,7 @@ namespace Balistica{
 	  private void log(Logging.LogMsg msg) {
 		 File file = File.new_for_path (this.data_dir + "balistica.log") ;
 		 var dt = new DateTime.now_local ().format ("%F %T") ;
-		 string entry = dt.to_string () + " " + msg.level.to_string () + " " + msg.message + "\n" ;
+		 string entry = dt.to_string () + "\t" + msg.level.to_string () + "\t" + msg.message + "\n" ;
 
 		 try {
 			FileOutputStream os = file.append_to (FileCreateFlags.NONE) ;

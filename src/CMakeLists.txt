@@ -7,6 +7,7 @@ set(MAIN_SRC
     gui/DragBox.vala
     gui/TwistBox.vala
     gui/StabilityBox.vala
+    gui/LogViewerDialog.vala
 )
 
 set(LIB_BALISTICA_SRC
