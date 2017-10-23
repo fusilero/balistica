@@ -84,10 +84,12 @@ namespace Balistica{
 
 		 Gtk.MenuItem item_file = new Gtk.MenuItem.with_label ("File") ;
 		 Gtk.Menu filemenu = new Gtk.Menu () ;
-		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
-		 filemenu.add (sub_item_quit) ;
 		 Gtk.MenuItem sub_item_log = new Gtk.MenuItem.with_label ("View Log") ;
 		 filemenu.add (sub_item_log) ;
+		 Gtk.SeparatorMenuItem separator = new Gtk.SeparatorMenuItem () ;
+		 filemenu.add (separator) ;
+		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
+		 filemenu.add (sub_item_quit) ;
 		 item_file.set_submenu (filemenu) ;
 
 		 Gtk.MenuItem item_help = new Gtk.MenuItem.with_label ("Help") ;
@@ -136,7 +138,7 @@ namespace Balistica{
 		 notebook.set_tab_pos (Gtk.PositionType.LEFT) ;
 
 		 // Create & add our pages to the notebook
-		 this.drag_content = new Balistica.DragBox () ;
+		 this.drag_content = new Balistica.DragBox (main_window) ;
 		 notebook.append_page (drag_content, drag_lbl) ;
 
 		 this.twist_content = new Balistica.TwistBox () ;
@@ -239,6 +241,7 @@ namespace Balistica{
 		 var dialog = new Balistica.LogViewerDialog (this.data_dir + "balistica.log") ;
 
 		 dialog.destroy.connect (Gtk.main_quit) ;
+		 dialog.set_transient_for (main_window) ;
 		 dialog.show_all () ;
 	  }
 

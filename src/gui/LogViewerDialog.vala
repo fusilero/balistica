@@ -26,10 +26,14 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
    public Gtk.TreeView log_tree ;
    private Gtk.ListStore list_store ;
 
+   private string log_file ;
+
    /**
     * Constructor
     */
    public LogViewerDialog (string log_file) {
+	  this.log_file = log_file ;
+
 	  // Create a list store to populate the tree view
 	  list_store = new Gtk.ListStore (4, typeof (string), typeof (string), typeof (string), typeof (string)) ;
 	  log_tree.set_model (list_store) ;
@@ -42,10 +46,22 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
 
 	  log_tree.insert_column_with_attributes (2, "Message", new Gtk.CellRendererText (), "text", 3) ;
 
-	  LoadLogFile (log_file) ;
+	  LoadLogFile () ;
    }
 
-   private void LoadLogFile(string log_file) {
+   /**
+    * Export the drag results to HTML
+    */
+   [GtkCallback]
+   public void btnRefresh_clicked() {
+	  list_store.clear () ;
+	  LoadLogFile () ;
+   }
+
+   /**
+    * Load the log file into the application window
+    */
+   private void LoadLogFile() {
 	  // A reference to our file
 	  var file = File.new_for_path (log_file) ;
 

@@ -27,6 +27,7 @@ public class Balistica.DragBox : Gtk.Box {
 
    // Holds our calculation results
    private LibBalistica.Solution lsln ;
+   private Gtk.Window main_window ;
 
    // Checkbox for atmospheric corrections
    [GtkChild]
@@ -98,7 +99,8 @@ public class Balistica.DragBox : Gtk.Box {
    /**
     * Constructor
     */
-   public DragBox () {
+   public DragBox (Gtk.Window main_window) {
+	  this.main_window = main_window ;
 	  setDefaultAtmosphere () ;
 
 	  btnExportResults.set_sensitive (false) ;
@@ -161,6 +163,7 @@ public class Balistica.DragBox : Gtk.Box {
 		 df) ;
 
 	  dialog.destroy.connect (Gtk.main_quit) ;
+	  dialog.set_transient_for (main_window) ;
 	  dialog.show_all () ;
    }
 
