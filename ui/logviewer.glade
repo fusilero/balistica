@@ -5,6 +5,8 @@
   <template class="BalisticaLogViewerDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Log Viewer</property>
+    <property name="default_width">620</property>
+    <property name="default_height">300</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
@@ -37,11 +39,21 @@
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="log_tree">
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection1"/>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="log_tree">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hscroll_policy">natural</property>
+                <property name="vscroll_policy">natural</property>
+                <property name="enable_grid_lines">horizontal</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection" id="treeview-selection1"/>
+                </child>
+              </object>
             </child>
           </object>
           <packing>
