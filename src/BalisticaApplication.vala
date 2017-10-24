@@ -239,8 +239,6 @@ namespace Balistica{
 	   */
 	  private void log_viewer_selected() {
 		 var dialog = new Balistica.LogViewerDialog (this.data_dir + "balistica.log") ;
-
-		 dialog.destroy.connect (Gtk.main_quit) ;
 		 dialog.set_transient_for (main_window) ;
 		 dialog.show_all () ;
 	  }

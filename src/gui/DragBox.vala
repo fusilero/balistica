@@ -162,7 +162,6 @@ public class Balistica.DragBox : Gtk.Box {
 		 double.parse (this.txtSight_height.get_text ()),
 		 df) ;
 
-	  dialog.destroy.connect (Gtk.main_quit) ;
 	  dialog.set_transient_for (main_window) ;
 	  dialog.show_all () ;
    }
