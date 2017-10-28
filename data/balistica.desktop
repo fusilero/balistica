@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=balística
+GenericName=External Ballistics software
+X-GNOME-FullName=balística
+Comment=External ballistics calculator
+Keywords=ballistics
+Icon=balistica
+TryExec=balistica
+Exec=balistica
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Ballistics
+StartupNotify=true

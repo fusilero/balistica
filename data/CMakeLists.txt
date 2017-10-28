@@ -2,19 +2,16 @@ set(MAN_DEST ${CMAKE_INSTALL_PREFIX}/man)
 set(DESKTOP_DEST ${CMAKE_INSTALL_PREFIX}/share/applications)
 set(APPDATA_DEST ${CMAKE_INSTALL_PREFIX}/share/appdata)
 
-include(GSettings)
-add_schema(org.gnome.balistica.gschema.xml)
-
 set(MAN_FILES
         balistica.1
 )
 
 set(DESKTOP_FILES
-        org.gnome.balistica.desktop.in
+        balistica.desktop
 )
 
 set(APPDATA_FILES
-        org.gnome.balistica.appdata.xml.in
+        balistica.appdata.xml
 )
 
 install(FILES ${MAN_FILES} DESTINATION ${MAN_DEST})
@@ -26,9 +23,10 @@ install(FILES "hicolor/16x16/apps/balistica.png" DESTINATION share/icons/hicolor
 install(FILES "hicolor/24x24/apps/balistica.png" DESTINATION share/icons/hicolor/24x24/apps)
 install(FILES "hicolor/32x32/apps/balistica.png" DESTINATION share/icons/hicolor/32x32/apps)
 install(FILES "hicolor/48x48/apps/balistica.png" DESTINATION share/icons/hicolor/48x48/apps)
+install(FILES "hicolor/48x48/apps/balistica.png" DESTINATION share/icons/hicolor/128x128/apps)
 install(FILES "hicolor/256x256/apps/balistica.png" DESTINATION share/icons/hicolor/256x256/apps)
 install(FILES "hicolor/512x512/apps/balistica.png" DESTINATION share/icons/hicolor/512x512/apps)
-install(FILES "hicolor/symbolic/apps/balistica-symbolic.svg" DESTINATION share/icons/hicolor/symbolic/apps)
+install(FILES "hicolor/scalable/apps/balistica.svg" DESTINATION share/icons/hicolor/scalable/apps)
 
 # Optional: update icon cache at install time.
 if (ICON_UPDATE)
