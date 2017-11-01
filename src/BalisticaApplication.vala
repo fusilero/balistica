@@ -42,7 +42,6 @@ namespace Balistica{
    } ;
 
    public class Application : Gtk.Application {
-	  private GLib.Settings settings ;
 	  public Gtk.Window main_window ;
 	  private Balistica.DragBox drag_content ;
 	  private Balistica.TwistBox twist_content ;
@@ -62,8 +61,6 @@ namespace Balistica{
 	   */
 	  protected override void startup() {
 		 base.startup () ;
-
-		 settings = new GLib.Settings ("org.gnome.balistica") ;
 
 		 main_window = new Gtk.Window () ;
 		 Environment.set_application_name (Balistica.NAME) ;
@@ -157,8 +154,8 @@ namespace Balistica{
 		 config_dir = this.setup_user_config_directory () ;
 		 data_dir = this.setup_user_data_directory () ;
 
-		 Logging.get_default ().publish.connect ((LogMsg) => {
-			this.log (LogMsg) ;
+		 Logging.get_default ().publish.connect ((msg) => {
+			this.log (msg) ;
 		 }) ;
 	  }
 
@@ -250,8 +247,7 @@ namespace Balistica{
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Error showing help" } ;
-			Logging.get_default ().publish (msg) ;
+			Logging.get_default ().publish (new LogMsg( "Error showing help" )) ;
 		 }
 	  }
 
@@ -281,7 +277,7 @@ namespace Balistica{
 	  /**
 	   * Append new log entry to the log
 	   */
-	  private void log(Logging.LogMsg msg) {
+	  private void log(LogMsg msg) {
 		 File file = File.new_for_path (this.data_dir + "balistica.log") ;
 		 var dt = new DateTime.now_local ().format ("%F %T") ;
 		 string entry = dt.to_string () + "\t" + msg.level.to_string () + "\t" + msg.message + "\n" ;

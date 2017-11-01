@@ -62,12 +62,13 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
     * Load the log file into the application window
     */
    private void LoadLogFile() {
+	   var logger = Logging.get_default();
+
 	  // A reference to our file
 	  var file = File.new_for_path (log_file) ;
 
 	  if( !file.query_exists ()){
-		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Log file does not exist!" } ;
-		 Logging.get_default ().publish (msg) ;
+		 logger.publish (new LogMsg("Log file does not exist!")) ;
 		 return ;
 	  }
 
@@ -86,8 +87,7 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
 			}
 		 }
 	  } catch ( Error e ){
-		 Logging.LogMsg msg = { Logging.LogLevel.ERROR, "Reading log file " + e.message } ;
-		 Logging.get_default ().publish (msg) ;
+		 logger.publish (new LogMsg("Reading log file " + e.message)) ;
 	  }
    }
 

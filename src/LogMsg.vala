@@ -16,18 +16,49 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class Logging {
+public class LogMsg {
 
-   public signal void publish(LogMsg msg) ;
+   public enum LogLevel {
+	  DEBUG,
+	  INFO,
+	  WARNING,
+	  ERROR,
+	  FATAL ;
 
-   private static Logging _default ;
+	  public string to_string() {
+		 switch( this ){
+		 case DEBUG:
+			return "DEBUG" ;
 
-   public static Logging get_default() {
-	  if( _default == null ){
-		 _default = new Logging () ;
+		 case INFO:
+			return "INFO" ;
+
+		 case WARNING:
+			return "WARNING" ;
+
+		 case ERROR:
+			return "ERROR" ;
+
+		 case FATAL:
+			return "FATAL" ;
+
+		 default:
+			assert_not_reached () ;
+		 }
 	  }
-	  return _default ;
+
    }
 
+	public LogLevel level {get; set;}
+	public string message {get; set;}
+
+	public LogMsg (string message) {
+		this.full(LogLevel.ERROR, "");
+	}
+
+	public LogMsg.full (LogLevel level, string message) {
+		this.level = level;
+		this.message = message;
+	}
 }
 

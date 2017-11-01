@@ -2,6 +2,7 @@ set(MAIN_SRC
     BalisticaApplication.vala
     Calculate.vala
     Logging.vala
+    LogMsg.vala
     Main.vala
     gui/PbrDialog.vala
     gui/DragBox.vala
