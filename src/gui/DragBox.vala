@@ -29,7 +29,7 @@ public class Balistica.DragBox : Gtk.Box {
    private LibBalistica.Solution lsln ;
    private Gtk.Window main_window ;
 
-   private Logging logger;
+   private Logging logger ;
 
    // Checkbox for atmospheric corrections
    [GtkChild]
@@ -104,7 +104,7 @@ public class Balistica.DragBox : Gtk.Box {
    public DragBox (Gtk.Window main_window) {
 	  this.main_window = main_window ;
 
-	this.logger = Logging.get_default();
+	  this.logger = Logging.get_default () ;
 	  setDefaultAtmosphere () ;
 
 	  btnExportResults.set_sensitive (false) ;
@@ -215,27 +215,27 @@ public class Balistica.DragBox : Gtk.Box {
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
 	  if( bc <= 0 ){
-		 logger.publish (new LogMsg("Drag Coefficient must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg ("Drag Coefficient must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
 	  if( v <= 0 ){
-		 logger.publish (new LogMsg("Initial Velocity must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg ("Initial Velocity must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
 	  if( sh <= 0 ){
-		 logger.publish (new LogMsg("Sight Height over Bore must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg ("Sight Height over Bore must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
 	  if( w <= 0 ){
-		 logger.publish (new LogMsg("Projectile Weight must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg ("Projectile Weight must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
 	  if( zero <= 0 ){
-		 logger.publish (new LogMsg("Zero Range must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg ("Zero Range must be a positive value greater than 0")) ;
 		 return ;
 	  }
 
@@ -270,7 +270,7 @@ public class Balistica.DragBox : Gtk.Box {
 	  lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 	  if( lsln.getSolutionSize () == -1 ){
-		 logger.publish (new LogMsg("Error creating solution results")) ;
+		 logger.publish (new LogMsg ("Error creating solution results")) ;
 		 return ;
 	  } else {
 		 txtViewDragResults.buffer.text = ("") ;
@@ -310,7 +310,7 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkCallback]
    public void btnExportResults_clicked() {
 	  if( this.lsln == null ){
-		 logger.publish (new LogMsg("Cannot export an empty drag solution")) ;
+		 logger.publish (new LogMsg ("Cannot export an empty drag solution")) ;
 		 return ;
 	  }
 
@@ -352,7 +352,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   file.delete () ;
 			} catch ( Error err ){
-			   logger.publish (new LogMsg("Failed to overwrite existing file")) ;
+			   logger.publish (new LogMsg ("Failed to overwrite existing file")) ;
 			   return ;
 			}
 		 }
@@ -362,7 +362,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   (save_dialog as Gtk.FileChooser).set_file (file) ;
 			} catch ( GLib.Error err ){
-			   logger.publish (new LogMsg("Error selecting file to save as")) ;
+			   logger.publish (new LogMsg ("Error selecting file to save as")) ;
 			   return ;
 			}
 		 }
@@ -422,7 +422,7 @@ public class Balistica.DragBox : Gtk.Box {
 			data_stream.put_string ("</body>\n</html>") ;
 		 } catch ( GLib.Error err ){
 			save_dialog.close () ;
-			logger.publish (new LogMsg("Error creating HTML output")) ;
+			logger.publish (new LogMsg ("Error creating HTML output")) ;
 			return ;
 		 }
 	  }

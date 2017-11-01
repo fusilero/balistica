@@ -247,7 +247,7 @@ namespace Balistica{
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
-			Logging.get_default ().publish (new LogMsg( "Error showing help" )) ;
+			Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 		 }
 	  }
 

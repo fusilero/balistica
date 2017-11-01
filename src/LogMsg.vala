@@ -49,16 +49,16 @@ public class LogMsg {
 
    }
 
-	public LogLevel level {get; set;}
-	public string message {get; set;}
+   public LogLevel level { get ; set ; }
+   public string message { get ; set ; }
 
-	public LogMsg (string message) {
-		this.full(LogLevel.ERROR, "");
-	}
+   public LogMsg (string message) {
+	  this.full (LogLevel.ERROR, "") ;
+   }
 
-	public LogMsg.full (LogLevel level, string message) {
-		this.level = level;
-		this.message = message;
-	}
+   public LogMsg.full (LogLevel level, string message) {
+	  this.level = level ;
+	  this.message = message ;
+   }
 }
 
