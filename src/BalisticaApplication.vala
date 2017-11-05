@@ -46,6 +46,10 @@ namespace Balistica{
 	  private Balistica.DragBox drag_content ;
 	  private Balistica.TwistBox twist_content ;
 	  private Balistica.StabilityBox stability_content ;
+	  private Balistica.CaseBox case_content ;
+	  private Balistica.PowderBox powder_content ;
+	  private Balistica.PrimerBox primer_content ;
+	  private Balistica.ProjectileBox projectile_content ;
 	  private string data_dir ;
 	  private string config_dir ;
 
@@ -120,29 +124,19 @@ namespace Balistica{
 
 		 box.pack_start (menubar, false, false, 0) ;
 
-		 // Create labels here so that we can add pango formatting
-		 Gtk.Label drag_lbl = new Gtk.Label ("<big>Drag</big>") ;
-		 drag_lbl.set_use_markup (true) ;
-
-		 Gtk.Label twist_lbl = new Gtk.Label ("<big>Twist</big>") ;
-		 twist_lbl.set_use_markup (true) ;
-
-		 Gtk.Label stability_lbl = new Gtk.Label ("<big>Stability</big>") ;
-		 stability_lbl.set_use_markup (true) ;
-
-		 // Add the notebook that will eventually hold everything else
+		 // Add the outer notebook that will hold everything
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.LEFT) ;
 
-		 // Create & add our pages to the notebook
-		 this.drag_content = new Balistica.DragBox (main_window) ;
-		 notebook.append_page (drag_content, drag_lbl) ;
+		 // Pango formatted labels to help visually distinguish
+		 Gtk.Label calcs_lbl = new Gtk.Label ("<big>Calculations</big>") ;
+		 calcs_lbl.set_use_markup (true) ;
 
-		 this.twist_content = new Balistica.TwistBox () ;
-		 notebook.append_page (twist_content, twist_lbl) ;
+		 Gtk.Label db_lbl = new Gtk.Label ("<big>Database</big>") ;
+		 db_lbl.set_use_markup (true) ;
 
-		 this.stability_content = new Balistica.StabilityBox () ;
-		 notebook.append_page (stability_content, stability_lbl) ;
+		 notebook.append_page(build_calc_notebook(), calcs_lbl);
+		 notebook.append_page(build_db_notebook(), db_lbl);
 
 		 box.pack_start (notebook, true, true, 0) ;
 
@@ -157,6 +151,51 @@ namespace Balistica{
 		 Logging.get_default ().publish.connect ((msg) => {
 			this.log (msg) ;
 		 }) ;
+	  }
+
+	  private Gtk.Notebook build_calc_notebook() {
+		 Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
+		 Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
+		 Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
+
+		 Gtk.Notebook notebook = new Gtk.Notebook () ;
+		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
+
+		 // Create & add our pages to the calculations notebook
+		 this.drag_content = new Balistica.DragBox (main_window) ;
+		 notebook.append_page (drag_content, drag_lbl) ;
+
+		 this.twist_content = new Balistica.TwistBox () ;
+		 notebook.append_page (twist_content, twist_lbl) ;
+
+		 this.stability_content = new Balistica.StabilityBox () ;
+		 notebook.append_page (stability_content, stability_lbl) ;
+
+		 return notebook;
+	  }
+
+	  private Gtk.Notebook build_db_notebook() {
+		 Gtk.Label case_lbl = new Gtk.Label ("Case") ;
+		 Gtk.Label powder_lbl = new Gtk.Label ("Powder") ;
+		 Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
+		 Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
+
+		 Gtk.Notebook notebook = new Gtk.Notebook () ;
+		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
+
+		 this.case_content = new Balistica.CaseBox () ;
+		 notebook.append_page (case_content, case_lbl) ;
+
+		 this.powder_content = new Balistica.PowderBox () ;
+		 notebook.append_page (powder_content, powder_lbl) ;
+
+		 this.primer_content = new Balistica.PrimerBox () ;
+		 notebook.append_page (primer_content, primer_lbl) ;
+		 
+		 this.projectile_content = new Balistica.ProjectileBox () ;
+		 notebook.append_page (projectile_content, projectile_lbl) ;
+
+		 return notebook;
 	  }
 
 	  /**

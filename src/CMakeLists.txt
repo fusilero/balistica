@@ -9,6 +9,11 @@ set(MAIN_SRC
     gui/TwistBox.vala
     gui/StabilityBox.vala
     gui/LogViewerDialog.vala
+
+    gui/CaseBox.vala
+    gui/PowderBox.vala
+    gui/PrimerBox.vala
+    gui/ProjectileBox.vala
 )
 
 set(LIB_BALISTICA_SRC
@@ -62,7 +67,6 @@ set(CFLAGS
     -D_VERSION_COMMIT=\"${VERSION_COMMIT}\"
     -D_VERSION_DESC=\"${VERSION_DESC}\"
     -D_INSTALL_PREFIX=\"${CMAKE_INSTALL_PREFIX}\"
-    -D_GSETTINGS_DIR=\"${CMAKE_BINARY_DIR}/gsettings\"
     -D_SOURCE_ROOT_DIR=\"${CMAKE_SOURCE_DIR}\"
 )
 

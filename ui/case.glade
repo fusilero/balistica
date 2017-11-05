@@ -28,7 +28,7 @@ Author: Steven Oliver
   <!-- interface-description An open source external balistics software package. -->
   <!-- interface-copyright 2017 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
-  <object class="GtkBox" id="caseBox">
+  <template class="BalisticaCaseBox" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="orientation">vertical</property>
@@ -152,5 +152,5 @@ Author: Steven Oliver
     <child>
       <placeholder/>
     </child>
-  </object>
+  </template>
 </interface>
