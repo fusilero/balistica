@@ -1,6 +1,6 @@
 ## Contributing
-I have a small to do list setup in the [wiki](https://github.com/steveno/balistica/wiki/To-Do); please take
-any of the tasks you want, but please also file a ticket so I know you're working on it.
+If you would like to contribute, check the github issues. Please take any of the tasks you want, 
+but please also comment on the issue so I know you're working on it.
 
 As always please file any and all [bugs](https://github.com/steveno/balistica/issues?state=open).
 
@@ -10,7 +10,7 @@ In order to make it simple for me I use the script found [here](https://gist.git
 You only need to make sure you're one directory above balistica when you do.
 
 ## Seeing debug messages
-If you haven't noticed already the code is sprinkled with debug statements. In order you to see 
+If you haven't noticed already LibBalistica is sprinkled with debug statements. In order you to see 
 the messages you'll need to run the application like so:
 ```
 G_MESSAGES_DEBUG=all ./balistica > output.txt
