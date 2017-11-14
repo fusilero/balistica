@@ -135,8 +135,8 @@ namespace Balistica{
 		 Gtk.Label db_lbl = new Gtk.Label ("<big>Database</big>") ;
 		 db_lbl.set_use_markup (true) ;
 
-		 notebook.append_page(build_calc_notebook(), calcs_lbl);
-		 notebook.append_page(build_db_notebook(), db_lbl);
+		 notebook.append_page (build_calc_notebook (), calcs_lbl) ;
+		 notebook.append_page (build_db_notebook (), db_lbl) ;
 
 		 box.pack_start (notebook, true, true, 0) ;
 
@@ -153,10 +153,15 @@ namespace Balistica{
 		 }) ;
 	  }
 
-	  private Gtk.Notebook build_calc_notebook() {
+	  private Gtk.Frame build_calc_notebook() {
 		 Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
 		 Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
 		 Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
+
+		 Gtk.Frame frame = new Gtk.Frame("");
+		 Gtk.Alignment alignment = new Gtk.Alignment(0.50f, 0.50f, 1.0f, 1.0f);
+		 alignment.left_padding = 12;
+		 frame.add(alignment);
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -171,14 +176,21 @@ namespace Balistica{
 		 this.stability_content = new Balistica.StabilityBox () ;
 		 notebook.append_page (stability_content, stability_lbl) ;
 
-		 return notebook;
+		 alignment.add(notebook);
+
+		 return frame ;
 	  }
 
-	  private Gtk.Notebook build_db_notebook() {
+	  private Gtk.Frame build_db_notebook() {
 		 Gtk.Label case_lbl = new Gtk.Label ("Case") ;
 		 Gtk.Label powder_lbl = new Gtk.Label ("Powder") ;
 		 Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
 		 Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
+
+		 Gtk.Frame frame = new Gtk.Frame("");
+		 Gtk.Alignment alignment = new Gtk.Alignment(0.50f, 0.50f, 1.0f, 1.0f);
+		 alignment.left_padding = 12;
+		 frame.add(alignment);
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -191,11 +203,13 @@ namespace Balistica{
 
 		 this.primer_content = new Balistica.PrimerBox () ;
 		 notebook.append_page (primer_content, primer_lbl) ;
-		 
+
 		 this.projectile_content = new Balistica.ProjectileBox () ;
 		 notebook.append_page (projectile_content, projectile_lbl) ;
 
-		 return notebook;
+		 alignment.add(notebook);
+
+		 return frame ;
 	  }
 
 	  /**
