@@ -158,10 +158,10 @@ namespace Balistica{
 		 Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
 		 Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
 
-		 Gtk.Frame frame = new Gtk.Frame("");
-		 Gtk.Alignment alignment = new Gtk.Alignment(0.50f, 0.50f, 1.0f, 1.0f);
-		 alignment.left_padding = 12;
-		 frame.add(alignment);
+		 Gtk.Frame frame = new Gtk.Frame ("") ;
+		 Gtk.Alignment alignment = new Gtk.Alignment (0.50f, 0.50f, 1.0f, 1.0f) ;
+		 alignment.left_padding = 12 ;
+		 frame.add (alignment) ;
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -176,7 +176,7 @@ namespace Balistica{
 		 this.stability_content = new Balistica.StabilityBox () ;
 		 notebook.append_page (stability_content, stability_lbl) ;
 
-		 alignment.add(notebook);
+		 alignment.add (notebook) ;
 
 		 return frame ;
 	  }
@@ -187,10 +187,10 @@ namespace Balistica{
 		 Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
 		 Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
 
-		 Gtk.Frame frame = new Gtk.Frame("");
-		 Gtk.Alignment alignment = new Gtk.Alignment(0.50f, 0.50f, 1.0f, 1.0f);
-		 alignment.left_padding = 12;
-		 frame.add(alignment);
+		 Gtk.Frame frame = new Gtk.Frame ("") ;
+		 Gtk.Alignment alignment = new Gtk.Alignment (0.50f, 0.50f, 1.0f, 1.0f) ;
+		 alignment.left_padding = 12 ;
+		 frame.add (alignment) ;
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -207,7 +207,7 @@ namespace Balistica{
 		 this.projectile_content = new Balistica.ProjectileBox () ;
 		 notebook.append_page (projectile_content, projectile_lbl) ;
 
-		 alignment.add(notebook);
+		 alignment.add (notebook) ;
 
 		 return frame ;
 	  }

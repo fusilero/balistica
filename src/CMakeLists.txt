@@ -1,15 +1,19 @@
 set(MAIN_SRC
     BalisticaApplication.vala
     Calculate.vala
+    Database.vala
     Logging.vala
     LogMsg.vala
     Main.vala
+
+    # Calculations
     gui/PbrDialog.vala
     gui/DragBox.vala
     gui/TwistBox.vala
     gui/StabilityBox.vala
     gui/LogViewerDialog.vala
 
+    # Reloading
     gui/CaseBox.vala
     gui/PowderBox.vala
     gui/PrimerBox.vala
@@ -53,7 +57,7 @@ set(LIB_BALISTICA_PACKAGES
 )
 
 set(BALISTICA_PACKAGES
-    gtk+-3.0 gio-2.0
+    gtk+-3.0 gio-2.0 sqlite3
 )
 
 set(GSETTINGS_DIR ${CMAKE_SOURCE_DIR}/data)
@@ -181,7 +185,7 @@ include(GResource)
 GLIB_COMPILE_RESOURCES(BALISTICA_RESOURCES SOURCE ../ui/resources.xml)
 
 add_executable(balistica ${BALISTICA_VALA_C} ${BALISTICA_RESOURCES})
-target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica)
+target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica sqlite3)
 install(TARGETS balistica RUNTIME DESTINATION bin)
 
 # Copy the executable to the top-level build directory to make testing easier
