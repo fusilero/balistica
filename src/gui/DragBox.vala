@@ -316,7 +316,7 @@ public class Balistica.DragBox : Gtk.Box {
 
 	  // Create a save as dialog
 	  Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
-																	 Application.main_window as Gtk.Window,
+																	 this.main_window as Gtk.Window,
 																	 Gtk.FileChooserAction.SAVE,
 																	 "Cancel",
 																	 Gtk.ResponseType.CANCEL,
@@ -458,21 +458,6 @@ public class Balistica.DragBox : Gtk.Box {
 	  this.txtTemp.set_text ("59.0") ;
 	  this.txtBarPress.set_text ("29.53") ;
 	  this.txtRelaHumid.set_text ("78.0") ;
-   }
-
-   /**
-    * Setup an example calculation
-    */
-   private void setExampleCalculation() {
-	  this.txtName.set_text ("308 Win Match, 168gr Sierra Match King") ;
-	  this.txtDrag_coefficient.set_text ("0.465") ;
-	  this.txtProjectile_weight.set_text ("168") ;
-	  this.txtIntial_velocity.set_text ("2650") ;
-	  this.txtZero_range.set_text ("200") ;
-	  this.txtSight_height.set_text ("1.6") ;
-	  this.txtShooting_angle.set_text ("0") ;
-	  this.txtWind_velocity.set_text ("0") ;
-	  this.txtWind_angle.set_text ("0") ;
    }
 
    /**
