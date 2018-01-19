@@ -28,8 +28,9 @@ public class Balistica.DragBox : Gtk.Box {
    // Holds our calculation results
    private LibBalistica.Solution lsln ;
    private Gtk.Window main_window ;
-
    private Logging logger ;
+
+   private Gtk.ListStore results_list ;
 
    // Checkbox for atmospheric corrections
    [GtkChild]
@@ -40,10 +41,12 @@ public class Balistica.DragBox : Gtk.Box {
    public Gtk.Button btnSolveDrag ;
    [GtkChild]
    public Gtk.Button btnCalcPBR ;
+   [GtkChild]
+   public Gtk.Button btnPopulateExample ;
 
    // Drag calculation results
    [GtkChild]
-   public Gtk.TextView txtViewDragResults ;
+   public Gtk.TreeView results_tree ;
 
    [GtkChild]
    public Gtk.Entry txtName ;
@@ -107,10 +110,26 @@ public class Balistica.DragBox : Gtk.Box {
 	  this.logger = Logging.get_default () ;
 	  setDefaultAtmosphere () ;
 
-	  btnExportResults.set_sensitive (false) ;
-	  btnCalcPBR.set_sensitive (false) ;
-	  rad_g1.active = true ;
-	  rad_s10.active = true ;
+	  this.btnExportResults.set_sensitive (false) ;
+	  this.btnCalcPBR.set_sensitive (false) ;
+	  this.rad_g1.active = true ;
+	  this.rad_s10.active = true ;
+	  this.results_list = new Gtk.ListStore (8, typeof (int), typeof (double),
+                                             typeof (double), typeof (double),
+                                             typeof (double), typeof (double),
+                                             typeof (double), typeof (double)) ;
+
+	  Gtk.CellRendererText cell = new Gtk.CellRendererText () ;
+	  this.results_tree.insert_column_with_attributes (-1, "Range", cell, "text", 0) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Drop Inches", cell, "text", 1) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Drop MOA", cell, "text", 2) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Velocity", cell, "text", 3) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Energy", cell, "text", 4) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Drift", cell, "text", 5) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Windage MOA", cell, "text", 6) ;
+	  this.results_tree.insert_column_with_attributes (-1, "Time", cell, "text", 7) ;
+
+	  results_tree.set_model (results_list) ;
    }
 
    /**
@@ -144,12 +163,13 @@ public class Balistica.DragBox : Gtk.Box {
 	  setDefaultAtmosphere () ;
 
 	  this.ckbAtmosCorr.set_active (false) ;
-	  this.txtViewDragResults.buffer.text = "" ;
 	  this.rad_g1.active = true ;
 	  this.rad_s10.active = true ;
 
 	  this.btnExportResults.set_sensitive (false) ;
 	  this.btnCalcPBR.set_sensitive (false) ;
+
+	  clearResultsGrid () ;
    }
 
    /**
@@ -175,6 +195,8 @@ public class Balistica.DragBox : Gtk.Box {
     */
    [GtkCallback]
    public void btnSolveDrag_clicked() {
+	  clearResultsGrid () ;
+
 	  // Name used to store the calculation
 	  string name = this.txtName.get_text () ;
 
@@ -272,32 +294,24 @@ public class Balistica.DragBox : Gtk.Box {
 	  if( lsln.getSolutionSize () == -1 ){
 		 logger.publish (new LogMsg ("Error creating solution results")) ;
 		 return ;
-	  } else {
-		 txtViewDragResults.buffer.text = ("") ;
 	  }
 
-	  txtViewDragResults.buffer.text += ("Drag Coefficient: %.3f  Projectile Weight: %.2f grains\n").printf (lsln.getBc (), lsln.getWeight ()) ;
-	  txtViewDragResults.buffer.text += ("Initial Velocity: %.2f ft/s  Zero Range: %.2f yards  Shooting Angle: %.2f degrees\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ()) ;
-	  txtViewDragResults.buffer.text += ("Wind Velocity: %.2f mph  Wind Direction: %.2f degrees\n").printf (lsln.getWindspeed (), lsln.getWindangle ()) ;
-	  txtViewDragResults.buffer.text += ("Altitude: %.2f ft  Barometer: %.2f in-Hg  Temperature: %.2f F  Relative Humidity: %.2f%%\n\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ()) ;
-
-	  txtViewDragResults.buffer.text += "Range\tDropI\tDropM\tVelocity  Energy  Drift\tWindage\tTime\n" ;
-
 	  double r, d, m, wi, wm, t, e ;
-
+	  Gtk.TreeIter iter ;
 	  calc_setup setup = setupCalcResults () ;
-
 	  for( int n = 0 ; n <= setup.max ; n = n + setup.step ){
 		 r = lsln.getRange (n) ;
 		 d = lsln.getDrop (n) ;
 		 m = lsln.getMOA (n) ;
 		 v = lsln.getVelocity (n) ;
+		 e = lsln.getWeight () * v * v / 450436 ;
 		 wi = lsln.getWindage (n) ;
 		 wm = lsln.getWindageMOA (n) ;
 		 t = lsln.getTime (n) ;
-		 e = lsln.getWeight () * v * v / 450436 ;
 
-		 txtViewDragResults.buffer.text += ("%.0f\t%.2f\t%.2f\t%.0f      %.0f    %.2f\t%.2f\t%.2f\n").printf (r, d, m, v, e, wi, wm, t) ;
+		 // Populate results grids
+		 results_list.append (out iter) ;
+		 results_list.set (iter, 0, (int) r, 1, d, 2, m, 3, v, 4, e, 5, wi, 6, wm, 7, t) ;
 	  }
 
 	  this.btnExportResults.set_sensitive (true) ;
@@ -429,6 +443,30 @@ public class Balistica.DragBox : Gtk.Box {
 
 	  // We're done with the save dialog
 	  save_dialog.close () ;
+   }
+
+   /**
+    * Populate an example calculation
+    */
+   [GtkCallback]
+   public void btnPopulateExample_clicked() {
+	  this.txtName.set_text ("308 Win Match, 168gr Sierra Match King") ;
+	  this.txtDrag_coefficient.set_text ("0.465") ;
+	  this.txtProjectile_weight.set_text ("168") ;
+	  this.txtIntial_velocity.set_text ("2650") ;
+	  this.txtZero_range.set_text ("200") ;
+	  this.txtSight_height.set_text ("1.6") ;
+	  this.txtShooting_angle.set_text ("0") ;
+	  this.txtWind_velocity.set_text ("0") ;
+	  this.txtWind_angle.set_text ("0") ;
+   }
+
+   /**
+    * Clear results grid so a different calculation can be displayed
+    */
+   private void clearResultsGrid() {
+	  this.results_list.clear () ;
+	  this.results_tree.set_model (this.results_list) ;
    }
 
    /**
