@@ -1,4 +1,4 @@
-/* Copyright 2012-2017 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2018 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -35,12 +35,6 @@ namespace Balistica{
    public const string VERSION_COMMIT = _VERSION_COMMIT ;
    public const string VERSION_DESC = _VERSION_DESC ;
 
-   public const string[] AUTHORS =
-   {
-	  "Steven Oliver <oliver.steven@gmail.com>",
-	  null
-   } ;
-
    public class Application : Gtk.Application {
 	  public Gtk.Window main_window ;
 	  private Balistica.DragBox drag_content ;
@@ -52,6 +46,14 @@ namespace Balistica{
 	  private Balistica.ProjectileBox projectile_content ;
 	  private string data_dir ;
 	  private string config_dir ;
+
+	  private const ActionEntry[] action_entries =
+	  {
+		 { "view_log", view_log_cb },
+		 { "help", help_cb },
+		 { "about", about_cb },
+		 { "quit", quit_cb },
+	  } ;
 
 	  /**
 	   * Constructor
@@ -66,6 +68,8 @@ namespace Balistica{
 	  protected override void startup() {
 		 base.startup () ;
 
+		 add_action_entries (action_entries, this) ;
+
 		 main_window = new Gtk.Window () ;
 		 Environment.set_application_name (Balistica.NAME) ;
 		 Environment.set_prgname (Balistica.NAME) ;
@@ -79,50 +83,6 @@ namespace Balistica{
 
 		 // Add the main layout box
 		 Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
-
-		 // Add the menu bar across the top
-		 Gtk.MenuBar menubar = new Gtk.MenuBar () ;
-
-		 Gtk.MenuItem item_file = new Gtk.MenuItem.with_label ("File") ;
-		 Gtk.Menu filemenu = new Gtk.Menu () ;
-		 Gtk.MenuItem sub_item_log = new Gtk.MenuItem.with_label ("View Log") ;
-		 filemenu.add (sub_item_log) ;
-		 Gtk.SeparatorMenuItem separator = new Gtk.SeparatorMenuItem () ;
-		 filemenu.add (separator) ;
-		 Gtk.MenuItem sub_item_quit = new Gtk.MenuItem.with_label ("Quit") ;
-		 filemenu.add (sub_item_quit) ;
-		 item_file.set_submenu (filemenu) ;
-
-		 Gtk.MenuItem item_help = new Gtk.MenuItem.with_label ("Help") ;
-		 Gtk.Menu helpmenu = new Gtk.Menu () ;
-		 Gtk.MenuItem sub_item_about = new Gtk.MenuItem.with_label ("About") ;
-		 Gtk.MenuItem sub_item_help = new Gtk.MenuItem.with_label ("Help") ;
-
-		 helpmenu.add (sub_item_about) ;
-		 helpmenu.add (sub_item_help) ;
-		 item_help.set_submenu (helpmenu) ;
-
-		 menubar.add (item_file) ;
-		 menubar.add (item_help) ;
-
-		 // Connect menu entries
-		 sub_item_quit.activate.connect (() => {
-			quit_selected () ;
-		 }) ;
-
-		 sub_item_log.activate.connect (() => {
-			log_viewer_selected () ;
-		 }) ;
-
-		 sub_item_help.activate.connect (() => {
-			help_selected () ;
-		 }) ;
-
-		 sub_item_about.activate.connect (() => {
-			about_selected () ;
-		 }) ;
-
-		 box.pack_start (menubar, false, false, 0) ;
 
 		 // Add the outer notebook that will hold everything
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
@@ -151,6 +111,16 @@ namespace Balistica{
 		 Logging.get_default ().publish.connect ((msg) => {
 			this.log (msg) ;
 		 }) ;
+
+		 var builder = new Gtk.Builder () ;
+		 try {
+			builder.add_from_resource ("/org/gnome/balistica/menu.ui") ;
+		 } catch ( Error e ){
+			stdout.printf ("Error: %s\n", e.message) ;
+		 }
+
+		 var menu = builder.get_object ("appmenu") as MenuModel ;
+		 set_app_menu (menu) ;
 	  }
 
 	  private Gtk.Frame build_calc_notebook() {
@@ -159,9 +129,8 @@ namespace Balistica{
 		 Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
 
 		 Gtk.Frame frame = new Gtk.Frame ("") ;
-		 Gtk.Alignment alignment = new Gtk.Alignment (0.50f, 0.50f, 1.0f, 1.0f) ;
-		 alignment.left_padding = 12 ;
-		 frame.add (alignment) ;
+		 Gtk.Viewport port = new Gtk.Viewport (null, null) ;
+		 frame.add (port) ;
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -176,7 +145,7 @@ namespace Balistica{
 		 this.stability_content = new Balistica.StabilityBox () ;
 		 notebook.append_page (stability_content, stability_lbl) ;
 
-		 alignment.add (notebook) ;
+		 port.add (notebook) ;
 
 		 return frame ;
 	  }
@@ -188,13 +157,13 @@ namespace Balistica{
 		 Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
 
 		 Gtk.Frame frame = new Gtk.Frame ("") ;
-		 Gtk.Alignment alignment = new Gtk.Alignment (0.50f, 0.50f, 1.0f, 1.0f) ;
-		 alignment.left_padding = 12 ;
-		 frame.add (alignment) ;
+		 Gtk.Viewport port = new Gtk.Viewport (null, null) ;
+		 frame.add (port) ;
 
 		 Gtk.Notebook notebook = new Gtk.Notebook () ;
 		 notebook.set_tab_pos (Gtk.PositionType.TOP) ;
 
+		 // Create & add our pages to the database notebook
 		 this.case_content = new Balistica.CaseBox () ;
 		 notebook.append_page (case_content, case_lbl) ;
 
@@ -207,7 +176,7 @@ namespace Balistica{
 		 this.projectile_content = new Balistica.ProjectileBox () ;
 		 notebook.append_page (projectile_content, projectile_lbl) ;
 
-		 alignment.add (notebook) ;
+		 port.add (notebook) ;
 
 		 return frame ;
 	  }
@@ -280,14 +249,14 @@ namespace Balistica{
 	  /**
 	   * Quit application
 	   */
-	  private void quit_selected() {
+	  private void quit_cb() {
 		 main_window.destroy () ;
 	  }
 
 	  /**
 	   * Show log viewer
 	   */
-	  private void log_viewer_selected() {
+	  private void view_log_cb() {
 		 var dialog = new Balistica.LogViewerDialog (this.data_dir + "balistica.log") ;
 		 dialog.set_transient_for (main_window) ;
 		 dialog.show_all () ;
@@ -296,7 +265,7 @@ namespace Balistica{
 	  /**
 	   * Show help browser
 	   */
-	  private void help_selected() {
+	  private void help_cb() {
 		 try {
 			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
@@ -307,7 +276,7 @@ namespace Balistica{
 	  /**
 	   * Show about dialog
 	   */
-	  private void about_selected() {
+	  private void about_cb() {
 		 string version ;
 
 		 if( Balistica.VERSION_DESC == "Release" ){
@@ -317,14 +286,15 @@ namespace Balistica{
 		 }
 
 		 Gtk.show_about_dialog (main_window,
-								"authors", Balistica.AUTHORS,
+								"authors", "Steven Oliver <oliver.steven@gmail.com>",
 								"comments", "An open source external ballistics calculator.",
-								"copyright", "Copyright \xc2\xa9 2012-2017 Steven Oliver",
+								"copyright", "Copyright \xc2\xa9 2012-2018 Steven Oliver",
 								"license-type", Gtk.License.GPL_3_0,
 								"program-name", Balistica.NAME,
 								"website", "http://steveno.github.io/balistica/",
 								"website-label", "balística Website",
-								"version", version) ;
+								"version", version,
+								"logo-icon-name", "balistica") ;
 	  }
 
 	  /**
