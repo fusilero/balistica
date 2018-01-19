@@ -140,33 +140,6 @@ install(
     DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}
 )
 
-# Valadoc
-#################################################
-find_package(Valadoc)
-
-if(VALADOC_FOUND)
-    foreach(pkg ${LIB_BALISTICA_PACKAGES})
-        list(APPEND valadoc_pkg_opts "--pkg=${pkg}")
-    endforeach(pkg ${LIB_BALISTICA_PACKAGES})
-
-    include(FindValadoc)
-    add_custom_target(
-        valadoc
-        WORKING_DIRECTORY
-        ${CMAKE_SOURCE_DIR}/src
-    COMMAND
-        ${VALADOC_EXECUTABLE}
-        --verbose --force --deps
-        --package-name=lib-balistica
-        --package-version=${VERSION}
-        --target-glib=${TARGET_GLIB}
-        -b ${CMAKE_CURRENT_SOURCE_DIR}
-        -o ${CMAKE_SOURCE_DIR}/valadoc
-        ${valadoc_pkg_opts}
-        ${LIB_BALISTICA_SRC}
-    )
-endif()
-
 # Balistica
 #################################################
 vala_precompile(BALISTICA_VALA_C balistica
