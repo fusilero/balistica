@@ -46,6 +46,7 @@ namespace Balistica{
 	  private Balistica.ProjectileBox projectile_content ;
 	  private string data_dir ;
 	  private string config_dir ;
+	  private Logging logger ;
 
 	  private const ActionEntry[] action_entries =
 	  {
@@ -111,12 +112,13 @@ namespace Balistica{
 		 Logging.get_default ().publish.connect ((msg) => {
 			this.log (msg) ;
 		 }) ;
+		 this.logger = Logging.get_default () ;
 
 		 var builder = new Gtk.Builder () ;
 		 try {
 			builder.add_from_resource ("/org/gnome/balistica/menu.ui") ;
 		 } catch ( Error e ){
-			stdout.printf ("Error: %s\n", e.message) ;
+			logger.publish (new LogMsg (e.message)) ;
 		 }
 
 		 var menu = builder.get_object ("appmenu") as MenuModel ;

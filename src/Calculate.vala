@@ -1,4 +1,4 @@
-/* Copyright 2012-2017 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2018 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -17,6 +17,7 @@
  */
 
 public class Balistica.Calculate : GLib.Object {
+
    /**
     * Calculate the G1-G8 drag functions
     *
@@ -40,11 +41,12 @@ public class Balistica.Calculate : GLib.Object {
    public static LibBalistica.Solution drag(double bc, double v, double sh, double weight, double angle, double zero,
 											double wspeed, double wangle, double alt, double bar, double tp, double rh,
 											string name, int df) {
+	  Logging logger ;
+	  logger = Logging.get_default () ;
 	  LibBalistica.DragFunction d ;
 	  // bore / sight angle
 	  double zero_angle ;
 	  Gee.LinkedList solution = new Gee.LinkedList<LibBalistica.CompUnit ? >() ;
-
 	  double corrected_bc = LibBalistica.Atmosphere.atm_correct (bc, alt, bar, tp, rh) ;
 
 	  debug ("Corrected BC: %f", corrected_bc) ;
@@ -93,9 +95,10 @@ public class Balistica.Calculate : GLib.Object {
 	  if( solution.size > 0 ){
 		 LibBalistica.Solution lsln = new LibBalistica.Solution.full (solution, name, corrected_bc, sh, weight, v, angle, zero,
 																	  wspeed, wangle, tp, rh, bar, alt, d) ;
-
 		 return lsln ;
 	  } else {
+
+		 logger.publish (new LogMsg ("Failed to generate a proper solution!")) ;
 		 // If we reach here we've failed to generate a proper solution, so
 		 // return an empty one to signify failure
 		 return new LibBalistica.Solution () ;

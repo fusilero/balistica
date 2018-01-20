@@ -115,9 +115,9 @@ public class Balistica.DragBox : Gtk.Box {
 	  this.rad_g1.active = true ;
 	  this.rad_s10.active = true ;
 	  this.results_list = new Gtk.ListStore (8, typeof (int), typeof (double),
-                                             typeof (double), typeof (double),
-                                             typeof (double), typeof (double),
-                                             typeof (double), typeof (double)) ;
+											 typeof (double), typeof (double),
+											 typeof (double), typeof (double),
+											 typeof (double), typeof (double)) ;
 
 	  Gtk.CellRendererText cell = new Gtk.CellRendererText () ;
 	  this.results_tree.insert_column_with_attributes (-1, "Range", cell, "text", 0) ;
