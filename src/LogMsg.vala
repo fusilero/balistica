@@ -53,7 +53,7 @@ public class LogMsg {
    public string message { get ; set ; }
 
    public LogMsg (string message) {
-	  this.full (LogLevel.ERROR, "") ;
+	  this.full (LogLevel.ERROR, message) ;
    }
 
    public LogMsg.full (LogLevel level, string message) {
