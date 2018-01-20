@@ -1,4 +1,4 @@
-/* Copyright 2017 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2018 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -224,16 +224,6 @@ public class Balistica.DragBox : Gtk.Box {
 	  // Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
 	  double windangle = double.parse (this.txtWind_angle.get_text ()) ;
 
-	  debug ("Calculation Name = %s", name) ;
-	  debug ("Ballistic Coefficent: %f", bc) ;
-	  debug ("Intial Velocity: %f", v) ;
-	  debug ("Sight Height: %f", sh) ;
-	  debug ("Projectile Weight: %f", w) ;
-	  debug ("Angle: %f", angle) ;
-	  debug ("Zero: %f", zero) ;
-	  debug ("Wind speed: %f", windspeed) ;
-	  debug ("Wind Angle: %f", windangle) ;
-
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
 	  if( bc <= 0 ){
@@ -275,11 +265,6 @@ public class Balistica.DragBox : Gtk.Box {
 		 bar = double.parse (this.txtBarPress.get_text ()) ;
 		 tp = double.parse (this.txtTemp.get_text ()) ;
 		 rh = double.parse (this.txtRelaHumid.get_text ()) ;
-
-		 debug ("Altitude: %f", alt) ;
-		 debug ("Barometric Pressure: %f", bar) ;
-		 debug ("Temperature: %f", tp) ;
-		 debug ("Relative Humidty: %f", rh) ;
 	  }
 
 	  // Selected Drag Function
