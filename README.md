@@ -7,10 +7,10 @@ balística is a simple open source external ballistics calculator. It's
 named after the Catalan word for "ballistics" in English. Enjoy!
 
 ## Minimum Requirements
-* vala >= 0.28.0
+* vala >= 0.36.8
 * glib-2.0 >= 2.40.0
 * gtk+-3.0 >= 3.10.8
-* gee-0.8 >= 0.16.1
+* gee-0.8 >= 0.20.0
 * cmake 
 
 ### Fedora
@@ -29,24 +29,6 @@ cd balistica
 mkdir -p build && cd build
 ./../configure
 make && make test
-sudo make install
-```
-
-## Optional: Valadoc documentation
-### Ubuntu
-```bash
-sudo apt-get install graphviz-dev
-```
-
-### Fedora
-```bash
-sudo dnf install graphviz-devel
-```
-
-### Build and Install
-```bash
-git clone git://git.gnome.org/valadoc
-cd valadoc && ./autogen.sh && make 
 sudo make install
 ```
 
