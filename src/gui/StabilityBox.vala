@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/stability.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/stability.glade")]
 public class Balistica.StabilityBox : Gtk.Box {
 
    // Fields

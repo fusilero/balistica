@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/drag.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/drag.glade")]
 public class Balistica.DragBox : Gtk.Box {
 
    // Struct used to hold calculation setup variables

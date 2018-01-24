@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/primer.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/primer.glade")]
 public class Balistica.PrimerBox : Gtk.Box {
 
 }

@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/case.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/case.glade")]
 public class Balistica.CaseBox : Gtk.Box {
 
 }

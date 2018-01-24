@@ -17,7 +17,7 @@
  */
 
 
-[GtkTemplate (ui = "/org/gnome/balistica/logviewer.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/logviewer.glade")]
 public class Balistica.LogViewerDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.Button btnRefresh ;

@@ -17,7 +17,7 @@
  */
 
 
-[GtkTemplate (ui = "/org/gnome/balistica/pbr.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/pbr.glade")]
 public class Balistica.PbrDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.Button btnCalculate ;

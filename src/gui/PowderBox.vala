@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/powder.glade")]
+[GtkTemplate (ui = "/org/gnome/balistica/ui/powder.glade")]
 public class Balistica.PowderBox : Gtk.Box {
 
 }

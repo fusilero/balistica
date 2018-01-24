@@ -48,7 +48,7 @@ namespace Balistica{
 	  private string config_dir ;
 	  private Logging logger ;
 
-	  private const ActionEntry[] action_entries =
+	  private const GLib.ActionEntry[] action_entries =
 	  {
 		 { "view_log", view_log_cb },
 		 { "help", help_cb },
@@ -116,12 +116,12 @@ namespace Balistica{
 
 		 var builder = new Gtk.Builder () ;
 		 try {
-			builder.add_from_resource ("/org/gnome/balistica/menu.ui") ;
+			builder.add_from_resource ("/org/gnome/balistica/gtk/menu.ui") ;
 		 } catch ( Error e ){
 			logger.publish (new LogMsg (e.message)) ;
 		 }
 
-		 var menu = builder.get_object ("appmenu") as MenuModel ;
+		 var menu = builder.get_object ("appmenu") as GLib.MenuModel ;
 		 set_app_menu (menu) ;
 	  }
 
@@ -269,7 +269,7 @@ namespace Balistica{
 	   */
 	  private void help_cb() {
 		 try {
-			Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
+			Gtk.show_uri_on_window (main_window, "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
 			Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 		 }
@@ -311,7 +311,7 @@ namespace Balistica{
 			FileOutputStream os = file.append_to (FileCreateFlags.NONE) ;
 			os.write (entry.data) ;
 		 } catch ( Error e ){
-			stdout.printf ("Error: %s\n", e.message) ;
+			 error ("Error: %s\n", e.message) ;
 		 }
 	  }
 

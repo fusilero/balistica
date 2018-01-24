@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/balistica">
-    <file>case.glade</file>
-    <file>drag.glade</file>
-    <file>logviewer.glade</file>
-    <file>pbr.glade</file>
-    <file>powder.glade</file>
-    <file>primer.glade</file>
-    <file>projectile.glade</file>
-    <file>stability.glade</file>
-    <file>twist.glade</file>
-    <file>menu.ui</file>
-  </gresource>
+    <gresource prefix="/org/gnome/balistica/ui">
+        <file preprocess="xml-stripblanks" alias="case.glade">case.glade</file>
+        <file preprocess="xml-stripblanks" alias="drag.glade">drag.glade</file>
+        <file preprocess="xml-stripblanks" alias="logviewer.glade">logviewer.glade</file>
+        <file preprocess="xml-stripblanks" alias="pbr.glade">pbr.glade</file>
+        <file preprocess="xml-stripblanks" alias="powder.glade">powder.glade</file>
+        <file preprocess="xml-stripblanks" alias="primer.glade">primer.glade</file>
+        <file preprocess="xml-stripblanks" alias="projectile.glade">projectile.glade</file>
+        <file preprocess="xml-stripblanks" alias="stability.glade">stability.glade</file>
+        <file preprocess="xml-stripblanks" alias="twist.glade">twist.glade</file>
+    </gresource>
+    <gresource prefix="/org/gnome/balistica/gtk">
+        <file preprocess="xml-stripblanks" alias="menu.ui">menu.ui</file>
+    </gresource>
 </gresources>
