@@ -269,7 +269,11 @@ namespace Balistica{
 	   */
 	  private void help_cb() {
 		 try {
+#if VALAC_0_36
+		    Gtk.show_uri (main_window.get_screen (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
+#else
 			Gtk.show_uri_on_window (main_window, "ghelp:balistica", Gtk.get_current_event_time ()) ;
+#endif
 		 } catch ( Error err ){
 			Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 		 }
