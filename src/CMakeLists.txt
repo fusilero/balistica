@@ -151,11 +151,11 @@ CUSTOM_VAPIS
     "${CMAKE_BINARY_DIR}/src/lib-balistica.vapi"
 OPTIONS
     ${VALAC_OPTIONS}
-    --gresources ${CMAKE_SOURCE_DIR}/ui/gresources.xml
+    --gresources ${CMAKE_SOURCE_DIR}/src/balistica.gresource.xml
 )
 
 include(GResource)
-GLIB_COMPILE_RESOURCES(BALISTICA_RESOURCES SOURCE ../ui/gresources.xml)
+GLIB_COMPILE_RESOURCES(BALISTICA_RESOURCES SOURCE balistica.gresource.xml)
 
 add_executable(balistica ${BALISTICA_VALA_C} ${BALISTICA_RESOURCES})
 target_link_libraries(balistica ${DEPS_LIBRARIES} ${COVERAGE_LIBS} gthread-2.0 lib-balistica sqlite3)

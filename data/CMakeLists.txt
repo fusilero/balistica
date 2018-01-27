@@ -44,7 +44,6 @@ if (ICON_UPDATE)
 endif ()
 
 # Optional: run update-desktop-database at install time.
-# (This has to happen after the org.gnome.Geary.desktop file is installed.)
 if (DESKTOP_UPDATE)
     install(
         CODE
