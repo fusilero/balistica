@@ -35,9 +35,9 @@
 
                 <h2>Welcome</h2>
 
-                <p>In the simplist terms, balística is an open source external ballistics calculator. More 
-                specifically, balística is a exterior balisitics calculator with some extra features 
-                tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan word</a> 
+                <p>In the simplist terms, balística is an open source external ballistics calculator.
+                More specifically, balística is a exterior balisitics calculator with some extra features
+                tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan word</a>
                 for "ballistics".</p>
 
                 <p>Currently the project is in it's early stages and is still missing quite a few features
@@ -50,31 +50,38 @@
                 a have-to-have.</p>
 
                 <h3>Calculate using the Ingalls and British drag functions</h3>
-                <p>These drag functions are older and a bit antiquated. They still work to an extent but you'd 
+                <p>These drag functions are older and a bit antiquated. They still work to an extent but you'd
                 probably be better off with the standard drag functions. Regardless, balística can still compute
                 them for you if you want.</p>
 
                 <h3>Miller Twist Rule</h3>
-                <p>The <a href="http://en.wikipedia.org/wiki/Miller_twist_rule" target="_blank">Miller Twist Rule</a> 
-                is a mathematical formula dervised to help people calculate which bullets will work better in 
+                <p>The <a href="http://en.wikipedia.org/wiki/Miller_twist_rule" target="_blank">Miller Twist Rule</a>
+                is a mathematical formula dervised to help people calculate which bullets will work better in
                 thier rifle based upon various factors. Including bullet length and barrel twist rate.</p>
 
                 <h3>Greenhill Formula</h3>
-                <p>The <a href="http://en.wikipedia.org/wiki/Alfred_George_Greenhill" target="_blank">Greenhill Formula</a>, 
-                in the same vien as the Miller Twist Rule is a much older formula for the same purpose that has 
+                <p>The <a href="http://en.wikipedia.org/wiki/Alfred_George_Greenhill" target="_blank">Greenhill Formula</a>,
+                in the same vien as the Miller Twist Rule is a much older formula for the same purpose that has
                 been used for centuries now. It is the defacto standard for this type of computation.</p>
 
                 <h3>Miller Stability</h3>
                 <p>The Miller Stability calculation is a mathematical formula that calculates the estimated stability
                 of a projectie using the Miller Twist Rule as it's base.</p>
 
+                <h3>PBR (Point Blank Range)</h3>
+                <p> The <a href="http://en.wikipedia.org/wiki/Point-blank_range" target="_blank">PBR function</a>
+                clculates how far a given projectile can travel before the elevation needs adjusted to continue to
+                hit the intended target. So, for example, a .30-06 may be able to hit the bullseye of a target at
+                0 yards all the way out to 200 yards before the elevation of the barrel of the rifle needs to
+                raised in order to arc the trajectory in order to continue to hit the bullseye.</p>
+
                 <h3>LibBalistica</h3>
-                <p><strong>LibBalistica</strong> is a ballistics library developed incordination with balística that 
+                <p><strong>LibBalistica</strong> is a ballistics library developed incordination with balística that
                 allows developers to build their own ballistics software application should they choose. LibBalistica
-                is also unit tested to ensure reliable consistent calculations every release. With code developed 
+                is also unit tested to ensure reliable consistent calculations every release. With code developed
                 independently of balística improvements can also potentionally be made without breaking LibBalistica.</p>
             </section>
-            
+
             <section>
                 <h2>Image Gallery</h2>
                 <div class="img_gal">
@@ -97,30 +104,23 @@
                 </div>
             </section>
 
-            <section> 
+            <section>
                 <h2>Features In Process</h2>
 
-                <h3>PBR (Point Blank Range)</h3>
-                <p> The <a href="http://en.wikipedia.org/wiki/Point-blank_range" target="_blank">PBR function</a> 
-                clculates how far a given projectile can travel before the elevation needs adjusted to continue to 
-                hit the intended target. So, for example, a .30-06 may be able to hit the bullseye of a target at 
-                0 yards all the way out to 200 yards before the elevation of the barrel of the rifle needs to 
-                raised in order to arc the trajectory in order to continue to hit the bullseye.</p>
-
                 <h3>A database to store custom handloads in</h3>
-                <p>I want to be able to create and store custom hand loads. I already have a SQL database strucutre 
+                <p>I want to be able to create and store custom hand loads. I already have a SQL database strucutre
                 worked out for this. I also have some basic data to load in it. But that's all I have. I don't even
                 have Vala to talk to the database with.</p>
+
+                <h2>Planned Features</h2>
 
                 <h3>Graphs</h3>
                 <p>There are several different graphing packages out there. I'd love to be able to graph the bullet
                 through its trajectory. This is really a must have. Everyone expects this to be there.</p>
 
-                <h2>Planned Features</h2>
-
                 <h3>Expansive Help Pages</h3>
                 <p>I don't want to rewrite Wikipedia, but I'd really like to have a nice in depth look at whats going
-                on in the software and how to properly use and understand the software in the help pages. The help 
+                on in the software and how to properly use and understand the software in the help pages. The help
                 pages do exist in a fleshed out form but need a lot of work expanding them out to be useful.</p>
 
                 <h3>Other minor features</h3>
@@ -140,22 +140,21 @@
 <span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">make && make test</span>
 <span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">sudo make install</span></code></pre>
 
-                <p>I'd prefer pull requets though Github to keep it simple, but patches through email are always 
-                welcome anyway.</p>
+                <p>I'd prefer pull requets though Github to keep it simple, but patches through email are always welcome anyway.</p>
 
                 <h3>Minimum Build Requirements:</h3>
                 <ul>
-                    <li><a href="https://live.gnome.org/Vala" target="_blank">Vala</a> 0.28</li>
+                    <li><a href="https://live.gnome.org/Vala" target="_blank">Vala</a> 0.36.8</li>
                     <li><a href="http://www.cmake.org/" target="_blank">Cmake</a> 2.8</li>
                     <li><a href="https://developer.gnome.org/glib/" target="_blank">glib-2.0</a> 2.40.0</li>
                     <li><a href="http://www.gtk.org/" target="_blank">gtk+-3.0</a> 3.10.8</li>
-                    <li><a href="https://wiki.gnome.org/Projects/Libgee/" target="_blank">gee-0.8</a> 0.16.1</li>
-                </ul> 
+                    <li><a href="https://wiki.gnome.org/Projects/Libgee/" target="_blank">gee-0.8</a> 0.20.0</li>
+                </ul>
 
                 <h2>Authors and Contributors</h2>
                 <p>At this point I am the author and only contributor.</p>
-                <p>I have converted the <a href="http://sourceforge.net/projects/balcomp/">GNU Exterior Ballistics Computer</a> 
-                by Derek Yates to Vala. The GEBC is open source and licensed under the GNU GPL version 2. If you are Mr. Yates, 
+                <p>I have converted the <a href="http://sourceforge.net/projects/balcomp/">GNU Exterior Ballistics Computer</a>
+                by Derek Yates to Vala. The GEBC is open source and licensed under the GNU GPL version 2. If you are Mr. Yates,
                 or know him, I'd like to talk. I have some questions about the code.</p>
 
                 <h3>Contact</h3>
