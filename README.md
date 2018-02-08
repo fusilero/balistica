@@ -1,5 +1,4 @@
 # balística ![](https://raw.githubusercontent.com/steveno/balistica/master/data/hicolor/48x48/apps/balistica.png)
-[![Build Status](https://travis-ci.org/steveno/balistica.svg?branch=master)](https://travis-ci.org/steveno/balistica)
 [![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
