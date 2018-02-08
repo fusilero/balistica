@@ -14,8 +14,7 @@ compiler:
 before_install:
   - sudo add-apt-repository ppa:vala-team/ppa -y
   - sudo apt-get update -qq
-  - sudo apt-get install -qq ninja valac valadoc libgirepository1.0-dev libgee-0.8 gobject-introspection libgtk-3-dev
-  - pip install pip3
+  - sudo apt-get install -qq ninja valac valadoc libgirepository1.0-dev libgee-0.8 gobject-introspection libgtk-3-dev python-pip3
   - pip3 install meson
 
 script:
