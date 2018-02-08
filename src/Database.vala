@@ -35,12 +35,7 @@ public class Balistica.Database {
    public void open_db() {
 	  int ec ;
 	  if( this.create_db ()){
-		 try {
-			ec = Sqlite.Database.open_v2 (this.filename.get_uri (), out this.db, Sqlite.OPEN_READWRITE, null) ;
-		 } catch ( GLib.Error e ){
-			string msg = "Cannot open database: " + e.message ;
-			Logging.get_default ().publish (new LogMsg (msg)) ;
-		 }
+		 ec = Sqlite.Database.open_v2 (this.filename.get_uri (), out this.db, Sqlite.OPEN_READWRITE, null) ;
 
 		 if( ec != Sqlite.OK )
 			Logging.get_default ().publish (new LogMsg ("Failed to open DB: Unknown reason")) ;
