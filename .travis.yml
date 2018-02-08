@@ -18,6 +18,5 @@ before_install:
   - sudo pip3 install meson
 
 script:
-  - cmake -DDEBUG=ON -DADD_COVERAGE=ON .
-  - make VERBOSE=1 -j2
-  - make test
+  - mkdir build && meson . build/&& cd build
+  - ninja
