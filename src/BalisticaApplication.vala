@@ -16,12 +16,6 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Defined by cmake build script.
-extern const string _VERSION_MAJOR ;
-extern const string _VERSION_MINOR ;
-extern const string _VERSION_COMMIT ;
-extern const string _VERSION_DESC ;
-
 namespace Balistica{
 
    /**
@@ -29,11 +23,8 @@ namespace Balistica{
     * available throughout the base of the application
     */
    public const string NAME = "balística" ;
-
-   public const string VERSION_MAJOR = _VERSION_MAJOR ;
-   public const string VERSION_MINOR = _VERSION_MINOR ;
-   public const string VERSION_COMMIT = _VERSION_COMMIT ;
-   public const string VERSION_DESC = _VERSION_DESC ;
+   public const string VERSION = "1.3" ;
+   public const string VERSION_DESC = "Debug";
 
    public class Application : Gtk.Application {
 	  public Gtk.Window main_window ;
@@ -283,14 +274,6 @@ namespace Balistica{
 	   * Show about dialog
 	   */
 	  private void about_cb() {
-		 string version ;
-
-		 if( Balistica.VERSION_DESC == "Release" ){
-			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR ;
-		 } else {
-			version = Balistica.VERSION_MAJOR + "." + Balistica.VERSION_MINOR + "-" + Balistica.VERSION_COMMIT ;
-		 }
-
 		 Gtk.show_about_dialog (main_window,
 								"authors", "Steven Oliver <oliver.steven@gmail.com>",
 								"comments", "An open source external ballistics calculator.",
@@ -299,7 +282,7 @@ namespace Balistica{
 								"program-name", Balistica.NAME,
 								"website", "http://steveno.github.io/balistica/",
 								"website-label", "balística Website",
-								"version", version,
+								"version", Balistica.VERSION,
 								"logo-icon-name", "balistica") ;
 	  }
 

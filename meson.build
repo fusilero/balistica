@@ -8,6 +8,7 @@ project ('balistica', ['vala', 'c'],
           meson_version: '>= 0.37.1'
           ) 
 
+# Imports
 gnome = import ('gnome')
 i18n = import ('i18n')
 
@@ -15,6 +16,7 @@ i18n = import ('i18n')
 datadir = join_paths (get_option ('prefix'), get_option ('datadir')) 
 icondir = join_paths (datadir, 'balistica', 'icons')
 
+# Dependencies
 glib_dep = dependency ('glib-2.0', version: '>= 2.40', required: true) 
 gtk_dep = dependency ('gtk+-3.0', version: '>=3.10.8', required: true)
 gee_dep = dependency ('gee-0.8', version: '>=0.20.0', required: true)
