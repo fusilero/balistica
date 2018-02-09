@@ -6,14 +6,14 @@ project ('balistica', ['vala', 'c'],
             'buildtype=debugoptimized',
             ],
           meson_version: '>= 0.37.1'
-          ) 
+          )
 
 # Imports
 gnome = import ('gnome')
 i18n = import ('i18n')
 
-# Paths 
-datadir = join_paths (get_option ('prefix'), get_option ('datadir')) 
+# Paths
+datadir = join_paths (get_option ('prefix'), get_option ('datadir'))
 icondir = join_paths (datadir, 'balistica', 'icons')
 po_dir = join_paths(meson.source_root(), 'po')
 
@@ -28,8 +28,9 @@ gtk_dep = dependency ('gtk+-3.0', version: '>=3.10.8')
 gee_dep = dependency ('gee-0.8', version: '>=0.20.0')
 sqlite3_dep = dependency ('sqlite3', required: true)
 
-subdir ('data') 
-subdir ('help') 
+subdir ('data')
+subdir ('help')
+subdir ('po')
 subdir ('src')
-subdir ('sql') 
-subdir ('test') 
+subdir ('sql')
+subdir ('test')
