@@ -10,25 +10,20 @@ named after the Catalan word for "ballistics" in English. Enjoy!
 * glib-2.0 >= 2.40.0
 * gtk+-3.0 >= 3.10.8
 * gee-0.8 >= 0.20.0
-* cmake 
-
-### Fedora
-```bash
-sudo dnf install gtk3-devel glib-devel libgee-devel vala cmake
-```
 
 ### Ubuntu
 ```bash
-sudo apt-get install libgtk-3-dev vala valadoc cmake
+sudo apt-get install build-essential libgtk-3-dev vala ninja python3-pip
+sudo pip3 install meson-build
 ```
 
 ## Build Instructions
 ```bash
 cd balistica
-mkdir -p build && cd build
-./../configure
-make && make test
-sudo make install
+mkdir build
+meson . build/
+cd build
+ninja
 ```
 
 ## Contributing
