@@ -8,6 +8,12 @@ project ('balistica', ['vala', 'c'],
           meson_version: '>= 0.37.1'
           )
 
+vala_version_required = '0.38.0'
+vala = meson.get_compiler('vala')
+if not vala.version().version_compare('>= @0@'.format(vala_version_required))
+	error('valac >= @0@ required!'.format(vala_version_required))
+endif
+
 # Imports
 gnome = import ('gnome')
 i18n = import ('i18n')
