@@ -1,17 +1,5 @@
 balística is copyrighted under the GNU GPL version 3.
 
-Large parts of this program have been rewritten from
-other programs under a different license. As far as I
-know all the code I didn't write is legal for me to
-use. If someone feels differently please let me know.
-
-src/LibBalistica/*
-Many of the files in this directory were originally
-part of The GNU Ballistics Calculator (GBC) written by
-Derek Yates in C. It was licensed under the GNU GPL
-version 2. Each file converted from GBC is noted at the
-top after the license header.
-
 sql/data/fill_bullets.sql
 Was originally from saballistics which is licensed under
 the GNU GPL version 2.
