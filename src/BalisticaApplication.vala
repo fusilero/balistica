@@ -64,7 +64,6 @@ namespace Balistica{
 
 		 main_window = new Gtk.Window () ;
 		 Environment.set_application_name (Balistica.NAME) ;
-		 Environment.set_prgname (Balistica.NAME) ;
 
 		 // Setup the main window
 		 main_window.title = Balistica.NAME ;
