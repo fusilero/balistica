@@ -16,7 +16,6 @@ balisitica = executable (meson.project_name(),
     'Database.vala',
     'Logging.vala',
     'LogMsg.vala',
-    'Main.vala',
 
     # Calculations
     'gui/PbrDialog.vala',
