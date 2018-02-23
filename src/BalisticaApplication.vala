@@ -85,11 +85,6 @@ public class Application : Gtk.Application {
 
 	  box.pack_start (notebook, true, true, 0) ;
 
-	  // Attach the box (with the notebook) the main window and roll
-	  main_window.add (box) ;
-	  main_window.show_all () ;
-	  this.add_window (main_window) ;
-
 	  config_dir = this.setup_user_config_directory () ;
 	  data_dir = this.setup_user_data_directory () ;
 
@@ -107,6 +102,11 @@ public class Application : Gtk.Application {
 
 	  var menu = builder.get_object ("appmenu") as GLib.MenuModel ;
 	  set_app_menu (menu) ;
+
+	  // Attach the box (with the notebook) the main window and roll
+	  main_window.add (box) ;
+	  this.add_window (main_window) ;
+	  main_window.show_all () ;
    }
 
    private Gtk.Frame build_calc_notebook() {
@@ -253,7 +253,7 @@ public class Application : Gtk.Application {
     */
    private void help_cb() {
 	  try {
-		 Gtk.show_uri_on_window (get_active_window (), "ghelp:balistica", Gtk.get_current_event_time ()) ;
+		 Gtk.show_uri_on_window (get_active_window (), "help:balistica", Gtk.get_current_event_time ()) ;
 	  } catch ( Error err ){
 		 Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 	  }
@@ -263,8 +263,9 @@ public class Application : Gtk.Application {
     * Show about dialog
     */
    private void about_cb() {
+	  string[] authors = {"Steven Oliver"};
 	  Gtk.show_about_dialog (get_active_window (),
-							 "authors", "Steven Oliver <oliver.steven@gmail.com>",
+							 "authors", authors,
 							 "comments", "An open source external ballistics calculator.",
 							 "copyright", "Copyright \xc2\xa9 2012-2018 Steven Oliver",
 							 "license-type", Gtk.License.GPL_3_0,
