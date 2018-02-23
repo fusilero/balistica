@@ -27,23 +27,23 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
    private Gtk.ListStore list_store ;
 
    private string log_file ;
+   private Logging logger ;
 
    /**
     * Constructor
     */
    public LogViewerDialog (string log_file) {
 	  this.log_file = log_file ;
+	  this.logger = Logging.get_default () ;
 
 	  // Create a list store to populate the tree view
 	  list_store = new Gtk.ListStore (4, typeof (string), typeof (string), typeof (string), typeof (string)) ;
 	  log_tree.set_model (list_store) ;
 
-	  log_tree.insert_column_with_attributes (0, "Date/Time", new Gtk.CellRendererText (), "text", 0) ;
-
 	  var type_cell = new Gtk.CellRendererText () ;
 	  type_cell.set ("foreground_set", true) ;
+	  log_tree.insert_column_with_attributes (0, "Date/Time", new Gtk.CellRendererText (), "text", 0) ;
 	  log_tree.insert_column_with_attributes (1, "Log Level", type_cell, "text", 1, "foreground", 2) ;
-
 	  log_tree.insert_column_with_attributes (2, "Message", new Gtk.CellRendererText (), "text", 3) ;
 
 	  LoadLogFile () ;
@@ -62,10 +62,8 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
     * Load the log file into the application window
     */
    private void LoadLogFile() {
-	  var logger = Logging.get_default () ;
-
 	  // A reference to our file
-	  var file = File.new_for_path (log_file) ;
+	  var file = File.new_for_path (this.log_file) ;
 
 	  if( !file.query_exists ()){
 		 logger.publish (new LogMsg ("Log file does not exist!")) ;
