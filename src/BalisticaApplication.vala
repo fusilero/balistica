@@ -17,16 +17,12 @@
  */
 
 
-/**
- * These are publicly shared strings that will be
- * available throughout the base of the application
- */
-public const string NAME = "balística" ;
-public const string VERSION = "1.3" ;
-public const string VERSION_DESC = "Debug" ;
+const string NAME = "balística" ;
+const string VERSION = "1.3" ;
+const string VERSION_DESC = "Debug" ;
 
 public class Application : Gtk.Application {
-   public Gtk.Window main_window ;
+   public Gtk.ApplicationWindow main_window ;
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
@@ -60,7 +56,6 @@ public class Application : Gtk.Application {
 	  base.startup () ;
 
 	  add_action_entries (action_entries, this) ;
-
 	  main_window = new Gtk.ApplicationWindow (this) ;
 	  Environment.set_application_name (NAME) ;
 
