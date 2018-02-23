@@ -242,7 +242,7 @@ namespace Balistica{
 	   * Quit application
 	   */
 	  private void quit_cb() {
-		 main_window.destroy () ;
+		 get_active_window().destroy () ;
 	  }
 
 	  /**
@@ -250,7 +250,7 @@ namespace Balistica{
 	   */
 	  private void view_log_cb() {
 		 var dialog = new Balistica.LogViewerDialog (this.data_dir + "balistica.log") ;
-		 dialog.set_transient_for (main_window) ;
+		 dialog.set_transient_for (get_active_window()) ;
 		 dialog.show_all () ;
 	  }
 
@@ -259,7 +259,7 @@ namespace Balistica{
 	   */
 	  private void help_cb() {
 		 try {
-			Gtk.show_uri_on_window (main_window, "ghelp:balistica", Gtk.get_current_event_time ()) ;
+			Gtk.show_uri_on_window (get_active_window(), "ghelp:balistica", Gtk.get_current_event_time ()) ;
 		 } catch ( Error err ){
 			Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 		 }
@@ -269,7 +269,7 @@ namespace Balistica{
 	   * Show about dialog
 	   */
 	  private void about_cb() {
-		 Gtk.show_about_dialog (main_window,
+		 Gtk.show_about_dialog (get_active_window(),
 								"authors", "Steven Oliver <oliver.steven@gmail.com>",
 								"comments", "An open source external ballistics calculator.",
 								"copyright", "Copyright \xc2\xa9 2012-2018 Steven Oliver",
