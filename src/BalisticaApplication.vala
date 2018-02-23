@@ -298,8 +298,8 @@ namespace Balistica{
 	  }
 
 	  public static int main(string[] args) {
-		  var balistica = new Balistica.Application () ;
-		  return balistica.run (args) ;
+		  var app = new Application () ;
+		  return app.run (args) ;
 	  }
    }
 } // namespace
