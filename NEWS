@@ -3,6 +3,7 @@ Version 1.3
 * Switch to Meson build system
 * Application wide logging facilities
 * Added 128x128 icon
+* Add ability to clear log file
 
 Version 1.2
 ============================
