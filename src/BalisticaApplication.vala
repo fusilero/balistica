@@ -263,7 +263,7 @@ public class Application : Gtk.Application {
     * Show about dialog
     */
    private void about_cb() {
-	  string[] authors = {"Steven Oliver"};
+	  string[] authors = { "Steven Oliver" } ;
 	  Gtk.show_about_dialog (get_active_window (),
 							 "authors", authors,
 							 "comments", "An open source external ballistics calculator.",
@@ -296,4 +296,5 @@ public class Application : Gtk.Application {
 	  var app = new Application () ;
 	  return app.run (args) ;
    }
+
 }
