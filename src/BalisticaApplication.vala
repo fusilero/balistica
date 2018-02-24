@@ -19,7 +19,6 @@
 
 const string NAME = "balística" ;
 const string VERSION = "1.3" ;
-const string VERSION_DESC = "Debug" ;
 
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
