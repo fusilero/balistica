@@ -20,20 +20,23 @@
 [GtkTemplate (ui = "/org/gnome/balistica/ui/logviewer.glade")]
 public class Balistica.LogViewerDialog : Gtk.Dialog {
    [GtkChild]
+   public Gtk.Button btnClear ;
+
+   [GtkChild]
    public Gtk.Button btnRefresh ;
 
    [GtkChild]
    public Gtk.TreeView log_tree ;
    private Gtk.ListStore list_store ;
 
-   private string log_file ;
+   private File log_file ;
    private Logging logger ;
 
    /**
     * Constructor
     */
    public LogViewerDialog (string log_file) {
-	  this.log_file = log_file ;
+	  this.log_file = File.new_for_path (log_file) ;
 	  this.logger = Logging.get_default () ;
 
 	  // Create a list store to populate the tree view
@@ -50,7 +53,20 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
    }
 
    /**
-    * Export the drag results to HTML
+    * Delete the current log file
+    */
+   [GtkCallback]
+   public void btnClear_clicked() {
+	  list_store.clear () ;
+	  try {
+		 this.log_file.delete () ;
+	  } catch ( Error e ){
+		 error ("Failed to delete log file!") ;
+	  }
+   }
+
+   /**
+    * Refresh the log window contents
     */
    [GtkCallback]
    public void btnRefresh_clicked() {
@@ -62,22 +78,27 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
     * Load the log file into the application window
     */
    private void LoadLogFile() {
-	  // A reference to our file
-	  var file = File.new_for_path (this.log_file) ;
-
-	  if( !file.query_exists ()){
-		 logger.publish (new LogMsg ("Log file does not exist!")) ;
-		 return ;
+	  if( !this.log_file.query_exists ()){
+		 try {
+			this.log_file.create (FileCreateFlags.NONE) ;
+		 } catch ( Error e ){
+			error ("Failed to create new log file!") ;
+		 }
 	  }
 
 	  try {
-		 var dis = new DataInputStream (file.read ()) ;
+		 var dis = new DataInputStream (this.log_file.read ()) ;
 		 string line ;
 		 Gtk.TreeIter iter ;
 
 		 while((line = dis.read_line (null)) != null ){
 			string[] parts = line.split ("\t") ;
-			list_store.append (out iter) ;
+			// Skip any malformed lines
+			if( parts.length <= 2 ){
+			   continue ;
+			}
+
+			list_store.prepend (out iter) ;
 			if( parts[1] == "ERROR" ){
 			   list_store.set (iter, 0, parts[0], 1, parts[1], 2, "red", 3, parts[2]) ;
 			} else {
