@@ -8,6 +8,7 @@ project ('balistica', ['vala', 'c'],
           meson_version: '>= 0.37.1'
           )
 
+# Minimum version of Vala
 vala_version_required = '0.38.0'
 vala = meson.get_compiler('vala')
 if not vala.version().version_compare('>= @0@'.format(vala_version_required))
