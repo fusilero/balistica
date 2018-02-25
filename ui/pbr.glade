@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -101,7 +101,6 @@ Author: Steven Oliver
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="xpad">3</property>
                             <property name="label" translatable="yes">Vital Zone Size (inches)</property>
                           </object>
                           <packing>
@@ -114,7 +113,6 @@ Author: Steven Oliver
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="xpad">3</property>
                             <property name="label" translatable="yes">Sight Height (inches)</property>
                           </object>
                           <packing>
@@ -127,7 +125,6 @@ Author: Steven Oliver
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="xpad">3</property>
                             <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
                           </object>
                           <packing>
@@ -140,7 +137,6 @@ Author: Steven Oliver
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="xpad">3</property>
                             <property name="label" translatable="yes">Drag Coefficient</property>
                           </object>
                           <packing>
@@ -207,7 +203,6 @@ Author: Steven Oliver
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">start</property>
-                            <property name="xpad">3</property>
                             <property name="label" translatable="yes">Drag Function</property>
                           </object>
                           <packing>

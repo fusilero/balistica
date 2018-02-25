@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -29,11 +29,9 @@ Author: Steven Oliver
   <!-- interface-copyright 2017 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
   <object class="GtkRadioButton" id="radgrpTwist">
-    <property name="label" translatable="yes">radiobutton</property>
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="receives_default">False</property>
-    <property name="xalign">0</property>
     <property name="active">True</property>
     <property name="draw_indicator">True</property>
   </object>
@@ -116,7 +114,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Diameter</property>
                     <property name="ellipsize">end</property>
                   </object>
@@ -130,7 +127,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Length</property>
                   </object>
                   <packing>
@@ -142,7 +138,6 @@ Author: Steven Oliver
                   <object class="GtkLabel" id="lblSpecificGravity">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Specific Gravity</property>
                   </object>
                   <packing>
@@ -155,8 +150,7 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
-                    <property name="label" translatable="yes">C</property>
+                    <property name="label">C</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -267,7 +261,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Diameter</property>
                   </object>
                   <packing>
@@ -280,7 +273,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Length</property>
                   </object>
                   <packing>
@@ -293,7 +285,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Mass</property>
                   </object>
                   <packing>
@@ -306,7 +297,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Safe Value</property>
                   </object>
                   <packing>
@@ -379,7 +369,6 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
                 <property name="group">radgrpTwist</property>
               </object>
@@ -394,7 +383,6 @@ Author: Steven Oliver
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="xalign">0</property>
                 <property name="draw_indicator">True</property>
                 <property name="group">radgrpTwist</property>
               </object>

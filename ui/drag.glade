@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2018 Steven Oliver
 
@@ -29,7 +29,6 @@ Author: Steven Oliver
   <!-- interface-copyright 2018 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
   <object class="GtkRadioButton" id="radgrpDragFunc">
-    <property name="label" translatable="yes">radiobutton</property>
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="receives_default">False</property>
@@ -37,7 +36,6 @@ Author: Steven Oliver
     <property name="draw_indicator">True</property>
   </object>
   <object class="GtkRadioButton" id="radgrpStepSize">
-    <property name="label" translatable="yes">radiobutton</property>
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="receives_default">False</property>
@@ -314,7 +312,7 @@ Author: Steven Oliver
                         <property name="valign">start</property>
                         <child>
                           <object class="GtkRadioButton" id="rad_g1">
-                            <property name="label" translatable="yes">G1</property>
+                            <property name="label">G1</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -328,7 +326,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_g6">
-                            <property name="label" translatable="yes">G6</property>
+                            <property name="label">G6</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -342,7 +340,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_g8">
-                            <property name="label" translatable="yes">G8</property>
+                            <property name="label">G8</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -356,7 +354,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_g7">
-                            <property name="label" translatable="yes">G7</property>
+                            <property name="label">G7</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -370,7 +368,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_g2">
-                            <property name="label" translatable="yes">G2</property>
+                            <property name="label">G2</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -384,7 +382,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_g5">
-                            <property name="label" translatable="yes">G5</property>
+                            <property name="label">G5</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -430,7 +428,7 @@ Author: Steven Oliver
                         <property name="can_focus">False</property>
                         <child>
                           <object class="GtkRadioButton" id="rad_s10">
-                            <property name="label" translatable="yes">10</property>
+                            <property name="label">10</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -445,7 +443,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_s100">
-                            <property name="label" translatable="yes">100</property>
+                            <property name="label">100</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -460,7 +458,7 @@ Author: Steven Oliver
                         </child>
                         <child>
                           <object class="GtkRadioButton" id="rad_s50">
-                            <property name="label" translatable="yes">50</property>
+                            <property name="label">50</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>

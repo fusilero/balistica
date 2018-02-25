@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -121,7 +121,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Diameter</property>
                   </object>
                   <packing>
@@ -134,7 +133,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Length</property>
                   </object>
                   <packing>
@@ -147,7 +145,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Mass</property>
                   </object>
                   <packing>
@@ -160,7 +157,6 @@ Author: Steven Oliver
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="xpad">3</property>
                     <property name="label" translatable="yes">Safe Value</property>
                   </object>
                   <packing>
