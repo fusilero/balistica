@@ -10,6 +10,13 @@ vala_args = [
   '--gresources', resource_files
 ]
 
+c_args = [  
+  '-g',
+  '-include', 'config.h',
+  '-DVERSION="@0@"'.format (meson.project_version ()),
+  '-DICON_DIR="@0@"'.format (icondir),
+]
+
 balisitica = executable (meson.project_name(),
   [ 'BalisticaApplication.vala',
     'Calculate.vala',
@@ -29,12 +36,9 @@ balisitica = executable (meson.project_name(),
     'gui/PowderBox.vala',
     'gui/PrimerBox.vala',
     'gui/ProjectileBox.vala'] + resources,
+  include_directories: config_h_dir,
   dependencies: [ glib_dep, gtk_dep, gio_dep, gee_dep, libbalistica_dep, sqlite3_dep ],
-  c_args: [  
-    '-g',
-    '-DVERSION="@0@"'.format (meson.project_version ()),
-    '-DICON_DIR="@0@"'.format (icondir),
-  ],
+  c_args: c_args,
   vala_args: vala_args,
   link_args: ['-lm'],
   install: true

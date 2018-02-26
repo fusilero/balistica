@@ -18,10 +18,10 @@
 
 
 const string NAME = "balística" ;
-const string VERSION = "1.3" ;
 
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
+   private Settings settings;
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
@@ -54,9 +54,10 @@ public class Application : Gtk.Application {
    protected override void startup() {
 	  base.startup () ;
 
+	  settings = new Settings ("org.gnome.balistica");
+
 	  add_action_entries (action_entries, this) ;
 	  main_window = new Gtk.ApplicationWindow (this) ;
-	  Environment.set_application_name (NAME) ;
 
 	  // Setup the main window
 	  main_window.title = NAME ;
@@ -67,22 +68,7 @@ public class Application : Gtk.Application {
 
 	  // Add the main layout box
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
-
-	  // Add the outer notebook that will hold everything
-	  Gtk.Notebook notebook = new Gtk.Notebook () ;
-	  notebook.set_tab_pos (Gtk.PositionType.LEFT) ;
-
-	  // Pango formatted labels to help visually distinguish
-	  Gtk.Label calcs_lbl = new Gtk.Label ("<big>Calculations</big>") ;
-	  calcs_lbl.set_use_markup (true) ;
-
-	  Gtk.Label db_lbl = new Gtk.Label ("<big>Database</big>") ;
-	  db_lbl.set_use_markup (true) ;
-
-	  notebook.append_page (build_calc_notebook (), calcs_lbl) ;
-	  notebook.append_page (build_db_notebook (), db_lbl) ;
-
-	  box.pack_start (notebook, true, true, 0) ;
+	  box.pack_start (build_calc_notebook (), true, true, 0) ;
 
 	  config_dir = this.setup_user_config_directory () ;
 	  data_dir = this.setup_user_data_directory () ;
@@ -108,14 +94,39 @@ public class Application : Gtk.Application {
 	  main_window.show_all () ;
    }
 
-   private Gtk.Frame build_calc_notebook() {
+   protected override void shutdown () {
+	   base.shutdown() ;
+
+	   // Save window position
+	   save_window_position(main_window);
+   }
+
+   /**
+     * Load `window-position` from the settings and move the window to that
+     * position
+     */
+    private void load_window_position (Gtk.Window window) {
+        int32 x, y;
+        settings.get("window-position", "(ii)", out x, out y);
+        // (-1, -1) is the default value
+        if (x != -1 && y != -1) {
+            window.move (x, y);
+        }
+    }
+
+    /**
+     * Save window position to the settings
+     */
+    private void save_window_position (Gtk.Window window) {
+        int32 x, y;
+        window.get_position (out x, out y);
+        settings.set_value("window-position", new Variant("(ii)", x, y));
+    }
+   
+	private Gtk.Notebook build_calc_notebook() {
 	  Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
 	  Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
 	  Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
-
-	  Gtk.Frame frame = new Gtk.Frame ("") ;
-	  Gtk.Viewport port = new Gtk.Viewport (null, null) ;
-	  frame.add (port) ;
 
 	  Gtk.Notebook notebook = new Gtk.Notebook () ;
 	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -130,20 +141,14 @@ public class Application : Gtk.Application {
 	  this.stability_content = new Balistica.StabilityBox () ;
 	  notebook.append_page (stability_content, stability_lbl) ;
 
-	  port.add (notebook) ;
-
-	  return frame ;
+	  return notebook ;
    }
 
-   private Gtk.Frame build_db_notebook() {
+   private Gtk.Notebook build_db_notebook() {
 	  Gtk.Label case_lbl = new Gtk.Label ("Case") ;
 	  Gtk.Label powder_lbl = new Gtk.Label ("Powder") ;
 	  Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
 	  Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
-
-	  Gtk.Frame frame = new Gtk.Frame ("") ;
-	  Gtk.Viewport port = new Gtk.Viewport (null, null) ;
-	  frame.add (port) ;
 
 	  Gtk.Notebook notebook = new Gtk.Notebook () ;
 	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -161,9 +166,7 @@ public class Application : Gtk.Application {
 	  this.projectile_content = new Balistica.ProjectileBox () ;
 	  notebook.append_page (projectile_content, projectile_lbl) ;
 
-	  port.add (notebook) ;
-
-	  return frame ;
+	  return notebook ;
    }
 
    /**
@@ -292,6 +295,13 @@ public class Application : Gtk.Application {
    }
 
    public static int main(string[] args) {
+	  Intl.setlocale (LocaleCategory.ALL, "");
+      Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
+      Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+      Intl.textdomain (GETTEXT_PACKAGE);
+
+	  Environment.set_application_name (NAME) ;
+
 	  var app = new Application () ;
 	  return app.run (args) ;
    }
