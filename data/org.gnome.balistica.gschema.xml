@@ -16,11 +16,6 @@
             <summary>Window position</summary>
             <description>Window position (x and y) of the last closed window.</description>
         </key>
-        <key name="maximized" type="b">
-            <default>false</default>
-            <summary>A flag to enable maximized mode</summary>
-            <description>A flag to enable maximized mode</description>
-        </key>
         <key name="save-directory" type="s">
             <default>''</default>
             <summary>The directory to open the save game dialog in</summary>

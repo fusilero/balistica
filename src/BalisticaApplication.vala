@@ -21,7 +21,7 @@ const string NAME = "balística" ;
 
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
-   private Settings settings;
+   private Settings settings ;
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
@@ -54,7 +54,7 @@ public class Application : Gtk.Application {
    protected override void startup() {
 	  base.startup () ;
 
-	  settings = new Settings ("org.gnome.balistica");
+	  settings = new Settings ("org.gnome.balistica") ;
 
 	  add_action_entries (action_entries, this) ;
 	  main_window = new Gtk.ApplicationWindow (this) ;
@@ -63,15 +63,12 @@ public class Application : Gtk.Application {
 	  main_window.title = NAME ;
 	  main_window.window_position = Gtk.WindowPosition.CENTER ;
 
-	  // width x height
-	  main_window.set_default_size (735, 750) ;
-
 	  // Add the main layout box
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
 	  box.pack_start (build_calc_notebook (), true, true, 0) ;
 
-	  config_dir = this.setup_user_config_directory () ;
-	  data_dir = this.setup_user_data_directory () ;
+	  config_dir = this.setup_user_directory (Environment.get_user_config_dir ()) ;
+	  data_dir = this.setup_user_directory (Environment.get_user_data_dir ()) ;
 
 	  Logging.get_default ().publish.connect ((msg) => {
 		 this.log (msg) ;
@@ -94,36 +91,11 @@ public class Application : Gtk.Application {
 	  main_window.show_all () ;
    }
 
-   protected override void shutdown () {
-	   base.shutdown() ;
-
-	   // Save window position
-	   save_window_position(main_window);
+   protected override void shutdown() {
+	  base.shutdown () ;
    }
 
-   /**
-     * Load `window-position` from the settings and move the window to that
-     * position
-     */
-    private void load_window_position (Gtk.Window window) {
-        int32 x, y;
-        settings.get("window-position", "(ii)", out x, out y);
-        // (-1, -1) is the default value
-        if (x != -1 && y != -1) {
-            window.move (x, y);
-        }
-    }
-
-    /**
-     * Save window position to the settings
-     */
-    private void save_window_position (Gtk.Window window) {
-        int32 x, y;
-        window.get_position (out x, out y);
-        settings.set_value("window-position", new Variant("(ii)", x, y));
-    }
-   
-	private Gtk.Notebook build_calc_notebook() {
+   private Gtk.Notebook build_calc_notebook() {
 	  Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
 	  Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
 	  Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
@@ -170,45 +142,17 @@ public class Application : Gtk.Application {
    }
 
    /**
-    * Return the current user's configuration directory
-    */
-   private string setup_user_config_directory() {
-	  string config_dir = Environment.get_user_config_dir () + "/balistica/" ;
-	  try {
-		 File file = File.new_for_path (config_dir) ;
-		 file.make_directory_with_parents () ;
-	  } catch ( Error err ){
-		 // The user may have already created the directory, so don't throw EXISTS.
-		 if( !(err is IOError.EXISTS)){
-			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG configuration directory") ;
-			msg.response.connect ((response_id) => {
-			   switch( response_id ){
-			   case Gtk.ResponseType.OK:
-				  stdout.puts ("Ok\n") ;
-				  break ;
-			   }
-
-			   msg.destroy () ;
-			}) ;
-			msg.show () ;
-		 }
-	  }
-
-	  return config_dir ;
-   }
-
-   /**
     * Return the current user's data directory
     */
-   private string setup_user_data_directory() {
-	  string data_dir = Environment.get_user_data_dir () + "/balistica/" ;
+   private string setup_user_directory(string user_dir) {
+	  string dir = user_dir + "/balistica/" ;
 	  try {
-		 File file = File.new_for_path (data_dir) ;
+		 File file = File.new_for_path (dir) ;
 		 file.make_directory_with_parents () ;
 	  } catch ( Error err ){
 		 // The user may have already created the directory, so don't throw EXISTS.
 		 if( !(err is IOError.EXISTS)){
-			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG data directory") ;
+			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG directory " + user_dir) ;
 			msg.response.connect ((response_id) => {
 			   switch( response_id ){
 			   case Gtk.ResponseType.OK:
@@ -222,7 +166,7 @@ public class Application : Gtk.Application {
 		 }
 	  }
 
-	  return data_dir ;
+	  return dir ;
    }
 
    /**
@@ -294,11 +238,15 @@ public class Application : Gtk.Application {
 	  }
    }
 
+   /**
+    * Main function
+    */
    public static int main(string[] args) {
-	  Intl.setlocale (LocaleCategory.ALL, "");
-      Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
-      Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-      Intl.textdomain (GETTEXT_PACKAGE);
+	  // Setup internationalization
+	  Intl.setlocale (LocaleCategory.ALL, "") ;
+	  Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR) ;
+	  Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8") ;
+	  Intl.textdomain (GETTEXT_PACKAGE) ;
 
 	  Environment.set_application_name (NAME) ;
 
