@@ -18,10 +18,10 @@
 
 
 const string NAME = "balística" ;
-const string VERSION = "1.3" ;
 
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
+   private Settings settings ;
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
@@ -54,38 +54,21 @@ public class Application : Gtk.Application {
    protected override void startup() {
 	  base.startup () ;
 
+	  settings = new Settings ("org.gnome.balistica") ;
+
 	  add_action_entries (action_entries, this) ;
 	  main_window = new Gtk.ApplicationWindow (this) ;
-	  Environment.set_application_name (NAME) ;
 
 	  // Setup the main window
 	  main_window.title = NAME ;
 	  main_window.window_position = Gtk.WindowPosition.CENTER ;
 
-	  // width x height
-	  main_window.set_default_size (735, 750) ;
-
 	  // Add the main layout box
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
+	  box.pack_start (build_calc_notebook (), true, true, 0) ;
 
-	  // Add the outer notebook that will hold everything
-	  Gtk.Notebook notebook = new Gtk.Notebook () ;
-	  notebook.set_tab_pos (Gtk.PositionType.LEFT) ;
-
-	  // Pango formatted labels to help visually distinguish
-	  Gtk.Label calcs_lbl = new Gtk.Label ("<big>Calculations</big>") ;
-	  calcs_lbl.set_use_markup (true) ;
-
-	  Gtk.Label db_lbl = new Gtk.Label ("<big>Database</big>") ;
-	  db_lbl.set_use_markup (true) ;
-
-	  notebook.append_page (build_calc_notebook (), calcs_lbl) ;
-	  notebook.append_page (build_db_notebook (), db_lbl) ;
-
-	  box.pack_start (notebook, true, true, 0) ;
-
-	  config_dir = this.setup_user_config_directory () ;
-	  data_dir = this.setup_user_data_directory () ;
+	  config_dir = this.setup_user_directory (Environment.get_user_config_dir ()) ;
+	  data_dir = this.setup_user_directory (Environment.get_user_data_dir ()) ;
 
 	  Logging.get_default ().publish.connect ((msg) => {
 		 this.log (msg) ;
@@ -108,14 +91,14 @@ public class Application : Gtk.Application {
 	  main_window.show_all () ;
    }
 
-   private Gtk.Frame build_calc_notebook() {
+   protected override void shutdown() {
+	  base.shutdown () ;
+   }
+
+   private Gtk.Notebook build_calc_notebook() {
 	  Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
 	  Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
 	  Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
-
-	  Gtk.Frame frame = new Gtk.Frame ("") ;
-	  Gtk.Viewport port = new Gtk.Viewport (null, null) ;
-	  frame.add (port) ;
 
 	  Gtk.Notebook notebook = new Gtk.Notebook () ;
 	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -130,20 +113,14 @@ public class Application : Gtk.Application {
 	  this.stability_content = new Balistica.StabilityBox () ;
 	  notebook.append_page (stability_content, stability_lbl) ;
 
-	  port.add (notebook) ;
-
-	  return frame ;
+	  return notebook ;
    }
 
-   private Gtk.Frame build_db_notebook() {
+   private Gtk.Notebook build_db_notebook() {
 	  Gtk.Label case_lbl = new Gtk.Label ("Case") ;
 	  Gtk.Label powder_lbl = new Gtk.Label ("Powder") ;
 	  Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
 	  Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
-
-	  Gtk.Frame frame = new Gtk.Frame ("") ;
-	  Gtk.Viewport port = new Gtk.Viewport (null, null) ;
-	  frame.add (port) ;
 
 	  Gtk.Notebook notebook = new Gtk.Notebook () ;
 	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
@@ -161,51 +138,21 @@ public class Application : Gtk.Application {
 	  this.projectile_content = new Balistica.ProjectileBox () ;
 	  notebook.append_page (projectile_content, projectile_lbl) ;
 
-	  port.add (notebook) ;
-
-	  return frame ;
-   }
-
-   /**
-    * Return the current user's configuration directory
-    */
-   private string setup_user_config_directory() {
-	  string config_dir = Environment.get_user_config_dir () + "/balistica/" ;
-	  try {
-		 File file = File.new_for_path (config_dir) ;
-		 file.make_directory_with_parents () ;
-	  } catch ( Error err ){
-		 // The user may have already created the directory, so don't throw EXISTS.
-		 if( !(err is IOError.EXISTS)){
-			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG configuration directory") ;
-			msg.response.connect ((response_id) => {
-			   switch( response_id ){
-			   case Gtk.ResponseType.OK:
-				  stdout.puts ("Ok\n") ;
-				  break ;
-			   }
-
-			   msg.destroy () ;
-			}) ;
-			msg.show () ;
-		 }
-	  }
-
-	  return config_dir ;
+	  return notebook ;
    }
 
    /**
     * Return the current user's data directory
     */
-   private string setup_user_data_directory() {
-	  string data_dir = Environment.get_user_data_dir () + "/balistica/" ;
+   private string setup_user_directory(string user_dir) {
+	  string dir = user_dir + "/balistica/" ;
 	  try {
-		 File file = File.new_for_path (data_dir) ;
+		 File file = File.new_for_path (dir) ;
 		 file.make_directory_with_parents () ;
 	  } catch ( Error err ){
 		 // The user may have already created the directory, so don't throw EXISTS.
 		 if( !(err is IOError.EXISTS)){
-			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG data directory") ;
+			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG directory " + user_dir) ;
 			msg.response.connect ((response_id) => {
 			   switch( response_id ){
 			   case Gtk.ResponseType.OK:
@@ -219,7 +166,7 @@ public class Application : Gtk.Application {
 		 }
 	  }
 
-	  return data_dir ;
+	  return dir ;
    }
 
    /**
@@ -291,7 +238,18 @@ public class Application : Gtk.Application {
 	  }
    }
 
+   /**
+    * Main function
+    */
    public static int main(string[] args) {
+	  // Setup internationalization
+	  Intl.setlocale (LocaleCategory.ALL, "") ;
+	  Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR) ;
+	  Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8") ;
+	  Intl.textdomain (GETTEXT_PACKAGE) ;
+
+	  Environment.set_application_name (NAME) ;
+
 	  var app = new Application () ;
 	  return app.run (args) ;
    }
