@@ -44,7 +44,6 @@ gthread_dep = dependency ('gthread-2.0', version: '>= ' + glib_min_version)
 gtk_dep = dependency ('gtk+-3.0', version: '>=3.10.8')
 gee_dep = dependency ('gee-0.8', version: '>=0.20.0')
 libbalistica_dep = dependency ('libbalistica', version: '>=1.0', required: true)
-sqlite3_dep = dependency ('sqlite3', version: '3.19.3', required: true)
 
 # Configuration
 conf = configuration_data()
@@ -61,4 +60,3 @@ subdir ('data')
 subdir ('help')
 subdir ('po')
 subdir ('src')
-subdir ('sql')

@@ -4,6 +4,9 @@ Version 1.3
 * Application wide logging facilities
 * Added 128x128 icon
 * Add ability to clear log file
+* Removed libbalistica source and created as a seperate library
+* Undo right-side tabs
+* Remove all database references
 
 Version 1.2
 ============================

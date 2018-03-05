@@ -25,10 +25,6 @@ public class Application : Gtk.Application {
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
-   private Balistica.CaseBox case_content ;
-   private Balistica.PowderBox powder_content ;
-   private Balistica.PrimerBox primer_content ;
-   private Balistica.ProjectileBox projectile_content ;
    private string data_dir ;
    private string config_dir ;
    private Logging logger ;
@@ -112,31 +108,6 @@ public class Application : Gtk.Application {
 
 	  this.stability_content = new Balistica.StabilityBox () ;
 	  notebook.append_page (stability_content, stability_lbl) ;
-
-	  return notebook ;
-   }
-
-   private Gtk.Notebook build_db_notebook() {
-	  Gtk.Label case_lbl = new Gtk.Label ("Case") ;
-	  Gtk.Label powder_lbl = new Gtk.Label ("Powder") ;
-	  Gtk.Label primer_lbl = new Gtk.Label ("Primer") ;
-	  Gtk.Label projectile_lbl = new Gtk.Label ("Projectile") ;
-
-	  Gtk.Notebook notebook = new Gtk.Notebook () ;
-	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
-
-	  // Create & add our pages to the database notebook
-	  this.case_content = new Balistica.CaseBox () ;
-	  notebook.append_page (case_content, case_lbl) ;
-
-	  this.powder_content = new Balistica.PowderBox () ;
-	  notebook.append_page (powder_content, powder_lbl) ;
-
-	  this.primer_content = new Balistica.PrimerBox () ;
-	  notebook.append_page (primer_content, primer_lbl) ;
-
-	  this.projectile_content = new Balistica.ProjectileBox () ;
-	  notebook.append_page (projectile_content, projectile_lbl) ;
 
 	  return notebook ;
    }
