@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 
+<!-- Generated with glade 3.21.0 
 
 Copyright (C) 2017 Steven Oliver
 
@@ -40,36 +40,24 @@ Author: Steven Oliver
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
-    <property name="orientation">vertical</property>
+    <property name="border_width">18</property>
     <child>
       <object class="GtkGrid" id="grid2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="row_spacing">18</property>
+        <property name="column_spacing">18</property>
         <child>
           <object class="GtkGrid" id="greenhill_main">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">7</property>
+            <property name="row_spacing">6</property>
             <child>
               <object class="GtkGrid" id="greenhill_variables">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkLabel" id="greenhill_title">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="label" translatable="yes">Greenhill Twist</property>
-                    <attributes>
-                      <attribute name="font-desc" value="&lt;Enter Value&gt; 16"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
                 <child>
                   <object class="GtkEntry" id="gdiameter">
                     <property name="visible">True</property>
@@ -78,8 +66,8 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
@@ -90,8 +78,8 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
@@ -102,56 +90,57 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblGDiameter">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Diameter</property>
                     <property name="ellipsize">end</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblGLength">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Length</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblSpecificGravity">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Specific Gravity</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblC">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label">C</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
                   </packing>
                 </child>
                 <child>
@@ -162,10 +151,25 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
                   </packing>
                 </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="greenhill_title">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Greenhill Twist</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -174,37 +178,21 @@ Author: Steven Oliver
             </child>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkGrid" id="miller_main">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="row_spacing">6</property>
             <child>
               <object class="GtkGrid" id="miller_variables">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <child>
-                  <object class="GtkLabel" id="miller_title">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">start</property>
-                    <property name="margin_top">15</property>
-                    <property name="label" translatable="yes">Miller Twist Rule</property>
-                    <property name="track_visited_links">False</property>
-                    <attributes>
-                      <attribute name="font-desc" value="&lt;Enter Value&gt; 16"/>
-                      <attribute name="style" value="normal"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">0</property>
-                    <property name="width">2</property>
-                  </packing>
-                </child>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
                 <child>
                   <object class="GtkEntry" id="mdiameter">
                     <property name="visible">True</property>
@@ -213,8 +201,8 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
@@ -225,8 +213,8 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
@@ -237,8 +225,8 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
@@ -249,58 +237,74 @@ Author: Steven Oliver
                     <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblMDiameter">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Diameter</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblMLength">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Length</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblMass">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Mass</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="lblSafeValue">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">end</property>
                     <property name="label" translatable="yes">Safe Value</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
                   </packing>
                 </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="miller_title">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Miller Twist Rule</property>
+                <property name="track_visited_links">False</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -317,35 +321,21 @@ Author: Steven Oliver
           <object class="GtkGrid" id="grid_results">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="valign">center</property>
+            <property name="halign">center</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">12</property>
             <property name="row_homogeneous">True</property>
-            <child>
-              <object class="GtkButton" id="btnSolve">
-                <property name="label" translatable="yes">Calculate</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="opacity">0.96862745098039216</property>
-                <property name="margin_top">6</property>
-                <signal name="clicked" handler="btnCalculateTwist_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
             <child>
               <object class="GtkButton" id="btnReset">
                 <property name="label" translatable="yes">Reset</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="margin_top">6</property>
                 <signal name="clicked" handler="btnResetTwist_clicked" swapped="no"/>
               </object>
               <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
@@ -355,9 +345,9 @@ Author: Steven Oliver
                 <property name="editable">False</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-                <property name="width">3</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">2</property>
               </packing>
             </child>
             <child>
@@ -370,7 +360,7 @@ Author: Steven Oliver
                 <property name="group">radgrpTwist</property>
               </object>
               <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -384,30 +374,32 @@ Author: Steven Oliver
                 <property name="group">radgrpTwist</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
+              <object class="GtkButton" id="btnSolve">
+                <property name="label" translatable="yes">Calculate</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="opacity">0.96862745098039216</property>
+                <signal name="clicked" handler="btnCalculateTwist_clicked" swapped="no"/>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
             </child>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+            <property name="width">2</property>
           </packing>
         </child>
       </object>

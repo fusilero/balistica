@@ -44,6 +44,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     * Constructor
     */
    public PbrDialog (double dc, double iv, double sh, int df) {
+	  Object (use_header_bar: 1);
 	  drag_coeff.set_text (dc.to_string ()) ;
 	  initial_vel.set_text (iv.to_string ()) ;
 	  sight_height.set_text (sh.to_string ()) ;

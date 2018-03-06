@@ -322,6 +322,7 @@ public class Balistica.DragBox : Gtk.Box {
 																	 "Save",
 																	 Gtk.ResponseType.ACCEPT) ;
 
+	  save_dialog.set_default_response (Gtk.ResponseType.ACCEPT) ;
 	  save_dialog.select_multiple = false ;
 
 	  // Filter to only HTML documents

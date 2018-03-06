@@ -59,9 +59,16 @@ public class Application : Gtk.Application {
 	  main_window.title = NAME ;
 	  main_window.window_position = Gtk.WindowPosition.CENTER ;
 
+	  // HeaderBar
+	  Gtk.StackSwitcher switcher = this.build_switcher () ;
+	  Gtk.HeaderBar headerbar = new Gtk.HeaderBar () ;
+	  headerbar.set_custom_title (switcher) ;
+	  headerbar.set_show_close_button (true) ;
+	  main_window.set_titlebar (headerbar) ;
+
 	  // Add the main layout box
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
-	  box.pack_start (build_calc_notebook (), true, true, 0) ;
+	  box.pack_start (switcher.get_stack(), true, true, 0) ;
 
 	  config_dir = this.setup_user_directory (Environment.get_user_config_dir ()) ;
 	  data_dir = this.setup_user_directory (Environment.get_user_data_dir ()) ;
@@ -91,25 +98,22 @@ public class Application : Gtk.Application {
 	  base.shutdown () ;
    }
 
-   private Gtk.Notebook build_calc_notebook() {
-	  Gtk.Label drag_lbl = new Gtk.Label ("Drag") ;
-	  Gtk.Label twist_lbl = new Gtk.Label ("Twist") ;
-	  Gtk.Label stability_lbl = new Gtk.Label ("Stability") ;
+   private Gtk.StackSwitcher build_switcher() {
+	  Gtk.Stack stack = new Gtk.Stack () ;
+	  Gtk.StackSwitcher switcher = new Gtk.StackSwitcher () ;
 
-	  Gtk.Notebook notebook = new Gtk.Notebook () ;
-	  notebook.set_tab_pos (Gtk.PositionType.TOP) ;
+	  stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE) ;
+	  switcher.set_stack (stack) ;
 
-	  // Create & add our pages to the calculations notebook
 	  this.drag_content = new Balistica.DragBox (this.main_window) ;
-	  notebook.append_page (drag_content, drag_lbl) ;
-
 	  this.twist_content = new Balistica.TwistBox () ;
-	  notebook.append_page (twist_content, twist_lbl) ;
-
 	  this.stability_content = new Balistica.StabilityBox () ;
-	  notebook.append_page (stability_content, stability_lbl) ;
 
-	  return notebook ;
+	  stack.add_titled (drag_content, "Page1", "Drag") ;
+	  stack.add_titled (twist_content, "Page2", "Twist") ;
+	  stack.add_titled (stability_content, "Page3", "Stability") ;
+
+	  return switcher ;
    }
 
    /**
