@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 
+<!-- Generated with glade 3.21.0 
 
 Copyright (C) 2018 Steven Oliver
 
@@ -28,490 +28,20 @@ Author: Steven Oliver
   <!-- interface-description An open source external balistics software package. -->
   <!-- interface-copyright 2018 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
-  <object class="GtkRadioButton" id="radgrpDragFunc">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">False</property>
-    <property name="active">True</property>
-    <property name="draw_indicator">True</property>
-  </object>
-  <object class="GtkRadioButton" id="radgrpStepSize">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">False</property>
-    <property name="active">True</property>
-    <property name="draw_indicator">True</property>
-  </object>
   <template class="BalisticaDragBox" parent="GtkBox">
     <property name="height_request">600</property>
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
-    <property name="margin_bottom">30</property>
+    <property name="border_width">18</property>
     <property name="orientation">vertical</property>
+    <property name="spacing">9</property>
     <property name="baseline_position">top</property>
     <child>
-      <object class="GtkGrid" id="grid2">
+      <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <child>
-          <object class="GtkEntry" id="txtName">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="invisible_char">●</property>
-            <property name="width_chars">40</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkGrid" id="grid4">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkEntry" id="txtDrag_coefficient">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtProjectile_weight">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblProjectile_weight">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Projectile Weight (grains)</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtIntial_velocity">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtZero_range">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtSight_height">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtShooting_angle">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtWind_velocity">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">6</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="txtWind_angle">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="tooltip_text" translatable="yes">0 = headwind
-90 = right to left
-180 = tailwind
-270/-90 = left to right</property>
-                <property name="max_length">15</property>
-                <property name="invisible_char">●</property>
-                <property name="width_chars">15</property>
-                <property name="input_purpose">number</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">7</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblInitial_velocity">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblZero_range">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Zero Range (yards)</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblSight_height">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Sight Height Over Bore (in)</property>
-                <property name="width_chars">0</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">4</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblShooting_angle">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Shooting Angle (deg)</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblWind_velocity">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Wind Velocity (mph)</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">6</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblWind_angle">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Wind Angle (0-360 deg)</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">7</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="lblDrag_coefficient">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Drag Coefficient</property>
-                <property name="single_line_mode">True</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkGrid" id="grid6">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkFrame" id="frame1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkViewport">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkGrid" id="grid9">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="valign">start</property>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g1">
-                            <property name="label">G1</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g6">
-                            <property name="label">G6</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g8">
-                            <property name="label">G8</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g7">
-                            <property name="label">G7</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g2">
-                            <property name="label">G2</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_g5">
-                            <property name="label">G5</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpDragFunc</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="lblDragFram1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;Drag Function&lt;/b&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkFrame" id="frame2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">none</property>
-                <child>
-                  <object class="GtkViewport">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkGrid" id="grid1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_s10">
-                            <property name="label">10</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpStepSize</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_s100">
-                            <property name="label">100</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpStepSize</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkRadioButton" id="rad_s50">
-                            <property name="label">50</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">True</property>
-                            <property name="group">radgrpStepSize</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="label">
-                  <object class="GtkLabel" id="label1">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">Step Size</property>
-                    <attributes>
-                      <attribute name="weight" value="bold"/>
-                    </attributes>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="ckbAtmosCorr">
-            <property name="label" translatable="yes">Enable Atmospheric Corrections</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="margin_top">4</property>
-            <property name="draw_indicator">True</property>
-            <signal name="toggled" handler="atmo_toggled" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
+        <property name="column_spacing">12</property>
         <child>
           <object class="GtkLabel" id="lblName">
             <property name="visible">True</property>
@@ -530,7 +60,17 @@ Author: Steven Oliver
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkEntry" id="txtName">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="invisible_char">●</property>
+            <property name="width_chars">40</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
         </child>
       </object>
       <packing>
@@ -540,16 +80,328 @@ Author: Steven Oliver
       </packing>
     </child>
     <child>
-      <object class="GtkGrid" id="grid3">
+      <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkButton" id="btnSolveDrag">
+            <property name="label" translatable="yes">Solve</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnSolveDrag_clicked" swapped="no"/>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnResetDrag">
+            <property name="label" translatable="yes">Reset</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnResetDrag_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnExportResults">
+            <property name="label" translatable="yes">Export Results</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnExportResults_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnCalcPBR">
+            <property name="label" translatable="yes">Calculate PBR</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnCalcPBR_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnPopulateExample">
+            <property name="label" translatable="yes">Example</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="btnPopulateExample_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">12</property>
+        <child>
+          <object class="GtkGrid" id="grid4">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">12</property>
+            <child>
+              <object class="GtkEntry" id="txtDrag_coefficient">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtProjectile_weight">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblProjectile_weight">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Projectile Weight (grains)</property>
+                <property name="single_line_mode">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtIntial_velocity">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtZero_range">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtSight_height">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtShooting_angle">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtWind_velocity">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="txtWind_angle">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">0 = headwind
+90 = right to left
+180 = tailwind
+270/-90 = left to right</property>
+                <property name="max_length">15</property>
+                <property name="invisible_char">●</property>
+                <property name="width_chars">15</property>
+                <property name="input_purpose">number</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">7</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblInitial_velocity">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblZero_range">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Zero Range (yards)</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblSight_height">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Sight Height Over Bore (in)</property>
+                <property name="width_chars">0</property>
+                <property name="single_line_mode">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblShooting_angle">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Shooting Angle (deg)</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblWind_velocity">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Wind Velocity (mph)</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">6</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblWind_angle">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Wind Angle (0-360 deg)</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">7</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lblDrag_coefficient">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Drag Coefficient</property>
+                <property name="single_line_mode">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+            <property name="height">2</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkGrid" id="grid5">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="row_spacing">1</property>
-            <property name="column_spacing">2</property>
-            <property name="column_homogeneous">True</property>
+            <property name="valign">start</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">12</property>
             <child>
               <object class="GtkEntry" id="txtAltitude">
                 <property name="visible">True</property>
@@ -561,7 +413,7 @@ Author: Steven Oliver
                 <property name="input_purpose">number</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -576,7 +428,7 @@ Author: Steven Oliver
                 <property name="input_purpose">number</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -591,7 +443,7 @@ Author: Steven Oliver
                 <property name="input_purpose">number</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -606,7 +458,7 @@ Author: Steven Oliver
                 <property name="input_purpose">number</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
+                <property name="left_attach">1</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
@@ -614,10 +466,11 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblAlt">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
                 <property name="label" translatable="yes">Altitude (ft)</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
@@ -625,10 +478,11 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblTemp">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
                 <property name="label" translatable="yes">Temperature (F)</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -636,10 +490,11 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblBarPress">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">end</property>
                 <property name="label" translatable="yes">Barometric Pressure (Hg)</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">2</property>
               </packing>
             </child>
@@ -647,99 +502,240 @@ Author: Steven Oliver
               <object class="GtkLabel" id="lblRelHumid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">3</property>
+                <property name="halign">end</property>
                 <property name="label" translatable="yes">Relative Humidity (%)</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">3</property>
               </packing>
             </child>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="row_spacing">9</property>
             <child>
-              <object class="GtkButton" id="btnSolveDrag">
-                <property name="label" translatable="yes">Solve</property>
+              <object class="GtkGrid" id="grid9">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnSolveDrag_clicked" swapped="no"/>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="margin_left">9</property>
+                <property name="margin_right">9</property>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g1">
+                    <property name="label">G1</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g6">
+                    <property name="label">G6</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g8">
+                    <property name="label">G8</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g7">
+                    <property name="label">G7</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g2">
+                    <property name="label">G2</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_g5">
+                    <property name="label">G5</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpDragFunc</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnResetDrag">
-                <property name="label" translatable="yes">Reset</property>
+              <object class="GtkLabel" id="lblDragFram1">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnResetDrag_clicked" swapped="no"/>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Drag Function</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
               </object>
               <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnExportResults">
-                <property name="label" translatable="yes">Export Results</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnExportResults_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnCalcPBR">
-                <property name="label" translatable="yes">Calculate PBR</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnCalcPBR_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnPopulateExample">
-                <property name="label" translatable="yes">Example</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnPopulateExample_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="left_attach">3</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
-              <placeholder/>
+              <object class="GtkGrid" id="grid1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">9</property>
+                <property name="margin_right">9</property>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
+                <child>
+                  <object class="GtkRadioButton" id="rad_s10">
+                    <property name="label">10</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpStepSize</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_s100">
+                    <property name="label">100</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpStepSize</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="rad_s50">
+                    <property name="label">50</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="group">radgrpStepSize</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
             </child>
             <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Step Size</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
             </child>
           </object>
           <packing>
-            <property name="left_attach">0</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="ckbAtmosCorr">
+            <property name="label" translatable="yes">Enable Atmospheric Corrections</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="halign">start</property>
+            <property name="margin_top">4</property>
+            <property name="draw_indicator">True</property>
+            <signal name="toggled" handler="atmo_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
             <property name="top_attach">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
+        <property name="position">2</property>
       </packing>
     </child>
     <child>
@@ -769,8 +765,22 @@ Author: Steven Oliver
       <packing>
         <property name="expand">True</property>
         <property name="fill">True</property>
-        <property name="position">2</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </template>
+  <object class="GtkRadioButton" id="radgrpDragFunc">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
+  <object class="GtkRadioButton" id="radgrpStepSize">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
 </interface>

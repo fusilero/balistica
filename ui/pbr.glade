@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.0 
+<!-- Generated with glade 3.21.0
 
 Copyright (C) 2017 Steven Oliver
 
@@ -30,46 +30,44 @@ Author: Steven Oliver
   <!-- interface-authors Steven Oliver -->
   <template class="BalisticaPbrDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
+    <property name="border_width">18</property>
     <property name="title" translatable="yes">Point Blank Range (PBR)</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
     <property name="type_hint">dialog</property>
+    <child type="action">
+      <object class="GtkButton" id="btnCalculate">
+        <property name="label" translatable="yes">Calculate</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="opacity">0.96862745098039216</property>
+        <signal name="clicked" handler="btnCalculate_clicked" swapped="no"/>
+        <style>
+          <class name="suggested-action"/>
+        </style>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="btnReset">
+        <property name="label" translatable="yes">Reset</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <signal name="clicked" handler="btnReset_clicked" swapped="no"/>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">btnCalculate</action-widget>
+      <action-widget response="0">btnReset</action-widget>
+    </action-widgets>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox">
             <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <object class="GtkButton" id="btnCalculate">
-                <property name="label" translatable="yes">Calculate</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="opacity">0.96862745098039216</property>
-                <signal name="clicked" handler="btnCalculate_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnReset">
-                <property name="label" translatable="yes">Reset</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <signal name="clicked" handler="btnReset_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -78,158 +76,147 @@ Author: Steven Oliver
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="pbr_main">
+          <object class="GtkGrid" id="main_grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="orientation">vertical</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="row_spacing">18</property>
             <child>
-              <object class="GtkGrid" id="main_grid">
+              <object class="GtkTextView" id="results">
+                <property name="height_request">140</property>
+                <property name="visible">True</property>
+                <property name="app_paintable">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="vscroll_policy">natural</property>
+                <property name="editable">False</property>
+                <property name="cursor_visible">False</property>
+                <property name="monospace">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="pbr_variables">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
+                <property name="column_homogeneous">True</property>
                 <child>
-                  <object class="GtkGrid" id="variables_grid">
+                  <object class="GtkLabel" id="lblVitalSize">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkGrid" id="pbr_variables">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <child>
-                          <object class="GtkLabel" id="lblVitalSize">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Vital Zone Size (inches)</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">4</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="lblSightHeight">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Sight Height (inches)</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">3</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="lblInitVelocity">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="lblDragCoef">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Drag Coefficient</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="vital_zone_sz">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="max_length">15</property>
-                            <property name="input_purpose">number</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">4</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="sight_height">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="max_length">15</property>
-                            <property name="input_purpose">number</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">3</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="initial_vel">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="max_length">15</property>
-                            <property name="input_purpose">number</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="drag_coeff">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="max_length">15</property>
-                            <property name="input_purpose">number</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="lblDragFunction">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Drag Function</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="drag_function">
-                            <property name="visible">True</property>
-                            <property name="sensitive">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="editable">False</property>
-                            <property name="max_length">15</property>
-                            <property name="input_purpose">number</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Vital Zone Size (inches)</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblSightHeight">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Sight Height (inches)</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblInitVelocity">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Initial Velocity (ft/s)</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblDragCoef">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Drag Coefficient</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="vital_zone_sz">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="sight_height">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="initial_vel">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="drag_coeff">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lblDragFunction">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">end</property>
+                    <property name="label" translatable="yes">Drag Function</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -237,50 +224,23 @@ Author: Steven Oliver
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid" id="results_grid">
+                  <object class="GtkEntry" id="drag_function">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="valign">center</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <child>
-                      <object class="GtkTextView" id="results">
-                        <property name="height_request">140</property>
-                        <property name="visible">True</property>
-                        <property name="app_paintable">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="margin_top">6</property>
-                        <property name="margin_bottom">6</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="vscroll_policy">natural</property>
-                        <property name="editable">False</property>
-                        <property name="cursor_visible">False</property>
-                        <property name="monospace">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="editable">False</property>
+                    <property name="max_length">15</property>
+                    <property name="input_purpose">number</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
           </object>
@@ -291,6 +251,9 @@ Author: Steven Oliver
           </packing>
         </child>
       </object>
+    </child>
+    <child>
+      <placeholder/>
     </child>
   </template>
 </interface>
