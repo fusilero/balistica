@@ -17,8 +17,6 @@
  */
 
 
-const string NAME = "balística" ;
-
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
    private Settings settings ;

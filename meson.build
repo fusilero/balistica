@@ -49,6 +49,7 @@ libbalistica_dep = dependency ('libbalistica', version: '>=1.0', required: true)
 conf = configuration_data()
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', locale_dir)
+conf.set_quoted('NAME', 'balística')
 conf.set_quoted('VERSION', meson.project_version())
 configure_file(output: 'config.h', configuration: conf)
 
