@@ -23,10 +23,9 @@
                 <ul>
                     <li class="download"><a class="buttons" href="https://github.com/steveno/balistica/zipball/master">Download ZIP</a></li>
                     <li class="download"><a class="buttons" href="https://github.com/steveno/balistica/tarball/master">Download TAR</a></li>
-                    <li><a class="buttons github" href="https://github.com/steveno/balistica">View On GitHub</a></li>
+                    <li><a class="buttons github" href="https://github.com/steveno/balistica">GitHub</a></li>
                 </ul>
 
-                <p><a href="https://travis-ci.org/steveno/balistica"><img src="https://travis-ci.org/steveno/balistica.png?branch=master" alt="Build Status" style="border: 0px; margin: 24px 0 0 0;"></a>
                 <a href="https://waffle.io/steveno/balistica"><img src="https://badge.waffle.io/steveno/balistica.png?label=ready" alt="Ready Status" style="border: 0px; margin: 0 0 0 0;"></a></p>
                 </p>
 
@@ -39,9 +38,6 @@
                 More specifically, balística is a exterior balisitics calculator with some extra features
                 tacked on. The program is named for the <a href="http://translate.google.com/#en/ca/ballistics" target="_blank">Catalan word</a>
                 for "ballistics".</p>
-
-                <p>Currently the project is in it's early stages and is still missing quite a few features
-                I have planned for it. Feel free to jump in and help!</p>
 
                 <h2>Current Features</h2>
 
@@ -76,10 +72,11 @@
                 raised in order to arc the trajectory in order to continue to hit the bullseye.</p>
 
                 <h3>LibBalistica</h3>
-                <p><strong>LibBalistica</strong> is a ballistics library developed incordination with balística that
-                allows developers to build their own ballistics software application should they choose. LibBalistica
-                is also unit tested to ensure reliable consistent calculations every release. With code developed
-                independently of balística improvements can also potentionally be made without breaking LibBalistica.</p>
+                <p><strong>LibBalistica</strong> is a <a href="https://github.com/steveno/libbalistica" target="_blank">ballistics library</a> 
+                developed incordination with balística that allows developers to build their own ballistics software 
+                application should they choose. LibBalistica is also unit tested to ensure reliable consistent calculations 
+                every release. With code developed independently of balística improvements can also potentionally be made 
+                without breaking LibBalistica.</p>
             </section>
 
             <section>
@@ -88,7 +85,7 @@
                     <a target="_blank" href="img/drag_calculation.png">
                         <img src="img/drag_calculation.png" alt="drag calculation" width="300">
                     </a>
-                    <div class="desc">Calculating the drag of a .30-06 bullet.</div>
+                    <div class="desc">Calculating the drag of a .308.</div>
                 </div>
                 <div class="img_gal">
                     <a target="_blank" href="img/miller_twist.png">
@@ -100,18 +97,17 @@
                     <a target="_blank" href="img/miller_stability.png">
                         <img src="img/miller_stability.png" alt="miller stability" width="300">
                     </a>
-                    <div class="desc">Calculating the stabilit of a .308 using the Miller Stability formula.</div>
+                    <div class="desc">Calculating the stability of a .308 using the Miller Stability formula.</div>
+                </div>
+                <div class="img_gal">
+                    <a target="_blank" href="img/pbr.png">
+                        <img src="img/pbr.png" alt="pbr" width="300">
+                    </a>
+                    <div class="desc">Calculating the Point Blank Range (PBR) of a .308.</div>
                 </div>
             </section>
 
             <section>
-                <h2>Features In Process</h2>
-
-                <h3>A database to store custom handloads in</h3>
-                <p>I want to be able to create and store custom hand loads. I already have a SQL database strucutre
-                worked out for this. I also have some basic data to load in it. But that's all I have. I don't even
-                have Vala to talk to the database with.</p>
-
                 <h2>Planned Features</h2>
 
                 <h3>Graphs</h3>
@@ -135,27 +131,21 @@
                 <h3>Build it</h3>
                 <pre>
 <code><span style="color: #87ceeb;">~</span><span style="color: #cd5c5c;">$</span> <span style="color: white">cd balistica</span>
-<span style="color: #87ceeb;">~/balistica</span><span style="color: #cd5c5c;">$</span> <span style="color: white">mkdir build &amp;&amp; cd build</span>
-<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">./../configure</span>
-<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">make && make test</span>
-<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">sudo make install</span></code></pre>
+<span style="color: #87ceeb;">~/balistica</span><span style="color: #cd5c5c;">$</span> <span style="color: white">mkdir build</span>
+<span style="color: #87ceeb;">~/balistica</span><span style="color: #cd5c5c;">$</span> <span style="color: white">meson . build/</span>
+<span style="color: #87ceeb;">~/balistica</span><span style="color: #cd5c5c;">$</span> <span style="color: white">cd build</span>
+<span style="color: #87ceeb;">~/balistica/build</span><span style="color: #cd5c5c;">$</span> <span style="color: white">ninja</span></code></pre>
 
                 <p>I'd prefer pull requets though Github to keep it simple, but patches through email are always welcome anyway.</p>
 
                 <h3>Minimum Build Requirements:</h3>
                 <ul>
-                    <li><a href="https://live.gnome.org/Vala" target="_blank">Vala</a> 0.36.8</li>
-                    <li><a href="http://www.cmake.org/" target="_blank">Cmake</a> 2.8</li>
+                    <li><a href="https://live.gnome.org/Vala" target="_blank">Vala</a> 0.38.0</li>
                     <li><a href="https://developer.gnome.org/glib/" target="_blank">glib-2.0</a> 2.40.0</li>
                     <li><a href="http://www.gtk.org/" target="_blank">gtk+-3.0</a> 3.10.8</li>
                     <li><a href="https://wiki.gnome.org/Projects/Libgee/" target="_blank">gee-0.8</a> 0.20.0</li>
+                    <li><a href="http://steveno.github.io/libbalistica/" target="_blank">libbalistica</a> 1.0</li>
                 </ul>
-
-                <h2>Authors and Contributors</h2>
-                <p>At this point I am the author and only contributor.</p>
-                <p>I have converted the <a href="http://sourceforge.net/projects/balcomp/">GNU Exterior Ballistics Computer</a>
-                by Derek Yates to Vala. The GEBC is open source and licensed under the GNU GPL version 2. If you are Mr. Yates,
-                or know him, I'd like to talk. I have some questions about the code.</p>
 
                 <h3>Contact</h3>
                 <p>Steven Oliver  (<a href="https://github.com/steveno" class="user-mention">@steveno</a>)</p>
