@@ -5,6 +5,8 @@
 balística is a simple open source external ballistics calculator. It's 
 named after the Catalan word for "ballistics" in English. Enjoy!
 
+![balística](https://steveno.github.io/balistica/img/drag_calculation.png)
+
 ## Minimum Requirements
 * vala >= 0.38.0
 * glib-2.0 >= 2.40.0
