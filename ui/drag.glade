@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.21.0 
+<!-- Generated with glade 3.20.0 
 
 Copyright (C) 2018 Steven Oliver
 
@@ -28,6 +28,20 @@ Author: Steven Oliver
   <!-- interface-description An open source external balistics software package. -->
   <!-- interface-copyright 2018 Steven Oliver -->
   <!-- interface-authors Steven Oliver -->
+  <object class="GtkRadioButton" id="radgrpDragFunc">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
+  <object class="GtkRadioButton" id="radgrpStepSize">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="receives_default">False</property>
+    <property name="active">True</property>
+    <property name="draw_indicator">True</property>
+  </object>
   <template class="BalisticaDragBox" parent="GtkBox">
     <property name="height_request">600</property>
     <property name="visible">True</property>
@@ -97,7 +111,7 @@ Author: Steven Oliver
             </style>
           </object>
           <packing>
-            <property name="left_attach">4</property>
+            <property name="left_attach">2</property>
             <property name="top_attach">0</property>
           </packing>
         </child>
@@ -108,32 +122,6 @@ Author: Steven Oliver
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btnResetDrag_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnExportResults">
-            <property name="label" translatable="yes">Export Results</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="btnExportResults_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnCalcPBR">
-            <property name="label" translatable="yes">Calculate PBR</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="btnCalcPBR_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -152,6 +140,9 @@ Author: Steven Oliver
             <property name="left_attach">0</property>
             <property name="top_attach">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>
@@ -344,7 +335,6 @@ Author: Steven Oliver
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="label" translatable="yes">Shooting Angle (deg)</property>
-                <property name="xalign">0</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -521,6 +511,7 @@ Author: Steven Oliver
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="row_spacing">9</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkGrid" id="grid9">
                 <property name="visible">True</property>
@@ -706,6 +697,40 @@ Author: Steven Oliver
                 <property name="top_attach">2</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkButton" id="btnExportResults">
+                <property name="label" translatable="yes">Export Results</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="btnExportResults_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btnCalcPBR">
+                <property name="label" translatable="yes">Calculate PBR</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">end</property>
+                <signal name="clicked" handler="btnCalcPBR_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -769,18 +794,4 @@ Author: Steven Oliver
       </packing>
     </child>
   </template>
-  <object class="GtkRadioButton" id="radgrpDragFunc">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">False</property>
-    <property name="active">True</property>
-    <property name="draw_indicator">True</property>
-  </object>
-  <object class="GtkRadioButton" id="radgrpStepSize">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="receives_default">False</property>
-    <property name="active">True</property>
-    <property name="draw_indicator">True</property>
-  </object>
 </interface>
