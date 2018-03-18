@@ -38,6 +38,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.TextView results ;
 
+   private Logging logger ;
    private LibBalistica.DragFunction d ;
 
    /**
@@ -45,9 +46,11 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     */
    public PbrDialog (double dc, double iv, double sh, int df) {
 	  Object (use_header_bar: 1);
-	  drag_coeff.set_text (dc.to_string ()) ;
-	  initial_vel.set_text (iv.to_string ()) ;
-	  sight_height.set_text (sh.to_string ()) ;
+
+	  this.logger = Logging.get_default () ;
+	  this.drag_coeff.set_text (dc.to_string ()) ;
+	  this.initial_vel.set_text (iv.to_string ()) ;
+	  this.sight_height.set_text (sh.to_string ()) ;
 
 	  switch( df ){
 	  case 1:
@@ -78,7 +81,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
 		 assert_not_reached () ;
 	  }
 
-	  drag_function.set_text (d.to_string ()) ;
+	  this.drag_function.set_text (d.to_string ()) ;
    }
 
    /**
@@ -95,11 +98,17 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     */
    [GtkCallback]
    public void btnCalculate_clicked() {
+	  string v = vital_zone_sz.get_text ();
+	  if( v == "" ){
+		 logger.publish (new LogMsg ("Vital Zone size is required to calculate PBR")) ;
+		 return ;
+	  }
+
 	  LibBalistica.PbrResult pbr_result = LibBalistica.PBR.pbr (d,
 																double.parse (drag_coeff.get_text ()),
 																double.parse (initial_vel.get_text ()),
 																double.parse (sight_height.get_text ()),
-																double.parse (vital_zone_sz.get_text ())) ;
+																double.parse (v)) ;
 
 	  results.buffer.text = "Near Zero: %.2f yards\n".printf (pbr_result.near_zero) ;
 	  results.buffer.text += "Far Zero: %.2f yards\n".printf (pbr_result.far_zero) ;
