@@ -45,7 +45,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     * Constructor
     */
    public PbrDialog (double dc, double iv, double sh, int df) {
-	  Object (use_header_bar: 1);
+	  Object (use_header_bar: 1) ;
 
 	  this.logger = Logging.get_default () ;
 	  this.drag_coeff.set_text (dc.to_string ()) ;
@@ -98,7 +98,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
     */
    [GtkCallback]
    public void btnCalculate_clicked() {
-	  string v = vital_zone_sz.get_text ();
+	  string v = vital_zone_sz.get_text () ;
 	  if( v == "" ){
 		 logger.publish (new LogMsg ("Vital Zone size is required to calculate PBR")) ;
 		 return ;

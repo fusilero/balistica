@@ -23,12 +23,12 @@ balisitica = executable (meson.project_name(),
     'Logging.vala',
     'LogMsg.vala',
 
-    # Calculations
-    'gui/PbrDialog.vala',
-    'gui/DragBox.vala',
-    'gui/TwistBox.vala',
-    'gui/StabilityBox.vala',
-    'gui/LogViewerDialog.vala'] + resources,
+    # UI
+    'PbrDialog.vala',
+    'DragBox.vala',
+    'TwistBox.vala',
+    'StabilityBox.vala',
+    'LogViewerDialog.vala'] + resources,
   include_directories: config_h_dir,
   dependencies: [ glib_dep, gtk_dep, gio_dep, gee_dep, libbalistica_dep ],
   c_args: c_args,

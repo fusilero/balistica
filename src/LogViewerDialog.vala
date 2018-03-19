@@ -36,7 +36,7 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
     * Constructor
     */
    public LogViewerDialog (string log_file) {
-	  Object(use_header_bar: 1);
+	  Object (use_header_bar: 1) ;
 
 	  this.log_file = File.new_for_path (log_file) ;
 	  this.logger = Logging.get_default () ;
