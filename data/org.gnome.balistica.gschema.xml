@@ -11,11 +11,6 @@
             <summary>The height of the window</summary>
             <description>The height of the main window in pixels.</description>
         </key>
-        <key name="window-position" type="(ii)">
-            <default>(-1, -1)</default>
-            <summary>Window position</summary>
-            <description>Window position (x and y) of the last closed window.</description>
-        </key>
         <key name="save-directory" type="s">
             <default>''</default>
             <summary>The directory to open the save game dialog in</summary>

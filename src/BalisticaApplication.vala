@@ -49,13 +49,13 @@ public class Application : Gtk.Application {
 	  base.startup () ;
 
 	  settings = new Settings ("org.gnome.balistica") ;
-
 	  add_action_entries (action_entries, this) ;
 	  main_window = new Gtk.ApplicationWindow (this) ;
 
 	  // Setup the main window
 	  main_window.title = NAME ;
 	  main_window.window_position = Gtk.WindowPosition.CENTER ;
+	  main_window.set_default_size (this.settings.get_int ("width"), this.settings.get_int ("height")) ;
 
 	  // HeaderBar
 	  Gtk.StackSwitcher switcher = this.build_switcher () ;
@@ -66,7 +66,7 @@ public class Application : Gtk.Application {
 
 	  // Add the main layout box
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
-	  box.pack_start (switcher.get_stack(), true, true, 0) ;
+	  box.pack_start (switcher.get_stack (), true, true, 0) ;
 
 	  config_dir = this.setup_user_directory (Environment.get_user_config_dir ()) ;
 	  data_dir = this.setup_user_directory (Environment.get_user_data_dir ()) ;
@@ -82,6 +82,13 @@ public class Application : Gtk.Application {
 	  } catch ( Error e ){
 		 logger.publish (new LogMsg (e.message)) ;
 	  }
+
+	  // Maintain the user's prefered window height and width as they change it
+	  get_active_window ().configure_event.connect ((event) => {
+		 this.settings.set_int ("height", event.height) ;
+		 this.settings.set_int ("width", event.width) ;
+		 return false ;
+	  }) ;
 
 	  var menu = builder.get_object ("appmenu") as GLib.MenuModel ;
 	  set_app_menu (menu) ;
