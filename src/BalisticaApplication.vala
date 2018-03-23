@@ -29,10 +29,11 @@ public class Application : Gtk.Application {
 
    private const GLib.ActionEntry[] action_entries =
    {
-	  { "view_log", view_log_cb },
-	  { "help", help_cb },
 	  { "about", about_cb },
+	  { "help", help_cb },
+	  { "preferences", preferences_cb },
 	  { "quit", quit_cb },
+	  { "view_log", view_log_cb },
    } ;
 
    /**
@@ -99,10 +100,6 @@ public class Application : Gtk.Application {
 	  main_window.show_all () ;
    }
 
-   protected override void shutdown() {
-	  base.shutdown () ;
-   }
-
    private Gtk.StackSwitcher build_switcher() {
 	  Gtk.Stack stack = new Gtk.Stack () ;
 	  Gtk.StackSwitcher switcher = new Gtk.StackSwitcher () ;
@@ -114,9 +111,9 @@ public class Application : Gtk.Application {
 	  this.twist_content = new Balistica.TwistBox () ;
 	  this.stability_content = new Balistica.StabilityBox () ;
 
-	  stack.add_titled (drag_content, "Page1", "Drag") ;
-	  stack.add_titled (twist_content, "Page2", "Twist") ;
-	  stack.add_titled (stability_content, "Page3", "Stability") ;
+	  stack.add_titled (drag_content, "Drag", "Drag") ;
+	  stack.add_titled (twist_content, "Twist", "Twist") ;
+	  stack.add_titled (stability_content, "Stability", "Stability") ;
 
 	  return switcher ;
    }
@@ -183,6 +180,15 @@ public class Application : Gtk.Application {
 	  } catch ( Error err ){
 		 Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 	  }
+   }
+
+   /**
+    * Show preferences dialog
+    */
+   private void preferences_cb() {
+	  var dialog = new Balistica.PreferencesWindow (this.settings) ;
+	  dialog.set_transient_for (get_active_window ()) ;
+	  dialog.show_all () ;
    }
 
    /**

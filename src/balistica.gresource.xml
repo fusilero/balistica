@@ -4,6 +4,7 @@
         <file preprocess="xml-stripblanks" alias="drag.glade">../ui/drag.glade</file>
         <file preprocess="xml-stripblanks" alias="logviewer.glade">../ui/logviewer.glade</file>
         <file preprocess="xml-stripblanks" alias="pbr.glade">../ui/pbr.glade</file>
+        <file preprocess="xml-stripblanks" alias="preferences.glade">../ui/preferences.glade</file>
         <file preprocess="xml-stripblanks" alias="stability.glade">../ui/stability.glade</file>
         <file preprocess="xml-stripblanks" alias="twist.glade">../ui/twist.glade</file>
     </gresource>

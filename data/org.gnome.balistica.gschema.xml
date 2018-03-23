@@ -12,7 +12,6 @@
             <description>The height of the main window in pixels.</description>
         </key>
         <key name="save-directory" type="s">
-            <default>''</default>
             <summary>The directory to open the save game dialog in</summary>
             <description>The directory to open the save game dialog in</description>
         </key>
