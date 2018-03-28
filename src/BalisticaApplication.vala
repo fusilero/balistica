@@ -29,11 +29,14 @@ public class Application : Gtk.Application {
 
    private const GLib.ActionEntry[] action_entries =
    {
-	  { "about", about_cb },
-	  { "help", help_cb },
+	  // Ordered as they appear in the menu
+	  { "open", open_cb },
+	  { "save", save_cb },
 	  { "preferences", preferences_cb },
-	  { "quit", quit_cb },
 	  { "view_log", view_log_cb },
+	  { "help", help_cb },
+	  { "about", about_cb },
+	  { "quit", quit_cb },
    } ;
 
    /**
@@ -180,6 +183,20 @@ public class Application : Gtk.Application {
 	  } catch ( Error err ){
 		 Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
 	  }
+   }
+
+   /**
+    * Open a saved calculation
+    */
+   private void open_cb() {
+	  this.drag_content.openCalculation (this.settings.get_string ("save-directory")) ;
+   }
+
+   /**
+    * Save the currnet calculation
+    */
+   private void save_cb() {
+	  this.drag_content.saveCalculation (this.settings.get_string ("save-directory")) ;
    }
 
    /**

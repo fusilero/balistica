@@ -66,10 +66,9 @@ public class Balistica.PreferencesWindow : Gtk.Window {
    [GtkCallback]
    public void btnChangeSaveDir_clicked() {
 	  var file_chooser = new Gtk.FileChooserDialog ("Choose save location", this,
-													Gtk.FileChooserAction.OPEN,
+													Gtk.FileChooserAction.SELECT_FOLDER,
 													"_Cancel", Gtk.ResponseType.CANCEL,
 													"_Select", Gtk.ResponseType.ACCEPT) ;
-	  file_chooser.set_action (Gtk.FileChooserAction.SELECT_FOLDER) ;
 	  if( file_chooser.run () == Gtk.ResponseType.ACCEPT ){
 		 txtSaveDir.set_text (file_chooser.get_current_folder ()) ;
 		 this.settings.set_string ("save-directory", file_chooser.get_current_folder ()) ;

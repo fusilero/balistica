@@ -4,6 +4,16 @@
   <menu id="appmenu">
     <section>
       <item>
+        <attribute name="label" translatable="yes">Open</attribute>
+        <attribute name="action">app.open</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Save</attribute>
+        <attribute name="action">app.save</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>

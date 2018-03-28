@@ -1,3 +1,13 @@
+Version 1.5
+============================
+* New settings dialog
+* Further refinement of redesigned UI
+
+Version 1.4
+============================
+* Redo GUI to be more Gnome-like
+* Minor cleanup
+
 Version 1.3
 ============================
 * Switch to Meson build system
@@ -11,7 +21,7 @@ Version 1.3
 Version 1.2
 ============================
 * Corrected PBR calculation
-* The main page's tabs now are on the right side instead of the top 
+* The main page's tabs now are on the right side instead of the top
   in anticipation of the database
 
 Version 1.1
