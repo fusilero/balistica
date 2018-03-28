@@ -15,6 +15,51 @@ if not vala.version().version_compare('>= @0@'.format(vala_version_required))
 	error('valac >= @0@ required!'.format(vala_version_required))
 endif
 
+# Test for how strict the compiler can be
+cc = meson.get_compiler('c')
+
+global_c_args = []
+test_c_args = [
+  '-Wcast-align',
+  '-Wdeclaration-after-statement',
+  '-Wformat-nonliteral',
+  '-Wformat-security',
+  '-Wmissing-include-dirs',
+  '-Wnested-externs',
+  '-Wno-missing-field-initializers',
+  '-Wno-sign-compare',
+  '-Wno-unused-parameter',
+  '-Wpointer-arith',
+  '-Wredundant-decls',
+  '-Wswitch-default',
+  '-Wswitch-enum',
+  '-Wuninitialized',
+  ['-Werror=format-security', '-Werror=format=2' ],
+  '-Werror=empty-body',
+  '-Werror=implicit-function-declaration',
+  '-Werror=incompatible-pointer-types',
+  '-Werror=pointer-arith',
+  '-Werror=init-self',
+  '-Werror=int-conversion',
+  '-Werror=misleading-indentation',
+  '-Werror=missing-include-dirs',
+  '-Werror=overflow',
+  '-Werror=parenthesis',
+  '-Werror=return-type',
+  '-Werror=shadow',
+  '-Werror=strict-prototypes',
+  '-Werror=undef',
+]
+if get_option('buildtype') != 'plain'
+  test_c_args += '-fstack-protector-strong'
+endif
+
+foreach arg: test_c_args
+  if cc.has_multi_arguments(arg)
+    global_c_args += arg
+  endif
+endforeach
+
 # Imports
 gnome = import ('gnome')
 i18n = import ('i18n')
@@ -27,6 +72,8 @@ add_project_arguments(
   ],
   language: 'vala'
 )
+
+add_project_arguments(global_c_args, language: 'c')
 
 # Paths
 config_h_dir = include_directories('.')
