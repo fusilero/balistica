@@ -9,7 +9,7 @@ project ('balistica', ['vala', 'c'],
           )
 
 # Minimum version of Vala
-vala_version_required = '0.38.0'
+vala_version_required = '0.40.0'
 vala = meson.get_compiler('vala')
 if not vala.version().version_compare('>= @0@'.format(vala_version_required))
 	error('valac >= @0@ required!'.format(vala_version_required))
@@ -83,7 +83,7 @@ icondir = join_paths (datadir, 'balistica', 'icons')
 po_dir = join_paths(meson.source_root(), 'po')
 
 # Dependencies
-glib_min_version = '2.40.0'
+glib_min_version = '2.56.0'
 glib_dep = dependency ('glib-2.0', version: '>= ' + glib_min_version)
 gio_dep = dependency ('gio-2.0', version: '>= ' + glib_min_version)
 gobject_dep = dependency ('gobject-2.0', version: '>= ' + glib_min_version)
