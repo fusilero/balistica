@@ -314,12 +314,12 @@ public class Balistica.DragBox : Gtk.Box {
 	  }
 
 	  // Create a save as dialog
-	  Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
+	  Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("_Save As",
 																	 this.main_window as Gtk.Window,
 																	 Gtk.FileChooserAction.SAVE,
-																	 "Cancel",
+																	 "_Cancel",
 																	 Gtk.ResponseType.CANCEL,
-																	 "Save",
+																	 "_Save",
 																	 Gtk.ResponseType.ACCEPT) ;
 
 	  save_dialog.set_default_response (Gtk.ResponseType.ACCEPT) ;
@@ -445,6 +445,78 @@ public class Balistica.DragBox : Gtk.Box {
 	  this.txtShooting_angle.set_text ("0") ;
 	  this.txtWind_velocity.set_text ("0") ;
 	  this.txtWind_angle.set_text ("0") ;
+   }
+
+   /**
+    * Save the current calculation
+    */
+   public void saveCalculation(string default_save_location) {
+	   // Don't let them save a null result
+	  if( lsln == null ){
+		 return ;
+	  }
+
+	  var save_dialog = new Gtk.FileChooserDialog ("Save current calculation", this.main_window,
+													Gtk.FileChooserAction.SAVE,
+													"_Cancel", Gtk.ResponseType.CANCEL,
+													"_Select", Gtk.ResponseType.ACCEPT) ;
+	  save_dialog.set_current_folder (default_save_location) ;
+	  save_dialog.select_multiple = false ;
+	  if( save_dialog.run () == Gtk.ResponseType.ACCEPT ){
+	     GLib.File ? file ;
+	     string filename = "" ;
+		 filename = save_dialog.get_filename () ;
+		 if( !filename.has_suffix (".balistica")){
+			save_dialog.set_current_name (filename + ".balistica") ;
+		 }
+		 file = save_dialog.get_file () ;
+
+		 // If the file already exists, delete it and write a new one
+		 if( file.query_exists ()){
+			try {
+			   file.delete () ;
+			} catch ( Error err ){
+			   logger.publish (new LogMsg ("Failed to overwrite existing file")) ;
+			   return ;
+			}
+		 }
+
+		 // Prevent null file errors
+		 if( file != null ){
+			try {
+			   (save_dialog as Gtk.FileChooser).set_file (file) ;
+			} catch ( GLib.Error err ){
+			   logger.publish (new LogMsg ("Error selecting file to save as")) ;
+			   return ;
+			}
+		 }
+
+		 string data = "";
+		 try {
+			 var dos = new DataOutputStream (file.create (FileCreateFlags.REPLACE_DESTINATION));		 
+			 dos.put_string(data);
+		 } catch ( GLib.Error err ){
+			save_dialog.close () ;
+			logger.publish (new LogMsg ("Error calculation")) ;
+			return ;
+		 }
+	  }
+	  save_dialog.destroy () ;
+   }
+
+   /**
+    * Open a saved calculation
+    */
+   public void openCalculation(string default_save_location) {
+	  var file_chooser = new Gtk.FileChooserDialog ("Choose saved calculation", this.main_window,
+													Gtk.FileChooserAction.OPEN,
+													"_Cancel", Gtk.ResponseType.CANCEL,
+													"_Select", Gtk.ResponseType.ACCEPT) ;
+	  file_chooser.set_current_folder (default_save_location) ;
+	  if( file_chooser.run () == Gtk.ResponseType.ACCEPT ){
+		 // TODO
+	  }
+	  file_chooser.destroy () ;
    }
 
    /**
