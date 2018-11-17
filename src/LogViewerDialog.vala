@@ -47,9 +47,9 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
 
 	  var type_cell = new Gtk.CellRendererText () ;
 	  type_cell.set ("foreground_set", true) ;
-	  log_tree.insert_column_with_attributes (0, "Date/Time", new Gtk.CellRendererText (), "text", 0) ;
-	  log_tree.insert_column_with_attributes (1, "Log Level", type_cell, "text", 1, "foreground", 2) ;
-	  log_tree.insert_column_with_attributes (2, "Message", new Gtk.CellRendererText (), "text", 3) ;
+	  log_tree.insert_column_with_attributes (0, _("Date/Time"), new Gtk.CellRendererText (), "text", 0) ;
+	  log_tree.insert_column_with_attributes (1, _("Log Level"), type_cell, "text", 1, "foreground", 2) ;
+	  log_tree.insert_column_with_attributes (2, _("Message"), new Gtk.CellRendererText (), "text", 3) ;
 
 	  LoadLogFile () ;
    }
@@ -108,7 +108,7 @@ public class Balistica.LogViewerDialog : Gtk.Dialog {
 			}
 		 }
 	  } catch ( Error e ){
-		 logger.publish (new LogMsg ("Reading log file " + e.message)) ;
+		 logger.publish (new LogMsg (_("Reading log file ") + e.message)) ;
 	  }
    }
 
