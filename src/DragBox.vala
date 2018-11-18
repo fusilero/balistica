@@ -120,14 +120,14 @@ public class Balistica.DragBox : Gtk.Box {
 											 typeof (double), typeof (double)) ;
 
 	  Gtk.CellRendererText cell = new Gtk.CellRendererText () ;
-	  this.results_tree.insert_column_with_attributes (-1, "Range", cell, "text", 0) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Drop Inches", cell, "text", 1) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Drop MOA", cell, "text", 2) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Velocity", cell, "text", 3) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Energy", cell, "text", 4) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Drift", cell, "text", 5) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Windage MOA", cell, "text", 6) ;
-	  this.results_tree.insert_column_with_attributes (-1, "Time", cell, "text", 7) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Range"), cell, "text", 0) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Drop Inches"), cell, "text", 1) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Drop MOA"), cell, "text", 2) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Velocity"), cell, "text", 3) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Energy"), cell, "text", 4) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Drift"), cell, "text", 5) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Windage MOA"), cell, "text", 6) ;
+	  this.results_tree.insert_column_with_attributes (-1, _("Time"), cell, "text", 7) ;
 
 	  results_tree.set_model (results_list) ;
    }
@@ -227,27 +227,27 @@ public class Balistica.DragBox : Gtk.Box {
 	  // It doesn't make sense for any of the following variables
 	  // to be zero
 	  if( bc <= 0 ){
-		 logger.publish (new LogMsg ("Drag Coefficient must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg (_("Drag Coefficient must be a positive value greater than 0"))) ;
 		 return ;
 	  }
 
 	  if( v <= 0 ){
-		 logger.publish (new LogMsg ("Initial Velocity must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg (_("Initial Velocity must be a positive value greater than 0"))) ;
 		 return ;
 	  }
 
 	  if( sh <= 0 ){
-		 logger.publish (new LogMsg ("Sight Height over Bore must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg (_("Sight Height over Bore must be a positive value greater than 0"))) ;
 		 return ;
 	  }
 
 	  if( w <= 0 ){
-		 logger.publish (new LogMsg ("Projectile Weight must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg (_("Projectile Weight must be a positive value greater than 0"))) ;
 		 return ;
 	  }
 
 	  if( zero <= 0 ){
-		 logger.publish (new LogMsg ("Zero Range must be a positive value greater than 0")) ;
+		 logger.publish (new LogMsg (_("Zero Range must be a positive value greater than 0"))) ;
 		 return ;
 	  }
 
@@ -277,7 +277,7 @@ public class Balistica.DragBox : Gtk.Box {
 	  lsln = Calculate.drag (bc, v, sh, w, angle, zero, windspeed, windangle, alt, bar, tp, rh, name, df) ;
 
 	  if( lsln.getSolutionSize () == -1 ){
-		 logger.publish (new LogMsg ("Error creating solution results")) ;
+		 logger.publish (new LogMsg (_("Error creating solution results"))) ;
 		 return ;
 	  }
 
@@ -309,17 +309,17 @@ public class Balistica.DragBox : Gtk.Box {
    [GtkCallback]
    public void btnExportResults_clicked() {
 	  if( this.lsln == null ){
-		 logger.publish (new LogMsg ("Cannot export an empty drag solution")) ;
+		 logger.publish (new LogMsg (_("Cannot export an empty drag solution"))) ;
 		 return ;
 	  }
 
 	  // Create a save as dialog
-	  Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog ("Save As",
+	  Gtk.FileChooserDialog save_dialog = new Gtk.FileChooserDialog (_("Save As"),
 																	 this.main_window as Gtk.Window,
 																	 Gtk.FileChooserAction.SAVE,
-																	 "Cancel",
+																	 _("Cancel"),
 																	 Gtk.ResponseType.CANCEL,
-																	 "Save",
+																	 _("Save"),
 																	 Gtk.ResponseType.ACCEPT) ;
 
 	  save_dialog.set_default_response (Gtk.ResponseType.ACCEPT) ;
@@ -352,7 +352,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   file.delete () ;
 			} catch ( Error err ){
-			   logger.publish (new LogMsg ("Failed to overwrite existing file")) ;
+			   logger.publish (new LogMsg (_("Failed to overwrite existing file"))) ;
 			   return ;
 			}
 		 }
@@ -362,7 +362,7 @@ public class Balistica.DragBox : Gtk.Box {
 			try {
 			   (save_dialog as Gtk.FileChooser).set_file (file) ;
 			} catch ( GLib.Error err ){
-			   logger.publish (new LogMsg ("Error selecting file to save as")) ;
+			   logger.publish (new LogMsg (_("Error selecting file to save as"))) ;
 			   return ;
 			}
 		 }
@@ -377,25 +377,25 @@ public class Balistica.DragBox : Gtk.Box {
 			data_stream.put_string ("</head>\n<body>\n") ;
 
 			data_stream.put_string ("<table>\n") ;
-			data_stream.put_string (("<tr>\n<td><b>Drag Coefficient:</b> %.2f</td>\n<td colspan=\"3\"><b>Projectile Weight:</b> %.2f</td>\n").printf (lsln.getBc (), lsln.getWeight ())) ;
+			data_stream.put_string (("<tr>\n<td>" + _("<b>Drag Coefficient:</b> %.2f") + "</td>\n<td colspan=\"3\">" + _("<b>Projectile Weight:</b> %.2f") + "</td>\n").printf (lsln.getBc (), lsln.getWeight ())) ;
 			data_stream.put_string ("</tr>\n<tr>\n") ;
-			data_stream.put_string (("<td><b>Initial Velocity:</b> %.2f ft/s</td>\n<td><b>Zero Range:</b> %.2f yards</td>\n<td colspan=\"2\"><b>Shooting Angle:</b> %.2f degress</td>\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ())) ;
+			data_stream.put_string (("<td>" + _("<b>Initial Velocity:</b> %.2f ft/s") + "</td>\n<td>" + _("<b>Zero Range:</b> %.2f yards") + "</td>\n<td colspan=\"2\">" + _("<b>Shooting Angle:</b> %.2f degress") + "</td>\n").printf (lsln.getMv (), lsln.getZerorange (), lsln.getAngle ())) ;
 			data_stream.put_string ("</tr>\n<tr>\n") ;
-			data_stream.put_string (("<td><b>Wind Velocity:</b> %.2f mph</td>\n<td colspan=\"3\"><b>Wind Direction:</b> %.2f degress</td>\n").printf (lsln.getWindspeed (), lsln.getWindangle ())) ;
+			data_stream.put_string (("<td>" + _("<b>Wind Velocity:</b> %.2f mph") + "</td>\n<td colspan=\"3\">" + _("<b>Wind Direction:</b> %.2f degress") + "</td>\n").printf (lsln.getWindspeed (), lsln.getWindangle ())) ;
 			data_stream.put_string ("</tr>\n<tr>\n") ;
-			data_stream.put_string (("<td><b>Altitude:</b> %.2f ft</td>\n<td><b>Barometer:</b> %2f in-Hg</td>\n<td><b>Temperature:</b> %2f F</td>\n<td><b>Relative Humidity:</b> %.2F%%</td>\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ())) ;
+			data_stream.put_string (("<td>" + _("<b>Altitude:</b> %.2f ft") + "</td>\n<td>" + _("<b>Barometer:</b> %2f in-Hg") + "</td>\n<td>" + _("<b>Temperature:</b> %2f F") + "</td>\n<td>" + _("<b>Relative Humidity:</b> %.2F%%") + "</td>\n").printf (lsln.getAltitude (), lsln.getPressure (), lsln.getTemp (), lsln.getHumidity ())) ;
 			data_stream.put_string ("</table>\n") ;
 
 			data_stream.put_string ("<table width=560>\n") ;
 			data_stream.put_string ("<tr>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Range (yards)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Drop (inches)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Drop (MOA)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Velocity (ft/s)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Energy (ft-lb)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Winddrift (inches)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Windage (MOA)</b></th>\n") ;
-			data_stream.put_string ("<th width=70 bgcolor=white align=center><b>Time (s)</b></th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Range (yards)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Drop (inches)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Drop (MOA)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Velocity (ft/s)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Energy (ft-lb)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Winddrift (inches)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Windage (MOA)</b>") + "</th>\n") ;
+			data_stream.put_string ("<th width=70 bgcolor=white align=center>" + _("<b>Time (s)</b>") + "</th>\n") ;
 			data_stream.put_string ("</tr>\n") ;
 
 			calc_setup setup = setupCalcResults () ;
@@ -422,7 +422,7 @@ public class Balistica.DragBox : Gtk.Box {
 			data_stream.put_string ("</body>\n</html>") ;
 		 } catch ( GLib.Error err ){
 			save_dialog.close () ;
-			logger.publish (new LogMsg ("Error creating HTML output")) ;
+			logger.publish (new LogMsg (_("Error creating HTML output"))) ;
 			return ;
 		 }
 	  }

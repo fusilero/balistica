@@ -1,0 +1,16 @@
+src/BalisticaApplication.vala
+src/DragBox.vala
+src/LogViewerDialog.vala
+src/PbrDialog.vala
+src/PreferencesWindow.vala
+
+ui/drag.glade
+ui/logviewer.glade
+ui/pbr.glade
+ui/preferences.glade
+ui/stability.glade
+ui/twist.glade
+ui/menu.ui
+
+data/balistica.appdata.xml.in
+data/balistica.desktop.in
