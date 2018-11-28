@@ -100,7 +100,7 @@ public class Balistica.PbrDialog : Gtk.Dialog {
    public void btnCalculate_clicked() {
 	  string v = vital_zone_sz.get_text () ;
 	  if( v == "" ){
-		 logger.publish (new LogMsg ("Vital Zone size is required to calculate PBR")) ;
+		 logger.publish (new LogMsg (_("Vital Zone size is required to calculate PBR"))) ;
 		 return ;
 	  }
 
@@ -110,11 +110,11 @@ public class Balistica.PbrDialog : Gtk.Dialog {
 																double.parse (sight_height.get_text ()),
 																double.parse (v)) ;
 
-	  results.buffer.text = "Near Zero: %.2f yards\n".printf (pbr_result.near_zero) ;
-	  results.buffer.text += "Far Zero: %.2f yards\n".printf (pbr_result.far_zero) ;
-	  results.buffer.text += "Minimum PBR: %.2f yards\n".printf (pbr_result.min_pbr) ;
-	  results.buffer.text += "Maximum PBR: %.2f yards\n\n".printf (pbr_result.max_pbr) ;
-	  results.buffer.text += "Sight-in at 100 yards: %.2f\" high".printf (pbr_result.sight_in_height) ;
+	  results.buffer.text = _("Near Zero: %.2f yards\n").printf (pbr_result.near_zero) ;
+	  results.buffer.text += _("Far Zero: %.2f yards\n").printf (pbr_result.far_zero) ;
+	  results.buffer.text += _("Minimum PBR: %.2f yards\n").printf (pbr_result.min_pbr) ;
+	  results.buffer.text += _("Maximum PBR: %.2f yards\n\n").printf (pbr_result.max_pbr) ;
+	  results.buffer.text += _("Sight-in at 100 yards: %.2f\" high").printf (pbr_result.sight_in_height) ;
    }
 
 }

@@ -15,7 +15,7 @@ i18n.merge_file ('desktop-file',
                  output: 'balistica.desktop',
                  install: true,
                  install_dir: join_paths (datadir, 'applications'),
-                 po_dir: '../po',
+                 po_dir: join_paths(meson.source_root(), 'po'),
                  type: 'desktop')
 
 # Appdata file
@@ -24,7 +24,7 @@ i18n.merge_file ('appdata-file',
                  output: 'balistica.appdata.xml',
                  install: true,
                  install_dir: join_paths (datadir, 'metainfo'),
-                 po_dir: '../po')
+                 po_dir: join_paths(meson.source_root(), 'po'))
 
 # Gschema
 install_data('org.gnome.balistica.gschema.xml',

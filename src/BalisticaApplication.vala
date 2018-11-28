@@ -111,9 +111,9 @@ public class Application : Gtk.Application {
 	  this.twist_content = new Balistica.TwistBox () ;
 	  this.stability_content = new Balistica.StabilityBox () ;
 
-	  stack.add_titled (drag_content, "Drag", "Drag") ;
-	  stack.add_titled (twist_content, "Twist", "Twist") ;
-	  stack.add_titled (stability_content, "Stability", "Stability") ;
+	  stack.add_titled (drag_content, "Drag", _("Drag")) ;
+	  stack.add_titled (twist_content, "Twist", _("Twist")) ;
+	  stack.add_titled (stability_content, "Stability", _("Stability")) ;
 
 	  return switcher ;
    }
@@ -129,7 +129,7 @@ public class Application : Gtk.Application {
 	  } catch ( Error err ){
 		 // The user may have already created the directory, so don't throw EXISTS.
 		 if( !(err is IOError.EXISTS)){
-			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, "Failed to create XDG directory " + user_dir) ;
+			Gtk.MessageDialog msg = new Gtk.MessageDialog (this.main_window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, _("Failed to create XDG directory ") + user_dir) ;
 			msg.response.connect ((response_id) => {
 			   switch( response_id ){
 			   case Gtk.ResponseType.OK:
@@ -178,7 +178,7 @@ public class Application : Gtk.Application {
 	  try {
 		 Gtk.show_uri_on_window (get_active_window (), "help:balistica", Gtk.get_current_event_time ()) ;
 	  } catch ( Error err ){
-		 Logging.get_default ().publish (new LogMsg ("Error showing help")) ;
+		 Logging.get_default ().publish (new LogMsg (_("Error showing help"))) ;
 	  }
    }
 
@@ -198,8 +198,8 @@ public class Application : Gtk.Application {
 	  string[] authors = { "Steven Oliver" } ;
 	  Gtk.show_about_dialog (get_active_window (),
 							 "authors", authors,
-							 "comments", "An open source external ballistics calculator.",
-							 "copyright", "Copyright \xc2\xa9 2012-2018 Steven Oliver",
+							 "comments", _("An open source external ballistics calculator."),
+							 "copyright", _("Copyright \xc2\xa9 2012-2018 Steven Oliver"),
 							 "license-type", Gtk.License.GPL_3_0,
 							 "program-name", NAME,
 							 "website", "http://steveno.github.io/balistica/",
