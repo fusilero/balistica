@@ -3,10 +3,6 @@ sudo: required
 cache: apt
 os: linux
 
-branches:
-  only:
-    - master
-
 compiler:
   - gcc
   - clang
