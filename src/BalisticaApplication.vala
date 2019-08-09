@@ -1,4 +1,4 @@
-/* Copyright 2012-2018 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2019 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -19,19 +19,16 @@
 
 public class Application : Gtk.Application {
    public Gtk.ApplicationWindow main_window ;
-   private Settings settings ;
    private Balistica.DragBox drag_content ;
    private Balistica.TwistBox twist_content ;
    private Balistica.StabilityBox stability_content ;
    private string data_dir ;
-   private string config_dir ;
    private Logging logger ;
 
    private const GLib.ActionEntry[] action_entries =
    {
 	  { "about", about_cb },
 	  { "help", help_cb },
-	  { "preferences", preferences_cb },
 	  { "quit", quit_cb },
 	  { "view_log", view_log_cb },
    } ;
@@ -49,14 +46,12 @@ public class Application : Gtk.Application {
    protected override void startup() {
 	  base.startup () ;
 
-	  settings = new Settings ("org.gnome.balistica") ;
 	  add_action_entries (action_entries, this) ;
 	  main_window = new Gtk.ApplicationWindow (this) ;
 
 	  // Setup the main window
 	  main_window.title = NAME ;
 	  main_window.window_position = Gtk.WindowPosition.CENTER ;
-	  main_window.set_default_size (this.settings.get_int ("width"), this.settings.get_int ("height")) ;
 
 	  // HeaderBar
 	  Gtk.StackSwitcher switcher = this.build_switcher () ;
@@ -69,7 +64,6 @@ public class Application : Gtk.Application {
 	  Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0) ;
 	  box.pack_start (switcher.get_stack (), true, true, 0) ;
 
-	  config_dir = this.setup_user_directory (Environment.get_user_config_dir ()) ;
 	  data_dir = this.setup_user_directory (Environment.get_user_data_dir ()) ;
 
 	  Logging.get_default ().publish.connect ((msg) => {
@@ -83,13 +77,6 @@ public class Application : Gtk.Application {
 	  } catch ( Error e ){
 		 logger.publish (new LogMsg (e.message)) ;
 	  }
-
-	  // Maintain the user's prefered window height and width as they change it
-	  get_active_window ().configure_event.connect ((event) => {
-		 this.settings.set_int ("height", event.height) ;
-		 this.settings.set_int ("width", event.width) ;
-		 return false ;
-	  }) ;
 
 	  var menu = builder.get_object ("appmenu") as GLib.MenuModel ;
 	  set_app_menu (menu) ;
@@ -180,15 +167,6 @@ public class Application : Gtk.Application {
 	  } catch ( Error err ){
 		 Logging.get_default ().publish (new LogMsg (_("Error showing help"))) ;
 	  }
-   }
-
-   /**
-    * Show preferences dialog
-    */
-   private void preferences_cb() {
-	  var dialog = new Balistica.PreferencesWindow (this.settings) ;
-	  dialog.set_transient_for (get_active_window ()) ;
-	  dialog.show_all () ;
    }
 
    /**
