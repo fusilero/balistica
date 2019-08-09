@@ -1,5 +1,4 @@
 # balística ![](https://raw.githubusercontent.com/steveno/balistica/master/data/hicolor/48x48/apps/balistica.png)
-[![Stories in Ready](https://badge.waffle.io/steveno/balistica.png?label=ready)](https://waffle.io/steveno/balistica)
 
 ## About
 balística is a simple open source external ballistics calculator. It's 
