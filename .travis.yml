@@ -2,6 +2,7 @@ language: c
 sudo: required
 cache: apt
 os: linux
+dist: bionic
 
 compiler:
   - gcc
