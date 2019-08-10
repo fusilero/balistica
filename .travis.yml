@@ -20,6 +20,7 @@ before_install:
   - cd libbalistica-1.0/ && mkdir build
   - meson . build/
   - cd build && ninja
+  - cd ../../
   - sudo ninja install
 
 script:
