@@ -1,5 +1,6 @@
 # balística ![](https://raw.githubusercontent.com/steveno/balistica/master/data/hicolor/48x48/apps/balistica.png)
 [![Build Status](https://travis-ci.org/steveno/balistica.svg?branch=master)](https://travis-ci.org/steveno/balistica)
+[![license](https://img.shields.io/github/license/steveno/balistica.svg?style=flat)](https://github.com/steveno/balistica/blob/master/LICENSE.txt)
 
 ## About
 balística is a simple open source external ballistics calculator. It's 
