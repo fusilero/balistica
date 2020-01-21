@@ -5,7 +5,6 @@ resources = gnome.compile_resources ('resources', 'balistica.gresource.xml',
 
 vala_args = [ 
   '--target-glib', glib_min_version,
-  '--thread',
   '--enable-checking',
   '--gresources', resource_files
 ]
