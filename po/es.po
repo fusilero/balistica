@@ -1,67 +1,53 @@
 # Emilio Herrera <ehespinosa57@gmail.com>, 2018. #zanata
-#, fuzzy
+# Adolfo Jayme Barrientos <fitoschido@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2018-10-07 01:24+0000\n"
-"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2020-02-06 11:16+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"balistica/master/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  logviewer.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10.3\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
-msgstr ""
+msgstr "Arrastre"
 
 #: src/BalisticaApplication.vala:115
 msgid "Twist"
 msgstr ""
 
 #: src/BalisticaApplication.vala:116
-#, fuzzy
-#| msgid "Miller Stability"
 msgid "Stability"
-msgstr "Estabilidad del Molino"
+msgstr "Estabilidad"
 
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
 msgid "Failed to create XDG directory "
-msgstr ""
+msgstr "No se pudo crear el directorio de XDG "
 
 #: src/BalisticaApplication.vala:181
 msgid "Error showing help"
-msgstr ""
+msgstr "Error al mostrar la ayuda"
 
 #: src/BalisticaApplication.vala:201
 msgid "An open source external ballistics calculator."
-msgstr ""
+msgstr "Una calculadora de balística exterior de código abierto."
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr ""
+msgstr "Derechos de autor © 2012-2018 de Steven Oliver"
 
 #: src/DragBox.vala:123
 msgid "Range"
-msgstr ""
+msgstr "Alcance"
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
@@ -77,7 +63,7 @@ msgstr ""
 
 #: src/DragBox.vala:127
 msgid "Energy"
-msgstr ""
+msgstr "Energía"
 
 #: src/DragBox.vala:128
 msgid "Drift"
@@ -89,7 +75,7 @@ msgstr ""
 
 #: src/DragBox.vala:130
 msgid "Time"
-msgstr ""
+msgstr "Tiempo"
 
 #. Name used to store the calculation
 #. Ballistic cofficient
@@ -124,7 +110,7 @@ msgstr ""
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
-msgstr ""
+msgstr "Error al crear los resultados de la solución"
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
@@ -133,35 +119,33 @@ msgstr ""
 #. Create a save as dialog
 #: src/DragBox.vala:317
 msgid "Save As"
-msgstr ""
+msgstr "Guardar como"
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
-msgstr ""
+msgstr "No se pudo sobrescribir el archivo existente"
 
 #: src/DragBox.vala:365
 msgid "Error selecting file to save as"
-msgstr ""
+msgstr "Error al seleccionar el archivo para guardar"
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Drag Coefficient"
+#, c-format
 msgid "<b>Drag Coefficient:</b> %.2f"
-msgstr "Coeficiente de Arrastre"
+msgstr "<b>Coeficiente de arrastre:</b> %.2f"
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Projectile Weight (grains)"
+#, c-format
 msgid "<b>Projectile Weight:</b> %.2f"
-msgstr "Peso del Proyectil (grains)"
+msgstr "<b>Peso del proyectil:</b> %.2f"
 
 #: src/DragBox.vala:382
 #, fuzzy, c-format
@@ -179,10 +163,9 @@ msgid "<b>Zero Range:</b> %.2f yards"
 msgstr "Rango Cero (yardas)"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Shooting Angle (deg)"
+#, c-format
 msgid "<b>Shooting Angle:</b> %.2f degress"
-msgstr "Ángulo de Disparo (deg)"
+msgstr "<b>Ángulo de disparo:</b> %.2f grados"
 
 #: src/DragBox.vala:384
 #, fuzzy, c-format
@@ -193,23 +176,22 @@ msgstr "Velocidad del Viento (mph)"
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Direction:</b> %.2f degress"
-msgstr ""
+msgstr "<b>Dirección del viento:</b> %.2f grados"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Altitude:</b> %.2f ft"
-msgstr ""
+msgstr "<b>Altitud:</b> %.2f ft"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Barometer:</b> %2f in-Hg"
-msgstr ""
+msgstr "<b>Barómetro:</b> %2f in-Hg"
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Temperature (F)"
+#, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr "Temperatura (F)"
+msgstr "<b>Temperatura:</b> %2f °F"
 
 #: src/DragBox.vala:386
 #, fuzzy, c-format
@@ -244,7 +226,7 @@ msgstr ""
 
 #: src/DragBox.vala:395
 msgid "<b>Energy (ft-lb)</b>"
-msgstr ""
+msgstr "<b>Energía (ft-lb)</b>"
 
 #: src/DragBox.vala:396
 msgid "<b>Winddrift (inches)</b>"
