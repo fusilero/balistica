@@ -1,32 +1,20 @@
 # gokhan sakar <gokhan.sakar@metu.edu.tr>, 2018. #zanata
-#, fuzzy
+# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2018-04-20 04:49+0000\n"
-"Last-Translator: gokhan sakar <gokhan.sakar@metu.edu.tr>\n"
-"Language-Team: Turkish\n"
+"PO-Revision-Date: 2020-02-12 17:16+0000\n"
+"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
+"balistica/master/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  logviewer.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n>1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Weblate 3.10.3\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -37,10 +25,8 @@ msgid "Twist"
 msgstr ""
 
 #: src/BalisticaApplication.vala:116
-#, fuzzy
-#| msgid "Miller Stability"
 msgid "Stability"
-msgstr "Geçmiş Kararlılığı"
+msgstr "Kararlılık"
 
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
@@ -137,11 +123,11 @@ msgstr ""
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
@@ -152,40 +138,34 @@ msgid "Error selecting file to save as"
 msgstr ""
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Drag Coefficient"
+#, c-format
 msgid "<b>Drag Coefficient:</b> %.2f"
-msgstr "Sürüklenme Katsayısı"
+msgstr "<b>Sürüklenme Katsayısı:</b> %.2f"
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Projectile Weight (grains)"
+#, c-format
 msgid "<b>Projectile Weight:</b> %.2f"
-msgstr "Mermi Ağırlığı ( tanecik )"
+msgstr "<b>Mermi Ağırlığı:</b> %.2f"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Initial Velocity (ft/s)"
+#, c-format
 msgid "<b>Initial Velocity:</b> %.2f ft/s"
-msgstr "Başlangıç Hızı (ft/s)"
+msgstr "<b>Başlangıç Hızı:</b> %.2f ft/s"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Zero Range (yards)"
+#, c-format
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr "Sıfır Aralığı (yarda)"
+msgstr "<b>Sıfır Aralığı:</b> %.2f yarda"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Shooting Angle (deg)"
+#, c-format
 msgid "<b>Shooting Angle:</b> %.2f degress"
-msgstr "Hedef Açısı ( derece)"
+msgstr "<b>Hedef Açısı:</b> %.2f derece"
 
 #: src/DragBox.vala:384
-#, fuzzy, c-format
-#| msgid "Wind Velocity (mph)"
+#, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr "Rüzger Hızı (mil/saat)"
+msgstr "<b>Rüzgar Hızı:</b> %.2f mil/saat"
 
 #: src/DragBox.vala:384
 #, c-format
@@ -203,38 +183,30 @@ msgid "<b>Barometer:</b> %2f in-Hg"
 msgstr ""
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Temperature (F)"
+#, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr "Sıcaklık ( Fahrenhayt )"
+msgstr "<b>Sıcaklık:</b> %2f F"
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Relative Humidity (%)"
+#, c-format
 msgid "<b>Relative Humidity:</b> %.2F%%"
-msgstr "Bağıl Nem (%)"
+msgstr "<b>Bağıl Nem:</b> %%%.2F"
 
 #: src/DragBox.vala:391
-#, fuzzy
-#| msgid "Zero Range (yards)"
 msgid "<b>Range (yards)</b>"
-msgstr "Sıfır Aralığı (yarda)"
+msgstr "<b>Menzil (yarda)</b>"
 
 #: src/DragBox.vala:392
-#, fuzzy
-#| msgid "<b>Drag Function</b>"
 msgid "<b>Drop (inches)</b>"
-msgstr "<b>Sürükleme Fonksiyonu</b>"
+msgstr "<b>Düşüş (inç)</b>"
 
 #: src/DragBox.vala:393
 msgid "<b>Drop (MOA)</b>"
 msgstr ""
 
 #: src/DragBox.vala:394
-#, fuzzy
-#| msgid "Initial Velocity (ft/s)"
 msgid "<b>Velocity (ft/s)</b>"
-msgstr "Başlangıç Hızı (ft/s)"
+msgstr "<b>Hız (ft/s)</b>"
 
 #: src/DragBox.vala:395
 msgid "<b>Energy (ft-lb)</b>"
@@ -261,14 +233,12 @@ msgid "Date/Time"
 msgstr ""
 
 #: src/LogViewerDialog.vala:51
-#, fuzzy
-#| msgid "Log Viewer"
 msgid "Log Level"
-msgstr "İz Kaydı Görüntüleyicisi"
+msgstr "Log Düzeyi"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr ""
+msgstr "Mesaj"
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
@@ -311,7 +281,7 @@ msgstr ""
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr ""
+msgstr "_İptal"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
@@ -326,17 +296,8 @@ msgid "Solve"
 msgstr "Çözüm"
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
-#, fuzzy
 msgid "Reset"
-msgstr ""
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sıfırla\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sıfırlama\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sıfırlama\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Sıfırlama"
+msgstr "Sıfırla"
 
 #: ui/drag.glade:133
 msgid "Example"
@@ -439,15 +400,8 @@ msgid "Point Blank Range (PBR)"
 msgstr "İlk Hız Mesafesi"
 
 #: ui/pbr.glade:40 ui/stability.glade:213 ui/twist.glade:383
-#, fuzzy
 msgid "Calculate"
-msgstr ""
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Hesapla\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Hesaplama\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Hesaplama"
+msgstr "Hesapla"
 
 #: ui/pbr.glade:117
 msgid "Vital Zone Size (inches)"
@@ -459,7 +413,7 @@ msgstr "Görüş Yüksekliği (inç)"
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr ""
+msgstr "Tercihler"
 
 #: ui/preferences.glade:54
 msgid "Directories"
@@ -471,7 +425,7 @@ msgstr ""
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr ""
+msgstr "Göz at"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
@@ -523,11 +477,11 @@ msgstr ""
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Çık"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
@@ -558,10 +512,8 @@ msgid "Compute a bullet's twist rate using Greenhill or Miller"
 msgstr ""
 
 #: data/balistica.appdata.xml.in:20
-#, fuzzy
-#| msgid "Point Blank Range (PBR)"
 msgid "Compute a round's Point Blank Range (PBR)"
-msgstr "İlk Hız Mesafesi"
+msgstr "Bir turun Sabit Nişangah Mesafesini (Point Blank Range - PBR) hesapla"
 
 #: data/balistica.desktop.in:3
 msgid "balística"

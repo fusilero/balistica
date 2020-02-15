@@ -1,100 +1,81 @@
-# Yuri Chornoivan <yurchor@ukr.net>, 2018. #zanata
-#, fuzzy
+# Yuri Chornoivan <yurchor@ukr.net>, 2018. #zanata, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2018-06-27 01:42+0000\n"
+"PO-Revision-Date: 2020-02-01 09:16+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian\n"
+"Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
+"balistica/master/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  logviewer.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Zanata 4.6.2\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10.3\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
-msgstr ""
+msgstr "Опір"
 
 #: src/BalisticaApplication.vala:115
 msgid "Twist"
-msgstr ""
+msgstr "Обертання"
 
 #: src/BalisticaApplication.vala:116
-#, fuzzy
-#| msgid "Miller Stability"
 msgid "Stability"
-msgstr "Стабільність за Міллером"
+msgstr "Стабільність"
 
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
 msgid "Failed to create XDG directory "
-msgstr ""
+msgstr "Не вдалося створити каталог XDG "
 
 #: src/BalisticaApplication.vala:181
 msgid "Error showing help"
-msgstr ""
+msgstr "Помилка під час спроби показати довідку"
 
 #: src/BalisticaApplication.vala:201
 msgid "An open source external ballistics calculator."
-msgstr ""
+msgstr "Калькулятор зовнішньої балістики із відкритим кодом."
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr ""
+msgstr "© Steven Oliver, 2012–2018"
 
 #: src/DragBox.vala:123
 msgid "Range"
-msgstr ""
+msgstr "Діапазон"
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
-msgstr ""
+msgstr "Спад у дюймах"
 
 #: src/DragBox.vala:125
 msgid "Drop MOA"
-msgstr ""
+msgstr "Спад (MOA)"
 
 #: src/DragBox.vala:126
 msgid "Velocity"
-msgstr ""
+msgstr "Швидкість"
 
 #: src/DragBox.vala:127
 msgid "Energy"
-msgstr ""
+msgstr "Енергія"
 
 #: src/DragBox.vala:128
 msgid "Drift"
-msgstr ""
+msgstr "Зсув"
 
 #: src/DragBox.vala:129
 msgid "Windage MOA"
-msgstr ""
+msgstr "Знесення вітром (MOA)"
 
 #: src/DragBox.vala:130
 msgid "Time"
-msgstr ""
+msgstr "Час"
 
 #. Name used to store the calculation
 #. Ballistic cofficient
@@ -109,194 +90,178 @@ msgstr ""
 #. to be zero
 #: src/DragBox.vala:230
 msgid "Drag Coefficient must be a positive value greater than 0"
-msgstr ""
+msgstr "Коефіцієнт опору має бути додатним значенням"
 
 #: src/DragBox.vala:235
 msgid "Initial Velocity must be a positive value greater than 0"
-msgstr ""
+msgstr "Початкова швидкість має бути додатним значенням"
 
 #: src/DragBox.vala:240
 msgid "Sight Height over Bore must be a positive value greater than 0"
-msgstr ""
+msgstr "Висота лінії погляду над стволом має бути додатним значенням"
 
 #: src/DragBox.vala:245
 msgid "Projectile Weight must be a positive value greater than 0"
-msgstr ""
+msgstr "Вага набою має бути додатним значенням"
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr ""
+msgstr "Нульовий діапазон має бути додатним значенням"
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
-msgstr ""
+msgstr "Помилка під час спроби створити результати розв'язання"
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
-msgstr ""
+msgstr "Неможливо експортувати порожній розв'язок для опору"
 
 #. Create a save as dialog
 #: src/DragBox.vala:317
 msgid "Save As"
-msgstr ""
+msgstr "Зберегти як"
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
-msgstr ""
+msgstr "Не вдалося перезаписати наявний файл"
 
 #: src/DragBox.vala:365
 msgid "Error selecting file to save as"
-msgstr ""
+msgstr "Помилка під час вибору файла для зберігання даних"
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Drag Coefficient"
+#, c-format
 msgid "<b>Drag Coefficient:</b> %.2f"
-msgstr "Коефіцієнт опору"
+msgstr "<b>Коефіцієнт опору:</b> %.2f"
 
 #: src/DragBox.vala:380
-#, fuzzy, c-format
-#| msgid "Projectile Weight (grains)"
+#, c-format
 msgid "<b>Projectile Weight:</b> %.2f"
-msgstr "Вага кулі (у гранах)"
+msgstr "<b>Вага кулі:</b> %.2f"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Initial Velocity (ft/s)"
+#, c-format
 msgid "<b>Initial Velocity:</b> %.2f ft/s"
-msgstr "Початкова швидкість (фут/с)"
+msgstr "<b>Початкова швидкість:</b> %.2f фут/с"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Zero Range (yards)"
+#, c-format
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr "Нульовий діапазон (у ярдах)"
+msgstr "<b>Нульовий діапазон:</b> %.2f ярдів"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Shooting Angle (deg)"
+#, c-format
 msgid "<b>Shooting Angle:</b> %.2f degress"
-msgstr "Кут пострілу (у градусах)"
+msgstr "<b>Кут пострілу:</b> %.2f°"
 
 #: src/DragBox.vala:384
-#, fuzzy, c-format
-#| msgid "Wind Velocity (mph)"
+#, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr "Швидкість вітру (миль/год)"
+msgstr "<b>Швидкість вітру:</b> %.2f миль/год"
 
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Direction:</b> %.2f degress"
-msgstr ""
+msgstr "<b>Напрямок вітру:</b> %.2f°"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Altitude:</b> %.2f ft"
-msgstr ""
+msgstr "<b>Висота:</b> %.2f футів"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Barometer:</b> %2f in-Hg"
-msgstr ""
+msgstr "<b>Тиск:</b> %2f дюймів рт. ст."
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Temperature (F)"
+#, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr "Температура (℉)"
+msgstr "<b>Температура:</b> %2f °F"
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Relative Humidity (%)"
+#, c-format
 msgid "<b>Relative Humidity:</b> %.2F%%"
-msgstr "Відносна вологість (%)"
+msgstr "<b>Відносна вологість:</b> %.2F%%"
 
 #: src/DragBox.vala:391
-#, fuzzy
-#| msgid "Zero Range (yards)"
 msgid "<b>Range (yards)</b>"
-msgstr "Нульовий діапазон (у ярдах)"
+msgstr "<b>Діапазон (у ярдах)</b>"
 
 #: src/DragBox.vala:392
-#, fuzzy
-#| msgid "<b>Drag Function</b>"
 msgid "<b>Drop (inches)</b>"
-msgstr "<b>Функція опору</b>"
+msgstr "<b>Спад (у дюймах)</b>"
 
 #: src/DragBox.vala:393
 msgid "<b>Drop (MOA)</b>"
-msgstr ""
+msgstr "<b>Спад (MOA)</b>"
 
 #: src/DragBox.vala:394
-#, fuzzy
-#| msgid "Initial Velocity (ft/s)"
 msgid "<b>Velocity (ft/s)</b>"
-msgstr "Початкова швидкість (фут/с)"
+msgstr "<b>Швидкість (у фут/с)</b>"
 
 #: src/DragBox.vala:395
 msgid "<b>Energy (ft-lb)</b>"
-msgstr ""
+msgstr "<b>Енергія (фут-фунт)</b>"
 
 #: src/DragBox.vala:396
 msgid "<b>Winddrift (inches)</b>"
-msgstr ""
+msgstr "<b>Знесення вітром (у дюймах)</b>"
 
 #: src/DragBox.vala:397
 msgid "<b>Windage (MOA)</b>"
-msgstr ""
+msgstr "<b>Знесення вітром (MOA)</b>"
 
 #: src/DragBox.vala:398
 msgid "<b>Time (s)</b>"
-msgstr ""
+msgstr "<b>Час (у сек.)</b>"
 
 #: src/DragBox.vala:425
 msgid "Error creating HTML output"
-msgstr ""
+msgstr "Помилка під час спроби створення даних HTML"
 
 #: src/LogViewerDialog.vala:50
 msgid "Date/Time"
-msgstr ""
+msgstr "Дата і час"
 
 #: src/LogViewerDialog.vala:51
-#, fuzzy
-#| msgid "Log Viewer"
 msgid "Log Level"
-msgstr "Перегляд журналу"
+msgstr "Рівень журналу"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
-msgstr ""
+msgstr "Читаємо файл журналу "
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
-msgstr ""
+msgstr "Для обчислення ДПП потрібне значення розміру життєвої зони"
 
 #: src/PbrDialog.vala:113
 #, c-format
 msgid "Near Zero: %.2f yards\n"
-msgstr ""
+msgstr "Ближній нуль: %.2f ярдів\n"
 
 #: src/PbrDialog.vala:114
 #, c-format
 msgid "Far Zero: %.2f yards\n"
-msgstr ""
+msgstr "Дальній нуль: %.2f ярдів\n"
 
 #: src/PbrDialog.vala:115
 #, c-format
 msgid "Minimum PBR: %.2f yards\n"
-msgstr ""
+msgstr "Мін. ДПП: %.2f ярдів\n"
 
 #: src/PbrDialog.vala:116
 #, c-format
@@ -304,23 +269,25 @@ msgid ""
 "Maximum PBR: %.2f yards\n"
 "\n"
 msgstr ""
+"Макс. ДПП: %.2f ярдів\n"
+"\n"
 
 #: src/PbrDialog.vala:117
 #, c-format
 msgid "Sight-in at 100 yards: %.2f\" high"
-msgstr ""
+msgstr "Висота погляду на 100 ярдах: %.2f\""
 
 #: src/PreferencesWindow.vala:68
 msgid "Choose save location"
-msgstr ""
+msgstr "Виберіть місце для зберігання"
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr ""
+msgstr "_Скасувати"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
-msgstr ""
+msgstr "_Вибрати"
 
 #: ui/drag.glade:64
 msgid "Name:"
@@ -448,19 +415,19 @@ msgstr "Висота лінії погляду (у дюймах)"
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr ""
+msgstr "Налаштування"
 
 #: ui/preferences.glade:54
 msgid "Directories"
-msgstr ""
+msgstr "Каталоги"
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr ""
+msgstr "Каталог збереження"
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr ""
+msgstr "Вибрати"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
@@ -504,27 +471,27 @@ msgstr "за Міллером"
 
 #: ui/menu.ui:11
 msgid "View Log"
-msgstr ""
+msgstr "Переглянути журнал"
 
 #: ui/menu.ui:17
 msgid "Help"
-msgstr ""
+msgstr "Довідка"
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr ""
+msgstr "Про програму"
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Вийти"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
-msgstr ""
+msgstr "balistica"
 
 #: data/balistica.appdata.xml.in:8 data/balistica.desktop.in:4
 msgid "External ballistics software"
-msgstr ""
+msgstr "Програма для обчислень зовнішньої балістики"
 
 #: data/balistica.appdata.xml.in:10
 msgid ""
@@ -533,33 +500,35 @@ msgid ""
 "functions (G1-G8) along with other minor ballistics related calculations "
 "like the Greenhill Formula and the Miller Twist Rule."
 msgstr ""
+"balística — базовий балістичний калькулятор для стільничного середовища "
+"GNOME. У програмі передбачено можливості обчислення стандартних функцій "
+"опору (G1-G8), а також інших незначних балістичних характеристик, зокрема за "
+"формулою Ґрінхілла та правилом обертання Міллера."
 
 #: data/balistica.appdata.xml.in:16
 msgid "balística’s features include:"
-msgstr ""
+msgstr "Можливості balística:"
 
 #: data/balistica.appdata.xml.in:18
 msgid "Calculate a round's drag using the G1-G8 drag models"
-msgstr ""
+msgstr "Обчислення опору кулі на основі моделей опору G1-G8"
 
 #: data/balistica.appdata.xml.in:19
 msgid "Compute a bullet's twist rate using Greenhill or Miller"
-msgstr ""
+msgstr "Обчислення швидкості обертання кулі за за Ґрінхіллом або Міллером"
 
 #: data/balistica.appdata.xml.in:20
-#, fuzzy
-#| msgid "Point Blank Range (PBR)"
 msgid "Compute a round's Point Blank Range (PBR)"
-msgstr "Діапазон прямого пострілу (PBR)"
+msgstr "Обчислення діапазону прямого пострілу (PBR) для набою"
 
 #: data/balistica.desktop.in:3
 msgid "balística"
-msgstr ""
+msgstr "balística"
 
 #: data/balistica.desktop.in:6
 msgid "External ballistics calculator"
-msgstr ""
+msgstr "Калькулятор зовнішньої балістики"
 
 #: data/balistica.desktop.in:7
 msgid "ballistics"
-msgstr ""
+msgstr "ballistics;балістика"
