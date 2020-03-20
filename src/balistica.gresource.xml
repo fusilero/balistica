@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-    <gresource prefix="/org/gnome/balistica/ui">
+    <gresource prefix="/org/fusliero/balistica/ui">
         <file preprocess="xml-stripblanks" alias="drag.glade">../ui/drag.glade</file>
         <file preprocess="xml-stripblanks" alias="logviewer.glade">../ui/logviewer.glade</file>
         <file preprocess="xml-stripblanks" alias="pbr.glade">../ui/pbr.glade</file>
@@ -8,7 +8,7 @@
         <file preprocess="xml-stripblanks" alias="stability.glade">../ui/stability.glade</file>
         <file preprocess="xml-stripblanks" alias="twist.glade">../ui/twist.glade</file>
     </gresource>
-    <gresource prefix="/org/gnome/balistica/gtk">
+    <gresource prefix="/org/fusliero/balistica/gtk">
         <file preprocess="xml-stripblanks" alias="menu.ui">../ui/menu.ui</file>
     </gresource>
 </gresources>

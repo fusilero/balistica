@@ -1,4 +1,4 @@
-/* Copyright 2018 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2018-2020 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -17,7 +17,7 @@
  */
 
 
-[GtkTemplate (ui = "/org/gnome/balistica/ui/logviewer.glade")]
+[GtkTemplate (ui = "/org/fusliero/balistica/ui/logviewer.glade")]
 public class Balistica.LogViewerDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.Button btnClear ;

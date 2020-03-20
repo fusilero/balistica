@@ -1,4 +1,4 @@
-/* Copyright 2018 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2018-2020 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -16,7 +16,7 @@
  * along with balística.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-[GtkTemplate (ui = "/org/gnome/balistica/ui/drag.glade")]
+[GtkTemplate (ui = "/org/fusliero/balistica/ui/drag.glade")]
 public class Balistica.DragBox : Gtk.Box {
 
    // Struct used to hold calculation setup variables

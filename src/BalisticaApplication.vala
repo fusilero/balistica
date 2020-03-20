@@ -1,4 +1,4 @@
-/* Copyright 2012-2019 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2012-2020 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -37,7 +37,7 @@ public class Application : Gtk.Application {
     * Constructor
     */
    public Application () {
-	  GLib.Object (application_id: "org.gnome.balistica", flags : ApplicationFlags.HANDLES_OPEN) ;
+	  GLib.Object (application_id: "org.fusliero.balistica", flags : ApplicationFlags.HANDLES_OPEN) ;
    }
 
    /**
@@ -73,7 +73,7 @@ public class Application : Gtk.Application {
 
 	  var builder = new Gtk.Builder () ;
 	  try {
-		 builder.add_from_resource ("/org/gnome/balistica/gtk/menu.ui") ;
+		 builder.add_from_resource ("/org/fusliero/balistica/gtk/menu.ui") ;
 	  } catch ( Error e ){
 		 logger.publish (new LogMsg (e.message)) ;
 	  }
@@ -177,7 +177,7 @@ public class Application : Gtk.Application {
 	  Gtk.show_about_dialog (get_active_window (),
 							 "authors", authors,
 							 "comments", _("An open source external ballistics calculator."),
-							 "copyright", _("Copyright \xc2\xa9 2012-2018 Steven Oliver"),
+							 "copyright", _("Copyright \xc2\xa9 2012-2020 Steven Oliver"),
 							 "license-type", Gtk.License.GPL_3_0,
 							 "program-name", NAME,
 							 "website", "http://steveno.github.io/balistica/",

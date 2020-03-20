@@ -1,4 +1,4 @@
-/* Copyright 2018 Steven Oliver <oliver.steven@gmail.com>
+/* Copyright 2018-2020 Steven Oliver <oliver.steven@gmail.com>
  *
  * This file is part of balística.
  *
@@ -17,7 +17,7 @@
  */
 
 
-[GtkTemplate (ui = "/org/gnome/balistica/ui/pbr.glade")]
+[GtkTemplate (ui = "/org/fusliero/balistica/ui/pbr.glade")]
 public class Balistica.PbrDialog : Gtk.Dialog {
    [GtkChild]
    public Gtk.Button btnCalculate ;
