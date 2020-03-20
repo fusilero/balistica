@@ -1,4 +1,4 @@
-# balística ![](https://raw.githubusercontent.com/steveno/balistica/master/data/hicolor/48x48/apps/balistica.png)
+# balística ![](https://raw.githubusercontent.com/steveno/balistica/master/data/icons/48x48/apps/balistica.png)
 [![Build Status](https://travis-ci.org/steveno/balistica.svg?branch=master)](https://travis-ci.org/steveno/balistica)
 [![Translation status](https://translate.fedoraproject.org/widgets/balistica/-/svg-badge.svg)](https://translate.fedoraproject.org/engage/balistica/?utm_source=widget)
 [![license](https://img.shields.io/github/license/steveno/balistica.svg?style=flat)](https://github.com/steveno/balistica/blob/master/LICENSE.txt)
