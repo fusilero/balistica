@@ -1,13 +1,4 @@
-# Icons
-foreach size: [ '16x16', '24x24', '32x32', '48x48', '64x64', '128x128', 'scalable' ]
-  suffix = 'png'     
-  if size == 'scalable'
-    suffix = 'svg'     
-  endif     
-  install_data (join_paths ('hicolor', size, 'apps', 'balistica.' + suffix),
-    install_dir: join_paths (icondir, 'hicolor', size, 'actions')
-    ) 
-endforeach
+subdir('icons')
 
 # Desktop file
 i18n.merge_file ('desktop-file',
@@ -25,8 +16,3 @@ i18n.merge_file ('appdata-file',
                  install: true,
                  install_dir: join_paths (datadir, 'metainfo'),
                  po_dir: join_paths(meson.source_root(), 'po'))
-
-# Gschema
-install_data('org.gnome.balistica.gschema.xml',
-  install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
-)
