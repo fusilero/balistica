@@ -20,8 +20,8 @@
             <li>Compute a round's Point Blank Range (PBR)</li>
         </ul>
     </description>
-    <url type="homepage">http://steveno.github.io/balistica/</url>
-    <url type="bugtracker">http://steveno.github.io/balistica/issues</url>
+    <url type="homepage">http://fusliero.github.io/balistica/</url>
+    <url type="bugtracker">http://fusliero.github.io/balistica/issues</url>
     <update_contact>oliver.steven@gmail.com</update_contact>
     <project_group>GNOME</project_group>
     <content_rating type="oars-1.0">

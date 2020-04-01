@@ -180,7 +180,7 @@ public class Application : Gtk.Application {
 							 "copyright", _("Copyright \xc2\xa9 2012-2020 Steven Oliver"),
 							 "license-type", Gtk.License.GPL_3_0,
 							 "program-name", NAME,
-							 "website", "http://steveno.github.io/balistica/",
+							 "website", "http://fusliero.github.io/balistica/",
 							 "website-label", "balística Website",
 							 "version", VERSION,
 							 "logo-icon-name", "balistica") ;
