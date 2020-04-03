@@ -1,81 +1,80 @@
-# gokhan sakar <gokhan.sakar@metu.edu.tr>, 2018. #zanata
-# Oğuz Ersen <oguzersen@protonmail.com>, 2020.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the balistica package.
+# Geert Warrink <geert.warrink@onsnet.nu>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: balistica\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-03-24 13:38+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
-"balistica/master/tr/>\n"
-"Language: tr\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 3.11.3\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
-msgstr "Sürtünme"
+msgstr ""
 
 #: src/BalisticaApplication.vala:115
 msgid "Twist"
-msgstr "Rotasyon"
+msgstr ""
 
 #: src/BalisticaApplication.vala:116
 msgid "Stability"
-msgstr "Kararlılık"
+msgstr ""
 
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
 msgid "Failed to create XDG directory "
-msgstr "XDG dizini oluşturulamadı "
+msgstr ""
 
 #: src/BalisticaApplication.vala:181
 msgid "Error showing help"
-msgstr "Yardım gösterilirken hata oluştu"
+msgstr ""
 
 #: src/BalisticaApplication.vala:201
 msgid "An open source external ballistics calculator."
-msgstr "Açık kaynaklı dış balistik hesaplayıcısı."
+msgstr ""
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr "Copyright © 2012-2018 Steven Oliver"
+msgstr ""
 
 #: src/DragBox.vala:123
 msgid "Range"
-msgstr "Menzil"
+msgstr ""
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
-msgstr "Düşüş (İnç)"
+msgstr ""
 
 #: src/DragBox.vala:125
 msgid "Drop MOA"
-msgstr "Düşüş (MOA)"
+msgstr ""
 
 #: src/DragBox.vala:126
 msgid "Velocity"
-msgstr "Hız"
+msgstr ""
 
 #: src/DragBox.vala:127
 msgid "Energy"
-msgstr "Enerji"
+msgstr ""
 
 #: src/DragBox.vala:128
 msgid "Drift"
-msgstr "Sürüklenme"
+msgstr ""
 
 #: src/DragBox.vala:129
 msgid "Windage MOA"
-msgstr "Rüzgarlama (MOA)"
+msgstr ""
 
 #: src/DragBox.vala:130
 msgid "Time"
-msgstr "Zaman"
+msgstr ""
 
 #. Name used to store the calculation
 #. Ballistic cofficient
@@ -90,180 +89,178 @@ msgstr "Zaman"
 #. to be zero
 #: src/DragBox.vala:230
 msgid "Drag Coefficient must be a positive value greater than 0"
-msgstr "Sürtünme katsayısı pozitif bir değer olmalıdır"
+msgstr ""
 
 #: src/DragBox.vala:235
 msgid "Initial Velocity must be a positive value greater than 0"
-msgstr "Başlangıç hızı pozitif bir değer olmalıdır"
+msgstr ""
 
 #: src/DragBox.vala:240
 msgid "Sight Height over Bore must be a positive value greater than 0"
-msgstr "Delik üstü görüş yüksekliği pozitif bir değer olmalıdır"
+msgstr ""
 
 #: src/DragBox.vala:245
 msgid "Projectile Weight must be a positive value greater than 0"
-msgstr "Mermi ağırlığı pozitif bir değer olmalıdır"
+msgstr ""
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr "Sıfır aralığı pozitif bir değer olmalıdır"
+msgstr ""
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
-msgstr "Analiz sonuçları oluşturulurken hata oluştu"
+msgstr ""
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
-msgstr "Boş bir sürtünme analizi dışa aktarılamaz"
+msgstr ""
 
 #. Create a save as dialog
 #: src/DragBox.vala:317
 msgid "Save As"
-msgstr "Farklı Kaydet"
+msgstr ""
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr "İptal"
+msgstr ""
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr "Kaydet"
+msgstr ""
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
-msgstr "Mevcut dosyanın üzerine yazılamadı"
+msgstr ""
 
 #: src/DragBox.vala:365
 msgid "Error selecting file to save as"
-msgstr "Farklı kaydedilecek dosya seçilirken hata oluştu"
+msgstr ""
 
 #: src/DragBox.vala:380
 #, c-format
 msgid "<b>Drag Coefficient:</b> %.2f"
-msgstr "<b>Sürtünme Katsayısı:</b> %.2f"
+msgstr ""
 
 #: src/DragBox.vala:380
 #, c-format
 msgid "<b>Projectile Weight:</b> %.2f"
-msgstr "<b>Mermi Ağırlığı:</b> %.2f"
+msgstr ""
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Initial Velocity:</b> %.2f ft/s"
-msgstr "<b>Başlangıç Hızı:</b> %.2f ft/s"
+msgstr ""
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr "<b>Sıfır Aralığı:</b> %.2f yarda"
+msgstr ""
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Shooting Angle:</b> %.2f degress"
-msgstr "<b>Hedef Açısı:</b> %.2f derece"
+msgstr ""
 
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr "<b>Rüzgar Hızı:</b> %.2f mil/saat"
+msgstr ""
 
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Direction:</b> %.2f degress"
-msgstr "<b>Rüzgar Yönü:</b> %.2f derece"
+msgstr ""
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Altitude:</b> %.2f ft"
-msgstr "<b>Rakım:</b> %.2f ft"
+msgstr ""
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Barometer:</b> %2f in-Hg"
-msgstr "<b>Barometre:</b> %2f inç-Civa"
+msgstr ""
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr "<b>Sıcaklık:</b> %2f F"
+msgstr ""
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Relative Humidity:</b> %.2F%%"
-msgstr "<b>Bağıl Nem:</b> %%%.2F"
+msgstr ""
 
 #: src/DragBox.vala:391
 msgid "<b>Range (yards)</b>"
-msgstr "<b>Menzil (yarda)</b>"
+msgstr ""
 
 #: src/DragBox.vala:392
 msgid "<b>Drop (inches)</b>"
-msgstr "<b>Düşüş (inç)</b>"
+msgstr ""
 
 #: src/DragBox.vala:393
 msgid "<b>Drop (MOA)</b>"
-msgstr "<b>Düşüş (MOA)</b>"
+msgstr ""
 
 #: src/DragBox.vala:394
 msgid "<b>Velocity (ft/s)</b>"
-msgstr "<b>Hız (ft/s)</b>"
+msgstr ""
 
 #: src/DragBox.vala:395
 msgid "<b>Energy (ft-lb)</b>"
-msgstr "<b>Enerji (ft-lb)</b>"
+msgstr ""
 
 #: src/DragBox.vala:396
 msgid "<b>Winddrift (inches)</b>"
-msgstr "<b>Rüzgar sürüklenmesi (inç)</b>"
+msgstr ""
 
 #: src/DragBox.vala:397
 msgid "<b>Windage (MOA)</b>"
-msgstr "<b>Rüzgarlama (MOA)</b>"
+msgstr ""
 
 #: src/DragBox.vala:398
 msgid "<b>Time (s)</b>"
-msgstr "<b>Zaman (s)</b>"
+msgstr ""
 
 #: src/DragBox.vala:425
 msgid "Error creating HTML output"
-msgstr "HTML çıktısı oluşturulurken hata oluştu"
+msgstr ""
 
 #: src/LogViewerDialog.vala:50
 msgid "Date/Time"
-msgstr "Tarih/Saat"
+msgstr ""
 
 #: src/LogViewerDialog.vala:51
 msgid "Log Level"
-msgstr "Log Seviyesi"
+msgstr ""
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr "Mesaj"
+msgstr ""
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
-msgstr "Log dosyasını okuma "
+msgstr ""
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
 msgstr ""
-"Sabit nişangah mesafesini (PBR) hesaplamak için hayati bölge büyüklüğü "
-"gereklidir"
 
 #: src/PbrDialog.vala:113
 #, c-format
 msgid "Near Zero: %.2f yards\n"
-msgstr "Yakın Sıfır: %.2f yarda\n"
+msgstr ""
 
 #: src/PbrDialog.vala:114
 #, c-format
 msgid "Far Zero: %.2f yards\n"
-msgstr "Uzak Sıfır: %.2f yarda\n"
+msgstr ""
 
 #: src/PbrDialog.vala:115
 #, c-format
 msgid "Minimum PBR: %.2f yards\n"
-msgstr "Minimum PBR: %.2f yarda\n"
+msgstr ""
 
 #: src/PbrDialog.vala:116
 #, c-format
@@ -271,45 +268,43 @@ msgid ""
 "Maximum PBR: %.2f yards\n"
 "\n"
 msgstr ""
-"Maksimum PBR: %.2f yarda\n"
-"\n"
 
 #: src/PbrDialog.vala:117
 #, c-format
 msgid "Sight-in at 100 yards: %.2f\" high"
-msgstr "100 yarda için görüş yüksekliği: %.2f\""
+msgstr ""
 
 #: src/PreferencesWindow.vala:68
 msgid "Choose save location"
-msgstr "Kaydetme konumunu seçin"
+msgstr ""
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr "_İptal"
+msgstr ""
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
-msgstr "_Seç"
+msgstr ""
 
 #: ui/drag.glade:64
 msgid "Name:"
-msgstr "İsim:"
+msgstr ""
 
 #: ui/drag.glade:104
 msgid "Solve"
-msgstr "Çözüm"
+msgstr ""
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
 msgid "Reset"
-msgstr "Sıfırla"
+msgstr ""
 
 #: ui/drag.glade:133
 msgid "Example"
-msgstr "Örnek"
+msgstr ""
 
 #: ui/drag.glade:199
 msgid "Projectile Weight (grains)"
-msgstr "Mermi Ağırlığı ( tanecik )"
+msgstr ""
 
 #: ui/drag.glade:280
 msgid ""
@@ -318,182 +313,178 @@ msgid ""
 "180 = tailwind\n"
 "270/-90 = left to right"
 msgstr ""
-"0 = pruva rüzgarı\n"
-"90 = sağdan sola\n"
-"180 = kuyruk rüzgarı\n"
-"270/-90 =soldan sağa"
 
 #: ui/drag.glade:299 ui/pbr.glade:141
 msgid "Initial Velocity (ft/s)"
-msgstr "Başlangıç Hızı (ft/s)"
+msgstr ""
 
 #: ui/drag.glade:311
 msgid "Zero Range (yards)"
-msgstr "Sıfır Aralığı (yarda)"
+msgstr ""
 
 #: ui/drag.glade:323
 msgid "Sight Height Over Bore (in)"
-msgstr "Delik Üstü Görüş Yüksekliği (inç)"
+msgstr ""
 
 #: ui/drag.glade:337
 msgid "Shooting Angle (deg)"
-msgstr "Hedef Açısı ( derece)"
+msgstr ""
 
 #: ui/drag.glade:349
 msgid "Wind Velocity (mph)"
-msgstr "Rüzgar Hızı (mil/saat)"
+msgstr ""
 
 #: ui/drag.glade:361
 msgid "Wind Angle (0-360 deg)"
-msgstr "Rüzgar Açısı (0 - 360 derece)"
+msgstr ""
 
 #: ui/drag.glade:373 ui/pbr.glade:153
 msgid "Drag Coefficient"
-msgstr "Sürtünme Katsayısı"
+msgstr ""
 
 #: ui/drag.glade:460
 msgid "Altitude (ft)"
-msgstr "Rakım (ft)"
+msgstr ""
 
 #: ui/drag.glade:472
 msgid "Temperature (F)"
-msgstr "Sıcaklık ( Fahrenhayt )"
+msgstr ""
 
 #: ui/drag.glade:484
 msgid "Barometric Pressure (Hg)"
-msgstr "Atmosfer Basıncı (Hg)"
+msgstr ""
 
 #: ui/drag.glade:496
 msgid "Relative Humidity (%)"
-msgstr "Bağıl Nem (%)"
+msgstr ""
 
 #: ui/drag.glade:619 ui/pbr.glade:219
 msgid "Drag Function"
-msgstr "Sürtünme Fonksiyonu"
+msgstr ""
 
 #: ui/drag.glade:690
 msgid "Step Size"
-msgstr "Adım Boyu"
+msgstr ""
 
 #: ui/drag.glade:702
 msgid "Export Results"
-msgstr "Çıktı Sonuçları"
+msgstr ""
 
 #: ui/drag.glade:716
 msgid "Calculate PBR"
-msgstr "Sabit nişangah mesafesini (PBR) hesapla"
+msgstr ""
 
 #: ui/drag.glade:742
 msgid "Enable Atmospheric Corrections"
-msgstr "Hava Yenimi Aktif Etme"
+msgstr ""
 
 #: ui/logviewer.glade:7
 msgid "Log Viewer"
-msgstr "Log Kaydı Görüntüleyicisi"
+msgstr ""
 
 #: ui/logviewer.glade:14
 msgid "Refresh"
-msgstr "Yenileme"
+msgstr ""
 
 #: ui/logviewer.glade:23
 msgid "Clear"
-msgstr "Açık"
+msgstr ""
 
 #: ui/pbr.glade:34
 msgid "Point Blank Range (PBR)"
-msgstr "Sabit Nişangah Mesafesi (Point Blank Range - PBR)"
+msgstr ""
 
 #: ui/pbr.glade:40 ui/stability.glade:213 ui/twist.glade:383
 msgid "Calculate"
-msgstr "Hesapla"
+msgstr ""
 
 #: ui/pbr.glade:117
 msgid "Vital Zone Size (inches)"
-msgstr "Hayati Bölge Büyüklüğü (inç)"
+msgstr ""
 
 #: ui/pbr.glade:129
 msgid "Sight Height (inches)"
-msgstr "Görüş Yüksekliği (inç)"
+msgstr ""
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr "Tercihler"
+msgstr ""
 
 #: ui/preferences.glade:54
 msgid "Directories"
-msgstr "Dizinler"
+msgstr ""
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr "Kayıt Dizini"
+msgstr ""
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr "Göz at"
+msgstr ""
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
-msgstr "Çap"
+msgstr ""
 
 #: ui/stability.glade:119 ui/twist.glade:115 ui/twist.glade:261
 msgid "Length"
-msgstr "Uzunluk"
+msgstr ""
 
 #: ui/stability.glade:131 ui/twist.glade:273
 msgid "Mass"
-msgstr "Kütle"
+msgstr ""
 
 #: ui/stability.glade:143 ui/twist.glade:285
 msgid "Safe Value"
-msgstr "Güvenli Değer"
+msgstr ""
 
 #: ui/stability.glade:162
 msgid "Miller Stability"
-msgstr "Geçmiş Kararlılığı"
+msgstr ""
 
 #: ui/twist.glade:127
 msgid "Specific Gravity"
-msgstr "Özgül Ağırlık"
+msgstr ""
 
 #: ui/twist.glade:169
 msgid "Greenhill Twist"
-msgstr "Greenhill Rotasyonu"
+msgstr ""
 
 #: ui/twist.glade:303
 msgid "Miller Twist Rule"
-msgstr "Miller Rotasyon Kuralı"
+msgstr ""
 
 #: ui/twist.glade:355
 msgid "Greenhill"
-msgstr "Yeşiltepe"
+msgstr ""
 
 #: ui/twist.glade:369
 msgid "Miller"
-msgstr "Geçmişte Olan"
+msgstr ""
 
 #: ui/menu.ui:11
 msgid "View Log"
-msgstr "Log Kayıtlarını Görüntüle"
+msgstr ""
 
 #: ui/menu.ui:17
 msgid "Help"
-msgstr "Yardım"
+msgstr ""
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr "Hakkında"
+msgstr ""
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr "Çık"
+msgstr ""
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
-msgstr "balistica"
+msgstr ""
 
 #: data/balistica.appdata.xml.in:8 data/balistica.desktop.in:4
 msgid "External ballistics software"
-msgstr "Dış balistik yazılımı"
+msgstr ""
 
 #: data/balistica.appdata.xml.in:10
 msgid ""
@@ -502,36 +493,31 @@ msgid ""
 "functions (G1-G8) along with other minor ballistics related calculations "
 "like the Greenhill Formula and the Miller Twist Rule."
 msgstr ""
-"balística, Gnome Masaüstü Ortamı için temel bir balistik hesaplayıcısıdır. "
-"Standart sürtünme fonksiyonlarının (G1-G8) yanı sıra Greenhill Formülü ve "
-"Miller Rotasyon Kuralı gibi balistik ile ilgili diğer basit hesaplamaları "
-"yapabilme yeteneği sağlar."
 
 #: data/balistica.appdata.xml.in:16
 msgid "balística’s features include:"
-msgstr "balística’nın özellikleri:"
+msgstr ""
 
 #: data/balistica.appdata.xml.in:18
 msgid "Calculate a round's drag using the G1-G8 drag models"
-msgstr "G1-G8 sürtünme modellerini kullanarak bir turun sürtünmesini hesaplama"
+msgstr ""
 
 #: data/balistica.appdata.xml.in:19
 msgid "Compute a bullet's twist rate using Greenhill or Miller"
 msgstr ""
-"Greenhill veya Miller kullanarak bir merminin rotasyon oranını hesaplama"
 
 #: data/balistica.appdata.xml.in:20
 msgid "Compute a round's Point Blank Range (PBR)"
-msgstr "Bir turun sabit nişangah mesafesini (PBR) hesapla"
+msgstr ""
 
 #: data/balistica.desktop.in:3
 msgid "balística"
-msgstr "balística"
+msgstr ""
 
 #: data/balistica.desktop.in:6
 msgid "External ballistics calculator"
-msgstr "Dış balistik hesaplayıcısı"
+msgstr ""
 
 #: data/balistica.desktop.in:7
 msgid "ballistics"
-msgstr "ballistics;balistik"
+msgstr ""
