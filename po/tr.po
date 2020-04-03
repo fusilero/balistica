@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-03-18 18:38+0000\n"
+"PO-Revision-Date: 2020-03-24 13:38+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "balistica/master/tr/>\n"
@@ -234,7 +234,7 @@ msgstr "Tarih/Saat"
 
 #: src/LogViewerDialog.vala:51
 msgid "Log Level"
-msgstr "Log Düzeyi"
+msgstr "Log Seviyesi"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
