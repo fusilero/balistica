@@ -6,7 +6,6 @@ dist: bionic
 
 compiler:
   - gcc
-#  - clang
 
 before_install:
   - sudo add-apt-repository ppa:vala-team/ppa -y
@@ -15,9 +14,10 @@ before_install:
   - sudo pip3 install --upgrade setuptools
   - sudo pip3 install meson
   # install libbalistica
-  - wget https://github.com/fusilero/libbalistica/archive/v1.1.tar.gz
-  - tar -zxvf 1.0.tar.gz
-  - cd libbalistica-1.0/ && mkdir build
+  - curl https://github.com/fusilero/libbalistica/archive/v1.1.tar.gz -o libbalistica.tar.gz -sSL
+  - tar -zxvf libbalistica.tar.gz
+  - rm libbalistica.tar.gz
+  - cd libbalistica* && mkdir build
   - meson . build/
   - cd build && ninja
   - sudo ninja install
