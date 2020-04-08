@@ -15,7 +15,7 @@ before_install:
   - sudo pip3 install --upgrade setuptools
   - sudo pip3 install meson
   # install libbalistica
-  - wget https://github.com/steveno/libbalistica/archive/1.0.tar.gz
+  - wget https://github.com/fusilero/libbalistica/archive/v1.1.tar.gz
   - tar -zxvf 1.0.tar.gz
   - cd libbalistica-1.0/ && mkdir build
   - meson . build/
