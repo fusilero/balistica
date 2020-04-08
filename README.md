@@ -1,7 +1,7 @@
 # balística ![](https://raw.githubusercontent.com/fusilero/balistica/master/data/icons/48x48/apps/balistica.png)
 [![Build Status](https://travis-ci.org/fusliero/balistica.svg?branch=master)](https://travis-ci.org/fusliero/balistica)
 [![Translation status](https://translate.fedoraproject.org/widgets/balistica/-/svg-badge.svg)](https://translate.fedoraproject.org/engage/balistica/?utm_source=widget)
-[![license](https://img.shields.io/github/license/fusliero/balistica.svg?style=flat)](https://github.com/fusliero/balistica/blob/master/LICENSE.txt)
+[![license](https://img.shields.io/github/license/fusliero/balistica.svg?style=flat)](https://github.com/fusilero/balistica/blob/master/LICENSE)
 
 ## About
 balística is a simple open source external ballistics calculator. It's 
