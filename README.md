@@ -14,7 +14,7 @@ named after the Catalan word for "ballistics" in English. Enjoy!
 * glib-2.0 >= 2.40.0
 * gtk+-3.0 >= 3.10.8
 * gee-0.8 >= 0.20.0
-* [libbalistica](https://github.com/fusliero/libbalistica) >= 1.0
+* [libbalistica](https://github.com/fusilero/libbalistica) >= 1.0
 
 ### Ubuntu
 ```bash
