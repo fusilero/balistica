@@ -7,74 +7,77 @@ msgstr ""
 "Project-Id-Version: balistica\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-04-04 19:40+0000\n"
+"Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
+"Language-Team: Dutch <https://translate.fedoraproject.org/projects/balistica/"
+"master/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.11.3\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
-msgstr ""
+msgstr "Slepen"
 
 #: src/BalisticaApplication.vala:115
 msgid "Twist"
-msgstr ""
+msgstr "Draaien"
 
 #: src/BalisticaApplication.vala:116
 msgid "Stability"
-msgstr ""
+msgstr "Stabiliteit"
 
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
 msgid "Failed to create XDG directory "
-msgstr ""
+msgstr "Kan geen XDG-map aanmaken "
 
 #: src/BalisticaApplication.vala:181
 msgid "Error showing help"
-msgstr ""
+msgstr "Fout bij het weergeven van hulp"
 
 #: src/BalisticaApplication.vala:201
 msgid "An open source external ballistics calculator."
-msgstr ""
+msgstr "Een open bron externe ballistische calculator."
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr ""
+msgstr "Copyright © 2012-2018 Steven Oliver"
 
 #: src/DragBox.vala:123
 msgid "Range"
-msgstr ""
+msgstr "Bereik"
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
-msgstr ""
+msgstr "Daling inches"
 
 #: src/DragBox.vala:125
 msgid "Drop MOA"
-msgstr ""
+msgstr "Daling MOA"
 
 #: src/DragBox.vala:126
 msgid "Velocity"
-msgstr ""
+msgstr "Snelheid"
 
 #: src/DragBox.vala:127
 msgid "Energy"
-msgstr ""
+msgstr "Energie"
 
 #: src/DragBox.vala:128
 msgid "Drift"
-msgstr ""
+msgstr "Drift"
 
 #: src/DragBox.vala:129
 msgid "Windage MOA"
-msgstr ""
+msgstr "Windkracht MOA"
 
 #: src/DragBox.vala:130
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 #. Name used to store the calculation
 #. Ballistic cofficient
@@ -89,178 +92,179 @@ msgstr ""
 #. to be zero
 #: src/DragBox.vala:230
 msgid "Drag Coefficient must be a positive value greater than 0"
-msgstr ""
+msgstr "De sleepcoëfficiënt moet een positieve waarde hebben groter dan 0"
 
 #: src/DragBox.vala:235
 msgid "Initial Velocity must be a positive value greater than 0"
-msgstr ""
+msgstr "De beginsnelheid moet een positieve waarde hebben groter dan 0"
 
 #: src/DragBox.vala:240
 msgid "Sight Height over Bore must be a positive value greater than 0"
 msgstr ""
+"Zichthoogte boven diameter moet een positieve waarde hebben groter dan 0"
 
 #: src/DragBox.vala:245
 msgid "Projectile Weight must be a positive value greater than 0"
-msgstr ""
+msgstr "Projectielgewicht moet een positieve waarde hebben groter dan 0"
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr ""
+msgstr "Nulbereik moet een positieve waarde hebben groter dan 0"
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
-msgstr ""
+msgstr "Fout bij het maken van oplossingsresultaten"
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
-msgstr ""
+msgstr "Kan geen lege sleepoplossing exporteren"
 
 #. Create a save as dialog
 #: src/DragBox.vala:317
 msgid "Save As"
-msgstr ""
+msgstr "Opslaan als"
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
-msgstr ""
+msgstr "Bestaand bestand kan niet worden overschreven"
 
 #: src/DragBox.vala:365
 msgid "Error selecting file to save as"
-msgstr ""
+msgstr "Fout bij selecteren van bestand om op te slaan als"
 
 #: src/DragBox.vala:380
 #, c-format
 msgid "<b>Drag Coefficient:</b> %.2f"
-msgstr ""
+msgstr "<b>Sleepcoëfficiënt:</b> %.2f"
 
 #: src/DragBox.vala:380
 #, c-format
 msgid "<b>Projectile Weight:</b> %.2f"
-msgstr ""
+msgstr "<b>Projectielgewicht:</b> %.2f"
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Initial Velocity:</b> %.2f ft/s"
-msgstr ""
+msgstr "<b>Beginsnelheid:</b> %.2f ft/s"
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr ""
+msgstr "<b>Nulbereik:</b> %.2f yards"
 
 #: src/DragBox.vala:382
 #, c-format
 msgid "<b>Shooting Angle:</b> %.2f degress"
-msgstr ""
+msgstr "<b>Schiethoek:</b> %.2f graden"
 
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr ""
+msgstr "<b>Windsnelheid:</b> %.2f mph"
 
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Direction:</b> %.2f degress"
-msgstr ""
+msgstr "<b>Windrichting:</b> %.2f graden"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Altitude:</b> %.2f ft"
-msgstr ""
+msgstr "<b>Hoogte:</b> %.2f ft"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Barometer:</b> %2f in-Hg"
-msgstr ""
+msgstr "<b>Barometer:</b> %2f in-Hg"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr ""
+msgstr "<b>Temperatuur:</b> %2f F"
 
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Relative Humidity:</b> %.2F%%"
-msgstr ""
+msgstr "<b>Relatieve vochtigheid:</b> %.2F%%"
 
 #: src/DragBox.vala:391
 msgid "<b>Range (yards)</b>"
-msgstr ""
+msgstr "<b>Bereik (yards)</b>"
 
 #: src/DragBox.vala:392
 msgid "<b>Drop (inches)</b>"
-msgstr ""
+msgstr "<b>Daling (inches)</b>"
 
 #: src/DragBox.vala:393
 msgid "<b>Drop (MOA)</b>"
-msgstr ""
+msgstr "<b>Daling (MOA)</b>"
 
 #: src/DragBox.vala:394
 msgid "<b>Velocity (ft/s)</b>"
-msgstr ""
+msgstr "<b>Snelheid (ft/s)</b>"
 
 #: src/DragBox.vala:395
 msgid "<b>Energy (ft-lb)</b>"
-msgstr ""
+msgstr "<b>Energie (ft-lb)</b>"
 
 #: src/DragBox.vala:396
 msgid "<b>Winddrift (inches)</b>"
-msgstr ""
+msgstr "<b>Winddrift (inches)</b>"
 
 #: src/DragBox.vala:397
 msgid "<b>Windage (MOA)</b>"
-msgstr ""
+msgstr "<b>Luchtweerstand (MOA)</b>"
 
 #: src/DragBox.vala:398
 msgid "<b>Time (s)</b>"
-msgstr ""
+msgstr "<b>Tijd (s)</b>"
 
 #: src/DragBox.vala:425
 msgid "Error creating HTML output"
-msgstr ""
+msgstr "Fout bij het aanmaken van HTML-uitvoer"
 
 #: src/LogViewerDialog.vala:50
 msgid "Date/Time"
-msgstr ""
+msgstr "Datum/tijd"
 
 #: src/LogViewerDialog.vala:51
 msgid "Log Level"
-msgstr ""
+msgstr "Log niveau"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr ""
+msgstr "Bericht"
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
-msgstr ""
+msgstr "Logbestand lezen "
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
-msgstr ""
+msgstr "De grootte van de vitale zone is vereist om de PBR te berekenen"
 
 #: src/PbrDialog.vala:113
 #, c-format
 msgid "Near Zero: %.2f yards\n"
-msgstr ""
+msgstr "Nabije nul: %.2f yards\n"
 
 #: src/PbrDialog.vala:114
 #, c-format
 msgid "Far Zero: %.2f yards\n"
-msgstr ""
+msgstr "Afgelegen nul: %.2f yards\n"
 
 #: src/PbrDialog.vala:115
 #, c-format
 msgid "Minimum PBR: %.2f yards\n"
-msgstr ""
+msgstr "Minimale PBR: %.2f yards\n"
 
 #: src/PbrDialog.vala:116
 #, c-format
@@ -268,43 +272,45 @@ msgid ""
 "Maximum PBR: %.2f yards\n"
 "\n"
 msgstr ""
+"Maximale PBR: %.2f yards\n"
+"\n"
 
 #: src/PbrDialog.vala:117
 #, c-format
 msgid "Sight-in at 100 yards: %.2f\" high"
-msgstr ""
+msgstr "Uitzicht op 100 yards: %.2f\" high"
 
 #: src/PreferencesWindow.vala:68
 msgid "Choose save location"
-msgstr ""
+msgstr "Kies opslaglocatie"
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr ""
+msgstr "_Annuleren"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
-msgstr ""
+msgstr "_Selecteren"
 
 #: ui/drag.glade:64
 msgid "Name:"
-msgstr ""
+msgstr "Naam:"
 
 #: ui/drag.glade:104
 msgid "Solve"
-msgstr ""
+msgstr "Oplossen"
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: ui/drag.glade:133
 msgid "Example"
-msgstr ""
+msgstr "Voorbeeld"
 
 #: ui/drag.glade:199
 msgid "Projectile Weight (grains)"
-msgstr ""
+msgstr "Projectielgewicht (grains)"
 
 #: ui/drag.glade:280
 msgid ""
@@ -313,178 +319,182 @@ msgid ""
 "180 = tailwind\n"
 "270/-90 = left to right"
 msgstr ""
+"0 = tegenwind\n"
+"90 = van rechts naar links\n"
+"180 = wind mee\n"
+"270/-90 = van links naar rechts"
 
 #: ui/drag.glade:299 ui/pbr.glade:141
 msgid "Initial Velocity (ft/s)"
-msgstr ""
+msgstr "Beginsnelheid (ft/s)"
 
 #: ui/drag.glade:311
 msgid "Zero Range (yards)"
-msgstr ""
+msgstr "Nulbereik (yards)"
 
 #: ui/drag.glade:323
 msgid "Sight Height Over Bore (in)"
-msgstr ""
+msgstr "Zichthoogte boven diameter (in)"
 
 #: ui/drag.glade:337
 msgid "Shooting Angle (deg)"
-msgstr ""
+msgstr "Schiethoek (graden)"
 
 #: ui/drag.glade:349
 msgid "Wind Velocity (mph)"
-msgstr ""
+msgstr "Windsnelheid (mph)"
 
 #: ui/drag.glade:361
 msgid "Wind Angle (0-360 deg)"
-msgstr ""
+msgstr "Windhoek (0-360 graden)"
 
 #: ui/drag.glade:373 ui/pbr.glade:153
 msgid "Drag Coefficient"
-msgstr ""
+msgstr "Sleepcoëfficiënt"
 
 #: ui/drag.glade:460
 msgid "Altitude (ft)"
-msgstr ""
+msgstr "Hoogte (ft)"
 
 #: ui/drag.glade:472
 msgid "Temperature (F)"
-msgstr ""
+msgstr "Temperatuur (F)"
 
 #: ui/drag.glade:484
 msgid "Barometric Pressure (Hg)"
-msgstr ""
+msgstr "Barometrische druk (Hg)"
 
 #: ui/drag.glade:496
 msgid "Relative Humidity (%)"
-msgstr ""
+msgstr "Relatieve vochtigheid (%)"
 
 #: ui/drag.glade:619 ui/pbr.glade:219
 msgid "Drag Function"
-msgstr ""
+msgstr "Sleepfunctie"
 
 #: ui/drag.glade:690
 msgid "Step Size"
-msgstr ""
+msgstr "Stapgrootte"
 
 #: ui/drag.glade:702
 msgid "Export Results"
-msgstr ""
+msgstr "Resultaten exporteren"
 
 #: ui/drag.glade:716
 msgid "Calculate PBR"
-msgstr ""
+msgstr "Bereken PBR"
 
 #: ui/drag.glade:742
 msgid "Enable Atmospheric Corrections"
-msgstr ""
+msgstr "Schakel atmosferische correcties in"
 
 #: ui/logviewer.glade:7
 msgid "Log Viewer"
-msgstr ""
+msgstr "Toon logboek"
 
 #: ui/logviewer.glade:14
 msgid "Refresh"
-msgstr ""
+msgstr "Verversen"
 
 #: ui/logviewer.glade:23
 msgid "Clear"
-msgstr ""
+msgstr "Schoonmaken"
 
 #: ui/pbr.glade:34
 msgid "Point Blank Range (PBR)"
-msgstr ""
+msgstr "Point Blank bereik (PBR)"
 
 #: ui/pbr.glade:40 ui/stability.glade:213 ui/twist.glade:383
 msgid "Calculate"
-msgstr ""
+msgstr "Berekenen"
 
 #: ui/pbr.glade:117
 msgid "Vital Zone Size (inches)"
-msgstr ""
+msgstr "Grootte vitale zone (inches)"
 
 #: ui/pbr.glade:129
 msgid "Sight Height (inches)"
-msgstr ""
+msgstr "Zichthoogte (inches)"
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: ui/preferences.glade:54
 msgid "Directories"
-msgstr ""
+msgstr "Mappen"
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr ""
+msgstr "Map opslaan"
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr ""
+msgstr "Bladeren"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
-msgstr ""
+msgstr "Diameter"
 
 #: ui/stability.glade:119 ui/twist.glade:115 ui/twist.glade:261
 msgid "Length"
-msgstr ""
+msgstr "Lengte"
 
 #: ui/stability.glade:131 ui/twist.glade:273
 msgid "Mass"
-msgstr ""
+msgstr "Massa"
 
 #: ui/stability.glade:143 ui/twist.glade:285
 msgid "Safe Value"
-msgstr ""
+msgstr "Veilige waarde"
 
 #: ui/stability.glade:162
 msgid "Miller Stability"
-msgstr ""
+msgstr "Miller stabiliteit"
 
 #: ui/twist.glade:127
 msgid "Specific Gravity"
-msgstr ""
+msgstr "Soortelijk gewicht"
 
 #: ui/twist.glade:169
 msgid "Greenhill Twist"
-msgstr ""
+msgstr "Greenhill twist"
 
 #: ui/twist.glade:303
 msgid "Miller Twist Rule"
-msgstr ""
+msgstr "Miller twist regel"
 
 #: ui/twist.glade:355
 msgid "Greenhill"
-msgstr ""
+msgstr "Greenhill"
 
 #: ui/twist.glade:369
 msgid "Miller"
-msgstr ""
+msgstr "Miller"
 
 #: ui/menu.ui:11
 msgid "View Log"
-msgstr ""
+msgstr "Bekijk logboek"
 
 #: ui/menu.ui:17
 msgid "Help"
-msgstr ""
+msgstr "Hulp"
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
-msgstr ""
+msgstr "balistica"
 
 #: data/balistica.appdata.xml.in:8 data/balistica.desktop.in:4
 msgid "External ballistics software"
-msgstr ""
+msgstr "Externe ballistische software"
 
 #: data/balistica.appdata.xml.in:10
 msgid ""
@@ -493,31 +503,36 @@ msgid ""
 "functions (G1-G8) along with other minor ballistics related calculations "
 "like the Greenhill Formula and the Miller Twist Rule."
 msgstr ""
+"balística is een basis ballistische calculator voor de Gnome Desktop "
+"omgeving. Het biedt de mogelijkheid om de standaard sleepfuncties (G1-G8) te "
+"berekenen, samen met andere kleine ballistische berekeningen zoals de "
+"Greenhill formule en de Miller Twist regel."
 
 #: data/balistica.appdata.xml.in:16
 msgid "balística’s features include:"
-msgstr ""
+msgstr "de eigenschappen van balística omvatten:"
 
 #: data/balistica.appdata.xml.in:18
 msgid "Calculate a round's drag using the G1-G8 drag models"
 msgstr ""
+"Bereken de weerstand van een schot met behulp van de G1-G8-sleepmodellen"
 
 #: data/balistica.appdata.xml.in:19
 msgid "Compute a bullet's twist rate using Greenhill or Miller"
-msgstr ""
+msgstr "Bereken de twist rate van een kogel met Greenhill of Miller"
 
 #: data/balistica.appdata.xml.in:20
 msgid "Compute a round's Point Blank Range (PBR)"
-msgstr ""
+msgstr "Bereken een Point Blank bereik (PBR) van een schot"
 
 #: data/balistica.desktop.in:3
 msgid "balística"
-msgstr ""
+msgstr "balística"
 
 #: data/balistica.desktop.in:6
 msgid "External ballistics calculator"
-msgstr ""
+msgstr "Externe ballistische calculator"
 
 #: data/balistica.desktop.in:7
 msgid "ballistics"
-msgstr ""
+msgstr "ballistiek"
