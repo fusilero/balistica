@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-03-24 13:38+0000\n"
+"PO-Revision-Date: 2020-04-16 09:40+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "balistica/master/tr/>\n"
@@ -43,7 +43,7 @@ msgstr "Açık kaynaklı dış balistik hesaplayıcısı."
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr "Copyright © 2012-2018 Steven Oliver"
+msgstr "Telif Hakkı © 2012-2018 Steven Oliver"
 
 #: src/DragBox.vala:123
 msgid "Range"
@@ -263,7 +263,7 @@ msgstr "Uzak Sıfır: %.2f yarda\n"
 #: src/PbrDialog.vala:115
 #, c-format
 msgid "Minimum PBR: %.2f yards\n"
-msgstr "Minimum PBR: %.2f yarda\n"
+msgstr "Asgari PBR: %.2f yarda\n"
 
 #: src/PbrDialog.vala:116
 #, c-format
@@ -271,7 +271,7 @@ msgid ""
 "Maximum PBR: %.2f yards\n"
 "\n"
 msgstr ""
-"Maksimum PBR: %.2f yarda\n"
+"Azami PBR: %.2f yarda\n"
 "\n"
 
 #: src/PbrDialog.vala:117
