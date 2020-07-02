@@ -1,12 +1,13 @@
 # Emilio Herrera <ehespinosa57@gmail.com>, 2018. #zanata
 # Adolfo Jayme Barrientos <fitoschido@gmail.com>, 2020.
+# Dennis Tobar <DENNIS.TOBAR@gmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-02-06 11:16+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2020-07-01 20:40+0000\n"
+"Last-Translator: Dennis Tobar <DENNIS.TOBAR@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
 "Language: es\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10.3\n"
+"X-Generator: Weblate 4.1.1\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -256,7 +257,7 @@ msgstr "Visualizador de Registro"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
@@ -299,7 +300,7 @@ msgstr ""
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr ""
+msgstr "_Cancelar"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
@@ -347,13 +348,8 @@ msgstr ""
 "270/-90 = izquierda a derecha"
 
 #: ui/drag.glade:299 ui/pbr.glade:141
-#, fuzzy
 msgid "Initial Velocity (ft/s)"
-msgstr ""
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Velocidad Inicial (ft/s)\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Velocidad Inicial (píes/s)"
+msgstr "Velocidad Inicial (píes/s)"
 
 #: ui/drag.glade:311
 msgid "Zero Range (yards)"
@@ -445,7 +441,7 @@ msgstr "Altura de la Vista (pulgadas)"
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: ui/preferences.glade:54
 msgid "Directories"
@@ -505,11 +501,11 @@ msgstr ""
 
 #: ui/menu.ui:17
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: ui/menu.ui:26
 msgid "Quit"
