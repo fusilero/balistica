@@ -1,13 +1,13 @@
 # Gabriel Gimenez de Lima <gabriel.gimenez98@gmail.com>, 2018. #zanata
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
+# Fábio Rodrigues Ribeiro <farribeiro@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-11-28 23:06+0000\n"
-"Last-Translator: Henrique Roberto Gattermann Mittelstaedt <henrique."
-"roberto97@gmail.com>\n"
+"PO-Revision-Date: 2021-04-20 19:51+0000\n"
+"Last-Translator: Fábio Rodrigues Ribeiro <farribeiro@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
 "projects/balistica/master/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.6\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -157,7 +157,7 @@ msgstr "<b>Velocidade Inicial:</b> %.2f pé/s"
 #, fuzzy, c-format
 #| msgid "Zero Range (yards)"
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr "alcance zero(área)"
+msgstr "<b>Zero Alcance:</b> %.2f jardas"
 
 #: src/DragBox.vala:382
 #, c-format
@@ -198,7 +198,7 @@ msgstr "<b>Umidade Relativa:</b> %.2F%%"
 #, fuzzy
 #| msgid "Zero Range (yards)"
 msgid "<b>Range (yards)</b>"
-msgstr "alcance zero(área)"
+msgstr "<b>Alcance (jardas)</b>"
 
 #: src/DragBox.vala:392
 #, fuzzy
@@ -419,7 +419,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Sight Height Over Bore (in)"
 msgid "Sight Height (inches)"
-msgstr "Altura da vista sobre o buraco(in)"
+msgstr "Altura da vista (polegadas)"
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
