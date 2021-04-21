@@ -1,5 +1,5 @@
 # Gabriel Gimenez de Lima <gabriel.gimenez98@gmail.com>, 2018. #zanata
-# Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020.
+# Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020, 2021.
 # Fábio Rodrigues Ribeiro <farribeiro@gmail.com>, 2021.
 msgid ""
 msgstr ""
@@ -7,7 +7,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
 "PO-Revision-Date: 2021-04-20 19:51+0000\n"
-"Last-Translator: Fábio Rodrigues Ribeiro <farribeiro@gmail.com>\n"
+"Last-Translator: Henrique Roberto Gattermann Mittelstaedt <henrique."
+"roberto97@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
 "projects/balistica/master/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -232,7 +233,7 @@ msgstr "<b>Tempo (s)</b>"
 
 #: src/DragBox.vala:425
 msgid "Error creating HTML output"
-msgstr ""
+msgstr "Erro ao criar saída HTML"
 
 #: src/LogViewerDialog.vala:50
 msgid "Date/Time"
@@ -252,7 +253,7 @@ msgstr "Lendo arquivo de log "
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
-msgstr ""
+msgstr "O tamanho da Zona Vital é necessário para calcular PBR"
 
 #: src/PbrDialog.vala:113
 #, c-format
@@ -393,11 +394,11 @@ msgstr "Habilita Correções Atmosféricas"
 
 #: ui/logviewer.glade:7
 msgid "Log Viewer"
-msgstr ""
+msgstr "Visualizador de Log"
 
 #: ui/logviewer.glade:14
 msgid "Refresh"
-msgstr ""
+msgstr "Atualizar"
 
 #: ui/logviewer.glade:23
 msgid "Clear"
