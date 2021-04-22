@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-07-10 14:27+0000\n"
+"PO-Revision-Date: 2020-11-20 11:35+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.1.1\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -100,14 +100,16 @@ msgstr "Velocidad Inicial debe ser un valor positivo mayor de 0"
 #: src/DragBox.vala:240
 msgid "Sight Height over Bore must be a positive value greater than 0"
 msgstr ""
+"La Altura de la Vista sobre el Diámetro Interior debe ser un valor positivo "
+"mayor de 0"
 
 #: src/DragBox.vala:245
 msgid "Projectile Weight must be a positive value greater than 0"
-msgstr ""
+msgstr "El Peso del Proyectil debe ser un valor positivo mayor de 0"
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr ""
+msgstr "El Rango Cero debe ser un valor positivo mayor de 0"
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
@@ -115,7 +117,7 @@ msgstr "Error al crear los resultados de la solución"
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
-msgstr ""
+msgstr "No se puede exportar una solución de arrastre vacía"
 
 #. Create a save as dialog
 #: src/DragBox.vala:317
