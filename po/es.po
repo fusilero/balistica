@@ -1,4 +1,4 @@
-# Emilio Herrera <ehespinosa57@gmail.com>, 2018. #zanata, 2020.
+# Emilio Herrera <ehespinosa57@gmail.com>, 2018. #zanata, 2020, 2021.
 # Adolfo Jayme Barrientos <fitoschido@gmail.com>, 2020.
 # Dennis Tobar <DENNIS.TOBAR@gmail.com>, 2020.
 msgid ""
@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-11-20 11:35+0000\n"
+"PO-Revision-Date: 2021-04-28 15:02+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.6\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -151,19 +151,14 @@ msgid "<b>Projectile Weight:</b> %.2f"
 msgstr "<b>Peso del proyectil:</b> %.2f"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
+#, c-format
 msgid "<b>Initial Velocity:</b> %.2f ft/s"
-msgstr ""
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Velocidad Inicial (ft/s)\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Velocidad Inicial (píes/s)"
+msgstr "<b>Velocidad Inicial:</b> %.2f píes/s"
 
 #: src/DragBox.vala:382
-#, fuzzy, c-format
-#| msgid "Zero Range (yards)"
+#, c-format
 msgid "<b>Zero Range:</b> %.2f yards"
-msgstr "Rango Cero (yardas)"
+msgstr "<b>Rango Cero:</b> %.2f yardas"
 
 #: src/DragBox.vala:382
 #, c-format
@@ -171,10 +166,9 @@ msgid "<b>Shooting Angle:</b> %.2f degress"
 msgstr "<b>Ángulo de disparo:</b> %.2f grados"
 
 #: src/DragBox.vala:384
-#, fuzzy, c-format
-#| msgid "Wind Velocity (mph)"
+#, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr "Velocidad del Viento (mph)"
+msgstr "<b>Velocidad del Viento:</b> %.2f mph"
 
 #: src/DragBox.vala:384
 #, c-format
@@ -197,10 +191,9 @@ msgid "<b>Temperature:</b> %2f F"
 msgstr "<b>Temperatura:</b> %2f °F"
 
 #: src/DragBox.vala:386
-#, fuzzy, c-format
-#| msgid "Relative Humidity (%)"
+#, c-format
 msgid "<b>Relative Humidity:</b> %.2F%%"
-msgstr "Humedad Relativa (%)"
+msgstr "<b>Humedad Relativa:</b> %.2F%%"
 
 #: src/DragBox.vala:391
 #, fuzzy
