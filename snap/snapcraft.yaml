@@ -1,0 +1,50 @@
+name: balistica
+version: 1.4
+summary: balística is an open source external ballistics calculator.
+description: |
+  balística is an advanced external ballistics library. It supports
+  calculating the trajectory of projectiles using mutliple methods 
+  including G1, G2, G5, G6, G7, and G8.
+
+grade: devel
+confinement: strict
+
+plugs:
+    gnome-3-26-1604:
+      interface: content
+      target: $SNAP/gnome-platform
+      default-provider: gnome-3-26-1604:gnome-3-26-1604
+
+slots:
+  # for GtkApplication registration
+  balistica:
+    interface: dbus
+    bus: session
+    name: org.gnome.balistica
+
+apps:
+  balistica:
+    command: desktop-launch balistica
+    plugs:
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - unity7
+      - wayland
+    desktop: usr/share/applications/balistica.desktop
+
+parts:
+  balistica:
+    after: [desktop-gtk3]
+    source: https://github.com/steveno/balistica.git
+    source-type: git
+    plugin: meson
+    build-packages:
+      - desktop-file-utils
+      - gettext
+      - gnome-common
+      - gnome-pkg-tools
+      - intltool
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - valac
