@@ -1,0 +1,523 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the balistica package.
+# Jan Kuparinen <copper_fin@hotmail.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: balistica\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-17 08:37-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/BalisticaApplication.vala:114
+msgid "Drag"
+msgstr ""
+
+#: src/BalisticaApplication.vala:115
+msgid "Twist"
+msgstr ""
+
+#: src/BalisticaApplication.vala:116
+msgid "Stability"
+msgstr ""
+
+#. The user may have already created the directory, so don't throw EXISTS.
+#: src/BalisticaApplication.vala:132
+msgid "Failed to create XDG directory "
+msgstr ""
+
+#: src/BalisticaApplication.vala:181
+msgid "Error showing help"
+msgstr ""
+
+#: src/BalisticaApplication.vala:201
+msgid "An open source external ballistics calculator."
+msgstr ""
+
+#: src/BalisticaApplication.vala:202
+msgid "Copyright © 2012-2018 Steven Oliver"
+msgstr ""
+
+#: src/DragBox.vala:123
+msgid "Range"
+msgstr ""
+
+#: src/DragBox.vala:124
+msgid "Drop Inches"
+msgstr ""
+
+#: src/DragBox.vala:125
+msgid "Drop MOA"
+msgstr ""
+
+#: src/DragBox.vala:126
+msgid "Velocity"
+msgstr ""
+
+#: src/DragBox.vala:127
+msgid "Energy"
+msgstr ""
+
+#: src/DragBox.vala:128
+msgid "Drift"
+msgstr ""
+
+#: src/DragBox.vala:129
+msgid "Windage MOA"
+msgstr ""
+
+#: src/DragBox.vala:130
+msgid "Time"
+msgstr ""
+
+#. Name used to store the calculation
+#. Ballistic cofficient
+#. Initial velocity (ft/s)
+#. Sight height over bore (inches)
+#. Projectile weight (grains)
+#. Shooting Angle (degrees)
+#. Zero range of the rifle (yards)
+#. Wind speed (mph)
+#. Wind angle (0=headwind, 90=right-to-left, 180=tailwind, 270/-90=left-to-right)
+#. It doesn't make sense for any of the following variables
+#. to be zero
+#: src/DragBox.vala:230
+msgid "Drag Coefficient must be a positive value greater than 0"
+msgstr ""
+
+#: src/DragBox.vala:235
+msgid "Initial Velocity must be a positive value greater than 0"
+msgstr ""
+
+#: src/DragBox.vala:240
+msgid "Sight Height over Bore must be a positive value greater than 0"
+msgstr ""
+
+#: src/DragBox.vala:245
+msgid "Projectile Weight must be a positive value greater than 0"
+msgstr ""
+
+#: src/DragBox.vala:250
+msgid "Zero Range must be a positive value greater than 0"
+msgstr ""
+
+#: src/DragBox.vala:280
+msgid "Error creating solution results"
+msgstr ""
+
+#: src/DragBox.vala:312
+msgid "Cannot export an empty drag solution"
+msgstr ""
+
+#. Create a save as dialog
+#: src/DragBox.vala:317
+msgid "Save As"
+msgstr ""
+
+#: src/DragBox.vala:320
+msgid "Cancel"
+msgstr ""
+
+#: src/DragBox.vala:322
+msgid "Save"
+msgstr ""
+
+#: src/DragBox.vala:355
+msgid "Failed to overwrite existing file"
+msgstr ""
+
+#: src/DragBox.vala:365
+msgid "Error selecting file to save as"
+msgstr ""
+
+#: src/DragBox.vala:380
+#, c-format
+msgid "<b>Drag Coefficient:</b> %.2f"
+msgstr ""
+
+#: src/DragBox.vala:380
+#, c-format
+msgid "<b>Projectile Weight:</b> %.2f"
+msgstr ""
+
+#: src/DragBox.vala:382
+#, c-format
+msgid "<b>Initial Velocity:</b> %.2f ft/s"
+msgstr ""
+
+#: src/DragBox.vala:382
+#, c-format
+msgid "<b>Zero Range:</b> %.2f yards"
+msgstr ""
+
+#: src/DragBox.vala:382
+#, c-format
+msgid "<b>Shooting Angle:</b> %.2f degress"
+msgstr ""
+
+#: src/DragBox.vala:384
+#, c-format
+msgid "<b>Wind Velocity:</b> %.2f mph"
+msgstr ""
+
+#: src/DragBox.vala:384
+#, c-format
+msgid "<b>Wind Direction:</b> %.2f degress"
+msgstr ""
+
+#: src/DragBox.vala:386
+#, c-format
+msgid "<b>Altitude:</b> %.2f ft"
+msgstr ""
+
+#: src/DragBox.vala:386
+#, c-format
+msgid "<b>Barometer:</b> %2f in-Hg"
+msgstr ""
+
+#: src/DragBox.vala:386
+#, c-format
+msgid "<b>Temperature:</b> %2f F"
+msgstr ""
+
+#: src/DragBox.vala:386
+#, c-format
+msgid "<b>Relative Humidity:</b> %.2F%%"
+msgstr ""
+
+#: src/DragBox.vala:391
+msgid "<b>Range (yards)</b>"
+msgstr ""
+
+#: src/DragBox.vala:392
+msgid "<b>Drop (inches)</b>"
+msgstr ""
+
+#: src/DragBox.vala:393
+msgid "<b>Drop (MOA)</b>"
+msgstr ""
+
+#: src/DragBox.vala:394
+msgid "<b>Velocity (ft/s)</b>"
+msgstr ""
+
+#: src/DragBox.vala:395
+msgid "<b>Energy (ft-lb)</b>"
+msgstr ""
+
+#: src/DragBox.vala:396
+msgid "<b>Winddrift (inches)</b>"
+msgstr ""
+
+#: src/DragBox.vala:397
+msgid "<b>Windage (MOA)</b>"
+msgstr ""
+
+#: src/DragBox.vala:398
+msgid "<b>Time (s)</b>"
+msgstr ""
+
+#: src/DragBox.vala:425
+msgid "Error creating HTML output"
+msgstr ""
+
+#: src/LogViewerDialog.vala:50
+msgid "Date/Time"
+msgstr ""
+
+#: src/LogViewerDialog.vala:51
+msgid "Log Level"
+msgstr ""
+
+#: src/LogViewerDialog.vala:52
+msgid "Message"
+msgstr ""
+
+#: src/LogViewerDialog.vala:111
+msgid "Reading log file "
+msgstr ""
+
+#: src/PbrDialog.vala:103
+msgid "Vital Zone size is required to calculate PBR"
+msgstr ""
+
+#: src/PbrDialog.vala:113
+#, c-format
+msgid "Near Zero: %.2f yards\n"
+msgstr ""
+
+#: src/PbrDialog.vala:114
+#, c-format
+msgid "Far Zero: %.2f yards\n"
+msgstr ""
+
+#: src/PbrDialog.vala:115
+#, c-format
+msgid "Minimum PBR: %.2f yards\n"
+msgstr ""
+
+#: src/PbrDialog.vala:116
+#, c-format
+msgid ""
+"Maximum PBR: %.2f yards\n"
+"\n"
+msgstr ""
+
+#: src/PbrDialog.vala:117
+#, c-format
+msgid "Sight-in at 100 yards: %.2f\" high"
+msgstr ""
+
+#: src/PreferencesWindow.vala:68
+msgid "Choose save location"
+msgstr ""
+
+#: src/PreferencesWindow.vala:70
+msgid "_Cancel"
+msgstr ""
+
+#: src/PreferencesWindow.vala:71
+msgid "_Select"
+msgstr ""
+
+#: ui/drag.glade:64
+msgid "Name:"
+msgstr ""
+
+#: ui/drag.glade:104
+msgid "Solve"
+msgstr ""
+
+#: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
+msgid "Reset"
+msgstr ""
+
+#: ui/drag.glade:133
+msgid "Example"
+msgstr ""
+
+#: ui/drag.glade:199
+msgid "Projectile Weight (grains)"
+msgstr ""
+
+#: ui/drag.glade:280
+msgid ""
+"0 = headwind\n"
+"90 = right to left\n"
+"180 = tailwind\n"
+"270/-90 = left to right"
+msgstr ""
+
+#: ui/drag.glade:299 ui/pbr.glade:141
+msgid "Initial Velocity (ft/s)"
+msgstr ""
+
+#: ui/drag.glade:311
+msgid "Zero Range (yards)"
+msgstr ""
+
+#: ui/drag.glade:323
+msgid "Sight Height Over Bore (in)"
+msgstr ""
+
+#: ui/drag.glade:337
+msgid "Shooting Angle (deg)"
+msgstr ""
+
+#: ui/drag.glade:349
+msgid "Wind Velocity (mph)"
+msgstr ""
+
+#: ui/drag.glade:361
+msgid "Wind Angle (0-360 deg)"
+msgstr ""
+
+#: ui/drag.glade:373 ui/pbr.glade:153
+msgid "Drag Coefficient"
+msgstr ""
+
+#: ui/drag.glade:460
+msgid "Altitude (ft)"
+msgstr ""
+
+#: ui/drag.glade:472
+msgid "Temperature (F)"
+msgstr ""
+
+#: ui/drag.glade:484
+msgid "Barometric Pressure (Hg)"
+msgstr ""
+
+#: ui/drag.glade:496
+msgid "Relative Humidity (%)"
+msgstr ""
+
+#: ui/drag.glade:619 ui/pbr.glade:219
+msgid "Drag Function"
+msgstr ""
+
+#: ui/drag.glade:690
+msgid "Step Size"
+msgstr ""
+
+#: ui/drag.glade:702
+msgid "Export Results"
+msgstr ""
+
+#: ui/drag.glade:716
+msgid "Calculate PBR"
+msgstr ""
+
+#: ui/drag.glade:742
+msgid "Enable Atmospheric Corrections"
+msgstr ""
+
+#: ui/logviewer.glade:7
+msgid "Log Viewer"
+msgstr ""
+
+#: ui/logviewer.glade:14
+msgid "Refresh"
+msgstr ""
+
+#: ui/logviewer.glade:23
+msgid "Clear"
+msgstr ""
+
+#: ui/pbr.glade:34
+msgid "Point Blank Range (PBR)"
+msgstr ""
+
+#: ui/pbr.glade:40 ui/stability.glade:213 ui/twist.glade:383
+msgid "Calculate"
+msgstr ""
+
+#: ui/pbr.glade:117
+msgid "Vital Zone Size (inches)"
+msgstr ""
+
+#: ui/pbr.glade:129
+msgid "Sight Height (inches)"
+msgstr ""
+
+#: ui/preferences.glade:33 ui/menu.ui:7
+msgid "Preferences"
+msgstr ""
+
+#: ui/preferences.glade:54
+msgid "Directories"
+msgstr ""
+
+#: ui/preferences.glade:70
+msgid "Save Directory"
+msgstr ""
+
+#: ui/preferences.glade:91
+msgid "Browse"
+msgstr ""
+
+#: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
+msgid "Diameter"
+msgstr ""
+
+#: ui/stability.glade:119 ui/twist.glade:115 ui/twist.glade:261
+msgid "Length"
+msgstr ""
+
+#: ui/stability.glade:131 ui/twist.glade:273
+msgid "Mass"
+msgstr ""
+
+#: ui/stability.glade:143 ui/twist.glade:285
+msgid "Safe Value"
+msgstr ""
+
+#: ui/stability.glade:162
+msgid "Miller Stability"
+msgstr ""
+
+#: ui/twist.glade:127
+msgid "Specific Gravity"
+msgstr ""
+
+#: ui/twist.glade:169
+msgid "Greenhill Twist"
+msgstr ""
+
+#: ui/twist.glade:303
+msgid "Miller Twist Rule"
+msgstr ""
+
+#: ui/twist.glade:355
+msgid "Greenhill"
+msgstr ""
+
+#: ui/twist.glade:369
+msgid "Miller"
+msgstr ""
+
+#: ui/menu.ui:11
+msgid "View Log"
+msgstr ""
+
+#: ui/menu.ui:17
+msgid "Help"
+msgstr ""
+
+#: ui/menu.ui:22
+msgid "About"
+msgstr ""
+
+#: ui/menu.ui:26
+msgid "Quit"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
+msgid "balistica"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:8 data/balistica.desktop.in:4
+msgid "External ballistics software"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:10
+msgid ""
+"balística is a basic ballistics calculator for the Gnome Desktop "
+"Environment. It provides the ability to calculate the standard drag "
+"functions (G1-G8) along with other minor ballistics related calculations "
+"like the Greenhill Formula and the Miller Twist Rule."
+msgstr ""
+
+#: data/balistica.appdata.xml.in:16
+msgid "balística’s features include:"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:18
+msgid "Calculate a round's drag using the G1-G8 drag models"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:19
+msgid "Compute a bullet's twist rate using Greenhill or Miller"
+msgstr ""
+
+#: data/balistica.appdata.xml.in:20
+msgid "Compute a round's Point Blank Range (PBR)"
+msgstr ""
+
+#: data/balistica.desktop.in:3
+msgid "balística"
+msgstr ""
+
+#: data/balistica.desktop.in:6
+msgid "External ballistics calculator"
+msgstr ""
+
+#: data/balistica.desktop.in:7
+msgid "ballistics"
+msgstr ""
