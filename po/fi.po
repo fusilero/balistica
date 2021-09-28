@@ -7,21 +7,24 @@ msgstr ""
 "Project-Id-Version: balistica\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-09-25 19:05+0000\n"
+"Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
+"Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
+"balistica/master/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
-msgstr ""
+msgstr "Vedä"
 
 #: src/BalisticaApplication.vala:115
 msgid "Twist"
-msgstr ""
+msgstr "Käännä"
 
 #: src/BalisticaApplication.vala:116
 msgid "Stability"
@@ -30,7 +33,7 @@ msgstr ""
 #. The user may have already created the directory, so don't throw EXISTS.
 #: src/BalisticaApplication.vala:132
 msgid "Failed to create XDG directory "
-msgstr ""
+msgstr "XDG-hakemiston luonti epäonnistui "
 
 #: src/BalisticaApplication.vala:181
 msgid "Error showing help"
@@ -46,7 +49,7 @@ msgstr ""
 
 #: src/DragBox.vala:123
 msgid "Range"
-msgstr ""
+msgstr "Alue"
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
@@ -74,7 +77,7 @@ msgstr ""
 
 #: src/DragBox.vala:130
 msgid "Time"
-msgstr ""
+msgstr "Aika"
 
 #. Name used to store the calculation
 #. Ballistic cofficient
@@ -122,11 +125,11 @@ msgstr ""
 
 #: src/DragBox.vala:320
 msgid "Cancel"
-msgstr ""
+msgstr "Peru"
 
 #: src/DragBox.vala:322
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: src/DragBox.vala:355
 msgid "Failed to overwrite existing file"
@@ -237,7 +240,7 @@ msgstr ""
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
-msgstr ""
+msgstr "Viesti"
 
 #: src/LogViewerDialog.vala:111
 msgid "Reading log file "
@@ -280,15 +283,15 @@ msgstr ""
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
-msgstr ""
+msgstr "_Peru"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
-msgstr ""
+msgstr "_Valitse"
 
 #: ui/drag.glade:64
 msgid "Name:"
-msgstr ""
+msgstr "Nimi:"
 
 #: ui/drag.glade:104
 msgid "Solve"
@@ -296,11 +299,11 @@ msgstr ""
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
 msgid "Reset"
-msgstr ""
+msgstr "Nollaa"
 
 #: ui/drag.glade:133
 msgid "Example"
-msgstr ""
+msgstr "Esimerkki"
 
 #: ui/drag.glade:199
 msgid "Projectile Weight (grains)"
@@ -384,7 +387,7 @@ msgstr ""
 
 #: ui/logviewer.glade:14
 msgid "Refresh"
-msgstr ""
+msgstr "Päivitä"
 
 #: ui/logviewer.glade:23
 msgid "Clear"
@@ -408,7 +411,7 @@ msgstr ""
 
 #: ui/preferences.glade:33 ui/menu.ui:7
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: ui/preferences.glade:54
 msgid "Directories"
@@ -416,11 +419,11 @@ msgstr ""
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr ""
+msgstr "Tallenna hakemisto"
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr ""
+msgstr "Selaa"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
@@ -468,15 +471,15 @@ msgstr ""
 
 #: ui/menu.ui:17
 msgid "Help"
-msgstr ""
+msgstr "Ohjeet"
 
 #: ui/menu.ui:22
 msgid "About"
-msgstr ""
+msgstr "Tietoja"
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Lopeta"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
