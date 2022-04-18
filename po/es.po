@@ -1,13 +1,14 @@
 # Emilio Herrera <ehespinosa57@gmail.com>, 2018. #zanata, 2020, 2021.
 # Adolfo Jayme Barrientos <fitoschido@gmail.com>, 2020.
 # Dennis Tobar <DENNIS.TOBAR@gmail.com>, 2020.
+# Pablo Munoz Alabau <pamual@posteo.es>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2021-05-15 17:02+0000\n"
-"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
+"PO-Revision-Date: 2022-04-18 20:17+0000\n"
+"Last-Translator: Pablo Munoz Alabau <pamual@posteo.es>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
 "Language: es\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6.2\n"
+"X-Generator: Weblate 4.11.2\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -244,8 +245,9 @@ msgid "Message"
 msgstr "Mensaje"
 
 #: src/LogViewerDialog.vala:111
+#, fuzzy
 msgid "Reading log file "
-msgstr ""
+msgstr "Recargando el archivo de registros "
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
