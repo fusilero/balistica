@@ -2,13 +2,14 @@
 # Adolfo Jayme Barrientos <fitoschido@gmail.com>, 2020.
 # Dennis Tobar <DENNIS.TOBAR@gmail.com>, 2020.
 # Pablo Munoz Alabau <pamual@posteo.es>, 2022.
+# Alejandro Alcaide <alex@blueselene.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2022-04-18 20:17+0000\n"
-"Last-Translator: Pablo Munoz Alabau <pamual@posteo.es>\n"
+"PO-Revision-Date: 2022-05-03 12:18+0000\n"
+"Last-Translator: Alejandro Alcaide <alex@blueselene.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
 "Language: es\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11.2\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -290,7 +291,7 @@ msgstr "_Cancelar"
 
 #: src/PreferencesWindow.vala:71
 msgid "_Select"
-msgstr ""
+msgstr "_Seleccionar"
 
 #: ui/drag.glade:64
 msgid "Name:"
@@ -301,17 +302,8 @@ msgid "Solve"
 msgstr "Resolver"
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
-#, fuzzy
 msgid "Reset"
-msgstr ""
-"#-#-#-#-#  drag.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Reajustar\n"
-"#-#-#-#-#  pbr.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Reinicio\n"
-"#-#-#-#-#  stability.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Reinicio\n"
-"#-#-#-#-#  twist.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Reajuste"
+msgstr "Reiniciar"
 
 #: ui/drag.glade:133
 msgid "Example"
@@ -435,11 +427,11 @@ msgstr ""
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr ""
+msgstr "Directorio de guardado"
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr ""
+msgstr "Navegar"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
@@ -495,7 +487,7 @@ msgstr "Acerca de"
 
 #: ui/menu.ui:26
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
