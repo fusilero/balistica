@@ -33,7 +33,7 @@ sudo ninja install
 ```
 
 ## Contributing
-Please see [the contributing file](https://github.com/fusliero/balistica/blob/master/CONTRIBUTING.md)
+Please see [the contributing file](https://github.com/fusilero/balistica/blob/master/CONTRIBUTING.md)
 
 ## DISCLAIMER
 This program is to be used as REFERENCE or curiosity ONLY. Much like
