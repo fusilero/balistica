@@ -1,12 +1,13 @@
 # gokhan sakar <gokhan.sakar@metu.edu.tr>, 2018. #zanata
 # Oğuz Ersen <oguzersen@protonmail.com>, 2020.
+# Oğuz Ersen <oguz@ersen.moe>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2020-04-16 09:40+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
+"PO-Revision-Date: 2024-08-14 13:39+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "balistica/master/tr/>\n"
 "Language: tr\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 3.11.3\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -293,7 +294,7 @@ msgstr "_Seç"
 
 #: ui/drag.glade:64
 msgid "Name:"
-msgstr "İsim:"
+msgstr "Ad:"
 
 #: ui/drag.glade:104
 msgid "Solve"
