@@ -3,13 +3,14 @@
 # Dennis Tobar <DENNIS.TOBAR@gmail.com>, 2020.
 # Pablo Munoz Alabau <pamual@posteo.es>, 2022.
 # Alejandro Alcaide <alex@blueselene.com>, 2022.
+# Javier Francisco <fserrador@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2022-05-03 12:18+0000\n"
-"Last-Translator: Alejandro Alcaide <alex@blueselene.com>\n"
+"PO-Revision-Date: 2025-04-02 08:53+0000\n"
+"Last-Translator: Javier Francisco <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "balistica/master/es/>\n"
 "Language: es\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -46,7 +47,7 @@ msgstr "Una calculadora de balística exterior de código abierto."
 
 #: src/BalisticaApplication.vala:202
 msgid "Copyright © 2012-2018 Steven Oliver"
-msgstr "Derechos de autor © 2012-2018 de Steven Oliver"
+msgstr "© 2012-2018 de Steven Oliver"
 
 #: src/DragBox.vala:123
 msgid "Range"
@@ -74,7 +75,7 @@ msgstr "Deriva"
 
 #: src/DragBox.vala:129
 msgid "Windage MOA"
-msgstr "Windage MOA"
+msgstr "Viento MOA"
 
 #: src/DragBox.vala:130
 msgid "Time"
@@ -111,7 +112,7 @@ msgstr "El Peso del Proyectil debe ser un valor positivo mayor de 0"
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr "El Rango Cero debe ser un valor positivo mayor de 0"
+msgstr "El Alcance Cero debe ser un valor positivo mayor de 0"
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
@@ -170,7 +171,7 @@ msgstr "<b>Ángulo de disparo:</b> %.2f grados"
 #: src/DragBox.vala:384
 #, c-format
 msgid "<b>Wind Velocity:</b> %.2f mph"
-msgstr "<b>Velocidad del Viento:</b> %.2f mph"
+msgstr "<b>Velocidad del viento:</b> %.2f mph"
 
 #: src/DragBox.vala:384
 #, c-format
@@ -239,35 +240,34 @@ msgstr "Fecha/Hora"
 
 #: src/LogViewerDialog.vala:51
 msgid "Log Level"
-msgstr "Nivel de Registro"
+msgstr "Nivel de boletín"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
 msgstr "Mensaje"
 
 #: src/LogViewerDialog.vala:111
-#, fuzzy
 msgid "Reading log file "
-msgstr "Recargando el archivo de registros "
+msgstr "Leyendo archivo del boletín "
 
 #: src/PbrDialog.vala:103
 msgid "Vital Zone size is required to calculate PBR"
-msgstr ""
+msgstr "Tamaño de Zona Vital requerida para calcular PBR"
 
 #: src/PbrDialog.vala:113
 #, c-format
 msgid "Near Zero: %.2f yards\n"
-msgstr ""
+msgstr "Cerca de cero: %.2f yardas\n"
 
 #: src/PbrDialog.vala:114
 #, c-format
 msgid "Far Zero: %.2f yards\n"
-msgstr ""
+msgstr "Lejos de cero: %.2f yardas\n"
 
 #: src/PbrDialog.vala:115
 #, c-format
 msgid "Minimum PBR: %.2f yards\n"
-msgstr ""
+msgstr "PBR mínimo: %.2f yardas\n"
 
 #: src/PbrDialog.vala:116
 #, c-format
@@ -275,15 +275,17 @@ msgid ""
 "Maximum PBR: %.2f yards\n"
 "\n"
 msgstr ""
+"PBR máximo: %.2f yardas\n"
+"\n"
 
 #: src/PbrDialog.vala:117
 #, c-format
 msgid "Sight-in at 100 yards: %.2f\" high"
-msgstr ""
+msgstr "Ajuste de 100 yardas: %.2f\" altas"
 
 #: src/PreferencesWindow.vala:68
 msgid "Choose save location"
-msgstr ""
+msgstr "Elija lugar a guardar"
 
 #: src/PreferencesWindow.vala:70
 msgid "_Cancel"
@@ -303,7 +305,7 @@ msgstr "Resolver"
 
 #: ui/drag.glade:120 ui/pbr.glade:53 ui/stability.glade:188 ui/twist.glade:330
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "Restablecer"
 
 #: ui/drag.glade:133
 msgid "Example"
@@ -423,7 +425,7 @@ msgstr "Preferencias"
 
 #: ui/preferences.glade:54
 msgid "Directories"
-msgstr ""
+msgstr "Carpetas"
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
@@ -431,7 +433,7 @@ msgstr "Directorio de guardado"
 
 #: ui/preferences.glade:91
 msgid "Browse"
-msgstr "Navegar"
+msgstr "Explorar"
 
 #: ui/stability.glade:107 ui/twist.glade:102 ui/twist.glade:249
 msgid "Diameter"
@@ -463,7 +465,7 @@ msgstr "Giro Colina Verde"
 
 #: ui/twist.glade:303
 msgid "Miller Twist Rule"
-msgstr "Regla de Giro de Molinero"
+msgstr "Regla de Giro de Miller"
 
 #: ui/twist.glade:355
 msgid "Greenhill"
@@ -475,7 +477,7 @@ msgstr "Molinero"
 
 #: ui/menu.ui:11
 msgid "View Log"
-msgstr ""
+msgstr "Vista de boletín"
 
 #: ui/menu.ui:17
 msgid "Help"
@@ -491,11 +493,11 @@ msgstr "Salir"
 
 #: data/balistica.appdata.xml.in:7 data/balistica.desktop.in:8
 msgid "balistica"
-msgstr ""
+msgstr "balística"
 
 #: data/balistica.appdata.xml.in:8 data/balistica.desktop.in:4
 msgid "External ballistics software"
-msgstr ""
+msgstr "Software externo de balísticas"
 
 #: data/balistica.appdata.xml.in:10
 msgid ""
@@ -504,33 +506,35 @@ msgid ""
 "functions (G1-G8) along with other minor ballistics related calculations "
 "like the Greenhill Formula and the Miller Twist Rule."
 msgstr ""
+"balística es una calculadora básica de balística para el Entorno de "
+"Escritorio GNOME. Proporciona la capacidad de calcular las funciones "
+"estándar dejadas (G1-G8) junto con otras balísticas menores relacionadas con "
+"cálculos como la Fórmula de Greenhill y la Regla de Cambio de Miller."
 
 #: data/balistica.appdata.xml.in:16
 msgid "balística’s features include:"
-msgstr ""
+msgstr "características de balística incluyen:"
 
 #: data/balistica.appdata.xml.in:18
 msgid "Calculate a round's drag using the G1-G8 drag models"
-msgstr ""
+msgstr "Calcular un redondeo utilizando los modelos G1-G8 dejados"
 
 #: data/balistica.appdata.xml.in:19
 msgid "Compute a bullet's twist rate using Greenhill or Miller"
-msgstr ""
+msgstr "Calcular la proporción de balas utilizando Greenhill o Miller"
 
 #: data/balistica.appdata.xml.in:20
-#, fuzzy
-#| msgid "Point Blank Range (PBR)"
 msgid "Compute a round's Point Blank Range (PBR)"
-msgstr "Quemarropa (PBR)"
+msgstr "Calcula un Intervalo de punto en blanco alrededor (PBR)"
 
 #: data/balistica.desktop.in:3
 msgid "balística"
-msgstr ""
+msgstr "balística"
 
 #: data/balistica.desktop.in:6
 msgid "External ballistics calculator"
-msgstr ""
+msgstr "Calculadora de balística externa"
 
 #: data/balistica.desktop.in:7
 msgid "ballistics"
-msgstr ""
+msgstr "balísticas"
