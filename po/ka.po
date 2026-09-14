@@ -9,8 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
 "PO-Revision-Date: 2026-08-08 05:18+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
 "balistica/master/ka/>\n"
 "Language: ka\n"
@@ -189,7 +188,7 @@ msgstr ""
 #: src/DragBox.vala:386
 #, c-format
 msgid "<b>Temperature:</b> %2f F"
-msgstr ""
+msgstr "<b>ტემპერატურა:</b>%2f F"
 
 #: src/DragBox.vala:386
 #, c-format
@@ -226,7 +225,7 @@ msgstr ""
 
 #: src/DragBox.vala:398
 msgid "<b>Time (s)</b>"
-msgstr ""
+msgstr "<b>დრო (წმ)</b>"
 
 #: src/DragBox.vala:425
 msgid "Error creating HTML output"
@@ -238,7 +237,7 @@ msgstr "თარიღი/დრო"
 
 #: src/LogViewerDialog.vala:51
 msgid "Log Level"
-msgstr ""
+msgstr "ჟურნალის დონე"
 
 #: src/LogViewerDialog.vala:52
 msgid "Message"
@@ -345,11 +344,11 @@ msgstr ""
 
 #: ui/drag.glade:373 ui/pbr.glade:153
 msgid "Drag Coefficient"
-msgstr ""
+msgstr "წინააღმდეგობის კოეფიციენტი"
 
 #: ui/drag.glade:460
 msgid "Altitude (ft)"
-msgstr ""
+msgstr "სიმაღლე (ფტ)"
 
 #: ui/drag.glade:472
 msgid "Temperature (F)"
@@ -361,11 +360,11 @@ msgstr ""
 
 #: ui/drag.glade:496
 msgid "Relative Humidity (%)"
-msgstr "ფარდობითი ნესტიანობა:"
+msgstr "ფარდობითი ნესტიანობა (%)"
 
 #: ui/drag.glade:619 ui/pbr.glade:219
 msgid "Drag Function"
-msgstr ""
+msgstr "წინააღმდეგობის ფუნქცია"
 
 #: ui/drag.glade:690
 msgid "Step Size"
@@ -373,7 +372,7 @@ msgstr "ბიჯის ზომა"
 
 #: ui/drag.glade:702
 msgid "Export Results"
-msgstr ""
+msgstr "შედეგების გატანა"
 
 #: ui/drag.glade:716
 msgid "Calculate PBR"
@@ -421,7 +420,7 @@ msgstr "საქაღალდეები"
 
 #: ui/preferences.glade:70
 msgid "Save Directory"
-msgstr ""
+msgstr "შენახვის საქაღალდე"
 
 #: ui/preferences.glade:91
 msgid "Browse"
@@ -441,11 +440,11 @@ msgstr "მასა"
 
 #: ui/stability.glade:143 ui/twist.glade:285
 msgid "Safe Value"
-msgstr ""
+msgstr "უსაფრთხო მნიშვნელობა"
 
 #: ui/stability.glade:162
 msgid "Miller Stability"
-msgstr ""
+msgstr "მილერის სტაბილურობა"
 
 #: ui/twist.glade:127
 msgid "Specific Gravity"
