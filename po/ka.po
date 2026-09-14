@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: balistica\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2026-03-09 02:58+0000\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"PO-Revision-Date: 2026-08-08 05:18+0000\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
 "balistica/master/ka/>\n"
 "Language: ka\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.2\n"
+"X-Generator: Weblate 2026.8.1\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -360,7 +361,7 @@ msgstr ""
 
 #: ui/drag.glade:496
 msgid "Relative Humidity (%)"
-msgstr ""
+msgstr "ფარდობითი ნესტიანობა:"
 
 #: ui/drag.glade:619 ui/pbr.glade:219
 msgid "Drag Function"
@@ -384,7 +385,7 @@ msgstr ""
 
 #: ui/logviewer.glade:7
 msgid "Log Viewer"
-msgstr ""
+msgstr "ჟურნალის დამთვალიერებელი"
 
 #: ui/logviewer.glade:14
 msgid "Refresh"
