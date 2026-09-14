@@ -1,13 +1,14 @@
 # Gabriel Gimenez de Lima <gabriel.gimenez98@gmail.com>, 2018. #zanata
 # Henrique Roberto Gattermann Mittelstaedt <henrique.roberto97@gmail.com>, 2020, 2021.
 # Fábio Rodrigues Ribeiro <farribeiro@gmail.com>, 2021.
+# Vanessa Miranda <mvsmirs@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-17 08:37-0300\n"
-"PO-Revision-Date: 2021-10-02 23:05+0000\n"
-"Last-Translator: Fábio Rodrigues Ribeiro <farribeiro@gmail.com>\n"
+"PO-Revision-Date: 2026-09-14 03:17+0000\n"
+"Last-Translator: Vanessa Miranda <mvsmirs@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
 "projects/balistica/master/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 2026.9.1\n"
 
 #: src/BalisticaApplication.vala:114
 msgid "Drag"
@@ -52,11 +53,11 @@ msgstr "Alcance"
 
 #: src/DragBox.vala:124
 msgid "Drop Inches"
-msgstr ""
+msgstr "Queda (polegadas)"
 
 #: src/DragBox.vala:125
 msgid "Drop MOA"
-msgstr ""
+msgstr "Queda (MOA)"
 
 #: src/DragBox.vala:126
 msgid "Velocity"
@@ -68,11 +69,11 @@ msgstr "Energia"
 
 #: src/DragBox.vala:128
 msgid "Drift"
-msgstr ""
+msgstr "Deriva"
 
 #: src/DragBox.vala:129
 msgid "Windage MOA"
-msgstr ""
+msgstr "Ajuste de vento (MOA)"
 
 #: src/DragBox.vala:130
 msgid "Time"
@@ -99,7 +100,7 @@ msgstr "A Velocidade Inicial deve ser um valor positivo maior que 0"
 
 #: src/DragBox.vala:240
 msgid "Sight Height over Bore must be a positive value greater than 0"
-msgstr ""
+msgstr "Altura da mira sobre o Cano deve ser um valor positivo maior que 0"
 
 #: src/DragBox.vala:245
 msgid "Projectile Weight must be a positive value greater than 0"
@@ -107,15 +108,15 @@ msgstr "Peso do Projétil deve ser um valor positivo maior que 0"
 
 #: src/DragBox.vala:250
 msgid "Zero Range must be a positive value greater than 0"
-msgstr ""
+msgstr "Distância de aferição deve ser um valor positivo maior que 0"
 
 #: src/DragBox.vala:280
 msgid "Error creating solution results"
-msgstr ""
+msgstr "Erro ao criar resultados da solução"
 
 #: src/DragBox.vala:312
 msgid "Cannot export an empty drag solution"
-msgstr ""
+msgstr "Não é possível exportar uma solução de arrasto vazia"
 
 #. Create a save as dialog
 #: src/DragBox.vala:317
